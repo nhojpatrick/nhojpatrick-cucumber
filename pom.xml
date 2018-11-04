@@ -724,6 +724,7 @@
 		<module>json-testing-objects</module>
 		<module>json-transform-transformations-remove</module>
 		<module>json-transform-transformations-set</module>
+		<module>json-transform-transformations-whitespace</module>
 		<module>state</module>
 	</modules>
 	<!--repositories / -->
@@ -777,6 +778,11 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transform-transformations-set</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-transform-transformations-whitespace</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
