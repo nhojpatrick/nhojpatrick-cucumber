@@ -12,7 +12,9 @@ import com.github.nhojpatrick.cucumber.json.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.transform.TransformAction;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
 import com.github.nhojpatrick.cucumber.json.transform.transformations.RemoveTransformation;
+import com.github.nhojpatrick.cucumber.json.transform.transformations.SetTransformation;
 import com.github.nhojpatrick.cucumber.json.transform.transformations.Transformation;
+import com.github.nhojpatrick.cucumber.json.transform.utils.CastToUtil;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
@@ -75,7 +77,8 @@ public class TransformationSteps {
             throws IllegalKeyException,
             IllegalOperationException,
             InvalidPathException,
-            InvalidTransformActionException {
+            InvalidTransformActionException,
+            UnsupportedDataTypeException {
 
         final Transform transform = TransformFactory.getInstance();
 
@@ -92,6 +95,14 @@ public class TransformationSteps {
             switch (transformAction) {
                 case REMOVE:
                     transformation = new RemoveTransformation();
+                    break;
+
+                case SET:
+                    final String valueAsStr = row.get("value");
+                    final String type = row.get("type");
+                    final Object value = new CastToUtil()
+                            .castTo(valueAsStr, type);
+                    transformation = new SetTransformation(value);
                     break;
 
                 default:
