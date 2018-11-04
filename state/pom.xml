@@ -10,7 +10,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-all</artifactId>
+	<artifactId>nhojpatrick-cucumber-state</artifactId>
 	<!--packaging / -->
 	<packaging>jar</packaging>
 	<!--name / -->
@@ -41,8 +41,56 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-state</artifactId>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -52,6 +100,6 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.all</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.state</project.Automatic-Module-Name>
 	</properties>
 </project>

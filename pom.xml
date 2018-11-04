@@ -390,6 +390,8 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>core</module>
+		<module>state</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
@@ -410,6 +412,24 @@
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-all</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-state</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
