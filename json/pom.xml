@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!--parent / -->
+	<parent>
+		<groupId>com.github.nhojpatrick.cucumber</groupId>
+		<artifactId>nhojpatrick-cucumber</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<!--groupId / -->
+	<!--artifactId / -->
+	<artifactId>nhojpatrick-cucumber-json</artifactId>
+	<!--packaging / -->
+	<packaging>jar</packaging>
+	<!--name / -->
+	<!--version / -->
+	<!--description / -->
+	<!--url / -->
+	<!--prerequisites / -->
+	<!--issueManagement / -->
+	<!--ciManagement / -->
+	<!--inceptionYear / -->
+	<!--mailingLists / -->
+	<!--developers / -->
+	<!--contributors / -->
+	<!--licenses / -->
+	<!--scm / -->
+	<!--organization / -->
+	<!--build /-->
+	<!--profiles / -->
+	<profiles>
+		<profile>
+			<id>jpms</id>
+			<activation>
+				<jdk>[9</jdk>
+			</activation>
+			<properties>
+				<project.custom.failsafe.argLine.jpms>
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.testing=com.fasterxml.jackson.databind
+				</project.custom.failsafe.argLine.jpms>
+				<project.custom.surefire.argLine.jpms>
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=ALL-UNNAMED
+					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.testing=com.fasterxml.jackson.databind
+				</project.custom.surefire.argLine.jpms>
+			</properties>
+		</profile>
+	</profiles>
+	<!--modules / -->
+	<!--repositories / -->
+	<!--pluginRepositories / -->
+	<!--dependencies / -->
+	<dependencies>
+
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-state</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	<!--reports (Deprecated) / -->
+	<!--reporting / -->
+	<!--dependencyManagement / -->
+	<!--distributionManagement / -->
+	<!--properties / -->
+	<properties>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json</project.Automatic-Module-Name>
+	</properties>
+</project>

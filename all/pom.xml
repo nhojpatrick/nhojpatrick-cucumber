@@ -42,6 +42,11 @@
 
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-state</artifactId>
 		</dependency>
 
