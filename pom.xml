@@ -437,13 +437,13 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
-				<version>1.0.0</version>
+				<version>${version.latest.nhojpatrick.hamcrest}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-				<version>1.0.0</version>
+				<version>${version.latest.nhojpatrick.hamcrest}</version>
 			</dependency>
 
 			<dependency>
@@ -455,14 +455,13 @@
 			<dependency>
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-guice</artifactId>
-				<version>4.2.0</version>
+				<version>${version.latest.cucumber}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-junit</artifactId>
-				<version>4.2.0</version>
-				<scope>test</scope>
+				<version>${version.latest.cucumber}</version>
 			</dependency>
 
 			<dependency>
@@ -555,10 +554,12 @@
 		<project.custom.failsafe.argLine.jpms></project.custom.failsafe.argLine.jpms>
 		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
 		<!-- -->
+		<version.latest.cucumber>4.2.0</version.latest.cucumber>
 		<version.latest.hamcrest>1.3</version.latest.hamcrest>
 		<version.latest.junit.jupiter>5.3.1</version.latest.junit.jupiter>
 		<version.latest.junit.platform>1.3.1</version.latest.junit.platform>
 		<version.latest.junit.vintage>5.3.1</version.latest.junit.vintage>
+		<version.latest.nhojpatrick.hamcrest>1.0.0</version.latest.nhojpatrick.hamcrest>
 		<version.latest.org.slf4j>1.7.25</version.latest.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
