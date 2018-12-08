@@ -4,9 +4,9 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalOperationException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException;
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
+import com.github.nhojpatrick.cucumber.json.exceptions.CastToException;
 import com.github.nhojpatrick.cucumber.json.exceptions.InvalidPathException;
 import com.github.nhojpatrick.cucumber.json.exceptions.InvalidTransformActionException;
-import com.github.nhojpatrick.cucumber.json.exceptions.UnsupportedDataTypeException;
 import com.github.nhojpatrick.cucumber.json.steps.map.ConvertToMapSteps;
 import com.github.nhojpatrick.cucumber.json.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.transform.TransformAction;
@@ -38,14 +38,14 @@ public class TransformationSteps {
 
     @Given("^I transform json map using default RunStateKey on paths:$")
     public void transform(final DataTable dataTable)
-            throws IllegalKeyException,
+            throws CastToException,
+            IllegalKeyException,
             IllegalOperationException,
             IllegalTypeClassException,
             InvalidPathException,
             InvalidTransformActionException,
             NullRunStateException,
-            TypeMismatchException,
-            UnsupportedDataTypeException {
+            TypeMismatchException {
 
         transform(DEFAULT_MAP_KEY, dataTable);
     }
@@ -53,14 +53,14 @@ public class TransformationSteps {
 //    @Given("I transform json map using RunStateKey {string} on paths:")
     @Given("^I transform json map using RunStateKey \"([^\"]*)\" on paths:$")
     public void transform(final String runStateJsonMapKey, final DataTable dataTable)
-            throws IllegalKeyException,
+            throws CastToException,
+            IllegalKeyException,
             IllegalOperationException,
             IllegalTypeClassException,
             InvalidPathException,
             InvalidTransformActionException,
             NullRunStateException,
-            TypeMismatchException,
-            UnsupportedDataTypeException {
+            TypeMismatchException {
 
         RunStateValidatorFactory.getInstance()
                 .withValue(runStateJsonMapKey)
@@ -75,11 +75,11 @@ public class TransformationSteps {
 
     private Map<String, Object> transform(Map<String, Object> runStateJsonMapValue,
                                           final List<Map<String, String>> dataTable)
-            throws IllegalKeyException,
+            throws CastToException,
+            IllegalKeyException,
             IllegalOperationException,
             InvalidPathException,
-            InvalidTransformActionException,
-            UnsupportedDataTypeException {
+            InvalidTransformActionException {
 
         final Transform transform = TransformFactory.getInstance();
 

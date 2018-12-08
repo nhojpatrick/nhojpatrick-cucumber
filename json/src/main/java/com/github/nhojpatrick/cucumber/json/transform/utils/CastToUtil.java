@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transform.utils;
 
+import com.github.nhojpatrick.cucumber.json.exceptions.CastToException;
 import com.github.nhojpatrick.cucumber.json.exceptions.UnsupportedDataTypeException;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class CastToUtil
 
     @Override
     public Object castTo(final String value, final String type)
-            throws UnsupportedDataTypeException {
+            throws CastToException {
 
         switch (type) {
             case "JsonArray<JsonObject>":
