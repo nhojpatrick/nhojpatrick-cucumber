@@ -34,7 +34,7 @@ public class IllegalTypeClassExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingIllegalTypeClassException("message");
                     };
-                    final IllegalKeyException expectedThrown = assertThrows(IllegalKeyException.class, testMethod);
+                    final IllegalTypeClassException expectedThrown = assertThrows(IllegalTypeClassException.class, testMethod);
                     assertThat(expectedThrown.getMessage(), is(equalTo("message")));
                 })
 

@@ -524,11 +524,11 @@
 				<version>${version.latest.junit.platform}</version>
 			</dependency>
 
-			<!--<dependency>-->
-				<!--<groupId>org.junit.vintage</groupId>-->
-				<!--<artifactId>junit-vintage-engine</artifactId>-->
-				<!--<version>${version.latest.junit.vintage}</version>-->
-			<!--</dependency>-->
+			<dependency>
+				<groupId>org.junit.vintage</groupId>
+				<artifactId>junit-vintage-engine</artifactId>
+				<version>${version.latest.junit.vintage}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.mockito</groupId>
