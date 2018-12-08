@@ -14,6 +14,8 @@ import java.util.Collection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -30,7 +32,10 @@ public class RunStateValidatorImplTest {
 
                     final Executable testMethod = () -> runStateValidator.withNull(null);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("null withValue", () -> {
@@ -38,7 +43,10 @@ public class RunStateValidatorImplTest {
 
                     final Executable testMethod = () -> runStateValidator.withValue(null);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("null run state", () -> {
@@ -51,7 +59,10 @@ public class RunStateValidatorImplTest {
 
                     final Executable testMethod = () -> runStateValidator.verify(null);
                     final NullRunStateException expectedThrown = assertThrows(NullRunStateException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Run State.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Run State."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("invalid withNull", () -> {
@@ -64,7 +75,10 @@ public class RunStateValidatorImplTest {
 
                     final Executable testMethod = () -> runStateValidator.verify(runState);
                     final AssertionError expectedThrown = assertThrows(AssertionError.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tKeys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tKeys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>"))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("invalid withValue", () -> {
@@ -77,7 +91,10 @@ public class RunStateValidatorImplTest {
 
                     final Executable testMethod = () -> runStateValidator.verify(runState);
                     final AssertionError expectedThrown = assertThrows(AssertionError.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>"))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("invalid withNull and withValue", () -> {
@@ -93,7 +110,10 @@ public class RunStateValidatorImplTest {
 
                     final Executable testMethod = () -> runStateValidator.verify(runState);
                     final AssertionError expectedThrown = assertThrows(AssertionError.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (2 failures)\n\tKeys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (2 failures)\n\tKeys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>"))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );

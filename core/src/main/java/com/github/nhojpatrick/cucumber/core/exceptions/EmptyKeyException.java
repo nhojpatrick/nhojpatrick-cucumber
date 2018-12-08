@@ -4,7 +4,7 @@ public class EmptyKeyException
         extends IllegalKeyException {
 
     public EmptyKeyException() {
-        super("Empty string Key.");
+        super("Empty String Key.");
     }
 
 }

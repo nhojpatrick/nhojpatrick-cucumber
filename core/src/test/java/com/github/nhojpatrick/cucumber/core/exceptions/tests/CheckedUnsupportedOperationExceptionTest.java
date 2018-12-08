@@ -12,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -40,17 +41,21 @@ public class CheckedUnsupportedOperationExceptionTest {
                         throw new TestingCheckedUnsupportedOperationException("message");
                     };
                     final CheckedUnsupportedOperationException expectedThrown = assertThrows(CheckedUnsupportedOperationException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("message")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("message, cause", () -> {
+                    final RuntimeException cause = new RuntimeException();
                     final Executable testMethod = () -> {
-                        throw new TestingCheckedUnsupportedOperationException("message", new RuntimeException());
+                        throw new TestingCheckedUnsupportedOperationException("message", cause);
                     };
                     final CheckedUnsupportedOperationException expectedThrown = assertThrows(CheckedUnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(instanceOf(RuntimeException.class)))
+                            () -> assertThat(expectedThrown.getCause(), is(equalTo(cause)))
                     );
                 })
 

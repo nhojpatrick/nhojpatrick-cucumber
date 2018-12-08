@@ -11,6 +11,8 @@ import java.util.Collection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EmptyKeyExceptionTest {
@@ -25,7 +27,10 @@ public class EmptyKeyExceptionTest {
                         throw new EmptyKeyException();
                     };
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );

@@ -10,6 +10,8 @@ import java.util.Collection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InvalidTransformActionExceptionTest {
@@ -24,7 +26,10 @@ public class InvalidTransformActionExceptionTest {
                         throw new InvalidTransformActionException("Action");
                     };
                     final InvalidTransformActionException expectedThrown = assertThrows(InvalidTransformActionException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo(String.format(InvalidTransformActionException.INVALID_TRANSFORM_ACTION_MSG, "Action"))));
+                    assertAll(
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo(String.format(InvalidTransformActionException.INVALID_TRANSFORM_ACTION_MSG, "Action")))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );

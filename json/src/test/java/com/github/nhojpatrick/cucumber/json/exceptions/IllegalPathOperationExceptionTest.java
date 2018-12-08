@@ -10,6 +10,8 @@ import java.util.Collection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IllegalPathOperationExceptionTest {
@@ -24,7 +26,10 @@ public class IllegalPathOperationExceptionTest {
                         throw new IllegalPathOperationException("message");
                     };
                     final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("message")));
+                    assertAll(
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );

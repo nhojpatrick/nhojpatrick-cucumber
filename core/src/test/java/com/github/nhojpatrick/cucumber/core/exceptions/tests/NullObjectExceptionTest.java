@@ -11,6 +11,8 @@ import java.util.Collection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NullObjectExceptionTest {
@@ -25,7 +27,10 @@ public class NullObjectExceptionTest {
                         throw new NullObjectException();
                     };
                     final NullObjectException expectedThrown = assertThrows(NullObjectException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null object.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null object."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );

@@ -18,6 +18,7 @@ import java.util.Map;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -54,21 +55,30 @@ public class RunStateTest {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.clear("");
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.clear(null);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.clear("          ");
                     final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );
@@ -159,28 +169,40 @@ public class RunStateTest {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get("", String.class);
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get(null, String.class);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get("          ", String.class);
                     final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Type - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get(KEY, null);
                     final NullTypeClassException expectedThrown = assertThrows(NullTypeClassException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Type Class.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Type Class."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Type - Mismatch", () -> {
@@ -188,7 +210,10 @@ public class RunStateTest {
                     runState.set(KEY, 12345L);
                     final Executable testMethod = () -> runState.get(KEY, String.class);
                     final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
+                            () -> assertThat(expectedThrown.getCause(), is(instanceOf(ClassCastException.class)))
+                    );
                 })
 
         );
@@ -235,49 +260,70 @@ public class RunStateTest {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("");
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Null Key", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet(null);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("          ");
                     final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("", String.class);
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Null Key", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet(null, String.class);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("          ", String.class);
                     final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Type - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet(KEY, null);
                     final NullTypeClassException expectedThrown = assertThrows(NullTypeClassException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Type Class.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Type Class."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Type - Mismatch", () -> {
@@ -285,7 +331,10 @@ public class RunStateTest {
                     runState.set(KEY, 12345L);
                     final Executable testMethod = () -> runState.isSet(KEY, String.class);
                     final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
+                            () -> assertThat(expectedThrown.getCause(), is(instanceOf(ClassCastException.class)))
+                    );
                 })
 
         );
@@ -324,21 +373,30 @@ public class RunStateTest {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isUnset("");
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isUnset(null);
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isUnset("          ");
                     final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );
@@ -353,21 +411,30 @@ public class RunStateTest {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.set("", "value");
                     final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Empty string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.set(null, "value");
                     final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 }),
 
                 DynamicTest.dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.set("          ", "value");
                     final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace string Key.")));
+                    assertAll("Checking Exception",
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );

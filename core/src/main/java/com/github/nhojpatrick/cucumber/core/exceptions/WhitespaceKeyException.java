@@ -4,7 +4,7 @@ public class WhitespaceKeyException
         extends IllegalKeyException {
 
     public WhitespaceKeyException() {
-        super("Whitespace string Key.");
+        super("Whitespace String Key.");
     }
 
 }

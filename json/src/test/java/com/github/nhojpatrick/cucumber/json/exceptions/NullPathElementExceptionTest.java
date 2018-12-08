@@ -10,6 +10,8 @@ import java.util.Collection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class NullPathElementExceptionTest {
@@ -24,7 +26,10 @@ public class NullPathElementExceptionTest {
                         throw new NullPathElementException();
                     };
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element.")));
+                    assertAll(
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                    );
                 })
 
         );
