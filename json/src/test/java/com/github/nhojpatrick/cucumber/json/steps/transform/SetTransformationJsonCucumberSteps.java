@@ -32,7 +32,8 @@ public class SetTransformationJsonCucumberSteps {
         this.runState = runState;
     }
 
-    @Given("I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+//    @Given("I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+    @Given("^I transform json map using default RunStateKey and set the following path \"([^\"]*)\" to \"([^\"]*)\" of type \"([^\"]*)\" produces the IllegalOperationException \"([^\"]*)\"$")
     public void setIllegalOperationException(final String path, final String value, final String type, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -42,7 +43,8 @@ public class SetTransformationJsonCucumberSteps {
         setIllegalOperationException(DEFAULT_MAP_KEY, path, value, type, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+//    @Given("I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+    @Given("^I transform json map using RunStateKey \"([^\"]*)\" and set the following path \"([^\"]*)\" to \"([^\"]*)\" of type \"([^\"]*)\" produces the IllegalOperationException \"([^\"]*)\"$")
     public void setIllegalOperationException(final String runStateJsonMapKey, final String path, final String value, final String type, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -52,7 +54,8 @@ public class SetTransformationJsonCucumberSteps {
         set(runStateJsonMapKey, path, value, type, IllegalOperationException.class, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
+//    @Given("I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
+    @Given("^I transform json map using default RunStateKey and set the following path \"([^\"]*)\" to \"([^\"]*)\" of type \"([^\"]*)\" produces the UnsupportedDataTypeException \"([^\"]*)\"$")
     public void setUnsupportedDataTypeException(final String path, final String value, final String type, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -62,7 +65,8 @@ public class SetTransformationJsonCucumberSteps {
         setUnsupportedDataTypeException(DEFAULT_MAP_KEY, path, value, type, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
+//    @Given("I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
+    @Given("^I transform json map using RunStateKey \"([^\"]*)\" and set the following path \"([^\"]*)\" to \"([^\"]*)\" of type \"([^\"]*)\" produces the UnsupportedDataTypeException \"([^\"]*)\"$")
     public void setUnsupportedDataTypeException(final String runStateJsonMapKey, final String path, final String value, final String type, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,

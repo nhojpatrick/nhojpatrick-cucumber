@@ -1,6 +1,6 @@
 @Json
 @Map
-Feature: Convert To Map Checking Feature with Default keys
+Feature: Map - Convert To - Checking with Default keys
 
 
   @Error

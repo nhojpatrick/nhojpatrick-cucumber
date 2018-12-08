@@ -3,8 +3,8 @@ package com.github.nhojpatrick.cucumber.json.steps.state;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
-import io.cucumber.datatable.DataTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;

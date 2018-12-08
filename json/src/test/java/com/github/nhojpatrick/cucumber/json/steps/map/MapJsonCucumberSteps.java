@@ -21,13 +21,15 @@ public class MapJsonCucumberSteps {
         this.runState = runState;
     }
 
-    @Given("I convert object to json map using default RunStateKeys produces the AssertionError {string}")
+//    @Given("I convert object to json map using default RunStateKeys produces the AssertionError {string}")
+    @Given("^I convert object to json map using default RunStateKeys produces the AssertionError \"([^\"]*)\"$")
     public void convertToMap_AssertionError(final String expectedExceptionMessageRaw) {
 
         convertToMap_AssertionError(DEFAULT_OBJECT_KEY, DEFAULT_MAP_KEY, expectedExceptionMessageRaw);
     }
 
-    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the AssertionError {string}")
+//    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the AssertionError {string}")
+    @Given("^I convert object using RunStateKey \"([^\"]*)\", to json map using RunStateKey \"([^\"]*)\" produces the AssertionError \"([^\"]*)\"$")
     public void convertToMap_AssertionError(final String runStateObjectKey, final String runStateJsonMapKey, final String expectedExceptionMessageRaw) {
 
         final ConvertToMapSteps convertToMapSteps = new ConvertToMapSteps(this.runState);
@@ -39,13 +41,15 @@ public class MapJsonCucumberSteps {
         assertThat(expectedThrown.getMessage(), is(equalTo(expectedExceptionMessage)));
     }
 
-    @Given("I convert object to json map using default RunStateKeys produces the IllegalArgumentException {string}")
+//    @Given("I convert object to json map using default RunStateKeys produces the IllegalArgumentException {string}")
+    @Given("^I convert object to json map using default RunStateKeys produces the IllegalArgumentException \"([^\"]*)\"$")
     public void convertToMap_IllegalArgumentException(final String expectedExceptionMessageRaw) {
 
         convertToMap_IllegalArgumentException(DEFAULT_OBJECT_KEY, DEFAULT_MAP_KEY, expectedExceptionMessageRaw);
     }
 
-    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the IllegalArgumentException {string}")
+//    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the IllegalArgumentException {string}")
+    @Given("^I convert object using RunStateKey \"([^\"]*)\", to json map using RunStateKey \"([^\"]*)\" produces the IllegalArgumentException \"([^\"]*)\"$")
     public void convertToMap_IllegalArgumentException(final String runStateObjectKey, final String runStateJsonMapKey, final String expectedExceptionMessageRaw) {
 
         final ConvertToMapSteps convertToMapSteps = new ConvertToMapSteps(this.runState);

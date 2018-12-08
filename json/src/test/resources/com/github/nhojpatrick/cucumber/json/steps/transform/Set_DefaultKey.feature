@@ -1,7 +1,7 @@
 @Json
 @Set
 @Transformation
-Feature: Set Transformations Checking Feature with Default keys
+Feature: Transformation - Set - Checking with Default keys
 
 
   @Success

@@ -29,7 +29,8 @@ public class RemoveTransformationJsonCucumberSteps {
         this.runState = runState;
     }
 
-    @Given("I transform json map using default RunStateKey and remove the following path {string} produces the IllegalOperationException {string}")
+//    @Given("I transform json map using default RunStateKey and remove the following path {string} produces the IllegalOperationException {string}")
+    @Given("^I transform json map using default RunStateKey and remove the following path \"([^\"]*)\" produces the IllegalOperationException \"([^\"]*)\"$")
     public void remove(final String path, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -38,7 +39,8 @@ public class RemoveTransformationJsonCucumberSteps {
         remove(DEFAULT_MAP_KEY, path, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and remove the following path {string} produces the IllegalOperationException {string}")
+//    @Given("I transform json map using RunStateKey {string} and remove the following path {string} produces the IllegalOperationException {string}")
+    @Given("^I transform json map using RunStateKey \"([^\"]*)\" and remove the following path \"([^\"]*)\" produces the IllegalOperationException \"([^\"]*)\"$")
     public void remove(final String runStateJsonMapKey, final String path, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,

@@ -62,7 +62,7 @@ public class ConvertToMapTest {
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 
-        assertAll("",
+        assertAll(
                 () -> assertThat("whole object", actual, is(equalTo(expected))),
                 () -> assertAll("nested",
                         () -> {

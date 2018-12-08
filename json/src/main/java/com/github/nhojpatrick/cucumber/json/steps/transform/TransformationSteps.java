@@ -19,8 +19,8 @@ import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
 import com.google.inject.Inject;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
-import io.cucumber.datatable.DataTable;
 
 import java.util.List;
 import java.util.Map;
@@ -50,7 +50,8 @@ public class TransformationSteps {
         transform(DEFAULT_MAP_KEY, dataTable);
     }
 
-    @Given("I transform json map using RunStateKey {string} on paths:")
+//    @Given("I transform json map using RunStateKey {string} on paths:")
+    @Given("^I transform json map using RunStateKey \"([^\"]*)\" on paths:$")
     public void transform(final String runStateJsonMapKey, final DataTable dataTable)
             throws IllegalKeyException,
             IllegalOperationException,
@@ -67,7 +68,7 @@ public class TransformationSteps {
 
         Map<String, Object> runStateJsonMapValue = this.runState.get(runStateJsonMapKey, Map.class);
 
-        runStateJsonMapValue = transform(runStateJsonMapValue, dataTable.asMaps());
+        runStateJsonMapValue = transform(runStateJsonMapValue, dataTable.asMaps(String.class, String.class));
 
         this.runState.set(runStateJsonMapKey, runStateJsonMapValue);
     }

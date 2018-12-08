@@ -5,9 +5,9 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import io.cucumber.datatable.DataTable;
 
 import java.util.List;
 import java.util.Map;
@@ -51,7 +51,8 @@ public class StateSteps {
         }
     }
 
-    @Then("I expected {string} to match {string}")
+//    @Then("I expected {string} to match {string}")
+    @Then("^I expected \"([^\"]*)\" to match \"([^\"]*)\"$")
     public void checkKeyReturnsValue(final String key, final String value)
             throws Exception {
 
@@ -81,7 +82,8 @@ public class StateSteps {
         });
     }
 
-    @Given("I've defined {string} is {string}")
+//    @Given("I've defined {string} is {string}")
+    @Given("^I've defined \"([^\"]*)\" is \"([^\"]*)\"$")
     public void setKeyToValue(final String key, final String value)
             throws Exception {
         this.runState.set(key, value);
