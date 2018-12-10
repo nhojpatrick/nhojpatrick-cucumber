@@ -14,10 +14,10 @@ import static com.github.nhojpatrick.cucumber.json.testing.TestingConstants.COMP
 import static com.github.nhojpatrick.cucumber.json.testing.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.cucumber.json.testing.TestingConstants.SIMPLE_OBJECT_AS_JSON_MAP;
 import static com.github.nhojpatrick.cucumber.json.testing.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -37,8 +37,7 @@ public class ConvertToMapTest {
 
         final RuntimeException expectedThrown = assertThrows(RuntimeException.class, testMethod);
         assertAll("Checking Exception",
-                () -> assertThat(expectedThrown.getCause(), is(instanceOf(NullObjectException.class))),
-                () -> assertThat(expectedThrown.getCause().getMessage(), is(equalTo("Null object.")))
+                () -> assertThat(expectedThrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
         );
     }
 

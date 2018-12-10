@@ -11,10 +11,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -35,7 +35,7 @@ public class StateStepsTest {
                     final RuntimeException expectedThrown = assertThrows(RuntimeException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Illegal key whilst clearing run state."))),
-                            () -> assertThat(expectedThrown.getCause(), is(instanceOf(WhitespaceKeyException.class)))
+                            () -> assertThat(expectedThrown.getCause(), is(throwable(WhitespaceKeyException.class, "Whitespace String Key.")))
                     );
                 })
 

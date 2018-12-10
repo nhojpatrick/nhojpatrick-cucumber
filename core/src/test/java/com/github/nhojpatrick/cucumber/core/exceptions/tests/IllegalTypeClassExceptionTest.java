@@ -1,6 +1,5 @@
 package com.github.nhojpatrick.cucumber.core.exceptions.tests;
 
-import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

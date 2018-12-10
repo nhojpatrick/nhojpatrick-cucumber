@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.transform.utils;
 
 import com.github.nhojpatrick.cucumber.json.exceptions.CastToException;
+import com.github.nhojpatrick.cucumber.json.exceptions.UnsupportedDataTypeConversionException;
 import com.github.nhojpatrick.cucumber.json.exceptions.UnsupportedDataTypeException;
 
 import java.util.ArrayList;
@@ -14,6 +15,47 @@ public class CastToUtil
             throws CastToException {
 
         switch (type) {
+            case "null":
+                return null;
+
+            case "java.lang.String":
+                return value;
+
+            case "java.lang.Boolean":
+                if (!"true".equalsIgnoreCase(value)
+                        && !"false".equalsIgnoreCase(value)) {
+                    throw new UnsupportedDataTypeConversionException(type, value);
+                }
+                return Boolean.valueOf(value);
+
+            case "java.lang.Integer":
+                try {
+                    return Integer.valueOf(value);
+                } catch (final RuntimeException re) {
+                    throw new UnsupportedDataTypeConversionException(type, value, re);
+                }
+
+            case "java.lang.Long":
+                try {
+                    return Long.valueOf(value);
+                } catch (final RuntimeException re) {
+                    throw new UnsupportedDataTypeConversionException(type, value, re);
+                }
+
+            case "java.lang.Double":
+                try {
+                    return Double.valueOf(value);
+                } catch (final RuntimeException re) {
+                    throw new UnsupportedDataTypeConversionException(type, value, re);
+                }
+
+            case "java.lang.Float":
+                try {
+                    return Float.valueOf(value);
+                } catch (final RuntimeException re) {
+                    throw new UnsupportedDataTypeConversionException(type, value, re);
+                }
+
             case "JsonArray<JsonObject>":
                 return new ArrayList<HashMap<String, Object>>();
 
@@ -37,27 +79,6 @@ public class CastToUtil
 
             case "JsonObject":
                 return new HashMap<String, Object>();
-
-            case "java.lang.Boolean":
-                return Boolean.valueOf(value);
-
-            case "java.lang.Double":
-                return Double.valueOf(value);
-
-            case "java.lang.Float":
-                return Float.valueOf(value);
-
-            case "java.lang.Long":
-                return Long.valueOf(value);
-
-            case "java.lang.Integer":
-                return Integer.valueOf(value);
-
-            case "java.lang.String":
-                return value;
-
-            case "null":
-                return null;
 
             default:
                 throw new UnsupportedDataTypeException(type);

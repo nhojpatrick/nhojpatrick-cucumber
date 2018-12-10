@@ -15,10 +15,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -212,7 +212,7 @@ public class RunStateTest {
                     final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(instanceOf(ClassCastException.class)))
+                            () -> assertThat(expectedThrown.getCause(), is(throwable(ClassCastException.class, "Cannot cast java.lang.Long to java.lang.String")))
                     );
                 })
 
@@ -333,7 +333,7 @@ public class RunStateTest {
                     final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(instanceOf(ClassCastException.class)))
+                            () -> assertThat(expectedThrown.getCause(), is(throwable(ClassCastException.class, "Cannot cast java.lang.Long to java.lang.String")))
                     );
                 })
 

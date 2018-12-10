@@ -8,6 +8,7 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -22,14 +23,13 @@ public class TypeMismatchExceptionTest {
         return Arrays.asList(
 
                 DynamicTest.dynamicTest("default", () -> {
-                    final ClassCastException cause = new ClassCastException();
                     final Executable testMethod = () -> {
-                        throw new TypeMismatchException(String.class, cause);
+                        throw new TypeMismatchException(String.class, new ClassCastException());
                     };
                     final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(equalTo(cause)))
+                            () -> assertThat(expectedThrown.getCause(), is(throwable(ClassCastException.class)))
                     );
                 })
 

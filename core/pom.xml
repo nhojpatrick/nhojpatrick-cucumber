@@ -37,6 +37,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
 		</dependency>
