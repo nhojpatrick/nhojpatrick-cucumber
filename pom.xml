@@ -490,13 +490,7 @@
 
 			<dependency>
 				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-all</artifactId>
-				<version>${version.latest.hamcrest}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-core</artifactId>
+				<artifactId>hamcrest</artifactId>
 				<version>${version.latest.hamcrest}</version>
 			</dependency>
 
@@ -574,11 +568,11 @@
 		<!-- -->
 		<version.latest.cucumber>4.2.0</version.latest.cucumber>
 		<version.latest.cukes>1.2.5</version.latest.cukes>
-		<version.latest.hamcrest>1.3</version.latest.hamcrest>
+		<version.latest.hamcrest>2.1-rc4</version.latest.hamcrest>
 		<version.latest.junit.jupiter>5.3.1</version.latest.junit.jupiter>
 		<version.latest.junit.platform>1.3.1</version.latest.junit.platform>
 		<version.latest.junit.vintage>5.3.1</version.latest.junit.vintage>
-		<version.latest.nhojpatrick.hamcrest>1.0.0</version.latest.nhojpatrick.hamcrest>
+		<version.latest.nhojpatrick.hamcrest>1.0.0-hamcrest-2.1</version.latest.nhojpatrick.hamcrest>
 		<version.latest.org.slf4j>1.7.25</version.latest.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
