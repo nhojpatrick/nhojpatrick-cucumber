@@ -76,7 +76,7 @@ public class RunStateValidatorImplTest {
                     final Executable testMethod = () -> runStateValidator.verify(runState);
                     final AssertionError expectedThrown = assertThrows(AssertionError.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tKeys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>"))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>"))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -92,7 +92,7 @@ public class RunStateValidatorImplTest {
                     final Executable testMethod = () -> runStateValidator.verify(runState);
                     final AssertionError expectedThrown = assertThrows(AssertionError.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>"))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>"))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -111,7 +111,7 @@ public class RunStateValidatorImplTest {
                     final Executable testMethod = () -> runStateValidator.verify(runState);
                     final AssertionError expectedThrown = assertThrows(AssertionError.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (2 failures)\n\tKeys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>"))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run State Validation (2 failures)\n\tjava.lang.AssertionError: Keys where value was expected to be null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withNullKey]>\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[withValueKey]>"))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 })

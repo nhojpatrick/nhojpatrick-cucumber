@@ -9,7 +9,7 @@ Feature: Map - Convert To - Checking with Specified keys
       | object.key  |
       | jsonMap.key |
     And I have an empty run state
-    When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key" produces the AssertionError "Run State Validation (1 failure)\n\tKeys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[object.key]>"
+    When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key" produces the AssertionError "Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[object.key]>"
     Then I have an empty run state
 
 
