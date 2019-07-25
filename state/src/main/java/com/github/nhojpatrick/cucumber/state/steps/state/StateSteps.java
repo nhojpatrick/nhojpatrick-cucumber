@@ -5,9 +5,9 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
-import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 
 import java.util.List;
 import java.util.Map;

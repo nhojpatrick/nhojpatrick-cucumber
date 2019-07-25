@@ -9,7 +9,7 @@ import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
 import com.github.nhojpatrick.cucumber.json.transform.transformations.RemoveTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
-import cucumber.api.java.en.Given;
+import io.cucumber.java.en.Given;
 import org.junit.jupiter.api.function.Executable;
 
 import java.util.Map;

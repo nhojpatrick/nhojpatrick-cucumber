@@ -85,16 +85,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>info.cukes</groupId>
+			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--<dependency>-->
-			<!--<groupId>io.cucumber</groupId>-->
-			<!--<artifactId>cucumber-junit</artifactId>-->
-			<!--<scope>test</scope>-->
-		<!--</dependency>-->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>

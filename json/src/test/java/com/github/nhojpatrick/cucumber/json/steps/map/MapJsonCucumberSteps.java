@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.steps.map;
 
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
-import cucumber.api.java.en.Given;
+import io.cucumber.java.en.Given;
 import org.junit.jupiter.api.function.Executable;
 
 import static com.github.nhojpatrick.cucumber.json.steps.map.ConvertToMapSteps.DEFAULT_MAP_KEY;

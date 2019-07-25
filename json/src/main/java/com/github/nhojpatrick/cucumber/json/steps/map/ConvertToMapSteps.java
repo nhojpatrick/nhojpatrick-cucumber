@@ -8,7 +8,7 @@ import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
 import com.google.inject.Inject;
-import cucumber.api.java.en.Given;
+import io.cucumber.java.en.Given;
 
 import java.util.Map;
 

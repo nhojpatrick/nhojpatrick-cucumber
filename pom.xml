@@ -453,34 +453,28 @@
 			</dependency>
 
 			<dependency>
-				<groupId>info.cukes</groupId>
+				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-guice</artifactId>
-				<version>${version.latest.cukes}</version>
+				<version>${version.io.cucumber}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>info.cukes</groupId>
+				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-java</artifactId>
-				<version>${version.latest.cukes}</version>
+				<version>${version.io.cucumber}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>info.cukes</groupId>
+				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-junit</artifactId>
-				<version>${version.latest.cukes}</version>
+				<version>${version.io.cucumber}</version>
 			</dependency>
 
-			<!--<dependency>-->
-				<!--<groupId>io.cucumber</groupId>-->
-				<!--<artifactId>cucumber-guice</artifactId>-->
-				<!--<version>${version.latest.cucumber}</version>-->
-			<!--</dependency>-->
-
-			<!--<dependency>-->
-				<!--<groupId>io.cucumber</groupId>-->
-				<!--<artifactId>cucumber-junit</artifactId>-->
-				<!--<version>${version.latest.cucumber}</version>-->
-			<!--</dependency>-->
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>datatable</artifactId>
+				<version>${version.io.cucumber.datatable}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -554,8 +548,8 @@
 		<project.custom.failsafe.argLine.jpms></project.custom.failsafe.argLine.jpms>
 		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
 		<!-- -->
-		<version.latest.cucumber>4.2.0</version.latest.cucumber>
-		<version.latest.cukes>1.2.5</version.latest.cukes>
+		<version.io.cucumber>4.7.0</version.io.cucumber>
+		<version.io.cucumber.datatable>1.1.14</version.io.cucumber.datatable>
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
 		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
