@@ -51,8 +51,7 @@ public class StateSteps {
         }
     }
 
-//    @Then("I expected {string} to match {string}")
-    @Then("^I expected \"([^\"]*)\" to match \"([^\"]*)\"$")
+    @Then("I expected {string} to match {string}")
     public void checkKeyReturnsValue(final String key, final String value)
             throws Exception {
 
@@ -82,8 +81,7 @@ public class StateSteps {
         });
     }
 
-//    @Given("I've defined {string} is {string}")
-    @Given("^I've defined \"([^\"]*)\" is \"([^\"]*)\"$")
+    @Given("I've defined {string} is {string}")
     public void setKeyToValue(final String key, final String value)
             throws Exception {
         this.runState.set(key, value);

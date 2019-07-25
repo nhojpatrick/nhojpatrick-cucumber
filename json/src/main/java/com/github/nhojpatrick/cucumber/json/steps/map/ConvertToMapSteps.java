@@ -34,8 +34,7 @@ public class ConvertToMapSteps {
         convertToMap(DEFAULT_OBJECT_KEY, DEFAULT_MAP_KEY);
     }
 
-//    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string}")
-    @Given("^I convert object using RunStateKey \"([^\"]*)\", to json map using RunStateKey \"([^\"]*)\"$")
+    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string}")
     public void convertToMap(final String runStateObjectKey, final String runStateJsonMapKey)
             throws IllegalKeyException,
             IllegalTypeClassException,

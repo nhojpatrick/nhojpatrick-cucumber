@@ -50,8 +50,7 @@ public class TransformationSteps {
         transform(DEFAULT_MAP_KEY, dataTable);
     }
 
-//    @Given("I transform json map using RunStateKey {string} on paths:")
-    @Given("^I transform json map using RunStateKey \"([^\"]*)\" on paths:$")
+    @Given("I transform json map using RunStateKey {string} on paths:")
     public void transform(final String runStateJsonMapKey, final DataTable dataTable)
             throws CastToException,
             IllegalKeyException,
