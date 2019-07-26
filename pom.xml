@@ -481,6 +481,12 @@
 
 			<dependency>
 				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-core</artifactId>
+				<version>${version.io.cucumber}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-guice</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
@@ -495,12 +501,6 @@
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-junit</artifactId>
 				<version>${version.io.cucumber}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>datatable</artifactId>
-				<version>${version.io.cucumber.datatable}</version>
 			</dependency>
 
 			<dependency>
@@ -576,7 +576,6 @@
 		<project.custom.surefire.argLine.jpms></project.custom.surefire.argLine.jpms>
 		<!-- -->
 		<version.io.cucumber>4.7.0</version.io.cucumber>
-		<version.io.cucumber.datatable>1.1.14</version.io.cucumber.datatable>
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
 		<version.org.junit.jupiter>5.5.1</version.org.junit.jupiter>
