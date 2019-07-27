@@ -110,13 +110,13 @@
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module>
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.exceptions=org.junit.platform.commons
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.map=org.junit.platform.commons
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.testing=com.fasterxml.jackson.databind
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.transform.transformations=org.junit.platform.commons
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.transform.utils=org.junit.platform.commons
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.transform=org.junit.platform.commons
-			--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.validation=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.exceptions=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.map=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.testing=com.fasterxml.jackson.databind
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.utils=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation=org.junit.platform.commons
 		</project.surefire.argLine.jpms.module>
 	</properties>
 </project>
