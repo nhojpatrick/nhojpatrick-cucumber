@@ -30,28 +30,6 @@
 	<!--organization / -->
 	<!--build /-->
 	<!--profiles / -->
-	<profiles>
-		<profile>
-			<id>jpms</id>
-			<activation>
-				<jdk>[9</jdk>
-			</activation>
-			<properties>
-				<project.custom.failsafe.argLine.jpms>
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.testing=com.fasterxml.jackson.databind
-				</project.custom.failsafe.argLine.jpms>
-				<project.custom.surefire.argLine.jpms>
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=ALL-UNNAMED
-					--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.testing=com.fasterxml.jackson.databind
-				</project.custom.surefire.argLine.jpms>
-			</properties>
-		</profile>
-	</profiles>
 	<!--modules / -->
 	<!--repositories / -->
 	<!--pluginRepositories / -->
@@ -131,5 +109,14 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module>
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.exceptions=org.junit.platform.commons
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.map=org.junit.platform.commons
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.testing=com.fasterxml.jackson.databind
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.transform.transformations=org.junit.platform.commons
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.transform.utils=org.junit.platform.commons
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.transform=org.junit.platform.commons
+				--add-opens com.github.nhojpatrick.cucumber.json/com.github.nhojpatrick.cucumber.json.validation=org.junit.platform.commons
+		</project.surefire.argLine.jpms.module>
 	</properties>
 </project>

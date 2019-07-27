@@ -5,9 +5,9 @@ module com.github.nhojpatrick.cucumber.json {
     requires com.github.nhojpatrick.cucumber.state;
     requires com.google.common;
     requires com.google.guice;
-    requires cucumber.java;
-    requires datatable;
+    requires io.cucumber.datatable;
+    requires io.cucumber.java;
     requires org.apache.commons.lang3;
-    requires slf4j.api;
+    requires org.junit.jupiter.api;
+    requires slf4j.api; // FIXME filename-based automodules detected
 }
-
