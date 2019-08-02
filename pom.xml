@@ -434,7 +434,7 @@
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
-				<version>2.9.9.1</version>
+				<version>2.9.9.2</version>
 			</dependency>
 
 			<dependency>
@@ -572,19 +572,19 @@
 		<downloadJavadocs>true</downloadJavadocs>
 		<generateBackupPoms>false</generateBackupPoms>
 		<!-- Surefire/Failsafe jpms override(s) -->
-		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
+		<project.failsafe.argLine.jpms/>
 		<project.failsafe.argLine.jpms.global>
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
 		</project.failsafe.argLine.jpms.global>
-		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
-		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
+		<project.failsafe.argLine.jpms.module/>
+		<project.surefire.argLine.jpms/>
 		<project.surefire.argLine.jpms.global>
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED
 		</project.surefire.argLine.jpms.global>
-		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<project.surefire.argLine.jpms.module/>
 		<!-- -->
 		<version.io.cucumber>4.7.1-SNAPSHOT</version.io.cucumber>
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
@@ -594,6 +594,6 @@
 		<version.latest.nhojpatrick.hamcrest>1.0.0</version.latest.nhojpatrick.hamcrest>
 		<version.org.slf4j>1.7.26</version.org.slf4j>
 		<!-- -->
-		<project.Automatic-Module-Name></project.Automatic-Module-Name>
+		<project.Automatic-Module-Name/>
 	</properties>
 </project>
