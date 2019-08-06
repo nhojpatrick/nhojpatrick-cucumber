@@ -28,7 +28,6 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-
 				<plugin>
 					<groupId>com.github.ekryd.sortpom</groupId>
 					<artifactId>sortpom-maven-plugin</artifactId>
@@ -41,13 +40,11 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -60,19 +57,16 @@
 						</compilerArgs>
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>2.8.2</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>3.0.0-M2</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
@@ -84,13 +78,11 @@
 						</includes>
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>2.5.2</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -103,37 +95,31 @@
 						</archive>
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>3.0.1</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>2.9</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.1.0</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.7.1</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
 					<version>3.0.1</version>
 				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -145,7 +131,6 @@
 						</excludes>
 					</configuration>
 				</plugin>
-
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -172,7 +157,6 @@
 						</execution>
 					</executions>
 				</plugin>
-
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
@@ -189,42 +173,40 @@
 						<rulesUri>classpath:///com/github/nhojpatrick/versions/ruleset/rules.xml</rulesUri>
 					</configuration>
 				</plugin>
-
 				<!--<plugin>-->
-					<!--<groupId>com.github.spotbugs</groupId>-->
-					<!--<artifactId>spotbugs-maven-plugin</artifactId>-->
-					<!--<version>3.1.9</version>-->
-					<!--<configuration>-->
-						<!--<debug>true</debug>-->
-						<!--<effort>Max</effort>-->
-						<!--<threshold>Low</threshold>-->
-						<!--<failOnError>true</failOnError>-->
-						<!--&lt;!&ndash;<excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>&ndash;&gt;-->
-						<!--&lt;!&ndash;<excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>&ndash;&gt;-->
-						<!--&lt;!&ndash;<includeFilterFile>spotbugs-include.xml</includeFilterFile>&ndash;&gt;-->
-						<!--&lt;!&ndash;<includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>&ndash;&gt;-->
-						<!--<plugins>-->
-							<!--<plugin>-->
-								<!--<groupId>com.h3xstream.findsecbugs</groupId>-->
-								<!--<artifactId>findsecbugs-plugin</artifactId>-->
-								<!--<version>1.8.0</version>-->
-							<!--</plugin>-->
-							<!--<plugin>-->
-								<!--<groupId>com.mebigfatguy.fb-contrib</groupId>-->
-								<!--<artifactId>fb-contrib</artifactId>-->
-								<!--<version>7.4.3</version>-->
-							<!--</plugin>-->
-						<!--</plugins>-->
-					<!--</configuration>-->
-					<!--<dependencies>-->
-						<!--<dependency>-->
-							<!--<groupId>com.github.spotbugs</groupId>-->
-							<!--<artifactId>spotbugs</artifactId>-->
-							<!--<version>3.1.9</version>-->
-						<!--</dependency>-->
-					<!--</dependencies>-->
+				<!--<groupId>com.github.spotbugs</groupId>-->
+				<!--<artifactId>spotbugs-maven-plugin</artifactId>-->
+				<!--<version>3.1.9</version>-->
+				<!--<configuration>-->
+				<!--<debug>true</debug>-->
+				<!--<effort>Max</effort>-->
+				<!--<threshold>Low</threshold>-->
+				<!--<failOnError>true</failOnError>-->
+				<!--&lt;!&ndash;<excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>&ndash;&gt;-->
+				<!--&lt;!&ndash;<excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>&ndash;&gt;-->
+				<!--&lt;!&ndash;<includeFilterFile>spotbugs-include.xml</includeFilterFile>&ndash;&gt;-->
+				<!--&lt;!&ndash;<includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile>&ndash;&gt;-->
+				<!--<plugins>-->
+				<!--<plugin>-->
+				<!--<groupId>com.h3xstream.findsecbugs</groupId>-->
+				<!--<artifactId>findsecbugs-plugin</artifactId>-->
+				<!--<version>1.8.0</version>-->
 				<!--</plugin>-->
-
+				<!--<plugin>-->
+				<!--<groupId>com.mebigfatguy.fb-contrib</groupId>-->
+				<!--<artifactId>fb-contrib</artifactId>-->
+				<!--<version>7.4.3</version>-->
+				<!--</plugin>-->
+				<!--</plugins>-->
+				<!--</configuration>-->
+				<!--<dependencies>-->
+				<!--<dependency>-->
+				<!--<groupId>com.github.spotbugs</groupId>-->
+				<!--<artifactId>spotbugs</artifactId>-->
+				<!--<version>3.1.9</version>-->
+				<!--</dependency>-->
+				<!--</dependencies>-->
+				<!--</plugin>-->
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
@@ -313,11 +295,9 @@
 						<!--<haltOnFailure>false</haltOnFailure>-->
 					</configuration>
 				</plugin>
-
 			</plugins>
 		</pluginManagement>
 		<plugins>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
@@ -340,7 +320,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -353,20 +332,18 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<!--<plugin>-->
-				<!--<groupId>com.github.spotbugs</groupId>-->
-				<!--<artifactId>spotbugs-maven-plugin</artifactId>-->
-				<!--&lt;!&ndash;<executions>&ndash;&gt;-->
-					<!--&lt;!&ndash;<execution>&ndash;&gt;-->
-						<!--&lt;!&ndash;<phase>verify</phase>&ndash;&gt;-->
-						<!--&lt;!&ndash;<goals>&ndash;&gt;-->
-							<!--&lt;!&ndash;<goal>check</goal>&ndash;&gt;-->
-						<!--&lt;!&ndash;</goals>&ndash;&gt;-->
-					<!--&lt;!&ndash;</execution>&ndash;&gt;-->
-				<!--&lt;!&ndash;</executions>&ndash;&gt;-->
+			<!--<groupId>com.github.spotbugs</groupId>-->
+			<!--<artifactId>spotbugs-maven-plugin</artifactId>-->
+			<!--&lt;!&ndash;<executions>&ndash;&gt;-->
+			<!--&lt;!&ndash;<execution>&ndash;&gt;-->
+			<!--&lt;!&ndash;<phase>verify</phase>&ndash;&gt;-->
+			<!--&lt;!&ndash;<goals>&ndash;&gt;-->
+			<!--&lt;!&ndash;<goal>check</goal>&ndash;&gt;-->
+			<!--&lt;!&ndash;</goals>&ndash;&gt;-->
+			<!--&lt;!&ndash;</execution>&ndash;&gt;-->
+			<!--&lt;!&ndash;</executions>&ndash;&gt;-->
 			<!--</plugin>-->
-
 		</plugins>
 	</build>
 	<!--profiles / -->
@@ -469,128 +446,107 @@
 	<!--dependencyManagement / -->
 	<dependencyManagement>
 		<dependencies>
-
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
 				<version>2.9.9.1</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-all</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-state</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
 				<version>${version.latest.nhojpatrick.hamcrest}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
 				<version>${version.latest.nhojpatrick.hamcrest}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.google.inject</groupId>
 				<artifactId>guice</artifactId>
 				<version>4.2.2</version>
 			</dependency>
-
 			<dependency>
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-core</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-guice</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-java</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-junit</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${version.org.apache.commons.lang3}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest</artifactId>
 				<version>${version.org.hamcrest}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
 				<version>${version.org.junit.jupiter}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-engine</artifactId>
 				<version>${version.org.junit.jupiter}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.junit.vintage</groupId>
 				<artifactId>junit-vintage-engine</artifactId>
 				<version>${version.org.junit.vintage}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
 				<version>2.28.2</version>
 				<scope>test</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${version.org.slf4j}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-log4j12</artifactId>
 				<version>${version.org.slf4j}</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 	<!--distributionManagement / -->
@@ -612,17 +568,13 @@
 		<generateBackupPoms>false</generateBackupPoms>
 		<!-- Surefire/Failsafe jpms override(s) -->
 		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
-		<project.failsafe.argLine.jpms.global>
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
-		</project.failsafe.argLine.jpms.global>
+		<project.failsafe.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
 		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
 		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
-		<project.surefire.argLine.jpms.global>
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+		<project.surefire.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED
-		</project.surefire.argLine.jpms.global>
+			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
 		<version.io.cucumber>4.7.1-SNAPSHOT</version.io.cucumber>
@@ -634,7 +586,7 @@
 		<version.org.slf4j>1.7.27</version.org.slf4j>
 		<!-- -->
 		<project.Automatic-Module-Name></project.Automatic-Module-Name>
-		<!-- -->
+		<!-- sortpom -->
 		<sort.createBackupFile>false</sort.createBackupFile>
 		<sort.nrOfIndentSpace>-1</sort.nrOfIndentSpace>
 		<sort.sortDependencies>groupId,artifactId,version,scope</sort.sortDependencies>
