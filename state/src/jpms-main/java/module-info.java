@@ -12,5 +12,5 @@ module com.github.nhojpatrick.cucumber.state {
     requires org.apache.commons.lang3;
     requires org.hamcrest;
     requires org.junit.jupiter.api;
-    requires slf4j.api; // FIXME filename-based automodules detected
+    requires org.slf4j;
 }

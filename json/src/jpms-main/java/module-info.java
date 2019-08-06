@@ -9,5 +9,5 @@ module com.github.nhojpatrick.cucumber.json {
     requires io.cucumber.java;
     requires org.apache.commons.lang3;
     requires org.junit.jupiter.api;
-    requires slf4j.api; // FIXME filename-based automodules detected
+    requires org.slf4j;
 }
