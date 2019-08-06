@@ -571,7 +571,7 @@
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
-		<version.io.cucumber>4.7.1-SNAPSHOT</version.io.cucumber>
+		<version.io.cucumber>4.7.1</version.io.cucumber>
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.hamcrest>2.1</version.org.hamcrest>
 		<version.org.spotbugs>3.1.12</version.org.spotbugs>
