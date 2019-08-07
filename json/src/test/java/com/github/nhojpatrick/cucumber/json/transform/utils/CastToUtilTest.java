@@ -36,6 +36,30 @@ public class CastToUtilTest {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Boolean");
                     final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(expectedThrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Boolean' from value 'string'.")));
+                }),
+
+                DynamicTest.dynamicTest("Double invalid", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Double");
+                    final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(expectedThrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Double' from value 'string'.")));
+                }),
+
+                DynamicTest.dynamicTest("Float invalid", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Float");
+                    final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(expectedThrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Float' from value 'string'.")));
+                }),
+
+                DynamicTest.dynamicTest("Integer invalid", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Integer");
+                    final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(expectedThrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Integer' from value 'string'.")));
+                }),
+
+                DynamicTest.dynamicTest("Long invalid", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Long");
+                    final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(expectedThrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Long' from value 'string'.")));
                 })//,
 //
 //                DynamicTest.dynamicTest("List -> <null>", () -> {

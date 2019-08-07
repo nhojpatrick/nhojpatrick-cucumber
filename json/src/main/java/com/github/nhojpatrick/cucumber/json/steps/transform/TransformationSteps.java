@@ -90,7 +90,7 @@ public class TransformationSteps {
 
             final TransformAction transformAction = TransformAction.resolve(actionAsStr);
 
-            final Transformation transformation;
+            Transformation transformation = null;
 
             switch (transformAction) {
                 case REMOVE:
@@ -104,9 +104,6 @@ public class TransformationSteps {
                             .castTo(valueAsStr, type);
                     transformation = new SetTransformation(value);
                     break;
-
-                default:
-                    throw new RuntimeException(); // TODO new exception
             }
 
             runStateJsonMapValue = transform.transform(runStateJsonMapValue, path, transformation);
