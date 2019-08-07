@@ -51,8 +51,11 @@ public class MapTypeUtil {
 
         final boolean isTypeMismatch = map.entrySet()
                 .stream()
-                .anyMatch(p -> (Objects.nonNull(p.getKey()) && !keyType.isAssignableFrom(p.getKey().getClass()))
-                        || (Objects.nonNull(p.getValue()) && !valueType.isAssignableFrom(p.getValue().getClass())));
+                .anyMatch(p -> {
+                    final boolean keyMismatch = Objects.nonNull(p.getKey()) && !keyType.isAssignableFrom(p.getKey().getClass());
+                    final boolean valueMismatch = Objects.nonNull(p.getValue()) && !valueType.isAssignableFrom(p.getValue().getClass());
+                    return keyMismatch || valueMismatch;
+                });
         final boolean isTypeMatch = !isTypeMismatch;
 
         return isTypeMatch;
