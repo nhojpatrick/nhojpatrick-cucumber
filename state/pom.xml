@@ -111,5 +111,6 @@
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.state</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.steps.state=org.junit.platform.commons</project.surefire.argLine.jpms.module>
 		<checkstyle.maxAllowedViolations>54</checkstyle.maxAllowedViolations>
+		<pmd.maxAllowedViolations>2</pmd.maxAllowedViolations>
 	</properties>
 </project>
