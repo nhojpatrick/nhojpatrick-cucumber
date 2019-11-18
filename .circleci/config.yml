@@ -48,7 +48,9 @@ commands:
       - run: ./mvnw dependency:go-offline
       - run: ./mvnw clean install -DskipTests
       - run: ./mvnw test
-      - run: rm -rf ~/.m2/repository/com/github/nhojpatrick
+      - run:
+          name: "Tidy Cache before save"
+          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
           when: always
       - save_cache:
           key: m2-dependencies-{{ checksum "pom.xml" }}
