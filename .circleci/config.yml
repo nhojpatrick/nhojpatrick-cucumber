@@ -45,7 +45,7 @@ commands:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
-      - run: ./mvnw dependency:go-offline
+      #- run: ./mvnw dependency:go-offline
       - run: ./mvnw clean install -DskipTests
       - run: ./mvnw test
       - run:
