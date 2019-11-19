@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transform;
 
+import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

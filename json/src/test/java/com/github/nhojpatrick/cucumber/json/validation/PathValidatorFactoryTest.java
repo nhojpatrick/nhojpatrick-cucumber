@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.validation;
 
+import com.github.nhojpatrick.cucumber.json.core.validation.PathValidator;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

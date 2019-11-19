@@ -1,6 +1,8 @@
 package com.github.nhojpatrick.cucumber.json.validation;
 
-import com.github.nhojpatrick.cucumber.json.exceptions.InvalidPathException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

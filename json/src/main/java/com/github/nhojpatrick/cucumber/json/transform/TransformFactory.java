@@ -1,5 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.transform;
 
+import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
+
 import java.util.function.Supplier;
 
 public class TransformFactory

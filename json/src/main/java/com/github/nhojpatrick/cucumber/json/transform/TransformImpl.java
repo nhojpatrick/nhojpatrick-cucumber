@@ -2,10 +2,11 @@ package com.github.nhojpatrick.cucumber.json.transform;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalOperationException;
-import com.github.nhojpatrick.cucumber.json.exceptions.IllegalPathOperationException;
-import com.github.nhojpatrick.cucumber.json.exceptions.InvalidPathException;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.Transformation;
-import com.github.nhojpatrick.cucumber.json.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException;
+import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
+import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.validation.PathValidatorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import static com.github.nhojpatrick.cucumber.json.transform.utils.ListTypeUtil.isTypedList;
-import static com.github.nhojpatrick.cucumber.json.transform.utils.MapTypeUtil.isTypedMap;
+import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
+import static com.github.nhojpatrick.cucumber.json.core.transform.utils.MapTypeUtil.isTypedMap;
 
 public class TransformImpl
         implements Transform {

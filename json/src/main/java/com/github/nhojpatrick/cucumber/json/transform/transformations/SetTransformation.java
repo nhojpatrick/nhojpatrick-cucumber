@@ -1,8 +1,9 @@
 package com.github.nhojpatrick.cucumber.json.transform.transformations;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
-import com.github.nhojpatrick.cucumber.json.exceptions.NullPathElementException;
-import com.github.nhojpatrick.cucumber.json.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
+import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;

@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.validation;
 
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 
