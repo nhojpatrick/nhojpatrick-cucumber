@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.transform.transformations;
+package com.github.nhojpatrick.cucumber.json.transform.transformations.remove;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;

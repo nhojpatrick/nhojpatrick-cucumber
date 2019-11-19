@@ -13,8 +13,8 @@ import com.github.nhojpatrick.cucumber.json.exceptions.InvalidTransformActionExc
 import com.github.nhojpatrick.cucumber.json.steps.map.ConvertToMapSteps;
 import com.github.nhojpatrick.cucumber.json.transform.TransformAction;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.RemoveTransformation;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.SetTransformation;
+import com.github.nhojpatrick.cucumber.json.transform.transformations.remove.RemoveTransformation;
+import com.github.nhojpatrick.cucumber.json.transform.transformations.set.SetTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;

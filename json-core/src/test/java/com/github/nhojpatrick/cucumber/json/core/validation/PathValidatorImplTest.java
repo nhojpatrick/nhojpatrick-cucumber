@@ -1,7 +1,10 @@
-package com.github.nhojpatrick.cucumber.json.validation;
+package com.github.nhojpatrick.cucumber.json.core.validation;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathValidatorImpl;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;

@@ -10,7 +10,7 @@ import com.github.nhojpatrick.cucumber.json.core.transform.CastTo;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.core.transform.utils.CastToUtil;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.SetTransformation;
+import com.github.nhojpatrick.cucumber.json.transform.transformations.set.SetTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
 import io.cucumber.java.en.Given;

@@ -1,7 +1,7 @@
-package com.github.nhojpatrick.cucumber.json.transform.transformations;
+package com.github.nhojpatrick.cucumber.json.transform.transformations.remove;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
-import com.github.nhojpatrick.cucumber.json.validation.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
@@ -24,19 +24,17 @@ import static org.hamcrest.core.IsNot.not;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SetTransformationTest {
+public class RemoveTransformationTest {
 
     @Nested
     @DisplayName("Basic")
     class basic {
 
-        private SetTransformation classUnderTest;
-        private SetTransformation differentInstance;
+        private RemoveTransformation classUnderTest;
 
         @BeforeEach
         public void beforeEach() {
-            this.classUnderTest = new SetTransformation("Value");
-            this.differentInstance = new SetTransformation("AnotherValue");
+            this.classUnderTest = new RemoveTransformation();
         }
 
         @Test
@@ -44,7 +42,6 @@ public class SetTransformationTest {
 
             assertAll("equals",
                     () -> assertThat("should match", this.classUnderTest, is(equalTo(this.classUnderTest))),
-                    () -> assertThat("should not match", this.classUnderTest, is(not(equalTo(this.differentInstance)))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(equalTo(null)))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(equalTo(new Object())))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(equalTo("String"))))
@@ -56,7 +53,6 @@ public class SetTransformationTest {
 
             assertAll("hashCode",
                     () -> assertThat("should match", this.classUnderTest, is(hashCodeGenerated(this.classUnderTest.hashCode()))),
-                    () -> assertThat("should not match", this.classUnderTest, is(not(hashCodeGenerated(this.differentInstance.hashCode())))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(hashCodeGenerated(0)))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(hashCodeGenerated(new Object().hashCode())))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(hashCodeGenerated("String".hashCode()))))
@@ -67,8 +63,7 @@ public class SetTransformationTest {
         public void toStringTest() {
 
             assertAll("toString",
-                    () -> assertThat("should match", this.classUnderTest, is(toStringGenerated("SetTransformation[Value]"))),
-                    () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated(this.differentInstance.toString())))),
+                    () -> assertThat("should match", this.classUnderTest, is(toStringGenerated("RemoveTransformation[]"))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated("")))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated(new Object().toString())))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated("String"))))
@@ -77,21 +72,26 @@ public class SetTransformationTest {
 
     }
 
+    private RemoveTransformation classUnderTest;
+
+    @BeforeEach
+    public void beforeEach() {
+        this.classUnderTest = new RemoveTransformation();
+    }
+
     @TestFactory
     public Collection<DynamicTest> exceptions() {
 
         return Arrays.asList(
 
                 DynamicTest.dynamicTest("null input - null key", () -> {
-                    final SetTransformation classUnderTest = new SetTransformation(null);
-                    final Executable testMethod = () -> classUnderTest.perform(null, null);
+                    final Executable testMethod = () -> this.classUnderTest.perform(null, null);
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
                     assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element.")));
                 }),
 
                 DynamicTest.dynamicTest("empty input - null key", () -> {
-                    final SetTransformation classUnderTest = new SetTransformation(null);
-                    final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null);
+                    final Executable testMethod = () -> this.classUnderTest.perform(new HashMap<>(), null);
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
                     assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element.")));
                 })
@@ -106,56 +106,65 @@ public class SetTransformationTest {
 
                 DynamicTest.dynamicTest("null input - key", () -> {
 
-                    final SetTransformation classUnderTest = new SetTransformation("newValue");
-
                     final Map<String, Object> expected = new HashMap<>();
-                    expected.put("key", "newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(null, new PathElementImpl("key"));
+                    final Map<String, Object> actual = this.classUnderTest.perform(null, new PathElementImpl("key"));
 
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
                 DynamicTest.dynamicTest("empty input - key", () -> {
 
-                    final SetTransformation classUnderTest = new SetTransformation("newValue");
-
                     final Map<String, Object> input = new HashMap<>();
 
                     final Map<String, Object> expected = new HashMap<>();
-                    expected.put("key", "newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl("key"));
+                    final Map<String, Object> actual = this.classUnderTest.perform(input, new PathElementImpl("key"));
 
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
                 DynamicTest.dynamicTest("input key->null - matching key", () -> {
 
-                    final SetTransformation classUnderTest = new SetTransformation("newValue");
-
                     final Map<String, Object> input = new HashMap<>();
                     input.put("key", null);
 
                     final Map<String, Object> expected = new HashMap<>();
-                    expected.put("key", "newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl("key"));
+                    final Map<String, Object> actual = this.classUnderTest.perform(input, new PathElementImpl("key"));
 
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
                 DynamicTest.dynamicTest("input key->\"value\" - matching key", () -> {
 
-                    final SetTransformation classUnderTest = new SetTransformation("newValue");
-
                     final Map<String, Object> input = new HashMap<>();
-                    input.put("key", "oldValue");
+                    input.put("key", "value");
 
                     final Map<String, Object> expected = new HashMap<>();
-                    expected.put("key", "newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl("key"));
+                    final Map<String, Object> actual = this.classUnderTest.perform(input, new PathElementImpl("key"));
+
+                    assertThat(actual, is(equalTo(expected)));
+                })
+
+        );
+    }
+
+    //    @TestFactory
+    public Collection<DynamicTest> success_list() {
+
+        return Arrays.asList(
+
+                DynamicTest.dynamicTest("list[]", () -> {
+
+                    final Map<String, Object> input = new HashMap<>();
+                    input.put("list", Arrays.asList("one", "two", "three"));
+
+                    final Map<String, Object> expected = new HashMap<>();
+                    expected.put("list", Arrays.asList("one", "three"));
+
+                    final Map<String, Object> actual = this.classUnderTest.perform(input, new PathElementImpl("list[1]"));
 
                     assertThat(actual, is(equalTo(expected)));
                 })

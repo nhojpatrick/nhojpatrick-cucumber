@@ -1,8 +1,8 @@
 package com.github.nhojpatrick.cucumber.json.transform;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.RemoveTransformation;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.SetTransformation;
+import com.github.nhojpatrick.cucumber.json.transform.transformations.remove.RemoveTransformation;
+import com.github.nhojpatrick.cucumber.json.transform.transformations.set.SetTransformation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Nested;

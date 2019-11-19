@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.validation;
+package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;

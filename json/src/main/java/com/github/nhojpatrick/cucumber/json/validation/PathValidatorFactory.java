@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.validation;
 
 import com.github.nhojpatrick.cucumber.json.core.validation.PathValidator;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathValidatorImpl;
 
 import java.util.function.Supplier;
 
