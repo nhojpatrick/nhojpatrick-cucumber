@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.json.testing.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.json.testing.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.json.testing.objects.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.json.testing.objects.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
 
 public class RunStateJsonCucumberSteps {
 

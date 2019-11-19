@@ -45,6 +45,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-testing-objects</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-state</artifactId>
 		</dependency>
 		<dependency>
@@ -98,7 +102,6 @@
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.exceptions=org.junit.platform.commons
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.map=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.testing=com.fasterxml.jackson.databind
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=org.junit.platform.commons
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.utils=org.junit.platform.commons
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=org.junit.platform.commons
