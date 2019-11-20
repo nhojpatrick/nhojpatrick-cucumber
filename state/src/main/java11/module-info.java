@@ -2,7 +2,7 @@ module com.github.nhojpatrick.cucumber.state {
     exports com.github.nhojpatrick.cucumber.state.exceptions;
     exports com.github.nhojpatrick.cucumber.state.validation;
     exports com.github.nhojpatrick.cucumber.state;
-    requires com.github.nhojpatrick.cucumber.core;
+    requires transitive com.github.nhojpatrick.cucumber.core;
     requires com.github.nhojpatrick.hamcrest.collections;
     requires com.google.guice;
     requires io.cucumber.core;

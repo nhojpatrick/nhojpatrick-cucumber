@@ -7,14 +7,13 @@ import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.CastToException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
+import com.github.nhojpatrick.cucumber.json.core.transform.TransformActionTask;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
-import com.github.nhojpatrick.cucumber.json.core.transform.utils.CastToUtil;
+import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
 import com.github.nhojpatrick.cucumber.json.exceptions.InvalidTransformActionException;
 import com.github.nhojpatrick.cucumber.json.steps.map.ConvertToMapSteps;
-import com.github.nhojpatrick.cucumber.json.transform.TransformAction;
+import com.github.nhojpatrick.cucumber.json.steps.transform.transformations.TransformationServiceFactory;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.remove.RemoveTransformation;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.set.SetTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
@@ -27,6 +26,10 @@ import java.util.Map;
 
 public class TransformationSteps {
 
+    public static final String CUCUMBER_DATA_TABLE_COLUMN_ACTION = "action";
+    public static final String CUCUMBER_DATA_TABLE_COLUMN_PATH = "path";
+    public static final String CUCUMBER_DATA_TABLE_COLUMN_TYPE = "type";
+    public static final String CUCUMBER_DATA_TABLE_COLUMN_VALUE = "value";
     public static final String DEFAULT_MAP_KEY = ConvertToMapSteps.DEFAULT_MAP_KEY;
 
     private final RunState runState;
@@ -80,31 +83,27 @@ public class TransformationSteps {
             InvalidPathException,
             InvalidTransformActionException {
 
+        final TransformationServiceFactory transformationServiceFactory = TransformationServiceFactory.getInstance();
         final Transform transform = TransformFactory.getInstance();
 
         for (final Map<String, String> row : dataTable) {
 
-            final String path = row.get("path");
+            final String action = row.get(CUCUMBER_DATA_TABLE_COLUMN_ACTION);
 
-            final String actionAsStr = row.get("action");
+            final TransformationService transformationService = transformationServiceFactory.resolve(action)
+                    .orElseThrow(() -> new InvalidTransformActionException(action));
 
-            final TransformAction transformAction = TransformAction.resolve(actionAsStr);
+            final String type = row.get(CUCUMBER_DATA_TABLE_COLUMN_TYPE);
+            final String value = row.get(CUCUMBER_DATA_TABLE_COLUMN_VALUE);
 
-            Transformation transformation = null;
+            final TransformActionTask transformActionTask = new TransformActionTask.Builder()
+                    .withType(type)
+                    .withValue(value)
+                    .build();
 
-            switch (transformAction) {
-                case REMOVE:
-                    transformation = new RemoveTransformation();
-                    break;
+            final Transformation transformation = transformationService.resolve(transformActionTask);
 
-                case SET:
-                    final String valueAsStr = row.get("value");
-                    final String type = row.get("type");
-                    final Object value = new CastToUtil()
-                            .castTo(valueAsStr, type);
-                    transformation = new SetTransformation(value);
-                    break;
-            }
+            final String path = row.get(CUCUMBER_DATA_TABLE_COLUMN_PATH);
 
             runStateJsonMapValue = transform.transform(runStateJsonMapValue, path, transformation);
         }

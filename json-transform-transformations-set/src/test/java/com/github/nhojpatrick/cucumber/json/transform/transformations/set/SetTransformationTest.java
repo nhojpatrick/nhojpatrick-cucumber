@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transform.transformations.set;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.set.SetTransformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

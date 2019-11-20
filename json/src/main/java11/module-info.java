@@ -5,11 +5,11 @@ module com.github.nhojpatrick.cucumber.json {
     exports com.github.nhojpatrick.cucumber.json.validation;
     requires com.fasterxml.jackson.core;
     requires transitive com.fasterxml.jackson.databind;
-    requires com.github.nhojpatrick.cucumber.core;
+    requires transitive com.github.nhojpatrick.cucumber.core;
     requires transitive com.github.nhojpatrick.cucumber.json.core;
-    requires com.github.nhojpatrick.cucumber.json.transform.transformations.remove;
-    requires com.github.nhojpatrick.cucumber.json.transform.transformations.set;
-    requires com.github.nhojpatrick.cucumber.state;
+    requires transitive com.github.nhojpatrick.cucumber.json.transform.transformations.remove;
+    requires transitive com.github.nhojpatrick.cucumber.json.transform.transformations.set;
+    requires transitive com.github.nhojpatrick.cucumber.state;
     requires com.google.common;
     requires com.google.guice;
     requires io.cucumber.datatable;
