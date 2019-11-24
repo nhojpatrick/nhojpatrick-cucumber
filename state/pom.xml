@@ -54,16 +54,20 @@
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-core</artifactId>
+			<artifactId>cucumber-guice</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-guice</artifactId>
+			<artifactId>cucumber-java</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>datatable</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -88,11 +92,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.junit.vintage</groupId>
-			<artifactId>junit-vintage-engine</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
@@ -109,7 +108,8 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.state</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.steps.state=org.junit.platform.commons</project.surefire.argLine.jpms.module>
+		<project.surefire.argLine.jpms.module>--add-opens
+            ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.steps.state=org.junit.platform.commons</project.surefire.argLine.jpms.module>
 		<checkstyle.maxAllowedViolations>54</checkstyle.maxAllowedViolations>
 		<pmd.maxAllowedViolations>2</pmd.maxAllowedViolations>
 	</properties>

@@ -6,7 +6,7 @@
             <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %l %m%n" />
         </layout>
     </appender>
-    <category name="com.github.nhojpatrick.cucumber.json">
+    <category name="com.github.nhojpatrick.cucumber.json.transformations.set">
         <level value="DEBUG" />
     </category>
     <root>

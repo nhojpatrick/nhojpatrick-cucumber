@@ -787,12 +787,12 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
-				<version>${version.latest.nhojpatrick.hamcrest}</version>
+				<version>${version.com.github.nhojpatrick.hamcrest}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-				<version>${version.latest.nhojpatrick.hamcrest}</version>
+				<version>${version.com.github.nhojpatrick.hamcrest}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
@@ -835,6 +835,11 @@
 				<version>${version.io.cucumber}</version>
 			</dependency>
 			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>datatable</artifactId>
+				<version>${version.io.cucumber.datatable}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${version.org.apache.commons.lang3}</version>
@@ -852,7 +857,7 @@
 			<dependency>
 				<groupId>org.joda</groupId>
 				<artifactId>joda-beans</artifactId>
-				<version>2.7.1</version>
+				<version>${version.org.joda.beans}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
@@ -873,7 +878,6 @@
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
 				<version>3.1.0</version>
-				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -913,25 +917,30 @@
 		<generateBackupPoms>false</generateBackupPoms>
 		<!-- Surefire/Failsafe jpms override(s) -->
 		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
-		<project.failsafe.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
+		<project.failsafe.argLine.jpms.global>--add-opens
+            ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
 		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
 		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
-		<project.surefire.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
+		<project.surefire.argLine.jpms.global>--add-opens
+            ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
+            --add-opens
+            ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
+            --add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
+            --add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
+		<version.com.github.nhojpatrick.hamcrest>1.0.0</version.com.github.nhojpatrick.hamcrest>
 		<version.com.puppycrawl.tools.checkstyle>8.23</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber>4.8.0</version.io.cucumber>
+		<version.io.cucumber.datatable>3.0.0</version.io.cucumber.datatable>
 		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
 		<version.org.hamcrest>2.2</version.org.hamcrest>
-		<version.org.spotbugs>3.1.12</version.org.spotbugs>
+		<version.org.joda.beans>2.7.1</version.org.joda.beans>
 		<version.org.junit.jupiter>5.5.2</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.5.2</version.org.junit.vintage>
-		<version.latest.nhojpatrick.hamcrest>1.0.0</version.latest.nhojpatrick.hamcrest>
 		<version.org.slf4j>1.7.29</version.org.slf4j>
+		<version.org.spotbugs>3.1.12</version.org.spotbugs>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>

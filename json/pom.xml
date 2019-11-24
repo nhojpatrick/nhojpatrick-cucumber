@@ -50,27 +50,16 @@
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-json-testing-objects</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-state</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -85,15 +74,11 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.vintage</groupId>
-			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -113,6 +98,7 @@
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=org.junit.platform.commons
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.utils=org.junit.platform.commons
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation=org.junit.platform.commons</project.surefire.argLine.jpms.module>
 		<checkstyle.maxAllowedViolations>197</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>94%</jacoco.bundle.line.coveredratio>
