@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.steps.map;
+package com.github.nhojpatrick.cucumber.json.map.steps;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException;
