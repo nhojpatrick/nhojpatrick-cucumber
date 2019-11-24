@@ -6,7 +6,7 @@ import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
-import com.github.nhojpatrick.cucumber.json.transform.transformations.remove.RemoveTransformation;
+import com.github.nhojpatrick.cucumber.json.transformations.remove.RemoveTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
 import io.cucumber.java.en.Given;

@@ -7,9 +7,7 @@ module com.github.nhojpatrick.cucumber.json {
     requires transitive com.fasterxml.jackson.databind;
     requires transitive com.github.nhojpatrick.cucumber.core;
     requires transitive com.github.nhojpatrick.cucumber.json.core;
-    requires transitive com.github.nhojpatrick.cucumber.json.transform.transformations.remove;
-    requires transitive com.github.nhojpatrick.cucumber.json.transform.transformations.set;
-    requires transitive com.github.nhojpatrick.cucumber.json.transform.transformations.whitespace;
+    requires transitive com.github.nhojpatrick.cucumber.json.transformations.all;
     requires transitive com.github.nhojpatrick.cucumber.state;
     requires com.google.common;
     requires com.google.guice;

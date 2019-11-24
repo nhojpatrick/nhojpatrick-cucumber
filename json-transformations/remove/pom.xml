@@ -5,15 +5,14 @@
 	<!--parent / -->
 	<parent>
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
-		<artifactId>nhojpatrick-cucumber</artifactId>
+		<artifactId>nhojpatrick-cucumber-json-transformations-parent</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-json</artifactId>
+	<artifactId>nhojpatrick-cucumber-json-transformations-remove</artifactId>
 	<!--packaging / -->
-	<packaging>jar</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->
@@ -36,10 +35,6 @@
 	<!--dependencies / -->
 	<dependencies>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-core</artifactId>
 		</dependency>
@@ -48,29 +43,8 @@
 			<artifactId>nhojpatrick-cucumber-json-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-testing-objects</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-state</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -83,10 +57,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
@@ -96,10 +66,6 @@
 			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->
@@ -107,13 +73,8 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.exceptions=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.map=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.transformations=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.utils=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation=org.junit.platform.commons</project.surefire.argLine.jpms.module>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transformations.remove</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.surefire.argLine.jpms.module>
 		<checkstyle.maxAllowedViolations>197</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.line.coveredratio>94%</jacoco.bundle.line.coveredratio>
 		<spotbugs.maxAllowedViolations>1</spotbugs.maxAllowedViolations>

@@ -722,9 +722,7 @@
 		<module>json-core</module>
 		<module>json-steps</module>
 		<module>json-testing-objects</module>
-		<module>json-transform-transformations-remove</module>
-		<module>json-transform-transformations-set</module>
-		<module>json-transform-transformations-whitespace</module>
+		<module>json-transformations</module>
 		<module>state</module>
 	</modules>
 	<!--repositories / -->
@@ -772,17 +770,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-transform-transformations-remove</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-transform-transformations-set</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-transform-transformations-whitespace</artifactId>
+				<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -901,6 +889,8 @@
 	</distributionManagement>
 	<!--properties / -->
 	<properties>
+		<!-- next minor version -->
+		<project.custom.next.version>1.1</project.custom.next.version>
 		<!-- custom properties -->
 		<project.custom.encoding>UTF-8</project.custom.encoding>
 		<project.custom.java.version>1.8</project.custom.java.version>
