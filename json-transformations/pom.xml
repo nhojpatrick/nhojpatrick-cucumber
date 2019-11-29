@@ -34,6 +34,7 @@
 	<modules>
 		<module>all</module>
 		<module>remove</module>
+		<module>reverse</module>
 		<module>set</module>
 		<module>whitespace</module>
 	</modules>
@@ -48,6 +49,11 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-remove</artifactId>
+				<version>[${project.version},${project.custom.next.version})</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-transformations-reverse</artifactId>
 				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>

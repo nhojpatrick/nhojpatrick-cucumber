@@ -7,6 +7,7 @@ module com.github.nhojpatrick.cucumber.json.core {
             to
             com.github.nhojpatrick.cucumber.json,
             com.github.nhojpatrick.cucumber.json.transformations.remove,
+            com.github.nhojpatrick.cucumber.json.transformations.reverse,
             com.github.nhojpatrick.cucumber.json.transformations.set,
             com.github.nhojpatrick.cucumber.json.transformations.whitespace;
     requires org.apache.commons.lang3;
