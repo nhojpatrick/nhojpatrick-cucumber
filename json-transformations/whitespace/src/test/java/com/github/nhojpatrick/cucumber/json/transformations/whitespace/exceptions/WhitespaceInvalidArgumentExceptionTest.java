@@ -14,7 +14,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class WhitespacePrefixExceptionTest {
+public class WhitespaceInvalidArgumentExceptionTest {
 
     @TestFactory
     public Collection<DynamicTest> exceptions() {
@@ -23,11 +23,11 @@ public class WhitespacePrefixExceptionTest {
 
                 DynamicTest.dynamicTest("message", () -> {
                     final Executable testMethod = () -> {
-                        throw new WhitespacePrefixException(-1);
+                        throw new WhitespaceInvalidArgumentException("string");
                     };
-                    final WhitespacePrefixException expectedThrown = assertThrows(WhitespacePrefixException.class, testMethod);
+                    final WhitespaceInvalidArgumentException expectedThrown = assertThrows(WhitespaceInvalidArgumentException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace prefix must be positive but was -1."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace prefix/suffix is not valid number string."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 })

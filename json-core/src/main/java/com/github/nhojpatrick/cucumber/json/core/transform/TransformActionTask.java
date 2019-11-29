@@ -29,7 +29,7 @@ public class TransformActionTask
     @PropertyDefinition
     protected String value;
 
-    public TransformActionTask() {
+    TransformActionTask() {
     }
 
     @Override

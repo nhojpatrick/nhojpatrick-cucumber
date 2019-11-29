@@ -8,12 +8,16 @@ import com.github.nhojpatrick.cucumber.json.core.transform.CastTo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static java.util.Objects.requireNonNull;
+
 public class CastToUtil
         implements CastTo {
 
     @Override
     public Object castTo(final String value, final String type)
             throws CastToException {
+
+        requireNonNull(type, "CastToUtil.castTo(type)");
 
         switch (type) {
             case "null":

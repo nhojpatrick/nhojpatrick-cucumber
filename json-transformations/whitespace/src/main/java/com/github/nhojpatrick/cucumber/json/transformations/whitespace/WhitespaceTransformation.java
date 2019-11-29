@@ -14,12 +14,17 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.MapTypeUtil.isTypedMap;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class WhitespaceTransformation
@@ -70,60 +75,106 @@ public class WhitespaceTransformation
             throws IllegalKeyException,
             IllegalPathOperationException {
 
-        if (Objects.isNull(pathElement)) {
+        if (isNull(pathElement)) {
             throw new NullPathElementException();
         }
 
-        final Map<String, Object> output = Objects.nonNull(input)
-                ? input : new HashMap<>();
+        final Map<String, Object> output = nonNull(input)
+                ? input
+                : new HashMap<>();
 
-        if (output.containsKey(pathElement.getElement())) {
+        if (!pathElement.isArrayElement()) {
 
-            if (!pathElement.isArrayElement()) {
+            final Object obj = output.get(pathElement.getElement());
 
-                final Object obj = output.get(pathElement.getElement());
+            if (isTypedMap(obj, String.class, Object.class)) {
+                throw new UnsupportedOperationException("Unable to whitespace JsonObject.");
+            }
 
-                if (isTypedMap(obj, String.class, Object.class)) {
-                    throw new IllegalPathOperationException("FIXME 0");
+            if (isTypedList(obj, Object.class)) {
 
-                } else if (isTypedList(obj, Map.class)) {
-                    throw new IllegalPathOperationException("FIXME 1");
-
-                } else if (isTypedList(obj, Object.class)) {
-                    throw new IllegalPathOperationException("FIXME 2");
-                }
-
-                final String str;
-                if (Objects.isNull(obj)) {
-                    str = "";
-
-                } else if (obj instanceof String) {
-                    str = (String) obj;
-
-                } else {
-                    str = String.valueOf(obj);
-                }
-
-                final String padded = pad(str, this.prefix, this.suffix);
-
-                output.put(pathElement.getElement(), padded);
+                final List<Object> listObj = (List<Object>) obj;
+                final List<Object> listObjPadded = listObj.stream()
+                        .map(p -> pad(p, this.prefix, this.suffix))
+                        .collect(Collectors.toList());
+                output.put(pathElement.getElement(), listObjPadded);
 
             } else {
-                throw new IllegalPathOperationException("FIXME 3");
+                final String padded = pad(obj, this.prefix, this.suffix);
+                output.put(pathElement.getElement(), padded);
             }
 
         } else {
-            final String padded = pad(null, this.prefix, this.suffix);
-            output.put(pathElement.getElement(), padded);
+
+            Object objRaw = output.get(pathElement.getElement());
+
+            objRaw = nonNull(objRaw)
+                    ? objRaw
+                    : new ArrayList<>();
+
+            if (isTypedList(objRaw, Object.class)) {
+
+                final List<Object> listObj = (List<Object>) objRaw;
+
+                if (pathElement.getArrayIndex() < listObj.size()) {
+
+                    final Object obj = listObj.get(pathElement.getArrayIndex());
+                    final String padded = pad(obj, this.prefix, this.suffix);
+
+                    listObj.set(pathElement.getArrayIndex(), padded);
+
+                } else {
+                    final int size = listObj.size();
+                    final int arrayIndex = pathElement.getArrayIndex();
+
+                    for (int i = size; i < arrayIndex; i++) {
+                        listObj.add(null);
+                    }
+
+                    final String padded = pad(null, this.prefix, this.suffix);
+
+                    listObj.add(pathElement.getArrayIndex(), padded);
+                }
+
+                output.put(pathElement.getElement(), listObj);
+
+            } else {
+                throw new UnsupportedOperationException("FIXME whitespace issue");
+            }
         }
 
         return output;
     }
 
     @VisibleForTesting
+    String pad(final Object input, final int prefix, final int suffix) {
+
+        if (input instanceof Map) {
+            throw new UnsupportedOperationException("Unable to whitespace JsonObject.");
+        }
+
+        if (input instanceof List) {
+            throw new UnsupportedOperationException("Unable to whitespace JsonArray<>.");
+        }
+
+        String str;
+        if (isNull(input)) {
+            str = "";
+
+        } else if (input instanceof String) {
+            str = (String) input;
+
+        } else {
+            str = String.valueOf(input);
+        }
+
+        return pad(str, prefix, suffix);
+    }
+
+    @VisibleForTesting
     String pad(final String input, final int prefix, final int suffix) {
 
-        String str = Objects.isNull(input) ? "" : input;
+        String str = isNull(input) ? "" : input;
 
         str = StringUtils.leftPad(str, str.length() + prefix);
         str = StringUtils.rightPad(str, str.length() + suffix);

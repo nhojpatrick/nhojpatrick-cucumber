@@ -5,11 +5,20 @@ import com.github.nhojpatrick.cucumber.json.core.transform.TransformActionTask;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
 import com.github.nhojpatrick.cucumber.json.core.transform.utils.CastToUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import static java.util.Objects.requireNonNull;
 
 public class SetTransformationService
         implements TransformationService {
 
     public static final String ACTION = "set";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SetTransformationService.class);
+
+    public SetTransformationService() {
+    }
 
     @Override
     public String getAction() {
@@ -20,9 +29,18 @@ public class SetTransformationService
     public Transformation resolve(final TransformActionTask transformActionTask)
             throws CastToException {
 
+        LOGGER.debug("SetTransformationService.resolve(input={})", transformActionTask);
+
+        requireNonNull(transformActionTask, "TransformActionTask");
+        requireNonNull(transformActionTask.getType(), "TransformActionTask.getType()");
+
         final Object value = new CastToUtil()
                 .castTo(transformActionTask.getValue(), transformActionTask.getType());
-        return new SetTransformation(value);
+        final Transformation transformation = new SetTransformation(value);
+
+        LOGGER.debug("SetTransformationService.resolve(input={}) output={}", transformActionTask, transformation);
+
+        return transformation;
     }
 
 }

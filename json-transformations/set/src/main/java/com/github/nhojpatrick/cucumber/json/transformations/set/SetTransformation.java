@@ -8,10 +8,14 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
+import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class SetTransformation
@@ -48,14 +52,49 @@ public class SetTransformation
     public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement)
             throws IllegalKeyException {
 
-        if (Objects.isNull(pathElement)) {
+        if (isNull(pathElement)) {
             throw new NullPathElementException();
         }
 
-        final Map<String, Object> output = Objects.nonNull(input)
-                ? input : new HashMap<>();
+        final Map<String, Object> output = nonNull(input)
+                ? input
+                : new HashMap<>();
 
-        output.put(pathElement.getElement(), this.value);
+        if (!pathElement.isArrayElement()) {
+            output.put(pathElement.getElement(), this.value);
+
+        } else {
+
+            Object objRaw = output.get(pathElement.getElement());
+
+            objRaw = nonNull(objRaw)
+                    ? objRaw
+                    : new ArrayList<>();
+
+            if (isTypedList(objRaw, Object.class)) {
+
+                final List<Object> listObj = (List<Object>) objRaw;
+
+                if (pathElement.getArrayIndex() < listObj.size()) {
+                    listObj.set(pathElement.getArrayIndex(), this.value);
+
+                } else {
+                    final int size = listObj.size();
+                    final int arrayIndex = pathElement.getArrayIndex();
+
+                    for (int i = size; i < arrayIndex; i++) {
+                        listObj.add(null);
+                    }
+
+                    listObj.add(pathElement.getArrayIndex(), this.value);
+                }
+
+                output.put(pathElement.getElement(), listObj);
+
+            } else {
+                throw new UnsupportedOperationException("FIXME set issue");
+            }
+        }
 
         return output;
     }

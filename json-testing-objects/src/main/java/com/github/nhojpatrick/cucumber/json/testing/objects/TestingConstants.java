@@ -121,4 +121,42 @@ public class TestingConstants {
         SIMPLE_OBJECT_AS_JSON_MAP = new HashMap<>(expected);
     }
 
+    public static final Map<String, Object> getBasicJsonMap() {
+
+        final List<String> array1 = new ArrayList<>(Arrays.asList("aList"));
+        final List<String> array2 = new ArrayList<>(Arrays.asList("bList"));
+        final List<String> array3 = new ArrayList<>(Arrays.asList("cList"));
+        final List<String> array4 = new ArrayList<>(Arrays.asList("dList"));
+
+        final Map<String, Object> map1 = new HashMap<>();
+        map1.put("aMap", 1);
+        final Map<String, Object> map2 = new HashMap<>();
+        map2.put("bMap", 2);
+        final Map<String, Object> map3 = new HashMap<>();
+        map3.put("cMap", 3);
+        final Map<String, Object> map4 = new HashMap<>();
+        map4.put("dMap", 4);
+
+        final Map<String, Object> map = new HashMap<>();
+
+        map.put("keyArray", new ArrayList<>(Arrays.asList(array1, array2, array3, array4)));
+        map.put("keyBoolean", true);
+        map.put("keyBooleanArray", new ArrayList<>(Arrays.asList(true, false, true, false)));
+        map.put("keyDouble", 12.34d);
+        map.put("keyDoubleArray", new ArrayList<>(Arrays.asList(12.34d, 23.45d, 34.56d, 45.67d)));
+        map.put("keyFloat", 23.45f);
+        map.put("keyFloatArray", new ArrayList<>(Arrays.asList(12.34f, 23.45f, 34.56f, 45.67f)));
+        map.put("keyInteger", 3456);
+        map.put("keyIntegerArray", new ArrayList<>(Arrays.asList(1234, 2345, 3456, 4567)));
+        map.put("keyLong", 4567L);
+        map.put("keyLongArray", new ArrayList<>(Arrays.asList(1234L, 2345L, 3456L, 4567L)));
+        map.put("keyMap", new HashMap<String, Object>());
+        map.put("keyMapArray", new ArrayList<>(Arrays.asList(map1, map2, map3, map4)));
+        map.put("keyNull", null);
+        map.put("keyString", "oldValue");
+        map.put("keyStringArray", new ArrayList<>(Arrays.asList("aString", "bString", "cString", "dString")));
+
+        return map;
+    }
+
 }

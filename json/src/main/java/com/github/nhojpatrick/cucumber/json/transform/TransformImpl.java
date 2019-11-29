@@ -24,6 +24,9 @@ public class TransformImpl
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TransformImpl.class);
 
+    public TransformImpl() {
+    }
+
     @Override
     public Map<String, Object> transform(final Map<String, Object> input, final String path, final Transformation transformation)
             throws IllegalKeyException,

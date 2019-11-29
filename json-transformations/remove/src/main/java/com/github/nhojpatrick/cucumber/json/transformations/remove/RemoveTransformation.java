@@ -7,12 +7,14 @@ import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class RemoveTransformation
@@ -38,49 +40,57 @@ public class RemoveTransformation
     }
 
     @Override
-    public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement)
+    public Map<String, Object> perform(Map<String, Object> input, final PathElement pathElement)
             throws IllegalKeyException {
 
-        if (Objects.isNull(pathElement)) {
+        if (isNull(pathElement)) {
             throw new NullPathElementException();
         }
 
-        final Map<String, Object> output = Objects.nonNull(input)
-                ? input : new HashMap<>();
+        if (isNull(input)) {
+            input = new HashMap<>();
+        }
 
-        if (output.containsKey(pathElement.getElement())) {
+//        if (!input.containsKey(pathElement.getElement())) {
+//            return input;
+//        }
 
-            if (!pathElement.isArrayElement()) {
-                output.remove(pathElement.getElement());
+        if (!pathElement.isArrayElement()) {
+            input.remove(pathElement.getElement());
 
-            } else {
+        } else {
 
-                final Object objRaw = output.get(pathElement.getElement());
+            Object objRaw = input.get(pathElement.getElement());
 
-                if (pathElement.isArrayElement()) {
-                    if (isTypedList(objRaw, Map.class)) {
+            objRaw = nonNull(objRaw)
+                    ? objRaw
+                    : new ArrayList<Map<String, Object>>();
 
-                        final List<Map> listMap = (List<Map>) objRaw;
+            if (isTypedList(objRaw, Object.class)) {
 
-                        if (pathElement.getArrayIndex() < listMap.size()) {
-                            listMap.remove(pathElement.getArrayIndex());
-                            output.put(pathElement.getElement(), listMap);
-                        }
+                final List<Object> listObj = (List<Object>) objRaw;
 
-                    } else if (isTypedList(objRaw, Object.class)) {
+                if (pathElement.getArrayIndex() < listObj.size()) {
+                    listObj.remove(pathElement.getArrayIndex());
 
-                        final List<Object> listObj = (List<Object>) objRaw;
+                } else {
 
-                        if (pathElement.getArrayIndex() < listObj.size()) {
-                            listObj.remove(pathElement.getArrayIndex());
-                            output.put(pathElement.getElement(), listObj);
-                        }
+                    final int size = listObj.size();
+                    final int arrayIndex = pathElement.getArrayIndex();
+
+                    for (int i = size; i < arrayIndex; i++) {
+                        listObj.add(null);
                     }
                 }
+
+                input.put(pathElement.getElement(), listObj);
+
+            } else {
+                throw new UnsupportedOperationException("RemoveTransformation PathElement not typed List and Path isArrayElement");
             }
         }
 
-        return output;
+        return input;
     }
 
     @Override
