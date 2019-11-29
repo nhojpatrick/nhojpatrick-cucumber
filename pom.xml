@@ -924,17 +924,17 @@
             --add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
-		<version.com.github.nhojpatrick.hamcrest>1.0.0</version.com.github.nhojpatrick.hamcrest>
+		<version.com.github.nhojpatrick.hamcrest>[1.0.0,1.0.999)</version.com.github.nhojpatrick.hamcrest>
 		<version.com.puppycrawl.tools.checkstyle>8.23</version.com.puppycrawl.tools.checkstyle>
-		<version.io.cucumber>4.8.0</version.io.cucumber>
-		<version.io.cucumber.datatable>3.0.0</version.io.cucumber.datatable>
-		<version.org.apache.commons.lang3>3.9</version.org.apache.commons.lang3>
+		<version.io.cucumber>[4.4.0,4.999.999)</version.io.cucumber>
+		<version.io.cucumber.datatable>[3.0.0,3.999.999)</version.io.cucumber.datatable>
+		<version.org.apache.commons.lang3>[3,3.999.999)</version.org.apache.commons.lang3>
 		<version.org.apache.logging.log4j>2.12.1</version.org.apache.logging.log4j>
-		<version.org.hamcrest>2.2</version.org.hamcrest>
-		<version.org.joda.beans>2.7.1</version.org.joda.beans>
-		<version.org.junit.jupiter>5.5.2</version.org.junit.jupiter>
-		<version.org.junit.vintage>5.5.2</version.org.junit.vintage>
-		<version.org.slf4j>1.7.29</version.org.slf4j>
+		<version.org.hamcrest>[2,2.999.999)</version.org.hamcrest>
+		<version.org.joda.beans>[2.4.0,2.999.999)</version.org.joda.beans>
+		<version.org.junit.jupiter>[5.5.0,5.5.999)</version.org.junit.jupiter>
+		<version.org.junit.vintage>[5.5.0,5.5.999)</version.org.junit.vintage>
+		<version.org.slf4j>[1.7,1.7.999)</version.org.slf4j>
 		<version.org.spotbugs>3.1.12</version.org.spotbugs>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
