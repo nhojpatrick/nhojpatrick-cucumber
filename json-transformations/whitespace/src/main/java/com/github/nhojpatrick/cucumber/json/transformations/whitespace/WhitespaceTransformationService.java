@@ -34,7 +34,10 @@ public class WhitespaceTransformationService
 
         final Transformation transformation = new WhitespaceTransformation(4, 4);
 
-        LOGGER.debug("WhitespaceTransformationService.resolve(input={}) output={}", transformActionTask, transformation);
+        LOGGER.debug("WhitespaceTransformationService.resolve(input={}) output={}",
+                transformActionTask,
+                transformation
+        );
 
         return transformation;
     }

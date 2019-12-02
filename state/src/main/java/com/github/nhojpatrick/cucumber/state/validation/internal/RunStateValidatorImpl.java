@@ -85,8 +85,14 @@ public class RunStateValidatorImpl
                 .collect(toSet());
 
         assertAll("Run State Validation",
-                () -> assertThat("Keys where value was expected to be null", nullErrors, is(collectionWithSize(0))),
-                () -> assertThat("Keys where value was expected to be non null", valuesErrors, is(collectionWithSize(0)))
+                () -> assertThat("Keys where value was expected to be null",
+                        nullErrors,
+                        is(collectionWithSize(0)
+                        )),
+                () -> assertThat("Keys where value was expected to be non null",
+                        valuesErrors,
+                        is(collectionWithSize(0)
+                        ))
         );
     }
 

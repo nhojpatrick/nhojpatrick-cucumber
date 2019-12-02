@@ -86,7 +86,9 @@ public class RemoveTransformation
                 input.put(pathElement.getElement(), listObj);
 
             } else {
-                throw new UnsupportedOperationException("RemoveTransformation PathElement not typed List and Path isArrayElement");
+                throw new UnsupportedOperationException(
+                        "RemoveTransformation PathElement not typed List and Path isArrayElement"
+                );
             }
         }
 

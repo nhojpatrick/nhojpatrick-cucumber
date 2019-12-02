@@ -28,7 +28,9 @@ public class TransformImpl
     }
 
     @Override
-    public Map<String, Object> transform(final Map<String, Object> input, final String path, final Transformation transformation)
+    public Map<String, Object> transform(final Map<String, Object> input,
+                                         final String path,
+                                         final Transformation transformation)
             throws IllegalKeyException,
             IllegalOperationException,
             InvalidPathException {
@@ -45,13 +47,22 @@ public class TransformImpl
         return output;
     }
 
-    private Map<String, Object> transform(final int depth, final Map<String, Object> input, final String previousPath, final List<PathElement> pathElements, final Transformation transformation)
+    private Map<String, Object> transform(final int depth,
+                                          final Map<String, Object> input,
+                                          final String previousPath,
+                                          final List<PathElement> pathElements,
+                                          final Transformation transformation)
             throws IllegalKeyException,
             IllegalOperationException {
 
         Map<String, Object> output = input;
 
-        LOGGER.debug("Before depth={} path='{}' transformation={} input={}", depth, pathElements, transformation, input);
+        LOGGER.debug("Before depth={} path='{}' transformation={} input={}",
+                depth,
+                pathElements,
+                transformation,
+                input
+        );
 
         final PathElement pathElement = pathElements.get(0);
 
@@ -76,7 +87,10 @@ public class TransformImpl
 
             if (isTypedListObject
                     && !pathElement.isArrayElement()) {
-                throw new IllegalPathOperationException(String.format("Unable to convert array to object, at path '%s'.", String.valueOf(currentPath)));
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to convert array to object, at path '%s'.",
+                        String.valueOf(currentPath)
+                ));
             }
 
             if (isTypedListMap) {
@@ -87,7 +101,11 @@ public class TransformImpl
                     if (isTypedMap(mapRaw, String.class, Object.class)) {
                         final Map<String, Object> map = (Map<String, Object>) mapRaw;
 
-                        final Map<String, Object> mapUpdated = transform(depth + 1, map, currentPath, pathElements.subList(1, pathElements.size()), transformation);
+                        final Map<String, Object> mapUpdated = transform(depth + 1,
+                                map,
+                                currentPath,
+                                pathElements.subList(1, pathElements.size()),
+                                transformation);
 
                         listMap.set(pathElement.getArrayIndex(), mapUpdated);
 
@@ -96,7 +114,10 @@ public class TransformImpl
                 }
 
             } else if (isTypedListObject) {
-                throw new IllegalPathOperationException(String.format("Unable to convert primative array to object array, at path '%s'.", String.valueOf(currentPath)));
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to convert primative array to object array, at path '%s'.",
+                        String.valueOf(currentPath)
+                ));
 
             } else {
 
@@ -108,16 +129,29 @@ public class TransformImpl
                     innerInput = (Map<String, Object>) innerRaw;
 
                 } else {
-                    throw new IllegalPathOperationException(String.format("Unable to convert primative to object, at path '%s'.", String.valueOf(currentPath)));
+                    throw new IllegalPathOperationException(String.format(
+                            "Unable to convert primative to object, at path '%s'.",
+                            String.valueOf(currentPath)
+                    ));
                 }
 
-                final Map<String, Object> innerOutput = transform(depth + 1, innerInput, currentPath, pathElements.subList(1, pathElements.size()), transformation);
+                final Map<String, Object> innerOutput = transform(depth + 1,
+                        innerInput,
+                        currentPath,
+                        pathElements.subList(1, pathElements.size()),
+                        transformation
+                );
 
                 output.put(pathElement.getElement(), innerOutput);
             }
         }
 
-        LOGGER.debug("After depth={} path='{}' transformation={} input={}", depth, pathElements, transformation, output);
+        LOGGER.debug("After depth={} path='{}' transformation={} input={}",
+                depth,
+                pathElements,
+                transformation,
+                output
+        );
 
         return output;
     }

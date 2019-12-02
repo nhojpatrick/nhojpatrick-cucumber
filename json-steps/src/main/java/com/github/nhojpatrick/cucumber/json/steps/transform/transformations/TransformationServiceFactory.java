@@ -22,12 +22,14 @@ public class TransformationServiceFactory {
 
     public TransformationServiceFactory() {
 
-        final ServiceLoader<TransformationService> transformationServices = ServiceLoader.load(TransformationService.class);
+        final ServiceLoader<TransformationService> transformationServices =
+                ServiceLoader.load(TransformationService.class);
         // Java9+ START
         // Java9+ REPLACEMENT this.transformations = transformationServices.stream()
         final Iterator<TransformationService> transformationServiceIterator = transformationServices.iterator();
         final Iterable<TransformationService> transformationServiceIterable = () -> transformationServiceIterator;
-        final Stream<TransformationService> transformationServiceStream = StreamSupport.stream(transformationServiceIterable.spliterator(), false);
+        final Stream<TransformationService> transformationServiceStream =
+                StreamSupport.stream(transformationServiceIterable.spliterator(), false);
         this.transformations = transformationServiceStream
                 // Java9+ END
                 .collect(Collectors.toMap(p -> p.getAction(), p -> p));

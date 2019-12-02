@@ -125,7 +125,8 @@ public class RunState {
      * @param key    the key to use.
      * @param tClass
      * @param <T>
-     * @return {@code true} if run state contains key, the value is not null and also it is of type {@code tClass}, otherwise {@code false}.
+     * @return {@code true} if run state contains key, the value is not null and also it is of type {@code tClass},
+     * otherwise {@code false}.
      * @throws IllegalKeyException       thrown if key is invalid.
      * @throws IllegalTypeClassException thrown if type class is invalid.
      * @throws TypeMismatchException     thrown if run state contains key but the value is not of type {@code tClass}.

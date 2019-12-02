@@ -8,7 +8,9 @@ import java.util.Objects;
 
 public class MapTypeUtil {
 
-    public static <K, V> boolean isTypedMap(final Object obj, final Class<K> keyType, final Class<V> valueType)
+    public static <K, V> boolean isTypedMap(final Object obj,
+                                            final Class<K> keyType,
+                                            final Class<V> valueType)
             throws NullGenericsKeyException,
             NullGenericsValueException {
 
@@ -29,7 +31,9 @@ public class MapTypeUtil {
         return isTypedMap(map, keyType, valueType);
     }
 
-    public static <K, V> boolean isTypedMap(final Map<Object, Object> map, final Class<K> keyType, final Class<V> valueType)
+    public static <K, V> boolean isTypedMap(final Map<Object, Object> map,
+                                            final Class<K> keyType,
+                                            final Class<V> valueType)
             throws NullGenericsKeyException,
             NullGenericsValueException {
 
@@ -52,8 +56,10 @@ public class MapTypeUtil {
         final boolean isTypeMismatch = map.entrySet()
                 .stream()
                 .anyMatch(p -> {
-                    final boolean keyMismatch = Objects.nonNull(p.getKey()) && !keyType.isAssignableFrom(p.getKey().getClass());
-                    final boolean valueMismatch = Objects.nonNull(p.getValue()) && !valueType.isAssignableFrom(p.getValue().getClass());
+                    final boolean keyMismatch = Objects.nonNull(p.getKey())
+                            && !keyType.isAssignableFrom(p.getKey().getClass());
+                    final boolean valueMismatch = Objects.nonNull(p.getValue())
+                            && !valueType.isAssignableFrom(p.getValue().getClass());
                     return keyMismatch || valueMismatch;
                 });
         final boolean isTypeMatch = !isTypeMismatch;
