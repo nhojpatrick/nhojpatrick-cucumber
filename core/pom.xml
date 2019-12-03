@@ -68,5 +68,7 @@
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.core</project.Automatic-Module-Name>
 		<checkstyle.maxAllowedViolations>20</checkstyle.maxAllowedViolations>
+		<jacoco.bundle.class.missedcount>999</jacoco.bundle.class.missedcount>
+		<jacoco.bundle.line.coveredratio>0%</jacoco.bundle.line.coveredratio>
 	</properties>
 </project>
