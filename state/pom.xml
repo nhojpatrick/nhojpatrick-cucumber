@@ -111,6 +111,8 @@
 		<project.surefire.argLine.jpms.module>--add-opens
             ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.steps.state=org.junit.platform.commons</project.surefire.argLine.jpms.module>
 		<checkstyle.maxAllowedViolations>54</checkstyle.maxAllowedViolations>
+		<jacoco.bundle.class.missedcount>999</jacoco.bundle.class.missedcount>
+		<jacoco.bundle.line.coveredratio>0%</jacoco.bundle.line.coveredratio>
 		<pmd.maxAllowedViolations>2</pmd.maxAllowedViolations>
 	</properties>
 </project>
