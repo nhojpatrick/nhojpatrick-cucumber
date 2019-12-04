@@ -1,8 +1,4 @@
-import com.github.nhojpatrick.cucumber.json.functions.FunctionPerform;
-
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Transform {

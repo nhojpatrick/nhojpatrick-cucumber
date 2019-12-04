@@ -1,6 +1,5 @@
-package com.github.nhojpatrick.cucumber.core.exceptions.tests;
+package com.github.nhojpatrick.cucumber.core.exceptions;
 
-import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsValueException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
@@ -15,7 +14,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class NullGenericsValueExceptionTest {
+public class EmptyKeyExceptionTest {
 
     @TestFactory
     public Collection<DynamicTest> exceptions() {
@@ -24,11 +23,11 @@ public class NullGenericsValueExceptionTest {
 
                 DynamicTest.dynamicTest("default", () -> {
                     final Executable testMethod = () -> {
-                        throw new NullGenericsValueException();
+                        throw new EmptyKeyException();
                     };
-                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
+                    final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 })

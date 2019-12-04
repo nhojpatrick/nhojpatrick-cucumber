@@ -1,6 +1,5 @@
-package com.github.nhojpatrick.cucumber.core.exceptions.tests;
+package com.github.nhojpatrick.cucumber.core.exceptions;
 
-import com.github.nhojpatrick.cucumber.core.exceptions.WhitespaceKeyException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
@@ -15,20 +14,29 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class WhitespaceKeyExceptionTest {
+public class IllegalTypeClassExceptionTest {
+
+    class TestingIllegalTypeClassException
+            extends IllegalTypeClassException {
+
+        public TestingIllegalTypeClassException(final String message) {
+            super(message);
+        }
+
+    }
 
     @TestFactory
     public Collection<DynamicTest> exceptions() {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("default", () -> {
+                DynamicTest.dynamicTest("message", () -> {
                     final Executable testMethod = () -> {
-                        throw new WhitespaceKeyException();
+                        throw new TestingIllegalTypeClassException("message");
                     };
-                    final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
+                    final IllegalTypeClassException expectedThrown = assertThrows(IllegalTypeClassException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 })

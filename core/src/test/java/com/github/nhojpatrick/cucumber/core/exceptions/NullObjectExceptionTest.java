@@ -1,6 +1,5 @@
-package com.github.nhojpatrick.cucumber.core.exceptions.tests;
+package com.github.nhojpatrick.cucumber.core.exceptions;
 
-import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
@@ -15,29 +14,20 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class IllegalKeyExceptionTest {
-
-    class TestingIllegalKeyException
-            extends IllegalKeyException {
-
-        public TestingIllegalKeyException(final String message) {
-            super(message);
-        }
-
-    }
+public class NullObjectExceptionTest {
 
     @TestFactory
     public Collection<DynamicTest> exceptions() {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("message", () -> {
+                DynamicTest.dynamicTest("default", () -> {
                     final Executable testMethod = () -> {
-                        throw new TestingIllegalKeyException("message");
+                        throw new NullObjectException();
                     };
-                    final IllegalKeyException expectedThrown = assertThrows(IllegalKeyException.class, testMethod);
+                    final NullObjectException expectedThrown = assertThrows(NullObjectException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null object."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 })
