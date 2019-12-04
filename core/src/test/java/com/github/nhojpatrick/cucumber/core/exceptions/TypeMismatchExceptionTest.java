@@ -1,6 +1,5 @@
-package com.github.nhojpatrick.cucumber.core.exceptions.tests;
+package com.github.nhojpatrick.cucumber.core.exceptions;
 
-import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
@@ -8,14 +7,14 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class NullObjectExceptionTest {
+public class TypeMismatchExceptionTest {
 
     @TestFactory
     public Collection<DynamicTest> exceptions() {
@@ -24,12 +23,12 @@ public class NullObjectExceptionTest {
 
                 DynamicTest.dynamicTest("default", () -> {
                     final Executable testMethod = () -> {
-                        throw new NullObjectException();
+                        throw new TypeMismatchException(String.class, new ClassCastException());
                     };
-                    final NullObjectException expectedThrown = assertThrows(NullObjectException.class, testMethod);
+                    final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null object."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
+                            () -> assertThat(expectedThrown.getCause(), is(throwable(ClassCastException.class)))
                     );
                 })
 

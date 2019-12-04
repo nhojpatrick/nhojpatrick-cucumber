@@ -1,6 +1,5 @@
-package com.github.nhojpatrick.cucumber.core.exceptions.tests;
+package com.github.nhojpatrick.cucumber.core.exceptions;
 
-import com.github.nhojpatrick.cucumber.core.exceptions.NullTypeClassException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
@@ -15,7 +14,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class NullTypeClassExceptionTest {
+public class NullGenericsValueExceptionTest {
 
     @TestFactory
     public Collection<DynamicTest> exceptions() {
@@ -24,11 +23,11 @@ public class NullTypeClassExceptionTest {
 
                 DynamicTest.dynamicTest("default", () -> {
                     final Executable testMethod = () -> {
-                        throw new NullTypeClassException();
+                        throw new NullGenericsValueException();
                     };
-                    final NullTypeClassException expectedThrown = assertThrows(NullTypeClassException.class, testMethod);
+                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Type Class."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 })
