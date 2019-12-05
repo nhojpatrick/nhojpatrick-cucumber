@@ -67,4 +67,8 @@ public class MapTypeUtil {
         return isTypeMatch;
     }
 
+    MapTypeUtil() {
+        throw new AssertionError("Static utility class - cannot be instantiated.");
+    }
+
 }

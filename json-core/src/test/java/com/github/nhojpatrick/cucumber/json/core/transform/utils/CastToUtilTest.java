@@ -6,9 +6,12 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 
+import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -136,6 +139,70 @@ public class CastToUtilTest {
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(String.class))),
                             () -> assertThat("Unexpected value", actual, is(equalTo("qwerty")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonObject", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonObject");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(HashMap.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("{}")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<JsonObject>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<JsonObject>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<java.lang.Boolean>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Boolean>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<java.lang.Double>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Double>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<java.lang.Float>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Float>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<java.lang.Long>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Long>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<java.lang.Integer>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Integer>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
+                    );
+                }),
+
+                DynamicTest.dynamicTest("JsonArray<java.lang.String>", () -> {
+                    final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.String>");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
+                            () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
                     );
                 })
 
