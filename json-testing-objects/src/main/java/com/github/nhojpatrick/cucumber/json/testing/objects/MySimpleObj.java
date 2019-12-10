@@ -19,6 +19,7 @@ import java.util.Map;
 
 @BeanDefinition
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressWarnings("PMD.UselessParentheses")
 public class MySimpleObj
         implements Bean,
         Cloneable {

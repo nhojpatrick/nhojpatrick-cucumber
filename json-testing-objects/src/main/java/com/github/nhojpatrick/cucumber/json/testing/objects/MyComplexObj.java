@@ -29,6 +29,7 @@ import java.util.Map;
         "objs"
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressWarnings("PMD.UselessParentheses")
 public class MyComplexObj
         implements Bean,
         Cloneable {

@@ -27,6 +27,7 @@ import java.util.Map;
         "nests"
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressWarnings("PMD.UselessParentheses")
 public class MyNestedObj
         implements Bean,
         Cloneable {

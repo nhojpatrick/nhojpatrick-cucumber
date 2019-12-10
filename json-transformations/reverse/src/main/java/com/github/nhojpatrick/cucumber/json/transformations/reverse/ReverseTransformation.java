@@ -6,7 +6,6 @@ import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.google.common.annotations.VisibleForTesting;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -35,10 +34,7 @@ public class ReverseTransformation
             return false;
         }
 
-        final ReverseTransformation that = (ReverseTransformation) obj;
-
-        return new EqualsBuilder()
-                .isEquals();
+        return true;
     }
 
     @Override
