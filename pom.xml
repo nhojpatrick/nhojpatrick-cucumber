@@ -19,6 +19,10 @@
 	<url>https://github.com/nhojpatrick/nhojpatrick-cucumber</url>
 	<!--prerequisites / -->
 	<!--issueManagement / -->
+	<issueManagement>
+		<system>GITHUB</system>
+		<url>http://github.com/nhojpatrick/nhojpatrick-cucumber/issues</url>
+	</issueManagement>
 	<!--ciManagement / -->
 	<!--inceptionYear / -->
 	<inceptionYear>2018</inceptionYear>
