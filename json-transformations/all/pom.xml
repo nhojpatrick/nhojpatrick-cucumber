@@ -58,10 +58,8 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transformations.all</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.surefire.argLine.jpms.module>
-		<checkstyle.maxAllowedViolations>197</checkstyle.maxAllowedViolations>
-		<jacoco.bundle.class.missedcount>999</jacoco.bundle.class.missedcount>
-		<jacoco.bundle.line.coveredratio>0%</jacoco.bundle.line.coveredratio>
-		<spotbugs.maxAllowedViolations>1</spotbugs.maxAllowedViolations>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<!--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.surefire.argLine.jpms.module>-->
+		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>
