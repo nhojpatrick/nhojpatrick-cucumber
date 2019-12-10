@@ -25,6 +25,7 @@ import java.util.Map;
         "lcBottom"
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressWarnings("PMD.UselessParentheses")
 public class MyListComplexObj
         implements Bean,
         Cloneable {

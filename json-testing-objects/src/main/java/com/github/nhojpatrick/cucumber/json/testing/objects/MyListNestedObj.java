@@ -25,6 +25,7 @@ import java.util.Map;
         "lnBottom"
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressWarnings("PMD.UselessParentheses")
 public class MyListNestedObj
         implements Bean,
         Cloneable {
