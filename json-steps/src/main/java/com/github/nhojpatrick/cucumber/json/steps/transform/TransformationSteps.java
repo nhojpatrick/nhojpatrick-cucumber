@@ -7,7 +7,7 @@ import com.github.nhojpatrick.cucumber.json.core.transform.TransformActionTask;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
 import com.github.nhojpatrick.cucumber.json.exceptions.InvalidTransformActionException;
-import com.github.nhojpatrick.cucumber.json.map.steps.ConvertToMapSteps;
+import com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants;
 import com.github.nhojpatrick.cucumber.json.steps.transform.transformations.TransformationServiceFactory;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
 import com.github.nhojpatrick.cucumber.state.RunState;
@@ -25,7 +25,7 @@ public class TransformationSteps {
     public static final String CUCUMBER_DATA_TABLE_COLUMN_PATH = "path";
     public static final String CUCUMBER_DATA_TABLE_COLUMN_TYPE = "type";
     public static final String CUCUMBER_DATA_TABLE_COLUMN_VALUE = "value";
-    public static final String DEFAULT_MAP_KEY = ConvertToMapSteps.DEFAULT_MAP_KEY;
+    public static final String DEFAULT_MAP_KEY = ConvertToMapConstants.DEFAULT_MAP_KEY;
 
     private final RunState runState;
 

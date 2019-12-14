@@ -12,10 +12,10 @@ import io.cucumber.java.en.Given;
 
 import java.util.Map;
 
-public class ConvertToMapSteps {
+import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_MAP_KEY;
+import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_OBJECT_KEY;
 
-    public static final String DEFAULT_OBJECT_KEY = "runState.json.obj";
-    public static final String DEFAULT_MAP_KEY = "runState.json.map";
+public class ConvertToMapSteps {
 
     private final RunState runState;
 
