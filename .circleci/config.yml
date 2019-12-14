@@ -8,6 +8,7 @@ commands:
       - restore_cache:
           keys:
             - openjdk-11-{{ checksum "~/openjdk-11.tar.gz.sha256" }}
+      - run: touch ~/openjdk-11.tar.gz
       - run: wget -c https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz -O ~/openjdk-11.tar.gz
       - save_cache:
           key: openjdk-11-{{ checksum "~/openjdk-11.tar.gz.sha256" }}
@@ -91,13 +92,19 @@ commands:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
-      - run: ./mvnw -Pcicd clean install -DskipTests
-      - run: ./mvnw -Pcicd test
+      - run:
+          name: "Maven Jdk8 Clean Install SkipTests"
+          command: ./mvnw -Pcicd clean install -DskipTests
+      - run:
+          name: "Maven Jdk8 Tests"
+          command: ./mvnw -Pcicd test
       - run:
           name: "Coveralls"
           command: ./mvnw -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
           when: on_success
-      - run: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
+      - run:
+          name: "Maven Jdk8 Build Jdk11 Tests"
+          command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
       - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
@@ -117,9 +124,12 @@ commands:
           keys:
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
-      - run: ./mvnw -Pcicd clean install -DskipTests
-      - run: ./mvnw -Pcicd test
-      - run: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
+      - run:
+          name: "Maven Jdk11 Clean Install SkipTests"
+          command: ./mvnw -Pcicd clean install -DskipTests
+      - run:
+          name: "Maven Jdk11 Tests"
+          command: ./mvnw -Pcicd test
       - run:
           name: "Tidy Cache before save"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
@@ -216,6 +226,18 @@ commands:
           when: always
 
 jobs:
+  builds_passed:
+    docker:
+      - image: circleci/node:4.8.2
+    steps:
+      - run: echo "Build Passed"
+
+  qa_passed:
+    docker:
+      - image: circleci/node:4.8.2
+    steps:
+      - run: echo "QA Passed"
+
   jdk8:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
@@ -281,29 +303,49 @@ workflows:
     jobs:
       - jdk8
       - jdk11
-      #- checkstyle:
-      #    filters:
-      #      branches:
-      #        ignore:
-      #          - develop
-      #          - master
-      #- javadoc:
-      #    filters:
-      #      branches:
-      #        ignore:
-      #          - develop
-      #          - master
-      #- pmd:
-      #    filters:
-      #      branches:
-      #        ignore:
-      #          - develop
-      #          - master
-      #- spotbugs:
-      #    filters:
-      #      branches:
-      #        ignore:
-      #          - develop
-      #          - master
       #- jdk13
       #- jdk14
+      - builds_passed:
+          requires:
+            - jdk8
+            - jdk11
+            #- jdk13
+            #- jdk14
+      - qa_passed:
+          requires:
+            - checkstyle
+            - javadoc
+            - pmd
+            - spotbugs
+      - checkstyle:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - javadoc:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - pmd:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
+      - spotbugs:
+          requires:
+            - builds_passed
+          filters:
+            branches:
+              ignore:
+                - develop
+                - master
