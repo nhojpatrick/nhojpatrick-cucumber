@@ -40,7 +40,9 @@ public class RemoveTransformation
     }
 
     @Override
-    public Map<String, Object> perform(Map<String, Object> input, final PathElement pathElement, String currentPath)
+    public Map<String, Object> perform(Map<String, Object> input,
+                                       final PathElement pathElement,
+                                       final String currentPath)
             throws IllegalKeyException {
 
         if (isNull(pathElement)) {
