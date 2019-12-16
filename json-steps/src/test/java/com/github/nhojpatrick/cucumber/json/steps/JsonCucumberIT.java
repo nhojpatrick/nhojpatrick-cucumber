@@ -6,15 +6,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        strict = true,
         plugin = {"pretty"},
         glue = {
                 "com.github.nhojpatrick.cucumber.json.steps",
                 "com.github.nhojpatrick.cucumber.state.steps"
         }
-//        ,
-//        tags = {
-//                "@Tag"
-//        }
 )
 public class JsonCucumberIT {
 }
