@@ -55,6 +55,7 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.all</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>
