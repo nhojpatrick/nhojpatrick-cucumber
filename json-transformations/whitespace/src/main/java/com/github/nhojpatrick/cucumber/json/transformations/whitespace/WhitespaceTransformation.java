@@ -70,7 +70,7 @@ public class WhitespaceTransformation
     }
 
     @Override
-    public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement)
+    public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement, String currentPath)
             throws IllegalKeyException,
             IllegalPathOperationException {
 

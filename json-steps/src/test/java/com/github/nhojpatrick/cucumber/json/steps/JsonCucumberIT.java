@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         strict = true,
         plugin = {"pretty"},
         glue = {
+                "com.github.nhojpatrick.cucumber.json.map.steps",
                 "com.github.nhojpatrick.cucumber.json.steps",
                 "com.github.nhojpatrick.cucumber.state.steps"
         }

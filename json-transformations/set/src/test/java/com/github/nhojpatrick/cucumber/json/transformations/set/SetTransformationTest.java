@@ -91,7 +91,7 @@ public class SetTransformationTest {
 
                 DynamicTest.dynamicTest("null input - null key", () -> {
                     final Transformation classUnderTest = new SetTransformation(null);
-                    final Executable testMethod = () -> classUnderTest.perform(null, null);
+                    final Executable testMethod = () -> classUnderTest.perform(null, null, null);
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
@@ -101,7 +101,7 @@ public class SetTransformationTest {
 
                 DynamicTest.dynamicTest("empty input - null key", () -> {
                     final Transformation classUnderTest = new SetTransformation(null);
-                    final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null);
+                    final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null, null);
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
@@ -128,7 +128,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -148,7 +148,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -168,7 +168,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -188,7 +188,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -208,7 +208,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -228,7 +228,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -248,7 +248,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -268,7 +268,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -288,7 +288,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -308,7 +308,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -328,7 +328,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -360,7 +360,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -384,7 +384,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -411,7 +411,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -439,7 +439,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -460,7 +460,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -481,7 +481,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -502,7 +502,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -523,7 +523,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -544,7 +544,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -565,7 +565,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -586,7 +586,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -607,7 +607,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -628,7 +628,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -649,7 +649,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -666,17 +666,17 @@ public class SetTransformationTest {
                     final Map<String, Object> input = new HashMap<>(getBasicJsonMap());
 
                     final Map<String, Object> map1 = new HashMap<>();
-                    map1.put("aMap", 1);
+                    map1.put("aMap", 1923);
                     final Map<String, Object> map3 = new HashMap<>();
-                    map3.put("cMap", 3);
+                    map3.put("cMap", 3945);
                     final Map<String, Object> map4 = new HashMap<>();
-                    map4.put("dMap", 4);
+                    map4.put("dMap", 4956);
                     final Map<String, Object> expected = new HashMap<>(getBasicJsonMap());
                     expected.put(key, new ArrayList<>(Arrays.asList(map1, "newValue", map3, map4)));
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -693,19 +693,19 @@ public class SetTransformationTest {
                     final Map<String, Object> input = new HashMap<>(getBasicJsonMap());
 
                     final Map<String, Object> map1 = new HashMap<>();
-                    map1.put("aMap", 1);
+                    map1.put("aMap", 1923);
                     final Map<String, Object> map2 = new HashMap<>();
-                    map2.put("bMap", 2);
+                    map2.put("bMap", 2934);
                     final Map<String, Object> map3 = new HashMap<>();
-                    map3.put("cMap", 3);
+                    map3.put("cMap", 3945);
                     final Map<String, Object> map4 = new HashMap<>();
-                    map4.put("dMap", 4);
+                    map4.put("dMap", 4956);
                     final Map<String, Object> expected = new HashMap<>(getBasicJsonMap());
                     expected.put(key, new ArrayList<>(Arrays.asList(map1, map2, map3, map4, null, "newValue")));
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -729,7 +729,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -757,7 +757,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -778,7 +778,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -799,7 +799,7 @@ public class SetTransformationTest {
 
                     final Transformation classUnderTest = new SetTransformation("newValue");
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

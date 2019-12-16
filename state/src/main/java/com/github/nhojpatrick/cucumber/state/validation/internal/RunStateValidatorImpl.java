@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 public class RunStateValidatorImpl
         implements RunStateValidator {
 
-
     private final Set<String> nulls;
     private final Set<String> values;
 

@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
@@ -92,7 +93,7 @@ public class ReverseTransformationTest {
 
                 DynamicTest.dynamicTest("null input - null key", () -> {
                     final Transformation classUnderTest = new ReverseTransformation();
-                    final Executable testMethod = () -> classUnderTest.perform(null, null);
+                    final Executable testMethod = () -> classUnderTest.perform(null, null, null);
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
@@ -102,7 +103,7 @@ public class ReverseTransformationTest {
 
                 DynamicTest.dynamicTest("empty input - null key", () -> {
                     final Transformation classUnderTest = new ReverseTransformation();
-                    final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null);
+                    final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null, null);
                     final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
@@ -124,7 +125,7 @@ public class ReverseTransformationTest {
 
                     final String expected = null;
 
-                    final String actual = classUnderTest.reverse(null);
+                    final String actual = classUnderTest.reverse(null, null);
 
                     assertThat(actual, is(equalTo(expected)));
                 }),
@@ -135,7 +136,7 @@ public class ReverseTransformationTest {
 
                     final String expected = "";
 
-                    final String actual = classUnderTest.reverse("");
+                    final String actual = classUnderTest.reverse(null, "");
 
                     assertThat(actual, is(equalTo(expected)));
                 }),
@@ -146,7 +147,7 @@ public class ReverseTransformationTest {
 
                     final String expected = "ytrewq";
 
-                    final String actual = classUnderTest.reverse("qwerty");
+                    final String actual = classUnderTest.reverse(null, "qwerty");
 
                     assertThat(actual, is(equalTo(expected)));
                 })
@@ -170,7 +171,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -190,7 +191,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -215,7 +216,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -241,7 +242,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -261,7 +262,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -281,7 +282,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -301,7 +302,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -321,7 +322,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -341,7 +342,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -361,7 +362,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -381,7 +382,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -401,7 +402,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -421,7 +422,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -438,10 +439,10 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Executable testMethod = () -> classUnderTest.perform(input, new PathElementImpl(key));
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final Executable testMethod = () -> classUnderTest.perform(input, new PathElementImpl(key), "currentPath.keyMap");
+                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonObject."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'currentPath.keyMap'."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -457,7 +458,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -477,7 +478,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -497,7 +498,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathElementImpl(key), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -529,7 +530,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -553,7 +554,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -569,21 +570,12 @@ public class ReverseTransformationTest {
 
                     final Map<String, Object> input = new HashMap<>(getBasicJsonMap());
 
-                    final Map<String, Object> expected = new HashMap<>(getBasicJsonMap());
-
-                    expected.put(key, new ArrayList<>(Arrays.asList(
-                            new ArrayList<>(Arrays.asList("aList")),
-                            " [b]  ",
-                            new ArrayList<>(Arrays.asList("cList")),
-                            new ArrayList<>(Arrays.asList("dList"))
-                    )));
-
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), "currentPath");
+                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonArray<>."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonArray<>, at path 'currentPath'."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -607,7 +599,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -628,7 +620,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -649,7 +641,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -670,7 +662,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -691,7 +683,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -712,7 +704,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -733,7 +725,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -754,7 +746,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -775,7 +767,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -796,7 +788,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -817,7 +809,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -835,10 +827,10 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), "currentPath.keyMapArray[1]");
+                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonObject."))),
+                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'currentPath.keyMapArray[1]'."))),
                             () -> assertThat(expectedThrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -851,19 +843,19 @@ public class ReverseTransformationTest {
                     final Map<String, Object> input = new HashMap<>(getBasicJsonMap());
 
                     final Map<String, Object> map1 = new HashMap<>();
-                    map1.put("aMap", 1);
+                    map1.put("aMap", 1923);
                     final Map<String, Object> map2 = new HashMap<>();
-                    map2.put("bMap", 2);
+                    map2.put("bMap", 2934);
                     final Map<String, Object> map3 = new HashMap<>();
-                    map3.put("cMap", 3);
+                    map3.put("cMap", 3945);
                     final Map<String, Object> map4 = new HashMap<>();
-                    map4.put("dMap", 4);
+                    map4.put("dMap", 4956);
                     final Map<String, Object> expected = new HashMap<>(getBasicJsonMap());
                     expected.put(key, new ArrayList<>(Arrays.asList(map1, map2, map3, map4, null, null)));
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -887,7 +879,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -915,7 +907,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -936,7 +928,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -957,7 +949,7 @@ public class ReverseTransformationTest {
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
-                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex));
+                    final Map<String, Object> actual = classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
