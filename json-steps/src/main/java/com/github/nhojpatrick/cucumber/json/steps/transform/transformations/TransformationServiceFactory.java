@@ -12,7 +12,6 @@ import java.util.stream.StreamSupport;
 
 public class TransformationServiceFactory {
 
-
     public static TransformationServiceFactory getInstance() {
 
         return new TransformationServiceFactory();

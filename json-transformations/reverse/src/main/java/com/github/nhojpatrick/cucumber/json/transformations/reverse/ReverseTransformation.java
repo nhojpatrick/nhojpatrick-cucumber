@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
@@ -44,8 +45,9 @@ public class ReverseTransformation
     }
 
     @Override
-    public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement)
-            throws IllegalKeyException {
+    public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement, String currentPath)
+            throws IllegalKeyException,
+            IllegalPathOperationException {
 
         if (isNull(pathElement)) {
             throw new NullPathElementException();
@@ -60,7 +62,10 @@ public class ReverseTransformation
             final Object obj = output.get(pathElement.getElement());
 
             if (isTypedMap(obj, String.class, Object.class)) {
-                throw new UnsupportedOperationException("Unable to reverse JsonObject.");
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to reverse JsonObject, at path '%s'.",
+                        currentPath
+                ));
             }
 
             if (isTypedList(obj, Object.class)) {
@@ -70,7 +75,7 @@ public class ReverseTransformation
                 output.put(pathElement.getElement(), listObj);
 
             } else {
-                final String reversed = reverse(obj);
+                final String reversed = reverse(currentPath, obj);
                 output.put(pathElement.getElement(), reversed);
             }
 
@@ -89,7 +94,7 @@ public class ReverseTransformation
                 if (pathElement.getArrayIndex() < listObj.size()) {
 
                     final Object obj = listObj.get(pathElement.getArrayIndex());
-                    final String reversed = reverse(obj);
+                    final String reversed = reverse(currentPath, obj);
 
                     listObj.set(pathElement.getArrayIndex(), reversed);
 
@@ -113,14 +118,23 @@ public class ReverseTransformation
     }
 
     @VisibleForTesting
-    String reverse(final Object input) {
+    String reverse(final String currentPath,
+                   final Object input)
+            throws IllegalPathOperationException {
 
         if (input instanceof Map) {
-            throw new UnsupportedOperationException("Unable to reverse JsonObject.");
+            throw new IllegalPathOperationException(String.format(
+                    "Unable to reverse JsonObject, at path '%s'.",
+                    currentPath
+            ));
+//            throw new UnsupportedOperationException("Unable to reverse JsonObject.");
         }
 
         if (input instanceof List) {
-            throw new UnsupportedOperationException("Unable to reverse JsonArray<>.");
+            throw new IllegalPathOperationException(String.format(
+                    "Unable to reverse JsonArray<>, at path '%s'.",
+                    currentPath
+            ));
         }
 
         String str;

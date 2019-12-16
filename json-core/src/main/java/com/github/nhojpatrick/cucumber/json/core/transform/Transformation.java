@@ -9,7 +9,7 @@ import java.util.Map;
 @FunctionalInterface
 public interface Transformation {
 
-    Map<String, Object> perform(Map<String, Object> input, PathElement pathElement)
+    Map<String, Object> perform(Map<String, Object> input, PathElement pathElement, String currentPath)
             throws IllegalKeyException,
             IllegalPathOperationException;
 

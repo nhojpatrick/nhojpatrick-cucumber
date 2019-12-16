@@ -71,7 +71,7 @@ public class TransformImpl
 
         if (pathElements.size() == 1) {
             LOGGER.debug("Execute Before depth={} path='{}' input={}", depth, pathElements, output);
-            output = transformation.perform(output, pathElement);
+            output = transformation.perform(output, pathElement, currentPath);
             LOGGER.debug("Execute After depth={} path='{}' input={}", depth, pathElements, output);
 
         } else if (pathElements.size() > 1) {
@@ -116,7 +116,7 @@ public class TransformImpl
             } else if (isTypedListObject) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert primative array to object array, at path '%s'.",
-                        String.valueOf(currentPath)
+                        currentPath
                 ));
 
             } else {
@@ -131,7 +131,7 @@ public class TransformImpl
                 } else {
                     throw new IllegalPathOperationException(String.format(
                             "Unable to convert primative to object, at path '%s'.",
-                            String.valueOf(currentPath)
+                            currentPath
                     ));
                 }
 

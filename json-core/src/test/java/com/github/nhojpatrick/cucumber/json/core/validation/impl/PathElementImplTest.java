@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PathElementImplTest {
 
-
     @Nested
     @DisplayName("Basic")
     class basic {
