@@ -227,14 +227,14 @@ commands:
 
 jobs:
   builds_passed:
-    docker:
-      - image: circleci/node:4.8.2
+    machine:
+      image: circleci/classic:latest
     steps:
       - run: echo "Build Passed"
 
   qa_passed:
-    docker:
-      - image: circleci/node:4.8.2
+    machine:
+      image: circleci/classic:latest
     steps:
       - run: echo "QA Passed"
 
