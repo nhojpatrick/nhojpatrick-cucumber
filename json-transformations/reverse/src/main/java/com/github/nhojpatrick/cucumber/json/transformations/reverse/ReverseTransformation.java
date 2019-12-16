@@ -45,7 +45,9 @@ public class ReverseTransformation
     }
 
     @Override
-    public Map<String, Object> perform(final Map<String, Object> input, final PathElement pathElement, String currentPath)
+    public Map<String, Object> perform(final Map<String, Object> input,
+                                       final PathElement pathElement,
+                                       final String currentPath)
             throws IllegalKeyException,
             IllegalPathOperationException {
 

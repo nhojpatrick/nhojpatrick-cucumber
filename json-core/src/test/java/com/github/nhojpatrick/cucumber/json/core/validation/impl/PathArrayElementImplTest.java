@@ -1,6 +1,5 @@
 package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
-import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
