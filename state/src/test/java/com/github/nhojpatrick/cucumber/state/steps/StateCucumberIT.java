@@ -6,8 +6,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        strict = true,
         plugin = {"pretty"},
-        glue = {"com.github.nhojpatrick.cucumber.state.steps"}
+        glue = {
+                "com.github.nhojpatrick.cucumber.state.steps"
+        }
 )
 public class StateCucumberIT {
 }
