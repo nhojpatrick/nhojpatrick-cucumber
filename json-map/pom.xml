@@ -81,9 +81,5 @@
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.map</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.exceptions=org.junit.platform.commons</project.surefire.argLine.jpms.module>
-		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
-		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
-		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
-		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
 	</properties>
 </project>
