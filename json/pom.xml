@@ -49,12 +49,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-testing-objects</artifactId>
+			<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

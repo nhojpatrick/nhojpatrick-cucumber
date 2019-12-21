@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.testing.objects;
+package com.github.nhojpatrick.cucumber.testing.internal.objects;
 
 import java.util.ArrayList;
 import java.util.Arrays;

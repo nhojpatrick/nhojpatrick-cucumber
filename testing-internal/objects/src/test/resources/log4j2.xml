@@ -6,7 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.github.nhojpatrick.cucumber.json.testing.objects" level="debug">
+        <Logger name="com.github.nhojpatrick.cucumber.testing.internal.objects" level="debug">
             <AppenderRef ref="Console"/>
         </Logger>
         <Root level="warn">

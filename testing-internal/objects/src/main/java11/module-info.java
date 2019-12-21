@@ -1,6 +1,6 @@
-module com.github.nhojpatrick.cucumber.json.testing.objects {
-    exports com.github.nhojpatrick.cucumber.json.testing.objects;
-    opens com.github.nhojpatrick.cucumber.json.testing.objects
+module com.github.nhojpatrick.cucumber.testing.internal.objects {
+    exports com.github.nhojpatrick.cucumber.testing.internal.objects;
+    opens com.github.nhojpatrick.cucumber.testing.internal.objects
             to com.fasterxml.jackson.databind;
     requires com.github.spotbugs.annotations;
     requires org.joda.beans;

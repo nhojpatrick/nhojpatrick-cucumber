@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.testing.objects;
+package com.github.nhojpatrick.cucumber.testing.internal.objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

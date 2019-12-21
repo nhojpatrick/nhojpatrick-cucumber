@@ -1,8 +1,8 @@
 package com.github.nhojpatrick.cucumber.json.map;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
-import com.github.nhojpatrick.cucumber.json.testing.objects.MyComplexObj;
-import com.github.nhojpatrick.cucumber.json.testing.objects.MySimpleObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.MyComplexObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.MySimpleObj;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -10,10 +10,10 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.json.testing.objects.TestingConstants.COMPLEX_OBJECT_AS_JSON_MAP;
-import static com.github.nhojpatrick.cucumber.json.testing.objects.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.json.testing.objects.TestingConstants.SIMPLE_OBJECT_AS_JSON_MAP;
-import static com.github.nhojpatrick.cucumber.json.testing.objects.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.COMPLEX_OBJECT_AS_JSON_MAP;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.SIMPLE_OBJECT_AS_JSON_MAP;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

@@ -755,9 +755,9 @@
 		<module>json-map</module>
 		<module>json-map-steps</module>
 		<module>json-steps</module>
-		<module>json-testing-objects</module>
 		<module>json-transformations</module>
 		<module>state</module>
+		<module>testing-internal/objects</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
@@ -809,17 +809,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-testing-objects</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-state</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
