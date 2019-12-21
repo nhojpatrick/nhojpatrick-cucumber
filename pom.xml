@@ -969,7 +969,7 @@
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
-		<version.com.github.nhojpatrick.hamcrest>[1.0.0,1.0.99)</version.com.github.nhojpatrick.hamcrest>
+		<version.com.github.nhojpatrick.hamcrest>[1.0.1,1.0.99)</version.com.github.nhojpatrick.hamcrest>
 		<version.com.puppycrawl.tools.checkstyle>8.27</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber>4.8.0</version.io.cucumber>
 		<version.io.cucumber.datatable>3.1.0</version.io.cucumber.datatable>
