@@ -749,15 +749,20 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>all-steps</module>
 		<module>core</module>
 		<module>json</module>
 		<module>json-core</module>
 		<module>json-map</module>
 		<module>json-map-steps</module>
 		<module>json-steps</module>
+		<module>json-transform</module>
+		<module>json-transform-steps</module>
 		<module>json-transformations</module>
 		<module>state</module>
+		<module>state-steps</module>
 		<module>testing-internal/objects</module>
+		<module>testing-internal/steps</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
@@ -775,6 +780,11 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-all</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-all-steps</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -809,6 +819,16 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-transform</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-transform-steps</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -819,7 +839,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-state-steps</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

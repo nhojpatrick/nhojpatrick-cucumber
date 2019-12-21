@@ -7,11 +7,11 @@
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
 		<artifactId>nhojpatrick-cucumber</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
-		<relativePath>../../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
+	<artifactId>nhojpatrick-cucumber-json-transform-steps</artifactId>
 	<!--packaging / -->
 	<packaging>jar</packaging>
 	<!--name / -->
@@ -29,14 +29,6 @@
 	<!--scm / -->
 	<!--organization / -->
 	<!--build /-->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.joda</groupId>
-				<artifactId>joda-beans-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 	<!--profiles / -->
 	<!--modules / -->
 	<!--repositories / -->
@@ -44,12 +36,18 @@
 	<!--dependencies / -->
 	<dependencies>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-transform</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.spotbugs</groupId>
-			<artifactId>spotbugs-annotations</artifactId>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -57,8 +55,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.joda</groupId>
-			<artifactId>joda-beans</artifactId>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -76,9 +78,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.testing.internal.objects</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=com.fasterxml.jackson.databind</project.surefire.argLine.jpms.module>
-		<maven.deploy.skip>true</maven.deploy.skip>
-		<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transform.steps</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 	</properties>
 </project>
