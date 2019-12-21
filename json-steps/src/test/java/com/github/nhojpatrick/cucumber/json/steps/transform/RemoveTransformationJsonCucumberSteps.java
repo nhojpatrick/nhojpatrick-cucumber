@@ -14,7 +14,7 @@ import org.junit.jupiter.api.function.Executable;
 
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.json.steps.transform.TransformationSteps.DEFAULT_MAP_KEY;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.DEFAULT_MAP_KEY;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;

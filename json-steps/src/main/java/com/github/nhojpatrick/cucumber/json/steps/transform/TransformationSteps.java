@@ -7,7 +7,6 @@ import com.github.nhojpatrick.cucumber.json.core.transform.TransformActionTask;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
 import com.github.nhojpatrick.cucumber.json.exceptions.InvalidTransformActionException;
-import com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants;
 import com.github.nhojpatrick.cucumber.json.steps.transform.transformations.TransformationServiceFactory;
 import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
 import com.github.nhojpatrick.cucumber.state.RunState;
@@ -19,13 +18,13 @@ import io.cucumber.java.en.Given;
 import java.util.List;
 import java.util.Map;
 
-public class TransformationSteps {
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_ACTION;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_PATH;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_TYPE;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_VALUE;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.DEFAULT_MAP_KEY;
 
-    public static final String CUCUMBER_DATA_TABLE_COLUMN_ACTION = "action";
-    public static final String CUCUMBER_DATA_TABLE_COLUMN_PATH = "path";
-    public static final String CUCUMBER_DATA_TABLE_COLUMN_TYPE = "type";
-    public static final String CUCUMBER_DATA_TABLE_COLUMN_VALUE = "value";
-    public static final String DEFAULT_MAP_KEY = ConvertToMapConstants.DEFAULT_MAP_KEY;
+public class TransformationSteps {
 
     private final RunState runState;
 
