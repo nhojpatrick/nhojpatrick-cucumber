@@ -21,7 +21,7 @@ import java.util.Map;
 import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformConstants.DEFAULT_MAP_KEY;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SetTransformationJsonCucumberSteps {
