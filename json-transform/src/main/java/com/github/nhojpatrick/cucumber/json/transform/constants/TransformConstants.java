@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transform.constants;
 
 import com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants;
 
-public interface TransformationConstants {
+public interface TransformConstants {
 
     String CUCUMBER_DATA_TABLE_COLUMN_ACTION = "action";
     String CUCUMBER_DATA_TABLE_COLUMN_PATH = "path";

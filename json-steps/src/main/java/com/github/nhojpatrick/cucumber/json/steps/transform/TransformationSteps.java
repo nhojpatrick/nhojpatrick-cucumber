@@ -18,11 +18,11 @@ import io.cucumber.java.en.Given;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_ACTION;
-import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_PATH;
-import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_TYPE;
-import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.CUCUMBER_DATA_TABLE_COLUMN_VALUE;
-import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformationConstants.DEFAULT_MAP_KEY;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformConstants.CUCUMBER_DATA_TABLE_COLUMN_ACTION;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformConstants.CUCUMBER_DATA_TABLE_COLUMN_PATH;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformConstants.CUCUMBER_DATA_TABLE_COLUMN_TYPE;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformConstants.CUCUMBER_DATA_TABLE_COLUMN_VALUE;
+import static com.github.nhojpatrick.cucumber.json.transform.constants.TransformConstants.DEFAULT_MAP_KEY;
 
 public class TransformationSteps {
 
