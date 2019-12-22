@@ -93,11 +93,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.exceptions=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.factory=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.factory=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.impl=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform.impl=org.junit.platform.commons
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation=org.junit.platform.commons</project.surefire.argLine.jpms.module>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 	</properties>
 </project>
