@@ -8,7 +8,7 @@ import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
 import com.github.nhojpatrick.cucumber.json.exceptions.InvalidTransformActionException;
 import com.github.nhojpatrick.cucumber.json.steps.transform.transformations.TransformationServiceFactory;
-import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
+import com.github.nhojpatrick.cucumber.json.transform.factory.TransformFactory;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
 import com.google.inject.Inject;

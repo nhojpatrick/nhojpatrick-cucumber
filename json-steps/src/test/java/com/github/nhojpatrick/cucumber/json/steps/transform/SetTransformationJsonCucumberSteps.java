@@ -9,7 +9,7 @@ import com.github.nhojpatrick.cucumber.json.core.exceptions.UnsupportedDataTypeE
 import com.github.nhojpatrick.cucumber.json.core.transform.CastTo;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.core.transform.utils.CastToUtil;
-import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
+import com.github.nhojpatrick.cucumber.json.transform.factory.TransformFactory;
 import com.github.nhojpatrick.cucumber.json.transformations.set.SetTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;

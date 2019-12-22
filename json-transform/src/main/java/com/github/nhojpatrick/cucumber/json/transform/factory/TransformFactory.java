@@ -1,6 +1,7 @@
-package com.github.nhojpatrick.cucumber.json.transform;
+package com.github.nhojpatrick.cucumber.json.transform.factory;
 
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
+import com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl;
 
 import java.util.function.Supplier;
 

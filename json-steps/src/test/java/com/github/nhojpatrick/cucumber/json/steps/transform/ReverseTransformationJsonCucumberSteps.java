@@ -5,7 +5,7 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
-import com.github.nhojpatrick.cucumber.json.transform.TransformFactory;
+import com.github.nhojpatrick.cucumber.json.transform.factory.TransformFactory;
 import com.github.nhojpatrick.cucumber.json.transformations.reverse.ReverseTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;

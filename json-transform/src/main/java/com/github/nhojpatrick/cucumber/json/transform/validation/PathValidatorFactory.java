@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.validation;
+package com.github.nhojpatrick.cucumber.json.transform.validation;
 
 import com.github.nhojpatrick.cucumber.json.core.validation.PathValidator;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathValidatorImpl;

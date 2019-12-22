@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.transform;
+package com.github.nhojpatrick.cucumber.json.transform.impl;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalOperationException;
@@ -7,7 +7,7 @@ import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
-import com.github.nhojpatrick.cucumber.json.validation.PathValidatorFactory;
+import com.github.nhojpatrick.cucumber.json.transform.validation.PathValidatorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

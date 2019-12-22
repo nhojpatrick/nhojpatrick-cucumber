@@ -1,6 +1,7 @@
-package com.github.nhojpatrick.cucumber.json.transform;
+package com.github.nhojpatrick.cucumber.json.transform.impl;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
+import com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl;
 import com.github.nhojpatrick.cucumber.json.transformations.remove.RemoveTransformation;
 import com.github.nhojpatrick.cucumber.json.transformations.set.SetTransformation;
 import org.junit.jupiter.api.DisplayName;

@@ -5,7 +5,7 @@ module com.github.nhojpatrick.cucumber.json.core {
     exports com.github.nhojpatrick.cucumber.json.core.validation;
     exports com.github.nhojpatrick.cucumber.json.core.validation.impl
             to
-            com.github.nhojpatrick.cucumber.json,
+            com.github.nhojpatrick.cucumber.json.transform,
             com.github.nhojpatrick.cucumber.json.transformations.remove,
             com.github.nhojpatrick.cucumber.json.transformations.reverse,
             com.github.nhojpatrick.cucumber.json.transformations.set,

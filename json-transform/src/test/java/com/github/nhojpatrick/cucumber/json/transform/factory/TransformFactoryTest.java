@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.transform;
+package com.github.nhojpatrick.cucumber.json.transform.factory;
 
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import org.junit.jupiter.api.Test;
