@@ -34,10 +34,10 @@ public class IllegalTypeClassExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingIllegalTypeClassException("message");
                     };
-                    final IllegalTypeClassException expectedThrown = assertThrows(IllegalTypeClassException.class, testMethod);
+                    final IllegalTypeClassException thrown = assertThrows(IllegalTypeClassException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

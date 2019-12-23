@@ -34,10 +34,10 @@ public class IllegalOperationExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingIllegalOperationException("message");
                     };
-                    final IllegalOperationException expectedThrown = assertThrows(IllegalOperationException.class, testMethod);
+                    final IllegalOperationException thrown = assertThrows(IllegalOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

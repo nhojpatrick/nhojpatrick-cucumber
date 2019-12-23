@@ -12,7 +12,7 @@ import static java.util.Objects.requireNonNull;
 public class WhitespaceTransformationService
         implements TransformationService {
 
-    public static final String ACTION = "whitespace";
+    public static final String ACTION = "Whitespace";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WhitespaceTransformationService.class);
 

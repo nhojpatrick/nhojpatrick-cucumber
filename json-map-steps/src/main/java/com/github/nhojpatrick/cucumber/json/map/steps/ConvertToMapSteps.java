@@ -3,14 +3,11 @@ package com.github.nhojpatrick.cucumber.json.map.steps;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException;
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
-import com.github.nhojpatrick.cucumber.json.map.ConvertToMap;
+import com.github.nhojpatrick.cucumber.json.map.ConvertToMapUtil;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
-import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
 import com.google.inject.Inject;
 import io.cucumber.java.en.Given;
-
-import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_MAP_KEY;
 import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_OBJECT_KEY;
@@ -41,15 +38,10 @@ public class ConvertToMapSteps {
             NullRunStateException,
             TypeMismatchException {
 
-        RunStateValidatorFactory.getInstance()
-                .withNull(runStateJsonMapKey)
-                .withValue(runStateObjectKey)
-                .verify(this.runState);
-
-        final Object obj = this.runState.get(runStateObjectKey, Object.class);
-        final ConvertToMap convertToMap = new ConvertToMap();
-        final Map<String, Object> runStateJsonMapValue = convertToMap.apply(obj);
-        this.runState.set(runStateJsonMapKey, runStateJsonMapValue);
+        new ConvertToMapUtil()
+                .convertToMap(this.runState,
+                        runStateObjectKey,
+                        runStateJsonMapKey);
     }
 
 }

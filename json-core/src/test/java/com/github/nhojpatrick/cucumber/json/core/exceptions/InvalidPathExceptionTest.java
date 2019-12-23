@@ -25,10 +25,10 @@ public class InvalidPathExceptionTest {
                     final Executable testMethod = () -> {
                         throw new InvalidPathException("message");
                     };
-                    final InvalidPathException expectedThrown = assertThrows(InvalidPathException.class, testMethod);
+                    final InvalidPathException thrown = assertThrows(InvalidPathException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -36,10 +36,10 @@ public class InvalidPathExceptionTest {
                     final Executable testMethod = () -> {
                         throw new InvalidPathException("%s", "message");
                     };
-                    final InvalidPathException expectedThrown = assertThrows(InvalidPathException.class, testMethod);
+                    final InvalidPathException thrown = assertThrows(InvalidPathException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

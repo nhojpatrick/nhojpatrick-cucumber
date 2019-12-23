@@ -94,20 +94,20 @@ public class ReverseTransformationTest {
                 DynamicTest.dynamicTest("null input - null key", () -> {
                     final Transformation classUnderTest = new ReverseTransformation();
                     final Executable testMethod = () -> classUnderTest.perform(null, null, null);
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
                 DynamicTest.dynamicTest("empty input - null key", () -> {
                     final Transformation classUnderTest = new ReverseTransformation();
                     final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null, null);
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 
@@ -224,10 +224,10 @@ public class ReverseTransformationTest {
                             () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
                     );
 //                    final Executable testMethod = () -> classUnderTest.perform(input, new PathElementImpl(key));
-//                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+//                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
 //                    assertAll("Checking Exception",
-//                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonArray<>."))),
-//                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+//                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to reverse JsonArray<>."))),
+//                            () -> assertThat(thrown.getCause(), is(nullValue()))
 //                    );
                 }),
 
@@ -440,10 +440,10 @@ public class ReverseTransformationTest {
                     final Transformation classUnderTest = new ReverseTransformation();
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathElementImpl(key), "currentPath.keyMap");
-                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'currentPath.keyMap'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'currentPath.keyMap'."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -573,10 +573,10 @@ public class ReverseTransformationTest {
                     final Transformation classUnderTest = new ReverseTransformation();
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), "currentPath");
-                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonArray<>, at path 'currentPath'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to reverse JsonArray<>, at path 'currentPath'."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -828,10 +828,10 @@ public class ReverseTransformationTest {
                     final Transformation classUnderTest = new ReverseTransformation();
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), "currentPath.keyMapArray[1]");
-                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'currentPath.keyMapArray[1]'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'currentPath.keyMapArray[1]'."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 

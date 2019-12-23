@@ -1,5 +1,6 @@
 module com.github.nhojpatrick.cucumber.json.transformations.whitespace {
     exports com.github.nhojpatrick.cucumber.json.transformations.whitespace;
+    exports com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions;
     uses com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
     provides com.github.nhojpatrick.cucumber.json.core.transform.TransformationService
             with com.github.nhojpatrick.cucumber.json.transformations.whitespace.WhitespaceTransformationService;

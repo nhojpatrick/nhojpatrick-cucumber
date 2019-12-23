@@ -25,10 +25,10 @@ public class NullKeyExceptionTest {
                     final Executable testMethod = () -> {
                         throw new NullKeyException();
                     };
-                    final NullKeyException expectedThrown = assertThrows(NullKeyException.class, testMethod);
+                    final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Key."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Key."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

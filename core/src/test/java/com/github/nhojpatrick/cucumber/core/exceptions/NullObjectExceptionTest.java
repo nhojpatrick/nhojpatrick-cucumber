@@ -25,10 +25,10 @@ public class NullObjectExceptionTest {
                     final Executable testMethod = () -> {
                         throw new NullObjectException();
                     };
-                    final NullObjectException expectedThrown = assertThrows(NullObjectException.class, testMethod);
+                    final NullObjectException thrown = assertThrows(NullObjectException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null object."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null object."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

@@ -25,10 +25,10 @@ public class TypeMismatchExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TypeMismatchException(String.class, new ClassCastException());
                     };
-                    final TypeMismatchException expectedThrown = assertThrows(TypeMismatchException.class, testMethod);
+                    final TypeMismatchException thrown = assertThrows(TypeMismatchException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
-                            () -> assertThat(expectedThrown.getCause(), is(throwable(ClassCastException.class)))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Run state value does not match requested type 'class java.lang.String'."))),
+                            () -> assertThat(thrown.getCause(), is(throwable(ClassCastException.class)))
                     );
                 })
 

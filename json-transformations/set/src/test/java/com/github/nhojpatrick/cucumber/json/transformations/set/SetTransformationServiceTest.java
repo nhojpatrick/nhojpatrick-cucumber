@@ -130,10 +130,10 @@ public class SetTransformationServiceTest {
                 DynamicTest.dynamicTest("null TransformActionTask", () -> {
 
                     final Executable testMethod = () -> this.classUnderTest.resolve(null);
-                    final NullPointerException expectedThrown = assertThrows(NullPointerException.class, testMethod);
+                    final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("TransformActionTask"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("TransformActionTask"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -143,10 +143,10 @@ public class SetTransformationServiceTest {
                             .build();
 
                     final Executable testMethod = () -> this.classUnderTest.resolve(transformActionTask);
-                    final NullPointerException expectedThrown = assertThrows(NullPointerException.class, testMethod);
+                    final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("TransformActionTask.getType()"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("TransformActionTask.getType()"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 

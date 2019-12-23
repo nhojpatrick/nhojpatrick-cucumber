@@ -13,7 +13,7 @@ import static java.util.Objects.requireNonNull;
 public class SetTransformationService
         implements TransformationService {
 
-    public static final String ACTION = "set";
+    public static final String ACTION = "Set";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SetTransformationService.class);
 

@@ -41,14 +41,14 @@ public class ListTypeUtilTest {
 
                 DynamicTest.dynamicTest("List -> <null>", () -> {
                     final Executable testMethod = () -> isTypedList(new ArrayList(), null);
-                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type.")));
+                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 }),
 
                 DynamicTest.dynamicTest("Object -> <null>", () -> {
                     final Executable testMethod = () -> isTypedList(new Object(), null);
-                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type.")));
+                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 })
 
         );

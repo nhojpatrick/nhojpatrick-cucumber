@@ -39,10 +39,10 @@ public class CheckedIllegalArgumentExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingCheckedIllegalArgumentException("message");
                     };
-                    final CheckedIllegalArgumentException expectedThrown = assertThrows(CheckedIllegalArgumentException.class, testMethod);
+                    final CheckedIllegalArgumentException thrown = assertThrows(CheckedIllegalArgumentException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -50,10 +50,10 @@ public class CheckedIllegalArgumentExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingCheckedIllegalArgumentException("message", new RuntimeException());
                     };
-                    final CheckedIllegalArgumentException expectedThrown = assertThrows(CheckedIllegalArgumentException.class, testMethod);
+                    final CheckedIllegalArgumentException thrown = assertThrows(CheckedIllegalArgumentException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(throwable(RuntimeException.class)))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(throwable(RuntimeException.class)))
                     );
                 })
 

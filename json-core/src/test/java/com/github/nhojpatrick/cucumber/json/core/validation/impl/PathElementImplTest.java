@@ -2,9 +2,14 @@ package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static com.github.nhojpatrick.hamcrest.lang.IsHashCode.hashCodeGenerated;
 import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
@@ -69,48 +74,38 @@ public class PathElementImplTest {
 
     }
 
-    @Nested
-    @DisplayName("AbstractPathElement")
-    class abstractPathElement {
+    @TestFactory
+    @DisplayName("PathElementImpl tests")
+    public Collection<DynamicTest> tests() {
 
-        private PathElementImpl classUnderTest;
+        final PathElementImpl classUnderTest = new PathElementImpl("abc");
 
-        @BeforeEach
-        public void beforeEach() {
-            this.classUnderTest = new PathElementImpl("key");
-        }
+        return Arrays.asList(
 
-        @Test
-        public void getArrayIndexTest() {
+                DynamicTest.dynamicTest("getElement", () -> {
+                    assertThat("should match", classUnderTest.getElement(), is(equalTo("abc")));
+                }),
 
-            final Executable testMethod = () -> {
-                this.classUnderTest.getArrayIndex();
-            };
-            final NullPointerException expectedThrown = assertThrows(NullPointerException.class, testMethod);
-            assertAll("Checking Exception",
-                    () -> assertThat(expectedThrown.getMessage(), is(nullValue())),
-                    () -> assertThat(expectedThrown.getCause(), is(nullValue()))
-            );
-        }
+                DynamicTest.dynamicTest("getElementRaw", () -> {
+                    assertThat("should match", classUnderTest.getElementRaw(), is(equalTo("abc")));
+                }),
 
-        @Test
-        public void getElementTest() {
+                DynamicTest.dynamicTest("getElementRaw", () -> {
+                    final Executable testMethod = () -> {
+                        classUnderTest.getArrayIndex();
+                    };
+                    final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(nullValue())),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    );
+                }),
 
-            assertThat("should match", this.classUnderTest.getElement(), is(equalTo("key")));
-        }
+                DynamicTest.dynamicTest("isArrayElement", () -> {
+                    assertThat("should match", classUnderTest.isArrayElement(), is(equalTo(false)));
+                })
 
-        @Test
-        public void getElementRawTest() {
-
-            assertThat("should match", this.classUnderTest.getElementRaw(), is(equalTo("key")));
-        }
-
-        @Test
-        public void isArrayElementTest() {
-
-            assertThat("should match", this.classUnderTest.isArrayElement(), is(equalTo(false)));
-        }
-
+        );
     }
 
 }

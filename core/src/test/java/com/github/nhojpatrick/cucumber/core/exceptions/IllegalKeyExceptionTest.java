@@ -34,10 +34,10 @@ public class IllegalKeyExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingIllegalKeyException("message");
                     };
-                    final IllegalKeyException expectedThrown = assertThrows(IllegalKeyException.class, testMethod);
+                    final IllegalKeyException thrown = assertThrows(IllegalKeyException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

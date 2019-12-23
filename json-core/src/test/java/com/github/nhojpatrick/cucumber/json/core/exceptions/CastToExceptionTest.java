@@ -39,10 +39,10 @@ public class CastToExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingCastToException("message");
                     };
-                    final CastToException expectedThrown = assertThrows(CastToException.class, testMethod);
+                    final CastToException thrown = assertThrows(CastToException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -50,10 +50,10 @@ public class CastToExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingCastToException("message", new RuntimeException());
                     };
-                    final CastToException expectedThrown = assertThrows(CastToException.class, testMethod);
+                    final CastToException thrown = assertThrows(CastToException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(throwable(RuntimeException.class)))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(throwable(RuntimeException.class)))
                     );
                 })
 

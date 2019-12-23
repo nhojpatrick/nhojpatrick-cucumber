@@ -129,10 +129,10 @@ public class ReverseTransformationServiceTest {
                 DynamicTest.dynamicTest("null TransformActionTask", () -> {
 
                     final Executable testMethod = () -> this.classUnderTest.resolve(null);
-                    final NullPointerException expectedThrown = assertThrows(NullPointerException.class, testMethod);
+                    final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("TransformActionTask"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("TransformActionTask"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 

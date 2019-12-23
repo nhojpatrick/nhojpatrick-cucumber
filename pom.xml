@@ -110,7 +110,7 @@
 								<module name="LineLength">
 									<property name="fileExtensions" value="java"></property>
 									<property name="max" value="120"></property>
-									<property name="ignorePattern" value="^package.*|^import.*|.*LOGGER.*"></property>
+									<property name="ignorePattern" value="^package.*|^import.*|.*LOGGER.*|^.*\@Given\(.*"></property>
 								</module>
 								<!-- Checks for whitespace                               -->
 								<!-- See http://checkstyle.sf.net/config_whitespace.html -->
@@ -751,11 +751,9 @@
 		<module>all</module>
 		<module>all-steps</module>
 		<module>core</module>
-		<module>json</module>
 		<module>json-core</module>
 		<module>json-map</module>
 		<module>json-map-steps</module>
-		<module>json-steps</module>
 		<module>json-transform</module>
 		<module>json-transform-steps</module>
 		<module>json-transformations</module>
@@ -794,11 +792,6 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -810,11 +803,6 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-map-steps</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-steps</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -860,6 +848,11 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
 				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+				<version>${version.com.github.nhojpatrick.hamcrest}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.hamcrest</groupId>
+				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
 				<version>${version.com.github.nhojpatrick.hamcrest}</version>
 			</dependency>
 			<dependency>
@@ -917,6 +910,11 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${version.org.apache.commons.lang3}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-text</artifactId>
+				<version>${version.org.apache.commons.text}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
@@ -1004,6 +1002,7 @@
 		<version.io.cucumber>4.8.0</version.io.cucumber>
 		<version.io.cucumber.datatable>3.1.0</version.io.cucumber.datatable>
 		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
+		<version.org.apache.commons.text>[1.8,1.99)</version.org.apache.commons.text>
 		<version.org.apache.logging.log4j>[2.12.1,2.12.99)</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
 		<version.org.joda.beans>[2.4.0,2.99.99)</version.org.joda.beans>

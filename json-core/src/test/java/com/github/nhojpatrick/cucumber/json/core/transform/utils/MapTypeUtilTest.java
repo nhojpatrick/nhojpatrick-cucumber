@@ -42,26 +42,26 @@ public class MapTypeUtilTest {
 
                 DynamicTest.dynamicTest("Map -> <null, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new HashMap(), null, null);
-                    final NullGenericsKeyException expectedThrown = assertThrows(NullGenericsKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Key Type.")));
+                    final NullGenericsKeyException thrown = assertThrows(NullGenericsKeyException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Key Type.")));
                 }),
 
                 DynamicTest.dynamicTest("Map -> <String, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new HashMap(), String.class, null);
-                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type.")));
+                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 }),
 
                 DynamicTest.dynamicTest("Object -> <null, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new Object(), null, null);
-                    final NullGenericsKeyException expectedThrown = assertThrows(NullGenericsKeyException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Key Type.")));
+                    final NullGenericsKeyException thrown = assertThrows(NullGenericsKeyException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Key Type.")));
                 }),
 
                 DynamicTest.dynamicTest("Object -> <String, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new Object(), String.class, null);
-                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
-                    assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type.")));
+                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 })
 
         );

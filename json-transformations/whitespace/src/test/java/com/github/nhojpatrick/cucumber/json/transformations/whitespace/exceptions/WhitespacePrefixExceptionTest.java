@@ -25,10 +25,10 @@ public class WhitespacePrefixExceptionTest {
                     final Executable testMethod = () -> {
                         throw new WhitespacePrefixException(-1);
                     };
-                    final WhitespacePrefixException expectedThrown = assertThrows(WhitespacePrefixException.class, testMethod);
+                    final WhitespacePrefixException thrown = assertThrows(WhitespacePrefixException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace prefix must be positive but was -1."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Whitespace prefix must be positive but was -1."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

@@ -17,16 +17,18 @@ import org.joda.beans.impl.direct.DirectMetaPropertyMap;
 import java.io.Serializable;
 import java.util.Map;
 
+import static java.util.Objects.requireNonNull;
+
 @BeanDefinition
 public class TransformActionTask
         implements Bean,
         Comparable<TransformActionTask>,
         Serializable {
 
-    @PropertyDefinition
+    @PropertyDefinition(set = "")
     protected String type;
 
-    @PropertyDefinition
+    @PropertyDefinition(set = "")
     protected String value;
 
     TransformActionTask() {
@@ -50,6 +52,7 @@ public class TransformActionTask
         }
 
         public Builder(final E entity) {
+            requireNonNull(entity, "Builder(TransformActionTask)");
             this.entity = entity;
         }
 
@@ -102,14 +105,6 @@ public class TransformActionTask
     }
 
     /**
-     * Sets the type.
-     * @param type  the new value of the property
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
      * Gets the the {@code type} property.
      * @return the property, not null
      */
@@ -124,14 +119,6 @@ public class TransformActionTask
      */
     public String getValue() {
         return value;
-    }
-
-    /**
-     * Sets the value.
-     * @param value  the new value of the property
-     */
-    public void setValue(String value) {
-        this.value = value;
     }
 
     /**
@@ -200,12 +187,12 @@ public class TransformActionTask
         /**
          * The meta-property for the {@code type} property.
          */
-        private final MetaProperty<String> type = DirectMetaProperty.ofReadWrite(
+        private final MetaProperty<String> type = DirectMetaProperty.ofReadOnly(
                 this, "type", TransformActionTask.class, String.class);
         /**
          * The meta-property for the {@code value} property.
          */
-        private final MetaProperty<String> value = DirectMetaProperty.ofReadWrite(
+        private final MetaProperty<String> value = DirectMetaProperty.ofReadOnly(
                 this, "value", TransformActionTask.class, String.class);
         /**
          * The meta-properties.
@@ -280,11 +267,15 @@ public class TransformActionTask
         protected void propertySet(Bean bean, String propertyName, Object newValue, boolean quiet) {
             switch (propertyName.hashCode()) {
                 case 3575610:  // type
-                    ((TransformActionTask) bean).setType((String) newValue);
-                    return;
+                    if (quiet) {
+                        return;
+                    }
+                    throw new UnsupportedOperationException("Property cannot be written: type");
                 case 111972721:  // value
-                    ((TransformActionTask) bean).setValue((String) newValue);
-                    return;
+                    if (quiet) {
+                        return;
+                    }
+                    throw new UnsupportedOperationException("Property cannot be written: value");
             }
             super.propertySet(bean, propertyName, newValue, quiet);
         }

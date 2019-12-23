@@ -25,10 +25,10 @@ public class UnsupportedDataTypeExceptionTest {
                     final Executable testMethod = () -> {
                         throw new UnsupportedDataTypeException("Type");
                     };
-                    final UnsupportedDataTypeException expectedThrown = assertThrows(UnsupportedDataTypeException.class, testMethod);
+                    final UnsupportedDataTypeException thrown = assertThrows(UnsupportedDataTypeException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo(String.format(UnsupportedDataTypeException.UNSUPPORTED_DATA_TYPE_MSG, "Type")))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(UnsupportedDataTypeException.UNSUPPORTED_DATA_TYPE_MSG, "Type")))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

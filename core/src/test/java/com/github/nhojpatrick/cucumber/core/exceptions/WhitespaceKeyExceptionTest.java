@@ -25,10 +25,10 @@ public class WhitespaceKeyExceptionTest {
                     final Executable testMethod = () -> {
                         throw new WhitespaceKeyException();
                     };
-                    final WhitespaceKeyException expectedThrown = assertThrows(WhitespaceKeyException.class, testMethod);
+                    final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace String Key."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Whitespace String Key."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

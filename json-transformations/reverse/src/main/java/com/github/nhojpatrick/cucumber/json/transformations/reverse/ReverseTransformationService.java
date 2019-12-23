@@ -11,7 +11,7 @@ import static java.util.Objects.requireNonNull;
 public class ReverseTransformationService
         implements TransformationService {
 
-    public static final String ACTION = "reverse";
+    public static final String ACTION = "Reverse";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ReverseTransformationService.class);
 

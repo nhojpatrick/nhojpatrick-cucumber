@@ -1,7 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transform.impl;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
-import com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl;
 import com.github.nhojpatrick.cucumber.json.transformations.remove.RemoveTransformation;
 import com.github.nhojpatrick.cucumber.json.transformations.set.SetTransformation;
 import org.junit.jupiter.api.DisplayName;
@@ -440,8 +439,8 @@ public class TransformImplTest {
                         expected.put("level0", expectedLevel0);
 
                         final Executable testMethod = () -> classUnderTest.transform(input, "level0.var", setType1);
-                        final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                        assertThat(expectedThrown.getMessage(), is(equalTo("Unable to convert primative to object, at path 'level0'.")));
+                        final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                        assertThat(thrown.getMessage(), is(equalTo("Unable to convert primative to object, at path 'level0'.")));
                     })
 
             );

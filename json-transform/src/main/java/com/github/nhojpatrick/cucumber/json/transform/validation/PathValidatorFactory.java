@@ -8,18 +8,18 @@ import java.util.function.Supplier;
 public class PathValidatorFactory
         implements Supplier<PathValidator> {
 
-    public static PathValidator getInstance() {
-        final PathValidatorFactory factory = new PathValidatorFactory();
-        final PathValidator validator = factory.get();
-        return validator;
+    private static final PathValidatorFactory FACTORY = new PathValidatorFactory();
+
+    public static PathValidatorFactory getFactory() {
+        return FACTORY;
     }
 
-    public PathValidatorFactory() {
+    PathValidatorFactory() {
     }
 
+    @Override
     public PathValidator get() {
-        final PathValidator validator = new PathValidatorImpl();
-        return validator;
+        return new PathValidatorImpl();
     }
 
 }

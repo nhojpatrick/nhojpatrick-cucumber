@@ -1,25 +1,24 @@
 package com.github.nhojpatrick.cucumber.state.validation;
 
-import com.github.nhojpatrick.cucumber.state.validation.internal.RunStateValidatorImpl;
+import com.github.nhojpatrick.cucumber.state.validation.impl.RunStateValidatorImpl;
 
 import java.util.function.Supplier;
 
 public class RunStateValidatorFactory
         implements Supplier<RunStateValidator> {
 
+    private static final RunStateValidatorFactory FACTORY = new RunStateValidatorFactory();
+
     public static RunStateValidator getInstance() {
-        final RunStateValidatorFactory factory = new RunStateValidatorFactory();
-        final RunStateValidator validator = factory.get();
-        return validator;
+        return FACTORY.get();
     }
 
-    public RunStateValidatorFactory() {
+    RunStateValidatorFactory() {
     }
 
     @Override
     public RunStateValidator get() {
-        final RunStateValidator validator = new RunStateValidatorImpl();
-        return validator;
+        return new RunStateValidatorImpl();
     }
 
 }

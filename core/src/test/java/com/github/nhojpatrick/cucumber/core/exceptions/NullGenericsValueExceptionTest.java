@@ -25,10 +25,10 @@ public class NullGenericsValueExceptionTest {
                     final Executable testMethod = () -> {
                         throw new NullGenericsValueException();
                     };
-                    final NullGenericsValueException expectedThrown = assertThrows(NullGenericsValueException.class, testMethod);
+                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Generics Value Type."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

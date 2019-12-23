@@ -25,10 +25,10 @@ public class NullTypeClassExceptionTest {
                     final Executable testMethod = () -> {
                         throw new NullTypeClassException();
                     };
-                    final NullTypeClassException expectedThrown = assertThrows(NullTypeClassException.class, testMethod);
+                    final NullTypeClassException thrown = assertThrows(NullTypeClassException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Type Class."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Type Class."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

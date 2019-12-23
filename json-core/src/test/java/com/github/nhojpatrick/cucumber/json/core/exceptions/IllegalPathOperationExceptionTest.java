@@ -25,10 +25,10 @@ public class IllegalPathOperationExceptionTest {
                     final Executable testMethod = () -> {
                         throw new IllegalPathOperationException("message");
                     };
-                    final IllegalPathOperationException expectedThrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

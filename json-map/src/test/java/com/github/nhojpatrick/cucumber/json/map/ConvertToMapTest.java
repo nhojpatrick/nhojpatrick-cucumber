@@ -35,9 +35,9 @@ public class ConvertToMapTest {
 
         final Executable testMethod = () -> this.classUnderTest.apply(null);
 
-        final RuntimeException expectedThrown = assertThrows(RuntimeException.class, testMethod);
+        final RuntimeException thrown = assertThrows(RuntimeException.class, testMethod);
         assertAll("Checking Exception",
-                () -> assertThat(expectedThrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
+                () -> assertThat(thrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
         );
     }
 
@@ -46,10 +46,10 @@ public class ConvertToMapTest {
 
         final Executable testMethod = () -> this.classUnderTest.apply("");
 
-        final IllegalArgumentException expectedThrown = assertThrows(IllegalArgumentException.class, testMethod);
+        final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
 
         final String expectedMessage = "Cannot construct instance of `java.util.HashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('')\n at [Source: UNKNOWN; line: -1, column: -1]";
-        assertThat(expectedThrown.getMessage(), is(equalTo(expectedMessage)));
+        assertThat(thrown.getMessage(), is(equalTo(expectedMessage)));
     }
 
     @Test

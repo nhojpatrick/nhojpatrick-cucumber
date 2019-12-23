@@ -25,10 +25,10 @@ public class WhitespaceSuffixExceptionTest {
                     final Executable testMethod = () -> {
                         throw new WhitespaceSuffixException(-1);
                     };
-                    final WhitespaceSuffixException expectedThrown = assertThrows(WhitespaceSuffixException.class, testMethod);
+                    final WhitespaceSuffixException thrown = assertThrows(WhitespaceSuffixException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace suffix must be positive but was -1."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Whitespace suffix must be positive but was -1."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

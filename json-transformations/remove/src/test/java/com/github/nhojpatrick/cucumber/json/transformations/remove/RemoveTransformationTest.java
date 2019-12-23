@@ -92,20 +92,20 @@ public class RemoveTransformationTest {
                 DynamicTest.dynamicTest("null input - null key", () -> {
                     final Transformation classUnderTest = new RemoveTransformation();
                     final Executable testMethod = () -> classUnderTest.perform(null, null, null);
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
                 DynamicTest.dynamicTest("empty input - null key", () -> {
                     final Transformation classUnderTest = new RemoveTransformation();
                     final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null, null);
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

@@ -25,10 +25,10 @@ public class NullPathElementExceptionTest {
                     final Executable testMethod = () -> {
                         throw new NullPathElementException();
                     };
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

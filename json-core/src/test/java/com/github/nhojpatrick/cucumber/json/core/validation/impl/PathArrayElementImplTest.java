@@ -2,8 +2,13 @@ package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static com.github.nhojpatrick.hamcrest.lang.IsHashCode.hashCodeGenerated;
 import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
@@ -66,41 +71,31 @@ public class PathArrayElementImplTest {
 
     }
 
-    @Nested
-    @DisplayName("AbstractPathElement")
-    class abstractPathElement {
+    @TestFactory
+    @DisplayName("PathArrayElementImpl tests")
+    public Collection<DynamicTest> tests() {
 
-        private PathArrayElementImpl classUnderTest;
+        final PathArrayElementImpl classUnderTest = new PathArrayElementImpl("abc[2]", "abc", 2);
 
-        @BeforeEach
-        public void beforeEach() {
-            this.classUnderTest = new PathArrayElementImpl("key[2]", "key", 2);
-        }
+        return Arrays.asList(
 
-        @Test
-        public void getArrayIndexTest() {
+                DynamicTest.dynamicTest("getElement", () -> {
+                    assertThat("should match", classUnderTest.getElement(), is(equalTo("abc")));
+                }),
 
-            assertThat("should match", this.classUnderTest.getArrayIndex(), is(equalTo(2)));
-        }
+                DynamicTest.dynamicTest("getElementRaw", () -> {
+                    assertThat("should match", classUnderTest.getElementRaw(), is(equalTo("abc[2]")));
+                }),
 
-        @Test
-        public void getElementTest() {
+                DynamicTest.dynamicTest("getElementRaw", () -> {
+                    assertThat("should match", classUnderTest.getArrayIndex(), is(equalTo(2)));
+                }),
 
-            assertThat("should match", this.classUnderTest.getElement(), is(equalTo("key")));
-        }
+                DynamicTest.dynamicTest("isArrayElement", () -> {
+                    assertThat("should match", classUnderTest.isArrayElement(), is(equalTo(true)));
+                })
 
-        @Test
-        public void getElementRawTest() {
-
-            assertThat("should match", this.classUnderTest.getElementRaw(), is(equalTo("key[2]")));
-        }
-
-        @Test
-        public void isArrayElementTest() {
-
-            assertThat("should match", this.classUnderTest.isArrayElement(), is(equalTo(true)));
-        }
-
+        );
     }
 
 }

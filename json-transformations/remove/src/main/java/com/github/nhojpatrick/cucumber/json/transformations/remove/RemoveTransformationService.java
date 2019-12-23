@@ -11,7 +11,7 @@ import static java.util.Objects.requireNonNull;
 public class RemoveTransformationService
         implements TransformationService {
 
-    public static final String ACTION = "remove";
+    public static final String ACTION = "Remove";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoveTransformationService.class);
 

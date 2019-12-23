@@ -98,10 +98,10 @@ public class WhitespaceTransformationTest {
                     final Executable testMethod = () -> {
                         new WhitespaceTransformation(-1, 0);
                     };
-                    final WhitespacePrefixException expectedThrown = assertThrows(WhitespacePrefixException.class, testMethod);
+                    final WhitespacePrefixException thrown = assertThrows(WhitespacePrefixException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace prefix must be positive but was -1."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Whitespace prefix must be positive but was -1."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -109,30 +109,30 @@ public class WhitespaceTransformationTest {
                     final Executable testMethod = () -> {
                         new WhitespaceTransformation(0, -1);
                     };
-                    final WhitespaceSuffixException expectedThrown = assertThrows(WhitespaceSuffixException.class, testMethod);
+                    final WhitespaceSuffixException thrown = assertThrows(WhitespaceSuffixException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace suffix must be positive but was -1."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Whitespace suffix must be positive but was -1."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
                 DynamicTest.dynamicTest("null input - null key", () -> {
                     final Transformation classUnderTest = new WhitespaceTransformation(0, 0);
                     final Executable testMethod = () -> classUnderTest.perform(null, null, null);
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
                 DynamicTest.dynamicTest("empty input - null key", () -> {
                     final Transformation classUnderTest = new WhitespaceTransformation(0, 0);
                     final Executable testMethod = () -> classUnderTest.perform(new HashMap<>(), null, null);
-                    final NullPathElementException expectedThrown = assertThrows(NullPathElementException.class, testMethod);
+                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 
@@ -264,10 +264,10 @@ public class WhitespaceTransformationTest {
                     final Transformation classUnderTest = new WhitespaceTransformation(1, 2);
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathElementImpl(key), null);
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to whitespace JsonArray<>."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonArray<>."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -483,10 +483,10 @@ public class WhitespaceTransformationTest {
                     final Transformation classUnderTest = new WhitespaceTransformation(1, 2);
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathElementImpl(key), null);
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to whitespace JsonObject."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonObject."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -625,10 +625,10 @@ public class WhitespaceTransformationTest {
                     final Transformation classUnderTest = new WhitespaceTransformation(1, 2);
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to whitespace JsonArray<>."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonArray<>."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -880,10 +880,10 @@ public class WhitespaceTransformationTest {
                     final Transformation classUnderTest = new WhitespaceTransformation(1, 2);
 
                     final Executable testMethod = () -> classUnderTest.perform(input, new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex), null);
-                    final UnsupportedOperationException expectedThrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Unable to whitespace JsonObject."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonObject."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 

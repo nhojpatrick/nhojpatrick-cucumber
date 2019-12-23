@@ -8,18 +8,18 @@ import java.util.function.Supplier;
 public class TransformFactory
         implements Supplier<Transform> {
 
-    public static Transform getInstance() {
-        final TransformFactory factory = new TransformFactory();
-        final Transform transform = factory.get();
-        return transform;
+    private static final TransformFactory FACTORY = new TransformFactory();
+
+    public static TransformFactory getFactory() {
+        return FACTORY;
     }
 
-    public TransformFactory() {
+    TransformFactory() {
     }
 
+    @Override
     public Transform get() {
-        final Transform transform = new TransformImpl();
-        return transform;
+        return new TransformImpl();
     }
 
 }

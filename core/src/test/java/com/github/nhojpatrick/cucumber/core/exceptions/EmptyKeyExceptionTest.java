@@ -25,10 +25,10 @@ public class EmptyKeyExceptionTest {
                     final Executable testMethod = () -> {
                         throw new EmptyKeyException();
                     };
-                    final EmptyKeyException expectedThrown = assertThrows(EmptyKeyException.class, testMethod);
+                    final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Empty String Key."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Empty String Key."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 

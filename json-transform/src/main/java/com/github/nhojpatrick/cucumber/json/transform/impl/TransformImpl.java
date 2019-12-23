@@ -37,7 +37,8 @@ public class TransformImpl
 
         LOGGER.debug("Before path='{}' transformation={} input={}", path, transformation, input);
 
-        final List<PathElement> pathElements = PathValidatorFactory.getInstance()
+        final List<PathElement> pathElements = PathValidatorFactory.getFactory()
+                .get()
                 .parsePath(path);
 
         final Map<String, Object> output = transform(0, input, null, pathElements, transformation);

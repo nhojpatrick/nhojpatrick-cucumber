@@ -39,10 +39,10 @@ public class CheckedUnsupportedOperationExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingCheckedUnsupportedOperationException("message");
                     };
-                    final CheckedUnsupportedOperationException expectedThrown = assertThrows(CheckedUnsupportedOperationException.class, testMethod);
+                    final CheckedUnsupportedOperationException thrown = assertThrows(CheckedUnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -50,10 +50,10 @@ public class CheckedUnsupportedOperationExceptionTest {
                     final Executable testMethod = () -> {
                         throw new TestingCheckedUnsupportedOperationException("message", new RuntimeException());
                     };
-                    final CheckedUnsupportedOperationException expectedThrown = assertThrows(CheckedUnsupportedOperationException.class, testMethod);
+                    final CheckedUnsupportedOperationException thrown = assertThrows(CheckedUnsupportedOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("message"))),
-                            () -> assertThat(expectedThrown.getCause(), is(throwable(RuntimeException.class)))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("message"))),
+                            () -> assertThat(thrown.getCause(), is(throwable(RuntimeException.class)))
                     );
                 })
 

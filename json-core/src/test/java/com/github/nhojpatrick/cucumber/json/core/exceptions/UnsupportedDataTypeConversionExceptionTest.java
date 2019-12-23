@@ -25,10 +25,10 @@ public class UnsupportedDataTypeConversionExceptionTest {
                     final Executable testMethod = () -> {
                         throw new UnsupportedDataTypeConversionException("Type", "Value");
                     };
-                    final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo(String.format(UnsupportedDataTypeConversionException.UNSUPPORTED_DATA_TYPE_CONVERSION_MSG, "Type", "Value")))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(UnsupportedDataTypeConversionException.UNSUPPORTED_DATA_TYPE_CONVERSION_MSG, "Type", "Value")))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -37,10 +37,10 @@ public class UnsupportedDataTypeConversionExceptionTest {
                     final Executable testMethod = () -> {
                         throw new UnsupportedDataTypeConversionException("Type", "Value", cause);
                     };
-                    final UnsupportedDataTypeConversionException expectedThrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertAll(
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo(String.format(UnsupportedDataTypeConversionException.UNSUPPORTED_DATA_TYPE_CONVERSION_MSG, "Type", "Value")))),
-                            () -> assertThat(expectedThrown.getCause(), is(equalTo(cause)))
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(UnsupportedDataTypeConversionException.UNSUPPORTED_DATA_TYPE_CONVERSION_MSG, "Type", "Value")))),
+                            () -> assertThat(thrown.getCause(), is(equalTo(cause)))
                     );
                 })
 

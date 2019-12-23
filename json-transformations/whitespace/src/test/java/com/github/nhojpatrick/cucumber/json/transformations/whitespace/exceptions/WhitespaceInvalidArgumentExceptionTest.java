@@ -25,10 +25,10 @@ public class WhitespaceInvalidArgumentExceptionTest {
                     final Executable testMethod = () -> {
                         throw new WhitespaceInvalidArgumentException("string");
                     };
-                    final WhitespaceInvalidArgumentException expectedThrown = assertThrows(WhitespaceInvalidArgumentException.class, testMethod);
+                    final WhitespaceInvalidArgumentException thrown = assertThrows(WhitespaceInvalidArgumentException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(expectedThrown.getMessage(), is(equalTo("Whitespace prefix/suffix is not valid number string."))),
-                            () -> assertThat(expectedThrown.getCause(), is(nullValue()))
+                            () -> assertThat(thrown.getMessage(), is(equalTo("Whitespace prefix/suffix is not valid number string."))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 
