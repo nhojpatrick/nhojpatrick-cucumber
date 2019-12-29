@@ -13,5 +13,6 @@ module com.github.nhojpatrick.cucumber.json.core {
     requires org.apache.commons.lang3;
     requires org.slf4j;
     requires transitive com.github.nhojpatrick.cucumber.core;
+    requires transitive com.github.nhojpatrick.cucumber.json.jodabeans;
     requires transitive org.joda.beans;
 }

@@ -11,7 +11,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-json-core</artifactId>
+	<artifactId>nhojpatrick-cucumber-json-jodabeans</artifactId>
 	<!--packaging / -->
 	<packaging>jar</packaging>
 	<!--name / -->
@@ -29,20 +29,20 @@
 	<!--scm / -->
 	<!--organization / -->
 	<!--build /-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.joda</groupId>
+				<artifactId>joda-beans-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 	<!--profiles / -->
 	<!--modules / -->
 	<!--repositories / -->
 	<!--pluginRepositories / -->
 	<!--dependencies / -->
 	<dependencies>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-jodabeans</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
@@ -63,6 +63,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.joda</groupId>
+			<artifactId>joda-beans</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<scope>test</scope>
@@ -78,8 +82,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.core</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation.impl=ALL-UNNAMED</project.surefire.argLine.jpms.module>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.jodabeans</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.transform=ALL-UNNAMED</project.surefire.argLine.jpms.module>
 	</properties>
 </project>

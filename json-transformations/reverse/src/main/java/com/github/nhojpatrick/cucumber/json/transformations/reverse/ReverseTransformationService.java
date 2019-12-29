@@ -1,8 +1,8 @@
 package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
-import com.github.nhojpatrick.cucumber.json.core.transform.TransformActionTask;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
+import com.github.nhojpatrick.cucumber.json.jodabeans.transform.TransformActionTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
