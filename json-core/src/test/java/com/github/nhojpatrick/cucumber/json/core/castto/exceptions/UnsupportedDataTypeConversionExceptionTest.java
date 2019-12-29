@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.core.exceptions;
+package com.github.nhojpatrick.cucumber.json.core.castto.exceptions;
 
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;

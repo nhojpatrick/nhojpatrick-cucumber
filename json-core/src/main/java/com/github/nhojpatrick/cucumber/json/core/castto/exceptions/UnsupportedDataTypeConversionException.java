@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.core.exceptions;
+package com.github.nhojpatrick.cucumber.json.core.castto.exceptions;
 
 public class UnsupportedDataTypeConversionException
         extends CastToException {

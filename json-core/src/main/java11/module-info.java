@@ -1,4 +1,6 @@
 module com.github.nhojpatrick.cucumber.json.core {
+    exports com.github.nhojpatrick.cucumber.json.core.castto;
+    exports com.github.nhojpatrick.cucumber.json.core.castto.exceptions;
     exports com.github.nhojpatrick.cucumber.json.core.exceptions;
     exports com.github.nhojpatrick.cucumber.json.core.transform;
     exports com.github.nhojpatrick.cucumber.json.core.transform.utils;

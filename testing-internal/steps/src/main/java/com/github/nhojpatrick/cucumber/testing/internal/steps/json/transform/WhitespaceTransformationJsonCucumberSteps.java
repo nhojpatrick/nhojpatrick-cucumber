@@ -4,7 +4,7 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalOperationException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException;
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
-import com.github.nhojpatrick.cucumber.json.core.exceptions.UnsupportedDataTypeException;
+import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.transform.factory.TransformFactory;
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.WhitespaceTransformation;
