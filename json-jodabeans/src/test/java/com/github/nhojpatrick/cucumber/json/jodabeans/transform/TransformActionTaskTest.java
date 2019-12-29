@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.core.transform;
+package com.github.nhojpatrick.cucumber.json.jodabeans.transform;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

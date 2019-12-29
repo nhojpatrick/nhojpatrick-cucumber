@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.core.transform;
+package com.github.nhojpatrick.cucumber.json.jodabeans.transform;
 
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.joda.beans.Bean;

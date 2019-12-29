@@ -752,6 +752,7 @@
 		<module>all-steps</module>
 		<module>core</module>
 		<module>json-core</module>
+		<module>json-jodabeans</module>
 		<module>json-map</module>
 		<module>json-map-steps</module>
 		<module>json-transform</module>
@@ -793,6 +794,11 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-jodabeans</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
