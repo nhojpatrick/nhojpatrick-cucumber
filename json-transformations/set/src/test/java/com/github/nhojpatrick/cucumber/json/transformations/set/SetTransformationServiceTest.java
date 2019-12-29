@@ -1,8 +1,8 @@
 package com.github.nhojpatrick.cucumber.json.transformations.set;
 
+import com.github.nhojpatrick.cucumber.json.core.castto.CastToUtil;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
-import com.github.nhojpatrick.cucumber.json.core.transform.utils.CastToUtil;
 import com.github.nhojpatrick.cucumber.json.jodabeans.transform.TransformActionTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

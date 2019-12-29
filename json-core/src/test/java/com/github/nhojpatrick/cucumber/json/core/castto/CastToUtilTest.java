@@ -1,7 +1,7 @@
-package com.github.nhojpatrick.cucumber.json.core.transform.utils;
+package com.github.nhojpatrick.cucumber.json.core.castto;
 
-import com.github.nhojpatrick.cucumber.json.core.exceptions.UnsupportedDataTypeConversionException;
-import com.github.nhojpatrick.cucumber.json.core.exceptions.UnsupportedDataTypeException;
+import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeConversionException;
+import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeException;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;

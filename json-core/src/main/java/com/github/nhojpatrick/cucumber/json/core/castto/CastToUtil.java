@@ -1,9 +1,8 @@
-package com.github.nhojpatrick.cucumber.json.core.transform.utils;
+package com.github.nhojpatrick.cucumber.json.core.castto;
 
-import com.github.nhojpatrick.cucumber.json.core.exceptions.CastToException;
-import com.github.nhojpatrick.cucumber.json.core.exceptions.UnsupportedDataTypeConversionException;
-import com.github.nhojpatrick.cucumber.json.core.exceptions.UnsupportedDataTypeException;
-import com.github.nhojpatrick.cucumber.json.core.transform.CastTo;
+import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.CastToException;
+import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeConversionException;
+import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
