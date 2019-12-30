@@ -1,9 +1,9 @@
 package com.github.nhojpatrick.cucumber.json.map.impl;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
-import com.github.nhojpatrick.cucumber.testing.internal.objects.MyComplexObj;
-import com.github.nhojpatrick.cucumber.testing.internal.objects.MySimpleObj;
-import com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.MyComplexObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.MySimpleObj;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,9 +53,9 @@ public class ConvertObjectToMapTest {
     @Test
     public void check_MyComplexObj() {
 
-        final MyComplexObj toBeTested = TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
+        final MyComplexObj toBeTested = LegacyTestingInternalObjectsConstants.COMPLEX_OBJECT_AS_OBJECT;
 
-        final Map<String, Object> expected = TestingConstants.COMPLEX_OBJECT_AS_JSON_MAP;
+        final Map<String, Object> expected = LegacyTestingInternalObjectsConstants.COMPLEX_OBJECT_AS_JSON_MAP;
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 
@@ -82,9 +82,9 @@ public class ConvertObjectToMapTest {
     @Test
     public void check_MySimpleObj() {
 
-        final MySimpleObj toBeTested = TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
+        final MySimpleObj toBeTested = LegacyTestingInternalObjectsConstants.SIMPLE_OBJECT_AS_OBJECT;
 
-        final Map<String, Object> expected = TestingConstants.SIMPLE_OBJECT_AS_JSON_MAP;
+        final Map<String, Object> expected = LegacyTestingInternalObjectsConstants.SIMPLE_OBJECT_AS_JSON_MAP;
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 

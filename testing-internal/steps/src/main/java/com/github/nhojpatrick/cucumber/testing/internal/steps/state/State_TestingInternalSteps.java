@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.COMPLEX_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.SIMPLE_OBJECT_AS_OBJECT;
 
 public class State_TestingInternalSteps {
 
