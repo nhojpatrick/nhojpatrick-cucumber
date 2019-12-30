@@ -24,16 +24,16 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SetTransformationJsonCucumberSteps {
+public class SetTransformation_TestingInternalSteps {
 
     private RunState runState;
 
     @Inject
-    public SetTransformationJsonCucumberSteps(final RunState runState) {
+    public SetTransformation_TestingInternalSteps(final RunState runState) {
         this.runState = runState;
     }
 
-    @Given("I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
     public void setIllegalOperationException(final String path,
                                              final String value,
                                              final String type,
@@ -46,7 +46,7 @@ public class SetTransformationJsonCucumberSteps {
         setIllegalOperationException(DEFAULT_MAP_KEY, path, value, type, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
     public void setIllegalOperationException(final String runStateJsonMapKey,
                                              final String path,
                                              final String value,
@@ -60,7 +60,7 @@ public class SetTransformationJsonCucumberSteps {
         set(runStateJsonMapKey, path, value, type, IllegalOperationException.class, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
     public void setUnsupportedDataTypeException(final String path,
                                                 final String value,
                                                 final String type,
@@ -73,7 +73,7 @@ public class SetTransformationJsonCucumberSteps {
         setUnsupportedDataTypeException(DEFAULT_MAP_KEY, path, value, type, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the UnsupportedDataTypeException {string}")
     public void setUnsupportedDataTypeException(final String runStateJsonMapKey,
                                                 final String path,
                                                 final String value,

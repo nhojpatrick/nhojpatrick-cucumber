@@ -22,16 +22,16 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class WhitespaceTransformationJsonCucumberSteps {
+public class WhitespaceTransformation_TestingInternalSteps {
 
     private RunState runState;
 
     @Inject
-    public WhitespaceTransformationJsonCucumberSteps(final RunState runState) {
+    public WhitespaceTransformation_TestingInternalSteps(final RunState runState) {
         this.runState = runState;
     }
 
-    @Given("I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalOperationException {string}")
     public void whitespaceIllegalOperationException(final String path,
                                                     final int prefix,
                                                     final int suffix,
@@ -44,7 +44,7 @@ public class WhitespaceTransformationJsonCucumberSteps {
         whitespaceIllegalOperationException(DEFAULT_MAP_KEY, path, prefix, suffix, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalOperationException {string}")
     public void whitespaceIllegalOperationException(final String runStateJsonMapKey,
                                                     final String path,
                                                     final int prefix,
@@ -63,7 +63,7 @@ public class WhitespaceTransformationJsonCucumberSteps {
                 expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the UnsupportedDataTypeException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the UnsupportedDataTypeException {string}")
     public void whitespaceUnsupportedDataTypeException(final String path,
                                                        final int prefix,
                                                        final int suffix,
@@ -76,7 +76,7 @@ public class WhitespaceTransformationJsonCucumberSteps {
         whitespaceUnsupportedDataTypeException(DEFAULT_MAP_KEY, path, prefix, suffix, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the UnsupportedDataTypeException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the UnsupportedDataTypeException {string}")
     public void whitespaceUnsupportedDataTypeException(final String runStateJsonMapKey,
                                                        final String path,
                                                        final int prefix,
