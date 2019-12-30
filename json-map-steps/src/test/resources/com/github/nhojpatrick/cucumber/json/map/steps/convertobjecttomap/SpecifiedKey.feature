@@ -10,7 +10,7 @@ Feature: Convert Object To Map - Checking with Specified keys
       | object.key  |
       | jsonMap.key |
     And I have an empty run state
-    When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key" produces the AssertionError "Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[object.key]>"
+    When TestingInternalSteps I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key" produces the AssertionError "Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[object.key]>"
     Then I have an empty run state
 
 
@@ -18,9 +18,9 @@ Feature: Convert Object To Map - Checking with Specified keys
   Scenario: Empty input
     Given I have cleared the run state for keys:
       | jsonMap.key |
-    And I have setup the run state for keys and type:
+    And TestingInternalSteps I have setup the run state for keys and type:
       | object.key | Object |
-    When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key" produces the IllegalArgumentException "No serializer found for class java.lang.Object and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)"
+    When TestingInternalSteps I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key" produces the IllegalArgumentException "No serializer found for class java.lang.Object and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)"
     Then I have run state key->value string pairs of:
       | jsonMap.map | null |
 
@@ -29,7 +29,7 @@ Feature: Convert Object To Map - Checking with Specified keys
   Scenario: Simple input
     Given I have cleared the run state for keys:
       | jsonMap.key |
-    And I have setup the run state for keys and type:
+    And TestingInternalSteps I have setup the run state for keys and type:
       | object.key | SimpleObject |
     When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key"
     Then I have run state key->value string pairs of:
@@ -40,7 +40,7 @@ Feature: Convert Object To Map - Checking with Specified keys
   Scenario: Complex input
     Given I have cleared the run state for keys:
       | jsonMap.key |
-    And I have setup the run state for keys and type:
+    And TestingInternalSteps I have setup the run state for keys and type:
       | object.key | ComplexObject |
     When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key"
     Then I have run state key->value string pairs of:

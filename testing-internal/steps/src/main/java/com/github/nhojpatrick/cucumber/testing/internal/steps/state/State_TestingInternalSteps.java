@@ -13,16 +13,16 @@ import java.util.Map;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
 
-public class RunStateJsonCucumberSteps {
+public class State_TestingInternalSteps {
 
     private RunState runState;
 
     @Inject
-    public RunStateJsonCucumberSteps(final RunState runState) {
+    public State_TestingInternalSteps(final RunState runState) {
         this.runState = runState;
     }
 
-    @Given("^I have setup the run state for keys and type:$")
+    @Given("^TestingInternalSteps I have setup the run state for keys and type:$")
     public void setupRunStateForKeysAndValue(final DataTable data)
             throws IllegalKeyException {
 

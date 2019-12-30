@@ -20,16 +20,16 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ReverseTransformationJsonCucumberSteps {
+public class ReverseTransformation_TestingInternalSteps {
 
     private RunState runState;
 
     @Inject
-    public ReverseTransformationJsonCucumberSteps(final RunState runState) {
+    public ReverseTransformation_TestingInternalSteps(final RunState runState) {
         this.runState = runState;
     }
 
-    @Given("I transform json map using default RunStateKey and reverse the following path {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and reverse the following path {string} produces the IllegalOperationException {string}")
     public void reverse(final String path, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -38,7 +38,7 @@ public class ReverseTransformationJsonCucumberSteps {
         reverse(DEFAULT_MAP_KEY, path, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and reverse the following path {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and reverse the following path {string} produces the IllegalOperationException {string}")
     public void reverse(final String runStateJsonMapKey, final String path, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,

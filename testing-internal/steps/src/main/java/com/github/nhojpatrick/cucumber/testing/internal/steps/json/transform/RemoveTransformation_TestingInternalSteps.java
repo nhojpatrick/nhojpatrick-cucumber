@@ -20,16 +20,16 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RemoveTransformationJsonCucumberSteps {
+public class RemoveTransformation_TestingInternalSteps {
 
     private RunState runState;
 
     @Inject
-    public RemoveTransformationJsonCucumberSteps(final RunState runState) {
+    public RemoveTransformation_TestingInternalSteps(final RunState runState) {
         this.runState = runState;
     }
 
-    @Given("I transform json map using default RunStateKey and remove the following path {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and remove the following path {string} produces the IllegalOperationException {string}")
     public void remove(final String path, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -38,7 +38,7 @@ public class RemoveTransformationJsonCucumberSteps {
         remove(DEFAULT_MAP_KEY, path, expectedExceptionMessageRaw);
     }
 
-    @Given("I transform json map using RunStateKey {string} and remove the following path {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and remove the following path {string} produces the IllegalOperationException {string}")
     public void remove(final String runStateJsonMapKey, final String path, final String expectedExceptionMessageRaw)
             throws IllegalKeyException,
             IllegalTypeClassException,

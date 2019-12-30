@@ -13,16 +13,16 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MapJsonCucumberSteps {
+public class ConvertObjectToMap_TestingInternalSteps {
 
     private RunState runState;
 
     @Inject
-    public MapJsonCucumberSteps(final RunState runState) {
+    public ConvertObjectToMap_TestingInternalSteps(final RunState runState) {
         this.runState = runState;
     }
 
-    @Given("I convert object to json map using default RunStateKeys produces the AssertionError {string}")
+    @Given("TestingInternalSteps I convert object to json map using default RunStateKeys produces the AssertionError {string}")
     public void convertObjectToMap_AssertionError(final String expectedExceptionMessageRaw) {
 
         convertObjectToMap_AssertionError(
@@ -32,7 +32,7 @@ public class MapJsonCucumberSteps {
         );
     }
 
-    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the AssertionError {string}")
+    @Given("TestingInternalSteps I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the AssertionError {string}")
     public void convertObjectToMap_AssertionError(final String runStateObjectKey,
                                                   final String runStateJsonMapKey,
                                                   final String expectedExceptionMessageRaw) {
@@ -50,7 +50,7 @@ public class MapJsonCucumberSteps {
         assertThat(thrown.getMessage(), is(equalTo(expectedExceptionMessage)));
     }
 
-    @Given("I convert object to json map using default RunStateKeys produces the IllegalArgumentException {string}")
+    @Given("TestingInternalSteps I convert object to json map using default RunStateKeys produces the IllegalArgumentException {string}")
     public void convertObjectToMap_IllegalArgumentException(final String expectedExceptionMessageRaw) {
 
         convertObjectToMap_IllegalArgumentException(
@@ -60,7 +60,7 @@ public class MapJsonCucumberSteps {
         );
     }
 
-    @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the IllegalArgumentException {string}")
+    @Given("TestingInternalSteps I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the IllegalArgumentException {string}")
     public void convertObjectToMap_IllegalArgumentException(final String runStateObjectKey,
                                                             final String runStateJsonMapKey,
                                                             final String expectedExceptionMessageRaw) {
