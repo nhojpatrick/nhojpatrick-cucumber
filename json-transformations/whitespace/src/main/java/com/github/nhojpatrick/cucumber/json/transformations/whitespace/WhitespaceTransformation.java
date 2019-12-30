@@ -82,7 +82,7 @@ public class WhitespaceTransformation
                 ? input
                 : new HashMap<>();
 
-        if (!pathElement.isArrayElement()) {
+        if (pathElement.isNotArrayElement()) {
 
             final Object obj = output.get(pathElement.getElement());
 

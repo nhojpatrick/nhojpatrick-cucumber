@@ -10,4 +10,6 @@ public interface PathElement {
 
     boolean isArrayElement();
 
+    boolean isNotArrayElement();
+
 }

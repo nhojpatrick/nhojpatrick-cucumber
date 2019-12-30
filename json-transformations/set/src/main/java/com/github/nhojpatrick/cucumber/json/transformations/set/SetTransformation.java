@@ -62,7 +62,7 @@ public class SetTransformation
                 ? input
                 : new HashMap<>();
 
-        if (!pathElement.isArrayElement()) {
+        if (pathElement.isNotArrayElement()) {
             output.put(pathElement.getElement(), this.value);
 
         } else {

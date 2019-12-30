@@ -2,6 +2,8 @@ package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 
+import static java.util.Objects.isNull;
+
 public abstract class AbstractPathElement
         implements PathElement {
 
@@ -32,7 +34,12 @@ public abstract class AbstractPathElement
 
     @Override
     public boolean isArrayElement() {
-        return this.arrayIndex != null;
+        return !isNotArrayElement();
+    }
+
+    @Override
+    public boolean isNotArrayElement() {
+        return isNull(this.arrayIndex);
     }
 
 }
