@@ -14,10 +14,10 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.MapTypeUtil.isTypedMap;
+import static java.util.Objects.isNull;
 
 public class TransformImpl
         implements Transform {
@@ -76,7 +76,7 @@ public class TransformImpl
             LOGGER.debug("Execute After depth={} path='{}' input={}", depth, pathElements, output);
 
         } else if (pathElements.size() > 1) {
-            if (Objects.isNull(output)) {
+            if (isNull(output)) {
                 output = new HashMap<>();
             }
 
@@ -123,7 +123,7 @@ public class TransformImpl
             } else {
 
                 Map<String, Object> innerInput;
-                if (Objects.isNull(innerRaw)) {
+                if (isNull(innerRaw)) {
                     innerInput = new HashMap<>();
 
                 } else if (isTypedMap) {

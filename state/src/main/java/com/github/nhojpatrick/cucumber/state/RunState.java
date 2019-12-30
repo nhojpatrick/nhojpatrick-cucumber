@@ -13,8 +13,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 @ScenarioScoped
@@ -28,7 +28,7 @@ public class RunState {
     private void internalCheckKey(final String key)
             throws IllegalKeyException {
 
-        if (Objects.isNull(key)) {
+        if (isNull(key)) {
             throw new NullKeyException();
 
         } else if ("".equals(key)) {
@@ -42,7 +42,7 @@ public class RunState {
     private <T> void internalCheckTypeClass(final Class<T> tClass)
             throws NullTypeClassException {
 
-        if (Objects.isNull(tClass)) {
+        if (isNull(tClass)) {
             throw new NullTypeClassException();
         }
     }

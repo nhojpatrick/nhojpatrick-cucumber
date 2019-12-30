@@ -8,9 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.util.Objects.isNull;
 
 public class PathValidatorImpl
         implements PathValidator {
@@ -26,7 +27,7 @@ public class PathValidatorImpl
 
         LOGGER.debug("parsePath.entry path='{}'", path);
 
-        if (Objects.isNull(path)) {
+        if (isNull(path)) {
             throw new InvalidPathException("Path is Null.");
         }
 

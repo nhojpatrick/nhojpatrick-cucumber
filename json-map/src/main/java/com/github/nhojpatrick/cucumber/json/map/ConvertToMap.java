@@ -6,15 +6,16 @@ import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
+
+import static java.util.Objects.isNull;
 
 public class ConvertToMap
         implements Function<Object, Map<String, Object>> {
 
     public Map<String, Object> apply(final Object obj) {
 
-        if (Objects.isNull(obj)) {
+        if (isNull(obj)) {
             throw new RuntimeException(new NullObjectException());
         }
 

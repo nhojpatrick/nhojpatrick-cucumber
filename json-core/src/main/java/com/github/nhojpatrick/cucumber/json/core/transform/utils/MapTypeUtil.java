@@ -4,7 +4,9 @@ import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsValueException;
 
 import java.util.Map;
-import java.util.Objects;
+
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 public class MapTypeUtil {
 
@@ -14,11 +16,11 @@ public class MapTypeUtil {
             throws NullGenericsKeyException,
             NullGenericsValueException {
 
-        if (Objects.isNull(keyType)) {
+        if (isNull(keyType)) {
             throw new NullGenericsKeyException();
         }
 
-        if (Objects.isNull(valueType)) {
+        if (isNull(valueType)) {
             throw new NullGenericsValueException();
         }
 
@@ -37,15 +39,15 @@ public class MapTypeUtil {
             throws NullGenericsKeyException,
             NullGenericsValueException {
 
-        if (Objects.isNull(keyType)) {
+        if (isNull(keyType)) {
             throw new NullGenericsKeyException();
         }
 
-        if (Objects.isNull(valueType)) {
+        if (isNull(valueType)) {
             throw new NullGenericsValueException();
         }
 
-        if (Objects.isNull(map)) {
+        if (isNull(map)) {
             return false;
         }
 
@@ -56,9 +58,9 @@ public class MapTypeUtil {
         final boolean isTypeMismatch = map.entrySet()
                 .stream()
                 .anyMatch(p -> {
-                    final boolean keyMismatch = Objects.nonNull(p.getKey())
+                    final boolean keyMismatch = nonNull(p.getKey())
                             && !keyType.isAssignableFrom(p.getKey().getClass());
-                    final boolean valueMismatch = Objects.nonNull(p.getValue())
+                    final boolean valueMismatch = nonNull(p.getValue())
                             && !valueType.isAssignableFrom(p.getValue().getClass());
                     return keyMismatch || valueMismatch;
                 });
