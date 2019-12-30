@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.testing.internal.objects;
+package com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TestingConstants {
+public class LegacyTestingInternalObjectsConstants {
 
     public static final MyComplexObj COMPLEX_OBJECT_AS_OBJECT;
     public static final Map<String, Object> COMPLEX_OBJECT_AS_JSON_MAP;

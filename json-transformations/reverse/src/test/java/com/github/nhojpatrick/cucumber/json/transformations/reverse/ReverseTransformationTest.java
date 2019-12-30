@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.getBasicJsonMap;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.getBasicJsonMap;
 import static com.github.nhojpatrick.hamcrest.lang.IsHashCode.hashCodeGenerated;
 import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
 import static org.hamcrest.MatcherAssert.assertThat;
