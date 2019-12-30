@@ -3,14 +3,15 @@ package com.github.nhojpatrick.cucumber.json.core.transform.utils;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsValueException;
 
 import java.util.List;
-import java.util.Objects;
+
+import static java.util.Objects.isNull;
 
 public class ListTypeUtil {
 
     public static <V> boolean isTypedList(final Object obj, final Class<V> valueType)
             throws NullGenericsValueException {
 
-        if (Objects.isNull(valueType)) {
+        if (isNull(valueType)) {
             throw new NullGenericsValueException();
         }
 
@@ -26,11 +27,11 @@ public class ListTypeUtil {
     public static <V> boolean isTypedList(final List<Object> list, final Class<V> valueType)
             throws NullGenericsValueException {
 
-        if (Objects.isNull(valueType)) {
+        if (isNull(valueType)) {
             throw new NullGenericsValueException();
         }
 
-        if (Objects.isNull(list)) {
+        if (isNull(list)) {
             return false;
         }
 

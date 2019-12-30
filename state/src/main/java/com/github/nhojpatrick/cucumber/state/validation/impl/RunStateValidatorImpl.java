@@ -7,10 +7,10 @@ import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidator;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import static com.github.nhojpatrick.hamcrest.collections.IsCollection.collectionWithSize;
+import static java.util.Objects.isNull;
 import static java.util.stream.Collectors.toSet;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -31,7 +31,7 @@ public class RunStateValidatorImpl
     public RunStateValidator withNull(final String key)
             throws IllegalKeyException {
 
-        if (Objects.isNull(key)) {
+        if (isNull(key)) {
             throw new NullKeyException();
         }
 
@@ -44,7 +44,7 @@ public class RunStateValidatorImpl
     public RunStateValidator withValue(final String key)
             throws IllegalKeyException {
 
-        if (Objects.isNull(key)) {
+        if (isNull(key)) {
             throw new NullKeyException();
         }
 
@@ -57,7 +57,7 @@ public class RunStateValidatorImpl
     public void verify(final RunState runState)
             throws NullRunStateException {
 
-        if (Objects.isNull(runState)) {
+        if (isNull(runState)) {
             throw new NullRunStateException();
         }
 
