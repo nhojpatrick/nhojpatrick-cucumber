@@ -103,6 +103,10 @@ public class PathElementImplTest {
 
                 DynamicTest.dynamicTest("isArrayElement", () -> {
                     assertThat("should match", classUnderTest.isArrayElement(), is(equalTo(false)));
+                }),
+
+                DynamicTest.dynamicTest("isNotArrayElement", () -> {
+                    assertThat("should match", classUnderTest.isNotArrayElement(), is(equalTo(true)));
                 })
 
         );

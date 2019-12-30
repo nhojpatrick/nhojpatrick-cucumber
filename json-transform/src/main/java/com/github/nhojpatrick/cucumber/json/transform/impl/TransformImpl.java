@@ -87,7 +87,7 @@ public class TransformImpl
             final boolean isTypedListObject = isTypedList(innerRaw, Object.class);
 
             if (isTypedListObject
-                    && !pathElement.isArrayElement()) {
+                    && pathElement.isNotArrayElement()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert array to object, at path '%s'.",
                         String.valueOf(currentPath)
