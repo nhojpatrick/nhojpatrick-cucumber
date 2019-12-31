@@ -2,8 +2,8 @@ package com.github.nhojpatrick.cucumber.json.transformations.whitespace;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
-import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions.WhitespacePrefixException;
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions.WhitespaceSuffixException;
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions.WhitespaceTransformationArgumentException;
@@ -26,13 +26,15 @@ import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class WhitespaceTransformation
-        implements Transformation {
+        extends BaseTransformation {
 
     private final int prefix;
     private final int suffix;
 
     public WhitespaceTransformation(final int prefix, final int suffix)
             throws WhitespaceTransformationArgumentException {
+
+        super();
 
         if (prefix < 0) {
             throw new WhitespacePrefixException(prefix);

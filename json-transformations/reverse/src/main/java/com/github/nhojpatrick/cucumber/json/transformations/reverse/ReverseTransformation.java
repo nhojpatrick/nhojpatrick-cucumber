@@ -3,8 +3,8 @@ package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
-import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import com.google.common.annotations.VisibleForTesting;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -23,9 +23,10 @@ import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class ReverseTransformation
-        implements Transformation {
+        extends BaseTransformation {
 
     public ReverseTransformation() {
+        super();
     }
 
     @Override

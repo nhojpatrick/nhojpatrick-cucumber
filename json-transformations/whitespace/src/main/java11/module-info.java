@@ -8,6 +8,5 @@ module com.github.nhojpatrick.cucumber.json.transformations.whitespace {
     requires org.apache.commons.lang3;
     requires org.joda.beans;
     requires org.slf4j;
-    requires transitive com.github.nhojpatrick.cucumber.core;
-    requires transitive com.github.nhojpatrick.cucumber.json.core;
+    requires transitive com.github.nhojpatrick.cucumber.json.transformations.core;
 }
