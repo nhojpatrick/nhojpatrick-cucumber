@@ -2,8 +2,8 @@ package com.github.nhojpatrick.cucumber.json.transformations.set;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
-import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -19,11 +19,13 @@ import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class SetTransformation
-        implements Transformation {
+        extends BaseTransformation {
 
     private final Object value;
 
     public SetTransformation(final Object value) {
+        super();
+
         this.value = value;
     }
 
