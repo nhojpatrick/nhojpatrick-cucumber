@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -7,7 +8,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public class PathElementImpl
-        extends AbstractPathElement {
+        extends AbstractPathElement
+        implements PathElement {
 
     public PathElementImpl(final String element) {
         super(element, element, null);
