@@ -47,9 +47,12 @@ public class StateSteps {
         for (final Map.Entry<String, String> row : stringStringMap.entrySet()) {
             final Object runStateValueObj = this.runState.get(row.getKey(), Object.class);
             final String runStateValueAsStr = String.valueOf(runStateValueObj);
+            final String rowValue = row.getValue()
+                    .replace("\\n", "\n")
+                    .replace("\\t", "\t");
             assertThat(String.format("Unexpected RunState for key '%s'", row.getKey()),
                     runStateValueAsStr,
-                    is(equalTo(row.getValue()))
+                    is(equalTo(rowValue))
             );
         }
     }
