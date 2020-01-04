@@ -78,8 +78,10 @@ public class ReverseTransformation
                 output.put(pathElement.getElement(), listObj);
 
             } else {
-                final String reversed = reverse(currentPath, obj);
-                output.put(pathElement.getElement(), reversed);
+                if (output.containsKey(pathElement.getElement())) {
+                    final String reversed = reverse(currentPath, obj);
+                    output.put(pathElement.getElement(), reversed);
+                }
             }
 
         } else {
@@ -140,11 +142,12 @@ public class ReverseTransformation
             ));
         }
 
-        String str;
         if (isNull(input)) {
-            str = null;
+            return null;
+        }
 
-        } else if (input instanceof String) {
+        String str;
+        if (input instanceof String) {
             str = (String) input;
 
         } else {
