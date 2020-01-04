@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.map;
 
+import com.github.nhojpatrick.cucumber.json.map.impl.ConvertMapToJson;
 import com.github.nhojpatrick.cucumber.json.map.impl.ConvertObjectToMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
@@ -26,8 +27,17 @@ public class ConvertJsonMapUtilTest {
 
         return Arrays.asList(
 
+                DynamicTest.dynamicTest("Null ConvertMapToJson", () -> {
+                    final Executable testMethod = () -> new ConvertJsonMapUtil(null, null);
+                    final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo("ConvertMapToJson"))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    );
+                }),
+
                 DynamicTest.dynamicTest("Null ConvertObjectToMap", () -> {
-                    final Executable testMethod = () -> new ConvertJsonMapUtil(null);
+                    final Executable testMethod = () -> new ConvertJsonMapUtil(mock(ConvertMapToJson.class), null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("ConvertObjectToMap"))),
@@ -36,7 +46,12 @@ public class ConvertJsonMapUtilTest {
                 }),
 
                 DynamicTest.dynamicTest("Success args constructor", () -> {
-                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil(mock(ConvertObjectToMap.class));
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil(mock(ConvertMapToJson.class), mock(ConvertObjectToMap.class));
+                    assertThat(classUnderTest, is(notNullValue()));
+                }),
+
+                DynamicTest.dynamicTest("Success args formatJson constructor", () -> {
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil(false);
                     assertThat(classUnderTest, is(notNullValue()));
                 }),
 
