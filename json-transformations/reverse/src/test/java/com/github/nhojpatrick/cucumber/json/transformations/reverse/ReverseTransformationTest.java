@@ -157,7 +157,6 @@ public class ReverseTransformationTest {
                     final Map<String, Object> input = null;
 
                     final Map<String, Object> expected = new HashMap<>();
-                    expected.put(key, null);
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
@@ -177,7 +176,6 @@ public class ReverseTransformationTest {
                     final Map<String, Object> input = new HashMap<>();
 
                     final Map<String, Object> expected = new HashMap<>();
-                    expected.put(key, null);
 
                     final Transformation classUnderTest = new ReverseTransformation();
 
