@@ -1,13 +1,10 @@
 package com.github.nhojpatrick.cucumber.json.transformations.core;
 
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
-import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.Map;
 
 import static com.github.nhojpatrick.hamcrest.lang.IsHashCode.hashCodeGenerated;
 import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
@@ -18,20 +15,6 @@ import static org.hamcrest.core.IsNot.not;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class BaseTransformationTest {
-
-    class TestingBaseTransformation
-            extends BaseTransformation {
-
-        @Override
-        public Map<String, Object> perform(
-                final Map<String, Object> input,
-                final PathElement pathElement,
-                final String currentPath) {
-
-            return input;
-        }
-
-    }
 
     @Nested
     @DisplayName("Basic")
@@ -74,7 +57,7 @@ public class BaseTransformationTest {
         public void toStringTest() {
 
             assertAll("toString",
-                    () -> assertThat("should match", this.classUnderTest, is(toStringGenerated("BaseTransformationTest.TestingBaseTransformation[]"))),
+                    () -> assertThat("should match", this.classUnderTest, is(toStringGenerated("TestingBaseTransformation[]"))),
                     () -> assertThat("should match", this.classUnderTest, is(toStringGenerated(this.differentInstance.toString()))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated("")))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated(new Object().toString())))),

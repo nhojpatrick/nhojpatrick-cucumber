@@ -71,8 +71,8 @@ public class WhitespaceTransformation
     }
 
     @Override
-    public Map<String, Object> perform(final Map<String, Object> input,
-                                       final PathElement pathElement,
+    public Map<String, Object> perform(final PathElement pathElement,
+                                       final Map<String, Object> inputRaw,
                                        final String currentPath)
             throws IllegalKeyException {
 
@@ -80,8 +80,8 @@ public class WhitespaceTransformation
             throw new NullPathElementException();
         }
 
-        final Map<String, Object> output = nonNull(input)
-                ? input
+        final Map<String, Object> output = nonNull(inputRaw)
+                ? inputRaw
                 : new HashMap<>();
 
         if (pathElement.isNotArrayElement()) {
