@@ -54,9 +54,9 @@ public class RemoveTransformation
                 ? inputRaw
                 : new HashMap<>();
 
-//        if (!input.containsKey(pathElement.getElement())) {
-//            return input;
-//        }
+        if (!output.containsKey(pathElement.getElement())) {
+            return output;
+        }
 
         if (pathElement.isNotArrayElement()) {
             output.remove(pathElement.getElement());
@@ -69,30 +69,27 @@ public class RemoveTransformation
                     ? objRaw
                     : new ArrayList<Map<String, Object>>();
 
-            if (isTypedList(objRaw, Object.class)) {
-
-                final List<Object> listObj = (List<Object>) objRaw;
-
-                if (pathElement.getArrayIndex() < listObj.size()) {
-                    listObj.remove(pathElement.getArrayIndex());
-
-                } else {
-
-                    final int size = listObj.size();
-                    final int arrayIndex = pathElement.getArrayIndex();
-
-                    for (int i = size; i < arrayIndex; i++) {
-                        listObj.add(null);
-                    }
-                }
-
-                output.put(pathElement.getElement(), listObj);
-
-            } else {
+            if (!isTypedList(objRaw, Object.class)) {
                 throw new UnsupportedOperationException(
                         "RemoveTransformation PathElement not typed List and Path isArrayElement"
                 );
             }
+
+            final List<Object> listObj = (List<Object>) objRaw;
+
+            if (pathElement.getArrayIndex() < listObj.size()) {
+                listObj.remove(pathElement.getArrayIndex());
+
+            } else {
+                final int size = listObj.size();
+                final int arrayIndex = pathElement.getArrayIndex();
+
+                for (int i = size; i < arrayIndex; i++) {
+                    listObj.add(null);
+                }
+            }
+
+            output.put(pathElement.getElement(), listObj);
         }
 
         return output;
