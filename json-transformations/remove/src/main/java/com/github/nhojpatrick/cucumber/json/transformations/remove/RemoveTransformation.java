@@ -41,8 +41,8 @@ public class RemoveTransformation
     }
 
     @Override
-    public Map<String, Object> perform(Map<String, Object> input,
-                                       final PathElement pathElement,
+    public Map<String, Object> perform(final PathElement pathElement,
+                                       final Map<String, Object> inputRaw,
                                        final String currentPath)
             throws IllegalKeyException {
 
@@ -50,20 +50,20 @@ public class RemoveTransformation
             throw new NullPathElementException();
         }
 
-        if (isNull(input)) {
-            input = new HashMap<>();
-        }
+        final Map<String, Object> output = nonNull(inputRaw)
+                ? inputRaw
+                : new HashMap<>();
 
 //        if (!input.containsKey(pathElement.getElement())) {
 //            return input;
 //        }
 
         if (pathElement.isNotArrayElement()) {
-            input.remove(pathElement.getElement());
+            output.remove(pathElement.getElement());
 
         } else {
 
-            Object objRaw = input.get(pathElement.getElement());
+            Object objRaw = output.get(pathElement.getElement());
 
             objRaw = nonNull(objRaw)
                     ? objRaw
@@ -86,7 +86,7 @@ public class RemoveTransformation
                     }
                 }
 
-                input.put(pathElement.getElement(), listObj);
+                output.put(pathElement.getElement(), listObj);
 
             } else {
                 throw new UnsupportedOperationException(
@@ -95,7 +95,7 @@ public class RemoveTransformation
             }
         }
 
-        return input;
+        return output;
     }
 
     @Override

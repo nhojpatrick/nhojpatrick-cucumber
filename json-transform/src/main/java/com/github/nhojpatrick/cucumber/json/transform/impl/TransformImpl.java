@@ -72,7 +72,7 @@ public class TransformImpl
 
         if (pathElements.size() == 1) {
             LOGGER.debug("Execute Before depth={} path='{}' input={}", depth, pathElements, output);
-            output = transformation.perform(output, pathElement, currentPath);
+            output = transformation.perform(pathElement, output, currentPath);
             LOGGER.debug("Execute After depth={} path='{}' input={}", depth, pathElements, output);
 
         } else if (pathElements.size() > 1) {
