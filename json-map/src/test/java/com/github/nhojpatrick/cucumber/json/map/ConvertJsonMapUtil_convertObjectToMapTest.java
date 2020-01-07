@@ -3,6 +3,7 @@ package com.github.nhojpatrick.cucumber.json.map;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException;
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
+import com.github.nhojpatrick.cucumber.json.map.impl.ConvertObjectToMap;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import org.junit.jupiter.api.DisplayName;
@@ -29,28 +30,25 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class ConvertToMapUtilTest {
+public class ConvertJsonMapUtil_convertObjectToMapTest {
+
+    public static final String INPUT_KEY = "Valid_RunStateObjectKey";
+    public static final String OUTPUT_KEY = "Valid_RunStateJsonMapKey";
 
     @TestFactory
-    @DisplayName("Exceptions from Inputs")
-    public Collection<DynamicTest> exceptionsInputs() {
+    @DisplayName("convertObjectToMap validation")
+    public Collection<DynamicTest> validation() {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Null ConvertToMap", () -> {
-                    final Executable testMethod = () -> new ConvertToMapUtil(null);
-                    final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("ConvertToMap"))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
                 DynamicTest.dynamicTest("Null RunState", () -> {
-                    final ConvertToMapUtil classUnderTest = new ConvertToMapUtil();
-                    final Executable testMethod = () -> classUnderTest.convertToMap(null,
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
+                    final Executable testMethod = () -> classUnderTest.convertObjectToMap(
                             null,
-                            null);
+                            null,
+                            null
+                    );
+
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("RunState"))),
@@ -58,12 +56,16 @@ public class ConvertToMapUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null RunStateObjectKey", () -> {
+                DynamicTest.dynamicTest("Null Input_Key", () -> {
                     final RunState runState = new RunState();
-                    final ConvertToMapUtil classUnderTest = new ConvertToMapUtil();
-                    final Executable testMethod = () -> classUnderTest.convertToMap(runState,
+
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
+                    final Executable testMethod = () -> classUnderTest.convertObjectToMap(
+                            runState,
                             null,
-                            null);
+                            null
+                    );
+
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("RunStateObjectKey"))),
@@ -71,12 +73,16 @@ public class ConvertToMapUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null RunStateJsonMapKey", () -> {
+                DynamicTest.dynamicTest("Null Output_Key", () -> {
                     final RunState runState = new RunState();
-                    final ConvertToMapUtil classUnderTest = new ConvertToMapUtil();
-                    final Executable testMethod = () -> classUnderTest.convertToMap(runState,
-                            "Valid_RunStateObjectKey",
-                            null);
+
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
+                    final Executable testMethod = () -> classUnderTest.convertObjectToMap(
+                            runState,
+                            INPUT_KEY,
+                            null
+                    );
+
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("RunStateJsonMapKey"))),
@@ -89,18 +95,20 @@ public class ConvertToMapUtilTest {
     }
 
     @TestFactory
-    @DisplayName("Exceptions from RunState")
-    public Collection<DynamicTest> exceptionsRunState() {
+    @DisplayName("convertObjectToMap RunState validation")
+    public Collection<DynamicTest> runStateValidation() {
 
         return Arrays.asList(
 
                 DynamicTest.dynamicTest("Empty RunState", () -> {
                     final RunState runState = new RunState();
 
-                    final ConvertToMapUtil classUnderTest = new ConvertToMapUtil();
-                    final Executable testMethod = () -> classUnderTest.convertToMap(runState,
-                            "Valid_RunStateObjectKey",
-                            "Valid_RunStateJsonMapKey");
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
+                    final Executable testMethod = () -> classUnderTest.convertObjectToMap(
+                            runState,
+                            INPUT_KEY,
+                            OUTPUT_KEY
+                    );
 
                     final MultipleFailuresError thrown = assertThrows(MultipleFailuresError.class, testMethod);
                     assertAll("Checking Exception",
@@ -108,20 +116,22 @@ public class ConvertToMapUtilTest {
                                     "Run State Validation (1 failure)",
                                     "java.lang.AssertionError: Keys where value was expected to be non null",
                                     "Expected: is java.util.Collection size <0>",
-                                    "     but: was java.util.Collection size <1> <[Valid_RunStateObjectKey]>"
+                                    String.format("     but: was java.util.Collection size <1> <[%s]>", INPUT_KEY)
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                DynamicTest.dynamicTest("Missing Input, Valid Output in RunState", () -> {
+                DynamicTest.dynamicTest("Missing Input, Invalid Output in RunState", () -> {
                     final RunState runState = new RunState();
-                    runState.set("Valid_RunStateJsonMapKey", new Object());
+                    runState.set(OUTPUT_KEY, new Object());
 
-                    final ConvertToMapUtil classUnderTest = new ConvertToMapUtil();
-                    final Executable testMethod = () -> classUnderTest.convertToMap(runState,
-                            "Valid_RunStateObjectKey",
-                            "Valid_RunStateJsonMapKey");
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
+                    final Executable testMethod = () -> classUnderTest.convertObjectToMap(
+                            runState,
+                            INPUT_KEY,
+                            OUTPUT_KEY
+                    );
 
                     final MultipleFailuresError thrown = assertThrows(MultipleFailuresError.class, testMethod);
                     assertAll("Checking Exception",
@@ -129,25 +139,27 @@ public class ConvertToMapUtilTest {
                                     "Run State Validation (2 failures)",
                                     "java.lang.AssertionError: Keys where value was expected to be null",
                                     "Expected: is java.util.Collection size <0>",
-                                    "     but: was java.util.Collection size <1> <[Valid_RunStateJsonMapKey]>",
+                                    String.format("     but: was java.util.Collection size <1> <[%s]>", OUTPUT_KEY),
                                     "java.lang.AssertionError: Keys where value was expected to be non null",
                                     "Expected: is java.util.Collection size <0>",
-                                    "     but: was java.util.Collection size <1> <[Valid_RunStateObjectKey]>"
+                                    String.format("     but: was java.util.Collection size <1> <[%s]>", INPUT_KEY)
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
 
                 }),
 
-                DynamicTest.dynamicTest("Valid Input, Valid Output in RunState", () -> {
+                DynamicTest.dynamicTest("Valid Input, Invalid Output in RunState", () -> {
                     final RunState runState = new RunState();
-                    runState.set("Valid_RunStateObjectKey", "aValidKey");
-                    runState.set("Valid_RunStateJsonMapKey", "Should not be in RunState");
+                    runState.set(INPUT_KEY, "aValidKey");
+                    runState.set(OUTPUT_KEY, "Should not be in RunState");
 
-                    final ConvertToMapUtil classUnderTest = new ConvertToMapUtil();
-                    final Executable testMethod = () -> classUnderTest.convertToMap(runState,
-                            "Valid_RunStateObjectKey",
-                            "Valid_RunStateJsonMapKey");
+                    final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
+                    final Executable testMethod = () -> classUnderTest.convertObjectToMap(
+                            runState,
+                            INPUT_KEY,
+                            OUTPUT_KEY
+                    );
 
                     final MultipleFailuresError thrown = assertThrows(MultipleFailuresError.class, testMethod);
                     assertAll("Checking Exception",
@@ -155,7 +167,7 @@ public class ConvertToMapUtilTest {
                                     "Run State Validation (1 failure)",
                                     "java.lang.AssertionError: Keys where value was expected to be null",
                                     "Expected: is java.util.Collection size <0>",
-                                    "     but: was java.util.Collection size <1> <[Valid_RunStateJsonMapKey]>"
+                                    String.format("     but: was java.util.Collection size <1> <[%s]>", OUTPUT_KEY)
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -176,28 +188,30 @@ public class ConvertToMapUtilTest {
 
         final Map<String, Object> mockOutput = mock(Map.class);
 
-        final ConvertToMap mockConvertToMap = mock(ConvertToMap.class);
-        when(mockConvertToMap.apply(any()))
+        final ConvertObjectToMap mockConvertObjectToMap = mock(ConvertObjectToMap.class);
+        when(mockConvertObjectToMap.apply(any()))
                 .thenReturn(mockOutput);
 
         final RunState mockRunState = mock(RunState.class);
-        when(mockRunState.get(eq("Valid_RunStateObjectKey"), any()))
+        when(mockRunState.get(eq(INPUT_KEY), any()))
                 .thenReturn(mockInput);
-        when(mockRunState.isSet(eq("Valid_RunStateObjectKey")))
+        when(mockRunState.isSet(eq(INPUT_KEY)))
                 .thenReturn(true);
-        when(mockRunState.isUnset(eq("Valid_RunStateJsonMapKey")))
+        when(mockRunState.isUnset(eq(OUTPUT_KEY)))
                 .thenReturn(true);
 
-        new ConvertToMapUtil(mockConvertToMap)
-                .convertToMap(mockRunState,
-                        "Valid_RunStateObjectKey",
-                        "Valid_RunStateJsonMapKey");
+        new ConvertJsonMapUtil(mockConvertObjectToMap)
+                .convertObjectToMap(
+                        mockRunState,
+                        INPUT_KEY,
+                        OUTPUT_KEY
+                );
 
         assertAll("",
-                () -> verify(mockConvertToMap, times(1))
+                () -> verify(mockConvertObjectToMap, times(1))
                         .apply(eq(mockInput)),
                 () -> verify(mockRunState, times(1))
-                        .set(eq("Valid_RunStateJsonMapKey"), eq(mockOutput))
+                        .set(eq(OUTPUT_KEY), eq(mockOutput))
         );
     }
 

@@ -1,6 +1,7 @@
 @Json
 @Map
-Feature: Map - Convert To - Checking with Specified keys
+@ConvertObjectToMap
+Feature: Convert Object To Map - Checking with Specified keys
 
 
   @Error

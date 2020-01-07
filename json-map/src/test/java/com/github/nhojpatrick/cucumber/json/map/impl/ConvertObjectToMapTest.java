@@ -1,8 +1,10 @@
-package com.github.nhojpatrick.cucumber.json.map;
+package com.github.nhojpatrick.cucumber.json.map.impl;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
 import com.github.nhojpatrick.cucumber.testing.internal.objects.MyComplexObj;
 import com.github.nhojpatrick.cucumber.testing.internal.objects.MySimpleObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -10,10 +12,6 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.List;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.COMPLEX_OBJECT_AS_JSON_MAP;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.SIMPLE_OBJECT_AS_JSON_MAP;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -21,13 +19,13 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ConvertToMapTest {
+public class ConvertObjectToMapTest {
 
-    private ConvertToMap classUnderTest;
+    private ConvertObjectToMap classUnderTest;
 
     @BeforeEach
     public void beforeEach() {
-        this.classUnderTest = new ConvertToMap();
+        this.classUnderTest = new ConvertObjectToMap();
     }
 
     @Test
@@ -37,7 +35,7 @@ public class ConvertToMapTest {
 
         final RuntimeException thrown = assertThrows(RuntimeException.class, testMethod);
         assertAll("Checking Exception",
-                () -> assertThat(thrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
+                () -> MatcherAssert.assertThat(thrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
         );
     }
 
@@ -55,9 +53,9 @@ public class ConvertToMapTest {
     @Test
     public void check_MyComplexObj() {
 
-        final MyComplexObj toBeTested = COMPLEX_OBJECT_AS_OBJECT;
+        final MyComplexObj toBeTested = TestingConstants.COMPLEX_OBJECT_AS_OBJECT;
 
-        final Map<String, Object> expected = COMPLEX_OBJECT_AS_JSON_MAP;
+        final Map<String, Object> expected = TestingConstants.COMPLEX_OBJECT_AS_JSON_MAP;
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 
@@ -84,9 +82,9 @@ public class ConvertToMapTest {
     @Test
     public void check_MySimpleObj() {
 
-        final MySimpleObj toBeTested = SIMPLE_OBJECT_AS_OBJECT;
+        final MySimpleObj toBeTested = TestingConstants.SIMPLE_OBJECT_AS_OBJECT;
 
-        final Map<String, Object> expected = SIMPLE_OBJECT_AS_JSON_MAP;
+        final Map<String, Object> expected = TestingConstants.SIMPLE_OBJECT_AS_JSON_MAP;
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 

@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.map;
+package com.github.nhojpatrick.cucumber.json.map.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +10,7 @@ import java.util.function.Function;
 
 import static java.util.Objects.isNull;
 
-public class ConvertToMap
+public class ConvertObjectToMap
         implements Function<Object, Map<String, Object>> {
 
     public Map<String, Object> apply(final Object obj) {
@@ -20,7 +20,9 @@ public class ConvertToMap
         }
 
         final ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
 //        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
         final TypeReference<HashMap<String, Object>> typeRef = new TypeReference<HashMap<String, Object>>() {
         };
         final Map<String, Object> jsonMap = objectMapper.convertValue(obj, typeRef);

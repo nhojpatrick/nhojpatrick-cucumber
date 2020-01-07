@@ -1,6 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transform;
 
-import com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants;
+import com.github.nhojpatrick.cucumber.json.map.ConvertJsonMapConstants;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,7 +14,7 @@ public class TransformConstantsTest {
     public void defaultMapKey() {
 
         assertAll("Checking Constant DEFAULT_MAP_KEY",
-                () -> assertThat("Not as ConvertToMapConstants", TransformConstants.DEFAULT_MAP_KEY, is(equalTo(ConvertToMapConstants.DEFAULT_JSON_MAP_KEY))),
+                () -> assertThat("Not as ConvertJsonMapConstants", TransformConstants.DEFAULT_MAP_KEY, is(equalTo(ConvertJsonMapConstants.DEFAULT_JSON_MAP_KEY))),
                 () -> assertThat("Not as expected", TransformConstants.DEFAULT_MAP_KEY, is(equalTo("runState.json.map")))
         );
     }
