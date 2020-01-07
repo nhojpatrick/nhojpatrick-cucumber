@@ -14,7 +14,7 @@ public class TransformConstantsTest {
     public void defaultMapKey() {
 
         assertAll("Checking Constant DEFAULT_MAP_KEY",
-                () -> assertThat("Not as ConvertToMap", TransformConstants.DEFAULT_MAP_KEY, is(equalTo(ConvertToMapConstants.DEFAULT_MAP_KEY))),
+                () -> assertThat("Not as ConvertToMapConstants", TransformConstants.DEFAULT_MAP_KEY, is(equalTo(ConvertToMapConstants.DEFAULT_JSON_MAP_KEY))),
                 () -> assertThat("Not as expected", TransformConstants.DEFAULT_MAP_KEY, is(equalTo("runState.json.map")))
         );
     }
