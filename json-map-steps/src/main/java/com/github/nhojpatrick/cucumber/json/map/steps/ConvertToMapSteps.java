@@ -9,8 +9,8 @@ import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.google.inject.Inject;
 import io.cucumber.java.en.Given;
 
-import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_MAP_KEY;
-import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_OBJECT_KEY;
+import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_JSON_MAP_KEY;
+import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_JSON_OBJECT_KEY;
 
 public class ConvertToMapSteps {
 
@@ -28,7 +28,7 @@ public class ConvertToMapSteps {
             NullRunStateException,
             TypeMismatchException {
 
-        convertToMap(DEFAULT_OBJECT_KEY, DEFAULT_MAP_KEY);
+        convertToMap(DEFAULT_JSON_OBJECT_KEY, DEFAULT_JSON_MAP_KEY);
     }
 
     @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string}")

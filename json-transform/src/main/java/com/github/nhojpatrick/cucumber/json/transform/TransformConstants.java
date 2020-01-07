@@ -8,6 +8,6 @@ public interface TransformConstants {
     String CUCUMBER_DATA_TABLE_COLUMN_PATH = "path";
     String CUCUMBER_DATA_TABLE_COLUMN_TYPE = "type";
     String CUCUMBER_DATA_TABLE_COLUMN_VALUE = "value";
-    String DEFAULT_MAP_KEY = ConvertToMapConstants.DEFAULT_MAP_KEY;
+    String DEFAULT_MAP_KEY = ConvertToMapConstants.DEFAULT_JSON_MAP_KEY;
 
 }

@@ -6,8 +6,8 @@ import com.google.inject.Inject;
 import io.cucumber.java.en.Given;
 import org.junit.jupiter.api.function.Executable;
 
-import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_MAP_KEY;
-import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_OBJECT_KEY;
+import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_JSON_MAP_KEY;
+import static com.github.nhojpatrick.cucumber.json.map.ConvertToMapConstants.DEFAULT_JSON_OBJECT_KEY;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -25,7 +25,11 @@ public class MapJsonCucumberSteps {
     @Given("I convert object to json map using default RunStateKeys produces the AssertionError {string}")
     public void convertToMap_AssertionError(final String expectedExceptionMessageRaw) {
 
-        convertToMap_AssertionError(DEFAULT_OBJECT_KEY, DEFAULT_MAP_KEY, expectedExceptionMessageRaw);
+        convertToMap_AssertionError(
+                DEFAULT_JSON_OBJECT_KEY,
+                DEFAULT_JSON_MAP_KEY,
+                expectedExceptionMessageRaw
+        );
     }
 
     @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the AssertionError {string}")
@@ -48,7 +52,11 @@ public class MapJsonCucumberSteps {
     @Given("I convert object to json map using default RunStateKeys produces the IllegalArgumentException {string}")
     public void convertToMap_IllegalArgumentException(final String expectedExceptionMessageRaw) {
 
-        convertToMap_IllegalArgumentException(DEFAULT_OBJECT_KEY, DEFAULT_MAP_KEY, expectedExceptionMessageRaw);
+        convertToMap_IllegalArgumentException(
+                DEFAULT_JSON_OBJECT_KEY,
+                DEFAULT_JSON_MAP_KEY,
+                expectedExceptionMessageRaw
+        );
     }
 
     @Given("I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the IllegalArgumentException {string}")
