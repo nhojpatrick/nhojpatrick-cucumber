@@ -10,7 +10,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +61,12 @@ public class ReverseTransformation
 
         if (pathElement.isNotArrayElement()) {
 
+            // FIXME should this error or be silent?
+            if (!output.containsKey(pathElement.getElement())
+                    && isNull(output.get(pathElement.getElement()))) {
+                return output;
+            }
+
             final Object obj = output.get(pathElement.getElement());
 
             if (isTypedMap(obj, String.class, Object.class)) {
@@ -86,37 +91,39 @@ public class ReverseTransformation
 
         } else {
 
-            Object objRaw = output.get(pathElement.getElement());
+            // FIXME should this error or be silent?
+            if (!output.containsKey(pathElement.getElement())
+                    && isNull(output.get(pathElement.getElement()))) {
+                return output;
+            }
 
-            objRaw = nonNull(objRaw)
-                    ? objRaw
-                    : new ArrayList<>();
+            final Object objRaw = output.get(pathElement.getElement());
 
-            if (isTypedList(objRaw, Object.class)) {
+            if (!isTypedList(objRaw, Object.class)) {
+                throw new UnsupportedOperationException(
+                        "ReverseTransformation PathElement not typed List and Path isArrayElement"
+                );
+            }
 
-                final List<Object> listObj = (List<Object>) objRaw;
+            final List<Object> listObj = (List<Object>) objRaw;
 
-                if (pathElement.getArrayIndex() < listObj.size()) {
+            if (pathElement.getArrayIndex() < listObj.size()) {
 
-                    final Object obj = listObj.get(pathElement.getArrayIndex());
-                    final String reversed = reverse(currentPath, obj);
+                final Object obj = listObj.get(pathElement.getArrayIndex());
+                final String reversed = reverse(currentPath, obj);
 
-                    listObj.set(pathElement.getArrayIndex(), reversed);
-
-                } else {
-                    final int size = listObj.size();
-                    final int arrayIndex = pathElement.getArrayIndex();
-
-                    for (int i = size; i <= arrayIndex; i++) {
-                        listObj.add(null);
-                    }
-                }
-
-                output.put(pathElement.getElement(), listObj);
+                listObj.set(pathElement.getArrayIndex(), reversed);
 
             } else {
-                throw new UnsupportedOperationException("FIXME reverse issue");
+                final int size = listObj.size();
+                final int arrayIndex = pathElement.getArrayIndex();
+
+                for (int i = size; i <= arrayIndex; i++) {
+                    listObj.add(null);
+                }
             }
+
+            output.put(pathElement.getElement(), listObj);
         }
 
         return output;
@@ -132,7 +139,6 @@ public class ReverseTransformation
                     "Unable to reverse JsonObject, at path '%s'.",
                     currentPath
             ));
-//            throw new UnsupportedOperationException("Unable to reverse JsonObject.");
         }
 
         if (input instanceof List) {
