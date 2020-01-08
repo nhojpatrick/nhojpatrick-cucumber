@@ -34,6 +34,7 @@
 	<modules>
 		<module>all</module>
 		<module>core</module>
+		<module>print</module>
 		<module>remove</module>
 		<module>reverse</module>
 		<module>set</module>
@@ -50,6 +51,11 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-core</artifactId>
+				<version>[${project.version},${project.custom.next.version})</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-transformations-print</artifactId>
 				<version>[${project.version},${project.custom.next.version})</version>
 			</dependency>
 			<dependency>

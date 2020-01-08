@@ -11,7 +11,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-json-transformations-all</artifactId>
+	<artifactId>nhojpatrick-cucumber-json-transformations-print</artifactId>
 	<!--packaging / -->
 	<!--name / -->
 	<!--version / -->
@@ -36,23 +36,54 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-print</artifactId>
+			<artifactId>nhojpatrick-cucumber-json-transformations-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-remove</artifactId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-reverse</artifactId>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-set</artifactId>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-whitespace</artifactId>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 	</dependencies>
 	<!--reports (Deprecated) / -->
@@ -61,9 +92,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transformations.all</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transformations.print</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
-		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>
