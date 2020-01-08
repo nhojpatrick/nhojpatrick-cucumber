@@ -8,12 +8,11 @@ import io.cucumber.java.en.Given;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_BASIC_ARRAYS;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_BASIC_PRIMITIVES;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_EMPTY;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicPrimitives;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.COMPLEX_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.SIMPLE_OBJECT_AS_OBJECT;
 
@@ -42,11 +41,11 @@ public class State_TestingInternalSteps {
                     break;
 
                 case "Map_BasicArrays":
-                    this.runState.set(row.getKey(), new LinkedHashMap<>(MAP_BASIC_ARRAYS));
+                    this.runState.set(row.getKey(), getMapBasicArrays());
                     break;
 
                 case "Map_BasicPrimitives":
-                    this.runState.set(row.getKey(), new LinkedHashMap<>(MAP_BASIC_PRIMITIVES));
+                    this.runState.set(row.getKey(), getMapBasicPrimitives());
                     break;
 
                 case "Map_Empty":
