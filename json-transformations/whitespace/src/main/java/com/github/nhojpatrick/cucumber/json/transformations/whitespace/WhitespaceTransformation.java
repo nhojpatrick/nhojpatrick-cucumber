@@ -88,22 +88,8 @@ public class WhitespaceTransformation
 
             final Object obj = output.get(pathElement.getElement());
 
-            if (isTypedMap(obj, String.class, Object.class)) {
-                throw new UnsupportedOperationException("Unable to whitespace JsonObject.");
-            }
-
-            if (isTypedList(obj, Object.class)) {
-
-                final List<Object> listObj = (List<Object>) obj;
-                final List<Object> listObjPadded = listObj.stream()
-                        .map(p -> pad(p, this.prefix, this.suffix))
-                        .collect(Collectors.toList());
-                output.put(pathElement.getElement(), listObjPadded);
-
-            } else {
-                final String padded = pad(obj, this.prefix, this.suffix);
-                output.put(pathElement.getElement(), padded);
-            }
+            final String padded = pad(obj, this.prefix, this.suffix);
+            output.put(pathElement.getElement(), padded);
 
         } else {
 
@@ -113,35 +99,35 @@ public class WhitespaceTransformation
                     ? objRaw
                     : new ArrayList<>();
 
-            if (isTypedList(objRaw, Object.class)) {
+            if (!isTypedList(objRaw, Object.class)) {
+                throw new UnsupportedOperationException(
+                        "WhitespaceTransformation PathElement not typed List and Path isArrayElement"
+                );
+            }
 
-                final List<Object> listObj = (List<Object>) objRaw;
+            final List<Object> listObj = (List<Object>) objRaw;
 
-                if (pathElement.getArrayIndex() < listObj.size()) {
+            if (pathElement.getArrayIndex() < listObj.size()) {
 
-                    final Object obj = listObj.get(pathElement.getArrayIndex());
-                    final String padded = pad(obj, this.prefix, this.suffix);
+                final Object obj = listObj.get(pathElement.getArrayIndex());
+                final String padded = pad(obj, this.prefix, this.suffix);
 
-                    listObj.set(pathElement.getArrayIndex(), padded);
-
-                } else {
-                    final int size = listObj.size();
-                    final int arrayIndex = pathElement.getArrayIndex();
-
-                    for (int i = size; i < arrayIndex; i++) {
-                        listObj.add(null);
-                    }
-
-                    final String padded = pad(null, this.prefix, this.suffix);
-
-                    listObj.add(pathElement.getArrayIndex(), padded);
-                }
-
-                output.put(pathElement.getElement(), listObj);
+                listObj.set(pathElement.getArrayIndex(), padded);
 
             } else {
-                throw new UnsupportedOperationException("FIXME whitespace issue");
+                final int size = listObj.size();
+                final int arrayIndex = pathElement.getArrayIndex();
+
+                for (int i = size; i < arrayIndex; i++) {
+                    listObj.add(null);
+                }
+
+                final String padded = pad(null, this.prefix, this.suffix);
+
+                listObj.add(pathElement.getArrayIndex(), padded);
             }
+
+            output.put(pathElement.getElement(), listObj);
         }
 
         return output;
