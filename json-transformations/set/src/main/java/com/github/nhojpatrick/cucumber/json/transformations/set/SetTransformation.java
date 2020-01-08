@@ -75,29 +75,29 @@ public class SetTransformation
                     ? objRaw
                     : new ArrayList<>();
 
-            if (isTypedList(objRaw, Object.class)) {
+            if (!isTypedList(objRaw, Object.class)) {
+                throw new UnsupportedOperationException(
+                        "SetTransformation PathElement not typed List and Path isArrayElement"
+                );
+            }
 
-                final List<Object> listObj = (List<Object>) objRaw;
+            final List<Object> listObj = (List<Object>) objRaw;
 
-                if (pathElement.getArrayIndex() < listObj.size()) {
-                    listObj.set(pathElement.getArrayIndex(), this.value);
-
-                } else {
-                    final int size = listObj.size();
-                    final int arrayIndex = pathElement.getArrayIndex();
-
-                    for (int i = size; i < arrayIndex; i++) {
-                        listObj.add(null);
-                    }
-
-                    listObj.add(pathElement.getArrayIndex(), this.value);
-                }
-
-                output.put(pathElement.getElement(), listObj);
+            if (pathElement.getArrayIndex() < listObj.size()) {
+                listObj.set(pathElement.getArrayIndex(), this.value);
 
             } else {
-                throw new UnsupportedOperationException("FIXME set issue");
+                final int size = listObj.size();
+                final int arrayIndex = pathElement.getArrayIndex();
+
+                for (int i = size; i < arrayIndex; i++) {
+                    listObj.add(null);
+                }
+
+                listObj.add(pathElement.getArrayIndex(), this.value);
             }
+
+            output.put(pathElement.getElement(), listObj);
         }
 
         return output;
