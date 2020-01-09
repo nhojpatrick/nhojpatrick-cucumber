@@ -4,14 +4,16 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transform.validation.PathValidatorFactory;
+import com.google.common.annotations.VisibleForTesting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +31,8 @@ public class TransformImpl
     }
 
     @Override
-    public Map<String, Object> transform(final Map<String, Object> input,
-                                         final String path,
+    public Map<String, Object> transform(final String path,
+                                         final Map<String, Object> input,
                                          final Transformation transformation)
             throws IllegalKeyException,
             IllegalOperationException,
@@ -42,7 +44,7 @@ public class TransformImpl
                 .get()
                 .parsePath(path);
 
-        final Map<String, Object> output = transform(0, input, null, pathElements, transformation);
+        final Map<String, Object> output = transform(0, input, "", pathElements, transformation);
 
         LOGGER.debug("After path='{}' transformation={} output={}", path, transformation, output);
 
@@ -57,8 +59,6 @@ public class TransformImpl
             throws IllegalKeyException,
             IllegalOperationException {
 
-        Map<String, Object> output = input;
-
         LOGGER.debug("Before depth={} path='{}' transformation={} input={}",
                 depth,
                 pathElements,
@@ -68,79 +68,90 @@ public class TransformImpl
 
         final PathElement pathElement = pathElements.get(0);
 
+        Map<String, Object> output = isNull(input)
+                ? new LinkedHashMap<>()
+                : input;
+
         if (pathElements.size() == 1) {
             LOGGER.debug("Execute Before depth={} path='{}' input={}", depth, pathElements, output);
             output = transformation.perform(pathElement, output, previousPath);
-            LOGGER.debug("Execute After depth={} path='{}' input={}", depth, pathElements, output);
+            LOGGER.debug("Execute After depth={} path='{}' output={}", depth, pathElements, output);
 
         } else if (pathElements.size() > 1) {
 
-            final String currentPath = previousPath == null
-                    ? pathElement.getElementRaw() : String.format("%s.%s", previousPath, pathElement.getElementRaw());
+            Object innerRaw = output.get(pathElement.getElement());
 
-            if (isNull(output)) {
-                output = new LinkedHashMap<>();
+            if (isNull(innerRaw)) {
+                if (pathElement.isArrayElement()) {
+                    innerRaw = new ArrayList<LinkedHashMap<String, Object>>();
+
+                } else {
+                    innerRaw = new LinkedHashMap<String, Object>();
+                }
             }
-
-            final Object innerRaw = output.get(pathElement.getElement());
 
             final boolean isTypedMap = isTypedMap(innerRaw, String.class, Object.class);
             final boolean isTypedListMap = isTypedList(innerRaw, Map.class);
             final boolean isTypedListObject = isTypedList(innerRaw, Object.class);
 
+            if (isTypedMap
+                    && pathElement.isArrayElement()) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to convert object to array, at path '%s'.",
+                        getPath(previousPath, pathElement)
+                ));
+            }
+
             if (isTypedListObject
                     && pathElement.isNotArrayElement()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert array to object, at path '%s'.",
-                        String.valueOf(currentPath)
+                        getPath(previousPath, pathElement)
                 ));
             }
 
             if (isTypedListMap) {
                 final List<Map> listMap = (List<Map>) innerRaw;
 
-                if (pathElement.getArrayIndex() < listMap.size()) {
-                    final Map mapRaw = listMap.get(pathElement.getArrayIndex());
-                    if (isTypedMap(mapRaw, String.class, Object.class)) {
-                        final Map<String, Object> map = (Map<String, Object>) mapRaw;
+                for (int i = listMap.size(); i <= pathElement.getArrayIndex(); i++) {
+                    listMap.add(new LinkedHashMap<String, Object>());
+                }
 
-                        final Map<String, Object> mapUpdated = transform(depth + 1,
-                                map,
-                                currentPath,
-                                pathElements.subList(1, pathElements.size()),
-                                transformation);
+                final Map mapRaw = listMap.get(pathElement.getArrayIndex());
+                if (isTypedMap(mapRaw, String.class, Object.class)) {
+                    final Map<String, Object> map = (Map<String, Object>) mapRaw;
 
-                        listMap.set(pathElement.getArrayIndex(), mapUpdated);
+                    final Map<String, Object> mapUpdated = transform(depth + 1,
+                            map,
+                            getPath(previousPath, pathElement),
+                            pathElements.subList(1, pathElements.size()),
+                            transformation);
 
-                        output.put(pathElement.getElement(), listMap);
-                    }
+                    listMap.set(pathElement.getArrayIndex(), mapUpdated);
+
+                    output.put(pathElement.getElement(), listMap);
                 }
 
             } else if (isTypedListObject) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert primative array to object array, at path '%s'.",
-                        currentPath
+                        getPath(previousPath, pathElement)
                 ));
 
             } else {
 
-                Map<String, Object> innerInput;
-                if (isNull(innerRaw)) {
-                    innerInput = new LinkedHashMap<>();
-
-                } else if (isTypedMap) {
-                    innerInput = (Map<String, Object>) innerRaw;
-
-                } else {
+                if (!isTypedMap) {
                     throw new IllegalPathOperationException(String.format(
                             "Unable to convert primative to object, at path '%s'.",
-                            currentPath
+                            getPath(previousPath, pathElement)
                     ));
                 }
 
+                final Map<String, Object> innerInput = (Map<String, Object>) innerRaw;
+
                 final Map<String, Object> innerOutput = transform(depth + 1,
                         innerInput,
-                        currentPath,
+                        getPath(previousPath, pathElement),
                         pathElements.subList(1, pathElements.size()),
                         transformation
                 );
@@ -149,7 +160,7 @@ public class TransformImpl
             }
         }
 
-        LOGGER.debug("After depth={} path='{}' transformation={} input={}",
+        LOGGER.debug("After depth={} path='{}' transformation={} output={}",
                 depth,
                 pathElements,
                 transformation,
@@ -157,6 +168,36 @@ public class TransformImpl
         );
 
         return output;
+    }
+
+    @VisibleForTesting
+    protected String getPath(final String currentPath,
+                             final PathElement pathElement)
+            throws NullPathElementException {
+
+        requireNonNullPath(pathElement);
+
+        String path;
+        if (isNull(currentPath)) {
+            path = pathElement.getElementRaw();
+
+        } else if ("".equals(currentPath)) {
+            path = pathElement.getElementRaw();
+
+        } else {
+            path = currentPath + "." + pathElement.getElementRaw();
+        }
+
+        return path;
+    }
+
+    @VisibleForTesting
+    protected void requireNonNullPath(final PathElement pathElement)
+            throws NullPathElementException {
+
+        if (isNull(pathElement)) {
+            throw new NullPathElementException();
+        }
     }
 
 }

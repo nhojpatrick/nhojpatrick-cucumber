@@ -111,7 +111,7 @@ public class SetTransformation_TestingInternalSteps {
             final CastTo castTo = new CastToUtil();
             final Object value = castTo.castTo(valueAsStr, type);
             final SetTransformation setTransformation = new SetTransformation(value);
-            testMethod = () -> transform.transform(input, path, setTransformation);
+            testMethod = () -> transform.transform(path, input, setTransformation);
         }
 
         final T thrown = assertThrows(t, testMethod);

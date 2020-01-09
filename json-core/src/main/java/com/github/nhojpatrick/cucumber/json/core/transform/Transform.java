@@ -8,8 +8,8 @@ import java.util.Map;
 
 public interface Transform {
 
-    Map<String, Object> transform(Map<String, Object> input,
-                                  String path,
+    Map<String, Object> transform(String path,
+                                  Map<String, Object> input,
                                   Transformation transformation)
             throws IllegalKeyException,
             IllegalOperationException,
