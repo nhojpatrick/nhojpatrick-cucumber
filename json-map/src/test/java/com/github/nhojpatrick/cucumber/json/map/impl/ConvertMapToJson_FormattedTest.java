@@ -28,7 +28,7 @@ public class ConvertMapToJson_FormattedTest {
         return Arrays.asList(
 
                 DynamicTest.dynamicTest(FORMAT + " Array Boolean Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Boolean> arrayBoolean = new ArrayList<>();
                     arrayBoolean.add(true);
                     arrayBoolean.add(false);
@@ -45,7 +45,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Array Float Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Float> arrayFloat = new ArrayList<>();
                     arrayFloat.add(12.34f);
                     arrayFloat.add(23.45f);
@@ -62,7 +62,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Array Integer Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Integer> arrayInteger = new ArrayList<>();
                     arrayInteger.add(1234);
                     arrayInteger.add(2345);
@@ -79,7 +79,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Array Null Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Object> arrayNull = new ArrayList<>();
                     arrayNull.add(null);
                     arrayNull.add(null);
@@ -96,7 +96,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Array String Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<String> arrayString = new ArrayList<>();
                     arrayString.add("aValue");
                     arrayString.add("bValue");
@@ -113,7 +113,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple One of Each Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Boolean> arrayBoolean = new ArrayList<>();
                     arrayBoolean.add(true);
                     arrayBoolean.add(false);
@@ -168,12 +168,12 @@ public class ConvertMapToJson_FormattedTest {
 
                 DynamicTest.dynamicTest(FORMAT + " Empty Input", () -> {
                     final String json = new ConvertMapToJson(FORMATTING)
-                            .apply(new HashMap());
+                            .apply(new HashMap<>());
                     assertThat("Unexpected conversion", json, is(equalTo("{ }")));
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple Boolean Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aBoolean", true);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
                     final String json = new ConvertMapToJson(FORMATTING)
@@ -185,7 +185,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple Float Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aFloat", 12.34f);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
                     final String json = new ConvertMapToJson(FORMATTING)
@@ -197,7 +197,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple Integer Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aInteger", 1234);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
                     final String json = new ConvertMapToJson(FORMATTING)
@@ -209,7 +209,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple Null Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aNull", null);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
                     final String json = new ConvertMapToJson(FORMATTING)
@@ -221,7 +221,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple String Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aString", "aValue");
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
                     final String json = new ConvertMapToJson(FORMATTING)
@@ -233,7 +233,7 @@ public class ConvertMapToJson_FormattedTest {
                 }),
 
                 DynamicTest.dynamicTest(FORMAT + " Simple One of Each Input", () -> {
-                    final Map<String, Object> jsonMapRaw = new HashMap();
+                    final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aBoolean", true);
                     jsonMapRaw.put("aFloat", 12.34f);
                     jsonMapRaw.put("aInteger", 1234);

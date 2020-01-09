@@ -41,13 +41,13 @@ public class MapTypeUtilTest {
         return Arrays.asList(
 
                 DynamicTest.dynamicTest("Map -> <null, null>", () -> {
-                    final Executable testMethod = () -> isTypedMap(new HashMap(), null, null);
+                    final Executable testMethod = () -> isTypedMap(new HashMap<>(), null, null);
                     final NullGenericsKeyException thrown = assertThrows(NullGenericsKeyException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Key Type.")));
                 }),
 
                 DynamicTest.dynamicTest("Map -> <String, null>", () -> {
-                    final Executable testMethod = () -> isTypedMap(new HashMap(), String.class, null);
+                    final Executable testMethod = () -> isTypedMap(new HashMap<>(), String.class, null);
                     final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 }),

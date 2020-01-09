@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class TransformImpl
                     ? pathElement.getElementRaw() : String.format("%s.%s", previousPath, pathElement.getElementRaw());
 
             if (isNull(output)) {
-                output = new HashMap<>();
+                output = new LinkedHashMap<>();
             }
 
             final Object innerRaw = output.get(pathElement.getElement());
@@ -125,7 +126,7 @@ public class TransformImpl
 
                 Map<String, Object> innerInput;
                 if (isNull(innerRaw)) {
-                    innerInput = new HashMap<>();
+                    innerInput = new LinkedHashMap<>();
 
                 } else if (isTypedMap) {
                     innerInput = (Map<String, Object>) innerRaw;

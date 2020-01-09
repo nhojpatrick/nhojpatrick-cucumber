@@ -63,7 +63,7 @@ public class TestingInternalObjectsConstants {
         basicPrimitive.put("a_float", 12.34f);
         basicPrimitive.put("a_integer", 1234);
         basicPrimitive.put("a_null", null);
-        basicPrimitive.put("a_object", new HashMap());
+        basicPrimitive.put("a_object", new HashMap<>());
         basicPrimitive.put("a_string", "aValue");
 
         return basicPrimitive;
