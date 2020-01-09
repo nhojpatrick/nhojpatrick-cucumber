@@ -26,7 +26,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
     private static final String TYPE = "BasicPrimitive";
 
     @TestFactory
-    @DisplayName("ReverseTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Reverse Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -214,7 +214,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
     }
 
     @TestFactory
-    @DisplayName("ReverseTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Reverse Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(
@@ -286,11 +286,14 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final String key = "a_object";
 
                     final Executable testMethod = () -> new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), "a_object");
+                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to reverse JsonObject, at path 'a_object'."))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to reverse JsonObject, at path '%s'.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),

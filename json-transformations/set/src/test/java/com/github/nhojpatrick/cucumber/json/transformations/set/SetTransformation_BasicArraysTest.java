@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transformations.set;
 
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
@@ -28,7 +28,7 @@ public class SetTransformation_BasicArraysTest {
     private static final String TYPE = "BasicArray";
 
     @TestFactory
-    @DisplayName("SetTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Set Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -144,9 +144,12 @@ public class SetTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new SetTransformation("newStringValue")
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("SetTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to set path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -159,9 +162,12 @@ public class SetTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new SetTransformation("newStringValue")
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("SetTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to set path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -268,7 +274,7 @@ public class SetTransformation_BasicArraysTest {
     }
 
     @TestFactory
-    @DisplayName("SetTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Set Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(

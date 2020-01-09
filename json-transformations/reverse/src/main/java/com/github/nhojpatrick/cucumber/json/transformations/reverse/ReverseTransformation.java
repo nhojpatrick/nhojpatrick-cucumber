@@ -2,7 +2,6 @@ package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
-import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import com.google.common.annotations.VisibleForTesting;
@@ -51,9 +50,7 @@ public class ReverseTransformation
             throws IllegalKeyException,
             IllegalPathOperationException {
 
-        if (isNull(pathElement)) {
-            throw new NullPathElementException();
-        }
+        requireNonNullPath(pathElement);
 
         final Map<String, Object> output = nonNull(inputRaw)
                 ? inputRaw
@@ -72,7 +69,7 @@ public class ReverseTransformation
             if (isTypedMap(obj, String.class, Object.class)) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to reverse JsonObject, at path '%s'.",
-                        currentPath
+                        getPath(currentPath, pathElement)
                 ));
             }
 
@@ -100,9 +97,10 @@ public class ReverseTransformation
             final Object objRaw = output.get(pathElement.getElement());
 
             if (!isTypedList(objRaw, Object.class)) {
-                throw new UnsupportedOperationException(
-                        "ReverseTransformation PathElement not typed List and Path isArrayElement"
-                );
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to reverse path '%s', as is not Array.",
+                        getPath(currentPath, pathElement)
+                ));
             }
 
             final List<Object> listObj = (List<Object>) objRaw;

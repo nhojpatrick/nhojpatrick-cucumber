@@ -67,15 +67,16 @@ public class TransformImpl
 
         final PathElement pathElement = pathElements.get(0);
 
-        final String currentPath = previousPath == null
-                ? pathElement.getElementRaw() : String.format("%s.%s", previousPath, pathElement.getElementRaw());
-
         if (pathElements.size() == 1) {
             LOGGER.debug("Execute Before depth={} path='{}' input={}", depth, pathElements, output);
-            output = transformation.perform(pathElement, output, currentPath);
+            output = transformation.perform(pathElement, output, previousPath);
             LOGGER.debug("Execute After depth={} path='{}' input={}", depth, pathElements, output);
 
         } else if (pathElements.size() > 1) {
+
+            final String currentPath = previousPath == null
+                    ? pathElement.getElementRaw() : String.format("%s.%s", previousPath, pathElement.getElementRaw());
+
             if (isNull(output)) {
                 output = new HashMap<>();
             }

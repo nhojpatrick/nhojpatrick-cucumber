@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transformations.print;
 
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -10,8 +11,11 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
+import static com.github.nhojpatrick.cucumber.json.transformations.print.PrintTransformationTest.getInMemoryAppender;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
+import static com.github.nhojpatrick.hamcrest.optionals.IsOptional.optionalContains;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -25,7 +29,7 @@ public class PrintTransformation_BasicArraysTest {
     private static final String TYPE = "BasicArray";
 
     @TestFactory
-    @DisplayName("PrintTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Print Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -41,7 +45,17 @@ public class PrintTransformation_BasicArraysTest {
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key)))),
+                            () -> {
+                                final String prefix = "Printing Path '" + key + "' Value ";
+                                final String expectedMsg = prefix + "'[{object_array_id=aObjectArrayId}, {object_array_id=bObjectArrayId}, {object_array_id=cObjectArrayId}, {object_array_id=dObjectArrayId}]'";
+                                final Optional<String> message = getInMemoryAppender()
+                                        .getMessages()
+                                        .stream()
+                                        .filter(p -> p.startsWith(prefix))
+                                        .findFirst();
+                                assertThat(message, optionalContains(expectedMsg));
+                            }
                     );
                 }),
 
@@ -58,7 +72,17 @@ public class PrintTransformation_BasicArraysTest {
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key)))),
+                            () -> {
+                                final String prefix = "Printing Path '" + key + "[" + arrayIndex + "]' Value ";
+                                final String expectedMsg = prefix + "'{object_array_id=bObjectArrayId}'";
+                                final Optional<String> message = getInMemoryAppender()
+                                        .getMessages()
+                                        .stream()
+                                        .filter(p -> p.startsWith(prefix))
+                                        .findFirst();
+                                assertThat(message, optionalContains(expectedMsg));
+                            }
                     );
                 }),
 
@@ -69,9 +93,13 @@ public class PrintTransformation_BasicArraysTest {
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME beyond array"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', beyond index of '%s'.",
+                                    key,
+                                    3
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -87,7 +115,17 @@ public class PrintTransformation_BasicArraysTest {
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key)))),
+                            () -> {
+                                final String prefix = "Printing Path '" + key + "' Value ";
+                                final String expectedMsg = prefix + "'aPrimitive'";
+                                final Optional<String> message = getInMemoryAppender()
+                                        .getMessages()
+                                        .stream()
+                                        .filter(p -> p.startsWith(prefix))
+                                        .findFirst();
+                                assertThat(message, optionalContains(expectedMsg));
+                            }
                     );
                 }),
 
@@ -99,9 +137,12 @@ public class PrintTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -113,9 +154,12 @@ public class PrintTransformation_BasicArraysTest {
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -131,7 +175,17 @@ public class PrintTransformation_BasicArraysTest {
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key)))),
+                            () -> {
+                                final String prefix = "Printing Path '" + key + "' Value ";
+                                final String expectedMsg = prefix + "'[aPrimitiveArray, bPrimitiveArray, cPrimitiveArray, dPrimitiveArray]'";
+                                final Optional<String> message = getInMemoryAppender()
+                                        .getMessages()
+                                        .stream()
+                                        .filter(p -> p.startsWith(prefix))
+                                        .findFirst();
+                                assertThat(message, optionalContains(expectedMsg));
+                            }
                     );
                 }),
 
@@ -148,7 +202,17 @@ public class PrintTransformation_BasicArraysTest {
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key)))),
+                            () -> {
+                                final String prefix = "Printing Path '" + key + "[" + arrayIndex + "]' Value ";
+                                final String expectedMsg = prefix + "'bPrimitiveArray'";
+                                final Optional<String> message = getInMemoryAppender()
+                                        .getMessages()
+                                        .stream()
+                                        .filter(p -> p.startsWith(prefix))
+                                        .findFirst();
+                                assertThat(message, optionalContains(expectedMsg));
+                            }
                     );
                 }),
 
@@ -159,9 +223,13 @@ public class PrintTransformation_BasicArraysTest {
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME beyond array"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', beyond index of '%s'.",
+                                    key,
+                                    3
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -171,9 +239,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -185,9 +256,12 @@ public class PrintTransformation_BasicArraysTest {
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
@@ -196,7 +270,7 @@ public class PrintTransformation_BasicArraysTest {
     }
 
     @TestFactory
-    @DisplayName("PrintTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Print Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(
@@ -206,9 +280,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -218,9 +295,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -230,9 +310,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -242,9 +325,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -254,9 +340,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -266,9 +355,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -278,9 +370,12 @@ public class PrintTransformation_BasicArraysTest {
 
                     final Executable testMethod = () -> new PrintTransformation()
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("PrintTransformation FIXME !containsKey"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', does not exist.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })

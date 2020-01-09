@@ -1,9 +1,13 @@
 package com.github.nhojpatrick.cucumber.json.transformations.core;
 
+import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.google.common.annotations.VisibleForTesting;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 public abstract class BaseTransformation
@@ -33,6 +37,36 @@ public abstract class BaseTransformation
         final String toString = new ToStringBuilder(this, SHORT_PREFIX_STYLE)
                 .toString();
         return toString;
+    }
+
+    @VisibleForTesting
+    protected void requireNonNullPath(final PathElement pathElement)
+            throws NullPathElementException {
+
+        if (isNull(pathElement)) {
+            throw new NullPathElementException();
+        }
+    }
+
+    @VisibleForTesting
+    protected String getPath(final String currentPath,
+                             final PathElement pathElement)
+            throws NullPathElementException {
+
+        requireNonNullPath(pathElement);
+
+        String path;
+        if (isNull(currentPath)) {
+            path = pathElement.getElement();
+
+        } else if ("".equals(currentPath)) {
+            path = pathElement.getElement();
+
+        } else {
+            path = currentPath + "." + pathElement.getElement();
+        }
+
+        return path;
     }
 
 }

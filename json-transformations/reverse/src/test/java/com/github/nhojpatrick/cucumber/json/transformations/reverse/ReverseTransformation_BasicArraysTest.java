@@ -28,7 +28,7 @@ public class ReverseTransformation_BasicArraysTest {
     private static final String TYPE = "BasicArray";
 
     @TestFactory
-    @DisplayName("ReverseTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Reverse Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -144,9 +144,12 @@ public class ReverseTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new ReverseTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("ReverseTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to reverse path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -159,9 +162,12 @@ public class ReverseTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new ReverseTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("ReverseTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to reverse path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -271,7 +277,7 @@ public class ReverseTransformation_BasicArraysTest {
     }
 
     @TestFactory
-    @DisplayName("ReverseTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Reverse Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(
