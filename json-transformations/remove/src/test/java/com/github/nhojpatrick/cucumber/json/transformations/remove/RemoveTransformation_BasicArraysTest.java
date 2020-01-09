@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transformations.remove;
 
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +28,7 @@ public class RemoveTransformation_BasicArraysTest {
     private static final String TYPE = "BasicArray";
 
     @TestFactory
-    @DisplayName("RemoveTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Remove Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -141,9 +142,12 @@ public class RemoveTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new RemoveTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("RemoveTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to remove path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -156,9 +160,12 @@ public class RemoveTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new RemoveTransformation()
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("RemoveTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to remove path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -258,7 +265,7 @@ public class RemoveTransformation_BasicArraysTest {
     }
 
     @TestFactory
-    @DisplayName("RemoveTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Remove Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(

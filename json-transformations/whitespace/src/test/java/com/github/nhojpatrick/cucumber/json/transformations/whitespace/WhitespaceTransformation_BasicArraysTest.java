@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.transformations.whitespace;
 
+import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +28,7 @@ public class WhitespaceTransformation_BasicArraysTest {
     private static final String TYPE = "BasicArray";
 
     @TestFactory
-    @DisplayName("WhitespaceTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Whitespace Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -38,7 +39,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonArray<>."))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
@@ -53,7 +54,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonObject."))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
@@ -122,9 +123,12 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("WhitespaceTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to whitespace path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -137,9 +141,12 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("WhitespaceTransformation PathElement not typed List and Path isArrayElement"))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to whitespace path '%s', as is not Array.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -150,7 +157,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
                             .perform(new PathElementImpl(key), getMapBasicArrays(), null);
 
-                    final UnsupportedOperationException thrown = assertThrows(UnsupportedOperationException.class, testMethod);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonArray<>."))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
@@ -243,7 +250,7 @@ public class WhitespaceTransformation_BasicArraysTest {
     }
 
     @TestFactory
-    @DisplayName("WhitespaceTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Whitespace Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(

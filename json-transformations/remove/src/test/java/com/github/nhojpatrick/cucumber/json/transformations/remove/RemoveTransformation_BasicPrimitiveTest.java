@@ -22,7 +22,7 @@ public class RemoveTransformation_BasicPrimitiveTest {
     private static final String TYPE = "BasicPrimitive";
 
     @TestFactory
-    @DisplayName("RemoveTransformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Remove Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -211,7 +211,7 @@ public class RemoveTransformation_BasicPrimitiveTest {
     }
 
     @TestFactory
-    @DisplayName("RemoveTransformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Remove Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(
