@@ -49,7 +49,7 @@ public class ReverseTransformation_TestingInternalSteps {
         final Transform transform = TransformFactory.getFactory()
                 .get();
         final ReverseTransformation reverseTransformation = new ReverseTransformation();
-        final Executable testMethod = () -> transform.transform(input, path, reverseTransformation);
+        final Executable testMethod = () -> transform.transform(path, input, reverseTransformation);
 
         final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
         final String expectedExceptionMessage = expectedExceptionMessageRaw

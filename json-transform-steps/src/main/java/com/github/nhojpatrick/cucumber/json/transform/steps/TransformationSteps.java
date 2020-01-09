@@ -85,7 +85,7 @@ public class TransformationSteps {
 
             final String path = row.get(CUCUMBER_DATA_TABLE_COLUMN_PATH);
 
-            runStateJsonMapValue = transform.transform(runStateJsonMapValue, path, transformation);
+            runStateJsonMapValue = transform.transform(path, runStateJsonMapValue, transformation);
         }
 
         return runStateJsonMapValue;

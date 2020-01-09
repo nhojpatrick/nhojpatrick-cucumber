@@ -49,7 +49,7 @@ public class RemoveTransformation_TestingInternalSteps {
         final Transform transform = TransformFactory.getFactory()
                 .get();
         final RemoveTransformation removeTransformation = new RemoveTransformation();
-        final Executable testMethod = () -> transform.transform(input, path, removeTransformation);
+        final Executable testMethod = () -> transform.transform(path, input, removeTransformation);
 
         final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
         final String expectedExceptionMessage = expectedExceptionMessageRaw

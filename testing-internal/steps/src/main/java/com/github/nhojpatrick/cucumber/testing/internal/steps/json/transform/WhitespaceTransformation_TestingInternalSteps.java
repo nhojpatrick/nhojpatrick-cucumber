@@ -112,7 +112,7 @@ public class WhitespaceTransformation_TestingInternalSteps {
                 .get();
 
         final WhitespaceTransformation whitespaceTransformation = new WhitespaceTransformation(prefix, suffix);
-        final Executable testMethod = () -> transform.transform(input, path, whitespaceTransformation);
+        final Executable testMethod = () -> transform.transform(path, input, whitespaceTransformation);
 
         final T thrown = assertThrows(t, testMethod);
         final String expectedExceptionMessage = expectedExceptionMessageRaw
