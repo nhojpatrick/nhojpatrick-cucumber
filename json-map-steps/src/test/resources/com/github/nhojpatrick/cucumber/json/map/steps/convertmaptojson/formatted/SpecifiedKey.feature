@@ -38,7 +38,7 @@ Feature: Convert Map To Json (Formatted Formatting) - Checking with Specified ke
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Map_BasicPrimitives |
+      | jsonMap.key | Map_BasicAttributes |
     When I convert json map using RunStateKey "jsonMap.key", to formatted json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
       | jsonString.key | {\n  "a_boolean" : true,\n  "a_float" : 12.34,\n  "a_integer" : 1234,\n  "a_null" : null,\n  "a_object" : { },\n  "a_string" : "aValue"\n} |

@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_EMPTY;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicPrimitives;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.COMPLEX_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.SIMPLE_OBJECT_AS_OBJECT;
 
@@ -44,8 +44,8 @@ public class State_TestingInternalSteps {
                     this.runState.set(row.getKey(), getMapBasicArrays());
                     break;
 
-                case "Map_BasicPrimitives":
-                    this.runState.set(row.getKey(), getMapBasicPrimitives());
+                case "Map_BasicAttributes":
+                    this.runState.set(row.getKey(), getMapBasicAttributes());
                     break;
 
                 case "Map_Empty":
