@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.transformations.whitespace;
+package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
@@ -8,12 +8,11 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.Executable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicPrimitives;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -22,12 +21,12 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class WhitespaceTransformation_BasicPrimitiveTest {
+public class ReverseTransformation_BasicAttributesTest {
 
-    private static final String TYPE = "BasicPrimitive";
+    private static final String TYPE = "BasicAttribute";
 
     @TestFactory
-    @DisplayName("Whitespace Transformation " + TYPE + " Array Paths Tests")
+    @DisplayName("Reverse Transformation " + TYPE + " Array Paths Tests")
     public Collection<DynamicTest> arrayPaths() {
 
         return Arrays.asList(
@@ -35,11 +34,10 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("objects_array", () -> {
                     final String key = "objects_array";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "   ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -52,15 +50,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "objects_array";
                     final int arrayIndex = 1;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(
-                            null,
-                            "   "
-                    )));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -73,19 +67,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "objects_array";
                     final int arrayIndex = 5;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(
-                            null,
-                            null,
-                            null,
-                            null,
-                            null,
-                            "   "
-                    )));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -97,11 +83,10 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("primitive", () -> {
                     final String key = "primitive";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "   ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -114,12 +99,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "primitive";
                     final int arrayIndex = 1;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -132,12 +116,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "primitive";
                     final int arrayIndex = 5;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(null, null, null, null, null, "   ")));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -149,11 +132,10 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("primitives_array", () -> {
                     final String key = "primitives_array";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "   ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -166,12 +148,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "primitives_array";
                     final int arrayIndex = 1;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -184,12 +165,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "primitives_array";
                     final int arrayIndex = 5;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(null, null, null, null, null, "   ")));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -201,11 +181,10 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("unknown", () -> {
                     final String key = "unknown";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "   ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -218,12 +197,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     final String key = "unknown";
                     final int arrayIndex = 1;
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -236,7 +214,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
     }
 
     @TestFactory
-    @DisplayName("Whitespace Transformation " + TYPE + " Primitive Paths Tests")
+    @DisplayName("Reverse Transformation " + TYPE + " Primitive Paths Tests")
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(
@@ -244,11 +222,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("a_boolean", () -> {
                     final String key = "a_boolean";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, " true  ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
+                    expected.put(key, "eurt");
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -260,11 +238,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("a_float", () -> {
                     final String key = "a_float";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, " 12.34  ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
+                    expected.put(key, "43.21");
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -276,11 +254,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("a_integer", () -> {
                     final String key = "a_integer";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, " 1234  ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
+                    expected.put(key, "4321");
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -292,11 +270,10 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("a_null", () -> {
                     final String key = "a_null";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "   ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -308,15 +285,15 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("a_object", () -> {
                     final String key = "a_object";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "newStringValue");
-
-                    final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Executable testMethod = () -> new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("Unable to whitespace JsonObject."))),
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to reverse JsonObject, at path '%s'.",
+                                    key
+                            )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
@@ -324,11 +301,11 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("a_string", () -> {
                     final String key = "a_string";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, " aValue  ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
+                    expected.put(key, "eulaVa");
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -340,11 +317,10 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                 DynamicTest.dynamicTest("unknown", () -> {
                     final String key = "unknown";
 
-                    final Map<String, Object> expected = getMapBasicPrimitives();
-                    expected.put(key, "   ");
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
-                    final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
+                    final Map<String, Object> actual = new ReverseTransformation()
+                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

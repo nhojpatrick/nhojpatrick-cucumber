@@ -11,7 +11,7 @@ public class TestingInternalObjectsConstants {
 
     public static final Map<String, Object> MAP_BASIC_ARRAYS;
 
-    public static final Map<String, Object> MAP_BASIC_PRIMITIVES;
+    public static final Map<String, Object> MAP_BASIC_ATTRIBUTES;
 
     public static final Map<String, Object> MAP_EMPTY = Collections.unmodifiableMap(new HashMap<>());
 
@@ -55,22 +55,22 @@ public class TestingInternalObjectsConstants {
         MAP_BASIC_ARRAYS = Collections.unmodifiableMap(new LinkedHashMap(getMapBasicArrays()));
     }
 
-    public static Map<String, Object> getMapBasicPrimitives() {
+    public static Map<String, Object> getMapBasicAttributes() {
 
-        final Map<String, Object> basicPrimitive = new LinkedHashMap<>();
+        final Map<String, Object> basicAttributes = new LinkedHashMap<>();
 
-        basicPrimitive.put("a_boolean", true);
-        basicPrimitive.put("a_float", 12.34f);
-        basicPrimitive.put("a_integer", 1234);
-        basicPrimitive.put("a_null", null);
-        basicPrimitive.put("a_object", new HashMap<>());
-        basicPrimitive.put("a_string", "aValue");
+        basicAttributes.put("a_boolean", true);
+        basicAttributes.put("a_float", 12.34f);
+        basicAttributes.put("a_integer", 1234);
+        basicAttributes.put("a_null", null);
+        basicAttributes.put("a_object", new HashMap<>());
+        basicAttributes.put("a_string", "aValue");
 
-        return basicPrimitive;
+        return basicAttributes;
     }
 
     static {
-        MAP_BASIC_PRIMITIVES = Collections.unmodifiableMap(new LinkedHashMap(getMapBasicPrimitives()));
+        MAP_BASIC_ATTRIBUTES = Collections.unmodifiableMap(new LinkedHashMap(getMapBasicAttributes()));
     }
 
 }
