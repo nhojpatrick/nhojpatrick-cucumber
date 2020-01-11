@@ -4,21 +4,22 @@
 Feature: Convert Object To Map - Checking with Default keys
 
 
-  @Error
-  Scenario: Null input
+  Background: Check Clear Run State
     Given I have cleared the run state for keys:
       | runState.json.obj |
       | runState.json.map |
     And I have an empty run state
-    When TestingInternalSteps I convert object to json map using default RunStateKeys produces the AssertionError "Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[runState.json.obj]>"
+
+
+  @Error
+  Scenario: Null input
+    Given TestingInternalSteps I convert object to json map using default RunStateKeys produces the AssertionError "Run State Validation (1 failure)\n\tjava.lang.AssertionError: Keys where value was expected to be non null\nExpected: is java.util.Collection size <0>\n     but: was java.util.Collection size <1> <[runState.json.obj]>"
     Then I have an empty run state
 
 
   @Error
   Scenario: Empty input
-    Given I have cleared the run state for keys:
-      | runState.json.map |
-    And TestingInternalSteps I have setup the run state for keys and type:
+    Given TestingInternalSteps I have setup the run state for keys and type:
       | runState.json.obj | Object |
     When TestingInternalSteps I convert object to json map using default RunStateKeys produces the IllegalArgumentException "No serializer found for class java.lang.Object and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)"
     Then I have run state key->value string pairs of:
@@ -27,9 +28,7 @@ Feature: Convert Object To Map - Checking with Default keys
 
   @Success
   Scenario: Simple input
-    Given I have cleared the run state for keys:
-      | runState.json.map |
-    And TestingInternalSteps I have setup the run state for keys and type:
+    Given TestingInternalSteps I have setup the run state for keys and type:
       | runState.json.obj | SimpleObject |
     When I convert object to json map using default RunStateKeys
     Then I have run state key->value string pairs of:
@@ -38,9 +37,7 @@ Feature: Convert Object To Map - Checking with Default keys
 
   @Success
   Scenario: Complex input
-    Given I have cleared the run state for keys:
-      | runState.json.map |
-    And TestingInternalSteps I have setup the run state for keys and type:
+    Given TestingInternalSteps I have setup the run state for keys and type:
       | runState.json.obj | ComplexObject |
     When I convert object to json map using default RunStateKeys
     Then I have run state key->value string pairs of:
