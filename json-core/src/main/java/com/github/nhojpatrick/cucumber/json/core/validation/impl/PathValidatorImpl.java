@@ -77,7 +77,7 @@ public class PathValidatorImpl
 
         if (!split.contains("[")
                 && !split.contains("]")) {
-            return new PathElementImpl(split);
+            return new PathAttributeElementImpl(split);
         }
 
         if (!split.contains("[")) {

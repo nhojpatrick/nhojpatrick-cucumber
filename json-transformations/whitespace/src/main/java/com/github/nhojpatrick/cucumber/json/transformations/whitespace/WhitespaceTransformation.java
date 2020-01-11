@@ -81,7 +81,7 @@ public class WhitespaceTransformation
                 ? inputRaw
                 : new HashMap<>();
 
-        if (pathElement.isNotArrayElement()) {
+        if (pathElement.isAttribute()) {
 
             final Object obj = output.get(pathElement.getElement());
 

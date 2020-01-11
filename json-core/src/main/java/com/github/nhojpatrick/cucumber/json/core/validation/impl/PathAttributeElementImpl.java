@@ -1,28 +1,28 @@
 package com.github.nhojpatrick.cucumber.json.core.validation.impl;
 
-import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathAttributeElement;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class PathElementImpl
+public class PathAttributeElementImpl
         extends AbstractPathElement
-        implements PathElement {
+        implements PathAttributeElement {
 
-    public PathElementImpl(final String element) {
+    public PathAttributeElementImpl(final String element) {
         super(element, element, null);
     }
 
     @Override
     public boolean equals(final Object obj) {
 
-        if (!(obj instanceof PathElementImpl)) {
+        if (!(obj instanceof PathAttributeElementImpl)) {
             return false;
         }
 
-        final PathElementImpl other = (PathElementImpl) obj;
+        final PathAttributeElementImpl other = (PathAttributeElementImpl) obj;
 
         final EqualsBuilder eb = new EqualsBuilder();
         eb.append(this.element, other.element);

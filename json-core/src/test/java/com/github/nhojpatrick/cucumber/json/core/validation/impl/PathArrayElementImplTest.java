@@ -91,12 +91,12 @@ public class PathArrayElementImplTest {
                     assertThat("should match", classUnderTest.getArrayIndex(), is(equalTo(2)));
                 }),
 
-                DynamicTest.dynamicTest("isArrayElement", () -> {
-                    assertThat("should match", classUnderTest.isArrayElement(), is(equalTo(true)));
+                DynamicTest.dynamicTest("isArray", () -> {
+                    assertThat("should match", classUnderTest.isArray(), is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("isNotArrayElement", () -> {
-                    assertThat("should match", classUnderTest.isNotArrayElement(), is(equalTo(false)));
+                DynamicTest.dynamicTest("isAttribute", () -> {
+                    assertThat("should match", classUnderTest.isAttribute(), is(equalTo(false)));
                 })
 
         );

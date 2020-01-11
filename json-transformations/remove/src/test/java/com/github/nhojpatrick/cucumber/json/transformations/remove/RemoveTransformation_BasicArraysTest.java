@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.remove;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -40,7 +40,7 @@ public class RemoveTransformation_BasicArraysTest {
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -125,7 +125,7 @@ public class RemoveTransformation_BasicArraysTest {
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -177,7 +177,7 @@ public class RemoveTransformation_BasicArraysTest {
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -235,7 +235,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -276,7 +276,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -291,7 +291,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -306,7 +306,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -321,7 +321,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -336,7 +336,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -351,7 +351,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -366,7 +366,7 @@ public class RemoveTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

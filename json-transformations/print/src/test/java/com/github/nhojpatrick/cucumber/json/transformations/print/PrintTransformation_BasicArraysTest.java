@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.print;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -40,7 +40,7 @@ public class PrintTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -110,7 +110,7 @@ public class PrintTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -170,7 +170,7 @@ public class PrintTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -238,7 +238,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "unknown";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -279,7 +279,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "a_boolean";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -294,7 +294,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "a_float";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -309,7 +309,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "a_integer";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -324,7 +324,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "a_null";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -339,7 +339,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "a_object";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -354,7 +354,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "a_string";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -369,7 +369,7 @@ public class PrintTransformation_BasicArraysTest {
                     final String key = "unknown";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(

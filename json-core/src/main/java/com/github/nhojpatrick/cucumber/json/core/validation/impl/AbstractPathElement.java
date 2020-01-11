@@ -11,7 +11,9 @@ public abstract class AbstractPathElement
     protected final String elementRaw;
     protected final Integer arrayIndex;
 
-    public AbstractPathElement(final String elementRaw, final String element, final Integer arrayIndex) {
+    public AbstractPathElement(final String elementRaw,
+                               final String element,
+                               final Integer arrayIndex) {
         this.elementRaw = elementRaw;
         this.element = element;
         this.arrayIndex = arrayIndex;
@@ -33,12 +35,12 @@ public abstract class AbstractPathElement
     }
 
     @Override
-    public boolean isArrayElement() {
-        return !isNotArrayElement();
+    public boolean isArray() {
+        return !isAttribute();
     }
 
     @Override
-    public boolean isNotArrayElement() {
+    public boolean isAttribute() {
         return isNull(this.arrayIndex);
     }
 

@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -58,7 +58,7 @@ public class ReverseTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -127,7 +127,7 @@ public class ReverseTransformation_BasicArraysTest {
                     expected.put(key, "evitimirPa");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -184,7 +184,7 @@ public class ReverseTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -247,7 +247,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -288,7 +288,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -303,7 +303,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -318,7 +318,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -333,7 +333,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -348,7 +348,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -363,7 +363,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -378,7 +378,7 @@ public class ReverseTransformation_BasicArraysTest {
                     final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicArrays(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
