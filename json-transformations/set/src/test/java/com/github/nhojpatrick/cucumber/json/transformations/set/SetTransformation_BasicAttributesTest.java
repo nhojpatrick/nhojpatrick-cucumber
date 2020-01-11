@@ -17,6 +17,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class SetTransformation_BasicAttributesTest {
 
@@ -28,7 +29,7 @@ public class SetTransformation_BasicAttributesTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("objects_array", () -> {
+                dynamicTest("objects_array", () -> {
                     final String key = "objects_array";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -44,7 +45,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("objects_array[1]", () -> {
+                dynamicTest("objects_array[1]", () -> {
                     final String key = "objects_array";
                     final int arrayIndex = 1;
 
@@ -65,7 +66,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("objects_array[5]", () -> {
+                dynamicTest("objects_array[5]", () -> {
                     final String key = "objects_array";
                     final int arrayIndex = 5;
 
@@ -90,7 +91,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("primitive", () -> {
+                dynamicTest("primitive", () -> {
                     final String key = "primitive";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -106,7 +107,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("primitive[1]", () -> {
+                dynamicTest("primitive[1]", () -> {
                     final String key = "primitive";
                     final int arrayIndex = 1;
 
@@ -124,7 +125,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("primitive[5]", () -> {
+                dynamicTest("primitive[5]", () -> {
                     final String key = "primitive";
                     final int arrayIndex = 5;
 
@@ -142,7 +143,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("primitives_array", () -> {
+                dynamicTest("primitives_array", () -> {
                     final String key = "primitives_array";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -158,7 +159,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("primitives_array[1]", () -> {
+                dynamicTest("primitives_array[1]", () -> {
                     final String key = "primitives_array";
                     final int arrayIndex = 1;
 
@@ -176,7 +177,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("primitives_array[5]", () -> {
+                dynamicTest("primitives_array[5]", () -> {
                     final String key = "primitives_array";
                     final int arrayIndex = 5;
 
@@ -194,7 +195,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("unknown", () -> {
+                dynamicTest("unknown", () -> {
                     final String key = "unknown";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -210,7 +211,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("unknown[1]", () -> {
+                dynamicTest("unknown[1]", () -> {
                     final String key = "unknown";
                     final int arrayIndex = 1;
 
@@ -237,7 +238,7 @@ public class SetTransformation_BasicAttributesTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("a_boolean", () -> {
+                dynamicTest("a_boolean", () -> {
                     final String key = "a_boolean";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -253,7 +254,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("a_float", () -> {
+                dynamicTest("a_float", () -> {
                     final String key = "a_float";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -269,7 +270,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("a_integer", () -> {
+                dynamicTest("a_integer", () -> {
                     final String key = "a_integer";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -285,7 +286,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("a_null", () -> {
+                dynamicTest("a_null", () -> {
                     final String key = "a_null";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -301,7 +302,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("a_object", () -> {
+                dynamicTest("a_object", () -> {
                     final String key = "a_object";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -317,7 +318,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("a_string", () -> {
+                dynamicTest("a_string", () -> {
                     final String key = "a_string";
 
                     final Map<String, Object> expected = getMapBasicAttributes();
@@ -333,7 +334,7 @@ public class SetTransformation_BasicAttributesTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("unknown", () -> {
+                dynamicTest("unknown", () -> {
                     final String key = "unknown";
 
                     final Map<String, Object> expected = getMapBasicAttributes();

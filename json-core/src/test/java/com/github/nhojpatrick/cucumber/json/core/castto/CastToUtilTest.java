@@ -19,6 +19,7 @@ import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class CastToUtilTest {
 
@@ -29,49 +30,49 @@ public class CastToUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Unknown", () -> {
+                dynamicTest("Unknown", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("true", "Unknown");
                     final UnsupportedDataTypeException thrown = assertThrows(UnsupportedDataTypeException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type 'Unknown'.")));
                 }),
 
-                DynamicTest.dynamicTest("Boolean invalid", () -> {
+                dynamicTest("Boolean invalid", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Boolean");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Boolean' from value 'string'.")));
                 }),
 
-                DynamicTest.dynamicTest("Double invalid", () -> {
+                dynamicTest("Double invalid", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Double");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Double' from value 'string'.")));
                 }),
 
-                DynamicTest.dynamicTest("Float invalid", () -> {
+                dynamicTest("Float invalid", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Float");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Float' from value 'string'.")));
                 }),
 
-                DynamicTest.dynamicTest("Integer invalid", () -> {
+                dynamicTest("Integer invalid", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Integer");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Integer' from value 'string'.")));
                 }),
 
-                DynamicTest.dynamicTest("Long invalid", () -> {
+                dynamicTest("Long invalid", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Long");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Long' from value 'string'.")));
                 })//,
 //
-//                DynamicTest.dynamicTest("List -> <null>", () -> {
+//                dynamicTest("List -> <null>", () -> {
 //                    final Executable testMethod = () -> isTypedList(new ArrayList(), null);
 //                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
 //                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
 //                }),
 //
-//                DynamicTest.dynamicTest("Object -> <null>", () -> {
+//                dynamicTest("Object -> <null>", () -> {
 //                    final Executable testMethod = () -> isTypedList(new Object(), null);
 //                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
 //                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
@@ -87,7 +88,7 @@ public class CastToUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Boolean", () -> {
+                dynamicTest("Boolean", () -> {
                     final Object actual = classUnderTest.castTo("true", "java.lang.Boolean");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(Boolean.class))),
@@ -95,7 +96,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Double", () -> {
+                dynamicTest("Double", () -> {
                     final Object actual = classUnderTest.castTo("1234", "java.lang.Double");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(Double.class))),
@@ -103,7 +104,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Float", () -> {
+                dynamicTest("Float", () -> {
                     final Object actual = classUnderTest.castTo("1234", "java.lang.Float");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(Float.class))),
@@ -111,7 +112,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Integer", () -> {
+                dynamicTest("Integer", () -> {
                     final Object actual = classUnderTest.castTo("1234", "java.lang.Integer");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(Integer.class))),
@@ -119,7 +120,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Long", () -> {
+                dynamicTest("Long", () -> {
                     final Object actual = classUnderTest.castTo("1234", "java.lang.Long");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(Long.class))),
@@ -127,14 +128,14 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null", () -> {
+                dynamicTest("Null", () -> {
                     final Object actual = classUnderTest.castTo("", "null");
                     assertAll(
                             () -> assertThat("Unexpected value", actual, is(nullValue()))
                     );
                 }),
 
-                DynamicTest.dynamicTest("String", () -> {
+                dynamicTest("String", () -> {
                     final Object actual = classUnderTest.castTo("qwerty", "java.lang.String");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(String.class))),
@@ -142,7 +143,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonObject", () -> {
+                dynamicTest("JsonObject", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonObject");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(HashMap.class))),
@@ -150,7 +151,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<JsonObject>", () -> {
+                dynamicTest("JsonArray<JsonObject>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<JsonObject>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -158,7 +159,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<java.lang.Boolean>", () -> {
+                dynamicTest("JsonArray<java.lang.Boolean>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Boolean>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -166,7 +167,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<java.lang.Double>", () -> {
+                dynamicTest("JsonArray<java.lang.Double>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Double>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -174,7 +175,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<java.lang.Float>", () -> {
+                dynamicTest("JsonArray<java.lang.Float>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Float>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -182,7 +183,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<java.lang.Long>", () -> {
+                dynamicTest("JsonArray<java.lang.Long>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Long>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -190,7 +191,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<java.lang.Integer>", () -> {
+                dynamicTest("JsonArray<java.lang.Integer>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.Integer>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -198,7 +199,7 @@ public class CastToUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("JsonArray<java.lang.String>", () -> {
+                dynamicTest("JsonArray<java.lang.String>", () -> {
                     final Object actual = classUnderTest.castTo(null, "JsonArray<java.lang.String>");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(ArrayList.class))),
@@ -206,43 +207,43 @@ public class CastToUtilTest {
                     );
                 })
 
-//                DynamicTest.dynamicTest("Null Object -> <Object>", () -> {
+//                dynamicTest("Null Object -> <Object>", () -> {
 //                    final Object obj = null;
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(false)));
 //                }),
 //
-//                DynamicTest.dynamicTest("Null String -> <Object>", () -> {
+//                dynamicTest("Null String -> <Object>", () -> {
 //                    final String obj = null;
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(false)));
 //                }),
 //
-//                DynamicTest.dynamicTest("Default Integer -> <Object>", () -> {
+//                dynamicTest("Default Integer -> <Object>", () -> {
 //                    final Integer obj = 1234;
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(false)));
 //                }),
 //
-//                DynamicTest.dynamicTest("Default Object -> <Object>", () -> {
+//                dynamicTest("Default Object -> <Object>", () -> {
 //                    final Object obj = new Object();
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(false)));
 //                }),
 //
-//                DynamicTest.dynamicTest("Default String -> <Object>", () -> {
+//                dynamicTest("Default String -> <Object>", () -> {
 //                    final String obj = "qwertyuiop";
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(false)));
 //                }),
 //
-//                DynamicTest.dynamicTest("List ArrayList<> -> <Object>", () -> {
+//                dynamicTest("List ArrayList<> -> <Object>", () -> {
 //                    final Object obj = new ArrayList<>();
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(true)));
 //                }),
 //
-//                DynamicTest.dynamicTest("List Stack<> -> <Object>", () -> {
+//                dynamicTest("List Stack<> -> <Object>", () -> {
 //                    final Object obj = new Stack<>();
 //                    final boolean actual = isTypedList(obj, Object.class);
 //                    assertThat(actual, is(equalTo(true)));

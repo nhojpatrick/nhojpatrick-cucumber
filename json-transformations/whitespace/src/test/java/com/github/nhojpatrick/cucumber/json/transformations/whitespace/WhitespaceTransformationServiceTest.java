@@ -32,6 +32,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class WhitespaceTransformationServiceTest {
 
@@ -128,7 +129,7 @@ public class WhitespaceTransformationServiceTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null TransformActionTask", () -> {
+                dynamicTest("null TransformActionTask", () -> {
 
                     final Executable testMethod = () -> this.classUnderTest.resolve(null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
@@ -138,7 +139,7 @@ public class WhitespaceTransformationServiceTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("empty TransformActionTask", () -> {
+                dynamicTest("empty TransformActionTask", () -> {
 
                     final TransformActionTask transformActionTask = new TransformActionTask.Builder()
                             .build();
@@ -148,7 +149,7 @@ public class WhitespaceTransformationServiceTest {
                     assertThat(actual, is(equalTo(new WhitespaceTransformation(4, 4))));
                 }),
 
-                DynamicTest.dynamicTest("basic input", () -> {
+                dynamicTest("basic input", () -> {
 
                     final TransformActionTask transformActionTask = new TransformActionTask.Builder()
                             .withValue("3")

@@ -22,6 +22,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class RunStateTest {
 
@@ -51,7 +52,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Key - Empty String", () -> {
+                dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.clear("");
                     final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
@@ -61,7 +62,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Null", () -> {
+                dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.clear(null);
                     final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
@@ -71,7 +72,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Whitespace String", () -> {
+                dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.clear("          ");
                     final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);
@@ -104,28 +105,28 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Boolean", () -> {
+                dynamicTest("Boolean", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, true);
                     final Boolean actual = runState.get(KEY, Boolean.class);
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Integer", () -> {
+                dynamicTest("Integer", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, 1234);
                     final Integer actual = runState.get(KEY, Integer.class);
                     assertThat(actual, is(equalTo(1234)));
                 }),
 
-                DynamicTest.dynamicTest("Long", () -> {
+                dynamicTest("Long", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, 1234L);
                     final Long actual = runState.get(KEY, Long.class);
                     assertThat(actual, is(equalTo(1234L)));
                 }),
 
-                DynamicTest.dynamicTest("Null", () -> {
+                dynamicTest("Null", () -> {
                     final RunState runState = new RunState();
                     final Object expectedValue = new Object();
                     runState.set(KEY, expectedValue);
@@ -133,21 +134,21 @@ public class RunStateTest {
                     assertThat(actual, is(equalTo(expectedValue)));
                 }),
 
-                DynamicTest.dynamicTest("Object", () -> {
+                dynamicTest("Object", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, null);
                     final Object actual = runState.get(KEY, Object.class);
                     assertThat(actual, is(nullValue()));
                 }),
 
-                DynamicTest.dynamicTest("String", () -> {
+                dynamicTest("String", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, "value");
                     final String actual = runState.get(KEY, String.class);
                     assertThat(actual, is(equalTo("value")));
                 }),
 
-                DynamicTest.dynamicTest("Override Check", () -> {
+                dynamicTest("Override Check", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, "first value");
                     runState.set(KEY, "second value");
@@ -165,7 +166,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Key - Empty String", () -> {
+                dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get("", String.class);
                     final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
@@ -175,7 +176,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Null", () -> {
+                dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get(null, String.class);
                     final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
@@ -185,7 +186,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Whitespace String", () -> {
+                dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get("          ", String.class);
                     final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);
@@ -195,7 +196,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Type - Null", () -> {
+                dynamicTest("Type - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.get(KEY, null);
                     final NullTypeClassException thrown = assertThrows(NullTypeClassException.class, testMethod);
@@ -205,7 +206,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Type - Mismatch", () -> {
+                dynamicTest("Type - Mismatch", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, 12345L);
                     final Executable testMethod = () -> runState.get(KEY, String.class);
@@ -224,7 +225,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("isSet - true", () -> {
+                dynamicTest("isSet - true", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, "value");
 
@@ -232,7 +233,7 @@ public class RunStateTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("isSet - false", () -> {
+                dynamicTest("isSet - false", () -> {
                     final RunState runState = new RunState();
                     runState.clear(KEY);
 
@@ -240,7 +241,7 @@ public class RunStateTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("isSet - true", () -> {
+                dynamicTest("isSet - true", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, "value");
 
@@ -256,7 +257,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Key - Empty String", () -> {
+                dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("");
                     final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
@@ -266,7 +267,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Null Key", () -> {
+                dynamicTest("Key - Null Key", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet(null);
                     final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
@@ -276,7 +277,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Whitespace String", () -> {
+                dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("          ");
                     final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);
@@ -286,7 +287,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Empty String", () -> {
+                dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("", String.class);
                     final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
@@ -296,7 +297,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Null Key", () -> {
+                dynamicTest("Key - Null Key", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet(null, String.class);
                     final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
@@ -306,7 +307,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Whitespace String", () -> {
+                dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet("          ", String.class);
                     final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);
@@ -316,7 +317,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Type - Null", () -> {
+                dynamicTest("Type - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isSet(KEY, null);
                     final NullTypeClassException thrown = assertThrows(NullTypeClassException.class, testMethod);
@@ -326,7 +327,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Type - Mismatch", () -> {
+                dynamicTest("Type - Mismatch", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, 12345L);
                     final Executable testMethod = () -> runState.isSet(KEY, String.class);
@@ -345,7 +346,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("isSet - true", () -> {
+                dynamicTest("isSet - true", () -> {
                     final RunState runState = new RunState();
                     runState.set(KEY, "value");
 
@@ -353,7 +354,7 @@ public class RunStateTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("isSet - false", () -> {
+                dynamicTest("isSet - false", () -> {
                     final RunState runState = new RunState();
                     runState.clear(KEY);
 
@@ -369,7 +370,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Key - Empty String", () -> {
+                dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isUnset("");
                     final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
@@ -379,7 +380,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Null", () -> {
+                dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isUnset(null);
                     final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
@@ -389,7 +390,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Whitespace String", () -> {
+                dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.isUnset("          ");
                     final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);
@@ -407,7 +408,7 @@ public class RunStateTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Key - Empty String", () -> {
+                dynamicTest("Key - Empty String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.set("", "value");
                     final EmptyKeyException thrown = assertThrows(EmptyKeyException.class, testMethod);
@@ -417,7 +418,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Null", () -> {
+                dynamicTest("Key - Null", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.set(null, "value");
                     final NullKeyException thrown = assertThrows(NullKeyException.class, testMethod);
@@ -427,7 +428,7 @@ public class RunStateTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Key - Whitespace String", () -> {
+                dynamicTest("Key - Whitespace String", () -> {
                     final RunState runState = new RunState();
                     final Executable testMethod = () -> runState.set("          ", "value");
                     final WhitespaceKeyException thrown = assertThrows(WhitespaceKeyException.class, testMethod);

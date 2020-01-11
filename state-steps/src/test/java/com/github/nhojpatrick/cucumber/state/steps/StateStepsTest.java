@@ -17,6 +17,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class StateStepsTest {
 
@@ -25,7 +26,7 @@ public class StateStepsTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("clearRunStateForKeys", () -> {
+                dynamicTest("clearRunStateForKeys", () -> {
                     final RunState runState = new RunState();
                     final StateSteps classUnderTest = new StateSteps(runState);
                     final List<String> keys = new ArrayList<>();

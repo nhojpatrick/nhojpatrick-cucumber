@@ -22,6 +22,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class SetTransformationTest {
 
@@ -81,7 +82,7 @@ public class SetTransformationTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null path", () -> {
+                dynamicTest("null path", () -> {
                     final Transformation classUnderTest = new SetTransformation("newValue");
                     final Executable testMethod = () -> classUnderTest.perform(null, null, null);
                     final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);

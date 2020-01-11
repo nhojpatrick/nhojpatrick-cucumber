@@ -13,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class UnsupportedDataTypeConversionExceptionTest {
 
@@ -21,7 +22,7 @@ public class UnsupportedDataTypeConversionExceptionTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("type, value", () -> {
+                dynamicTest("type, value", () -> {
                     final Executable testMethod = () -> {
                         throw new UnsupportedDataTypeConversionException("Type", "Value");
                     };
@@ -32,7 +33,7 @@ public class UnsupportedDataTypeConversionExceptionTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("type, value Throwable", () -> {
+                dynamicTest("type, value Throwable", () -> {
                     final Throwable cause = new Throwable();
                     final Executable testMethod = () -> {
                         throw new UnsupportedDataTypeConversionException("Type", "Value", cause);

@@ -15,6 +15,7 @@ import static com.github.nhojpatrick.cucumber.json.map.impl.ConvertMapToJsonTest
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class ConvertMapToJson_UnformattedTest {
 
@@ -27,7 +28,7 @@ public class ConvertMapToJson_UnformattedTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest(FORMAT + " Array Boolean Input", () -> {
+                dynamicTest(FORMAT + " Array Boolean Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Boolean> arrayBoolean = new ArrayList<>();
                     arrayBoolean.add(true);
@@ -44,7 +45,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Array Float Input", () -> {
+                dynamicTest(FORMAT + " Array Float Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Float> arrayFloat = new ArrayList<>();
                     arrayFloat.add(12.34f);
@@ -61,7 +62,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Array Integer Input", () -> {
+                dynamicTest(FORMAT + " Array Integer Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Integer> arrayInteger = new ArrayList<>();
                     arrayInteger.add(1234);
@@ -78,7 +79,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Array Null Input", () -> {
+                dynamicTest(FORMAT + " Array Null Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Object> arrayNull = new ArrayList<>();
                     arrayNull.add(null);
@@ -95,7 +96,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Array String Input", () -> {
+                dynamicTest(FORMAT + " Array String Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<String> arrayString = new ArrayList<>();
                     arrayString.add("aValue");
@@ -112,7 +113,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple One of Each Input", () -> {
+                dynamicTest(FORMAT + " Simple One of Each Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     final List<Boolean> arrayBoolean = new ArrayList<>();
                     arrayBoolean.add(true);
@@ -166,13 +167,13 @@ public class ConvertMapToJson_UnformattedTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest(FORMAT + " Empty Input", () -> {
+                dynamicTest(FORMAT + " Empty Input", () -> {
                     final String json = new ConvertMapToJson(FORMATTING)
                             .apply(new HashMap<>());
                     assertThat("Unexpected conversion", json, is(equalTo("{}")));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple Boolean Input", () -> {
+                dynamicTest(FORMAT + " Simple Boolean Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aBoolean", true);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
@@ -184,7 +185,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple Float Input", () -> {
+                dynamicTest(FORMAT + " Simple Float Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aFloat", 12.34f);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
@@ -196,7 +197,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple Integer Input", () -> {
+                dynamicTest(FORMAT + " Simple Integer Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aInteger", 1234);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
@@ -208,7 +209,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple Null Input", () -> {
+                dynamicTest(FORMAT + " Simple Null Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aNull", null);
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
@@ -220,7 +221,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple String Input", () -> {
+                dynamicTest(FORMAT + " Simple String Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aString", "aValue");
                     final Map<String, Object> jsonMap = shuffle(jsonMapRaw);
@@ -232,7 +233,7 @@ public class ConvertMapToJson_UnformattedTest {
                     assertThat("Unexpected conversion", json, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest(FORMAT + " Simple One of Each Input", () -> {
+                dynamicTest(FORMAT + " Simple One of Each Input", () -> {
                     final Map<String, Object> jsonMapRaw = new HashMap<>();
                     jsonMapRaw.put("aBoolean", true);
                     jsonMapRaw.put("aFloat", 12.34f);

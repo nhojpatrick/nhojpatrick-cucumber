@@ -13,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class NullGenericsValueExceptionTest {
 
@@ -21,7 +22,7 @@ public class NullGenericsValueExceptionTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("default", () -> {
+                dynamicTest("default", () -> {
                     final Executable testMethod = () -> {
                         throw new NullGenericsValueException();
                     };

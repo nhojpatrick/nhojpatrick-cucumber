@@ -25,6 +25,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class ReverseTransformationTest {
 
@@ -85,7 +86,7 @@ public class ReverseTransformationTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null path", () -> {
+                dynamicTest("null path", () -> {
                     final Transformation classUnderTest = new ReverseTransformation();
                     final Executable testMethod = () -> classUnderTest.perform(null, null, null);
                     final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
@@ -103,7 +104,7 @@ public class ReverseTransformationTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null reverse()", () -> {
+                dynamicTest("null reverse()", () -> {
 
                     final ReverseTransformation classUnderTest = new ReverseTransformation();
 
@@ -114,7 +115,7 @@ public class ReverseTransformationTest {
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest("List reverse()", () -> {
+                dynamicTest("List reverse()", () -> {
                     final Executable testMethod = () -> new ReverseTransformation()
                             .reverse("aPath", new ArrayList<>());
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
@@ -124,7 +125,7 @@ public class ReverseTransformationTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Map reverse()", () -> {
+                dynamicTest("Map reverse()", () -> {
                     final Executable testMethod = () -> new ReverseTransformation()
                             .reverse("aPath", new HashMap<>());
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
@@ -134,7 +135,7 @@ public class ReverseTransformationTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("\"\" reverse()", () -> {
+                dynamicTest("\"\" reverse()", () -> {
 
                     final ReverseTransformation classUnderTest = new ReverseTransformation();
 
@@ -145,7 +146,7 @@ public class ReverseTransformationTest {
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest("\"qwerty\" reverse()", () -> {
+                dynamicTest("\"qwerty\" reverse()", () -> {
 
                     final ReverseTransformation classUnderTest = new ReverseTransformation();
 

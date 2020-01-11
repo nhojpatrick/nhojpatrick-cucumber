@@ -20,6 +20,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class MapTypeUtilTest {
 
@@ -40,25 +41,25 @@ public class MapTypeUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Map -> <null, null>", () -> {
+                dynamicTest("Map -> <null, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new HashMap<>(), null, null);
                     final NullGenericsKeyException thrown = assertThrows(NullGenericsKeyException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Key Type.")));
                 }),
 
-                DynamicTest.dynamicTest("Map -> <String, null>", () -> {
+                dynamicTest("Map -> <String, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new HashMap<>(), String.class, null);
                     final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 }),
 
-                DynamicTest.dynamicTest("Object -> <null, null>", () -> {
+                dynamicTest("Object -> <null, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new Object(), null, null);
                     final NullGenericsKeyException thrown = assertThrows(NullGenericsKeyException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Key Type.")));
                 }),
 
-                DynamicTest.dynamicTest("Object -> <String, null>", () -> {
+                dynamicTest("Object -> <String, null>", () -> {
                     final Executable testMethod = () -> isTypedMap(new Object(), String.class, null);
                     final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
@@ -72,49 +73,49 @@ public class MapTypeUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Null Integer -> <String, Object>", () -> {
+                dynamicTest("Null Integer -> <String, Object>", () -> {
                     final Integer obj = null;
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Null Object -> <String, Object>", () -> {
+                dynamicTest("Null Object -> <String, Object>", () -> {
                     final Object obj = null;
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Null String -> <String, Object>", () -> {
+                dynamicTest("Null String -> <String, Object>", () -> {
                     final String obj = null;
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Default Integer -> <String, Object>", () -> {
+                dynamicTest("Default Integer -> <String, Object>", () -> {
                     final Integer obj = 1234;
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Default Object -> <String, Object>", () -> {
+                dynamicTest("Default Object -> <String, Object>", () -> {
                     final Object obj = new Object();
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Default Null String -> <String, Object>", () -> {
+                dynamicTest("Default Null String -> <String, Object>", () -> {
                     final String obj = "qwertyuiop";
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Map HashMap<> -> <String, Object>", () -> {
+                dynamicTest("Map HashMap<> -> <String, Object>", () -> {
                     final Object obj = new HashMap<>();
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Map TreeMap<> -> <String, Object>", () -> {
+                dynamicTest("Map TreeMap<> -> <String, Object>", () -> {
                     final Object obj = new TreeMap<>();
                     final boolean actual = isTypedMap(obj, String.class, Object.class);
                     assertThat(actual, is(equalTo(true)));
@@ -128,7 +129,7 @@ public class MapTypeUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Map Null, -> <String, Object>", () -> {
+                dynamicTest("Map Null, -> <String, Object>", () -> {
 
                     final Map map = null;
 
@@ -137,7 +138,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Map Empty, -> <String, Object>", () -> {
+                dynamicTest("Map Empty, -> <String, Object>", () -> {
 
                     final Map map = new HashMap<>();
 
@@ -146,7 +147,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Map Integers, -> <String, Integer>", () -> {
+                dynamicTest("Map Integers, -> <String, Integer>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
@@ -157,7 +158,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Map Integers, -> <String, Object>", () -> {
+                dynamicTest("Map Integers, -> <String, Object>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
@@ -168,7 +169,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Map Integers, -> <String, String>", () -> {
+                dynamicTest("Map Integers, -> <String, String>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
@@ -179,7 +180,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Map Mixed, -> <String, Integer>", () -> {
+                dynamicTest("Map Mixed, -> <String, Integer>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
@@ -190,7 +191,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Map Mixed, -> <String, Object>", () -> {
+                dynamicTest("Map Mixed, -> <String, Object>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
@@ -201,7 +202,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Map Mixed, -> <String, String>", () -> {
+                dynamicTest("Map Mixed, -> <String, String>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
@@ -212,7 +213,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Map Strings, -> <String, Integer>", () -> {
+                dynamicTest("Map Strings, -> <String, Integer>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", "value1");
@@ -223,7 +224,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Map Strings, -> <String, Object>", () -> {
+                dynamicTest("Map Strings, -> <String, Object>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", "value1");
@@ -234,7 +235,7 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("Map Strings, -> <String, String>", () -> {
+                dynamicTest("Map Strings, -> <String, String>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", "value1");

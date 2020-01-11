@@ -21,6 +21,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class ConvertMapToJsonTest {
 
@@ -50,7 +51,7 @@ public class ConvertMapToJsonTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("JsonProcessingException", () -> {
+                dynamicTest("JsonProcessingException", () -> {
                     final Map<String, Object> input = new HashMap<>();
                     input.put("issue", new ClassThatJacksonCannotSerialize());
                     final Executable testMethod = () -> new ConvertMapToJson()
@@ -62,7 +63,7 @@ public class ConvertMapToJsonTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null Input", () -> {
+                dynamicTest("Null Input", () -> {
                     final Executable testMethod = () -> new ConvertMapToJson()
                             .apply(null);
                     final RuntimeException thrown = assertThrows(RuntimeException.class, testMethod);

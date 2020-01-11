@@ -24,6 +24,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -39,7 +40,7 @@ public class ConvertJsonMapUtil_convertMapToJsonTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Null RunState", () -> {
+                dynamicTest("Null RunState", () -> {
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
                     final Executable testMethod = () -> classUnderTest.convertMapToJson(null,
                             null,
@@ -51,7 +52,7 @@ public class ConvertJsonMapUtil_convertMapToJsonTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null RunStateJsonMapKey", () -> {
+                dynamicTest("Null RunStateJsonMapKey", () -> {
                     final RunState runState = new RunState();
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
                     final Executable testMethod = () -> classUnderTest.convertMapToJson(runState,
@@ -64,7 +65,7 @@ public class ConvertJsonMapUtil_convertMapToJsonTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null RunStateJsonStringKey", () -> {
+                dynamicTest("Null RunStateJsonStringKey", () -> {
                     final RunState runState = new RunState();
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
                     final Executable testMethod = () -> classUnderTest.convertMapToJson(runState,
@@ -87,7 +88,7 @@ public class ConvertJsonMapUtil_convertMapToJsonTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Empty RunState", () -> {
+                dynamicTest("Empty RunState", () -> {
                     final RunState runState = new RunState();
 
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
@@ -107,7 +108,7 @@ public class ConvertJsonMapUtil_convertMapToJsonTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Missing Input, Valid Output in RunState", () -> {
+                dynamicTest("Missing Input, Valid Output in RunState", () -> {
                     final RunState runState = new RunState();
                     runState.set("Valid_RunStateJsonStringKey", new Object());
 
@@ -132,7 +133,7 @@ public class ConvertJsonMapUtil_convertMapToJsonTest {
 
                 }),
 
-                DynamicTest.dynamicTest("Valid Input, Valid Output in RunState", () -> {
+                dynamicTest("Valid Input, Valid Output in RunState", () -> {
                     final RunState runState = new RunState();
                     runState.set("Valid_RunStateJsonMapKey", "aValidKey");
                     runState.set("Valid_RunStateJsonStringKey", "Should not be in RunState");
