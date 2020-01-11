@@ -32,6 +32,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class SetTransformationServiceTest {
 
@@ -127,7 +128,7 @@ public class SetTransformationServiceTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null TransformActionTask", () -> {
+                dynamicTest("null TransformActionTask", () -> {
 
                     final Executable testMethod = () -> this.classUnderTest.resolve(null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
@@ -137,7 +138,7 @@ public class SetTransformationServiceTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("empty TransformActionTask", () -> {
+                dynamicTest("empty TransformActionTask", () -> {
 
                     final TransformActionTask transformActionTask = new TransformActionTask.Builder()
                             .build();
@@ -150,7 +151,7 @@ public class SetTransformationServiceTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("basic input", () -> {
+                dynamicTest("basic input", () -> {
 
                     final TransformActionTask transformActionTask = new TransformActionTask.Builder()
                             .withType("java.lang.String")

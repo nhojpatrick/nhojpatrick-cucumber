@@ -20,6 +20,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class PathAttributeElementImplTest {
 
@@ -82,15 +83,15 @@ public class PathAttributeElementImplTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("getElement", () -> {
+                dynamicTest("getElement", () -> {
                     assertThat("should match", classUnderTest.getElement(), is(equalTo("abc")));
                 }),
 
-                DynamicTest.dynamicTest("getElementRaw", () -> {
+                dynamicTest("getElementRaw", () -> {
                     assertThat("should match", classUnderTest.getElementRaw(), is(equalTo("abc")));
                 }),
 
-                DynamicTest.dynamicTest("getElementRaw", () -> {
+                dynamicTest("getElementRaw", () -> {
                     final Executable testMethod = () -> {
                         classUnderTest.getArrayIndex();
                     };
@@ -101,11 +102,11 @@ public class PathAttributeElementImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("isArray", () -> {
+                dynamicTest("isArray", () -> {
                     assertThat("should match", classUnderTest.isArray(), is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("isAttribute", () -> {
+                dynamicTest("isAttribute", () -> {
                     assertThat("should match", classUnderTest.isAttribute(), is(equalTo(true)));
                 })
 

@@ -25,6 +25,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class WhitespaceTransformationTest {
 
@@ -86,7 +87,7 @@ public class WhitespaceTransformationTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("negative prefix", () -> {
+                dynamicTest("negative prefix", () -> {
                     final Executable testMethod = () -> {
                         new WhitespaceTransformation(-1, 0);
                     };
@@ -97,7 +98,7 @@ public class WhitespaceTransformationTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("negative suffix", () -> {
+                dynamicTest("negative suffix", () -> {
                     final Executable testMethod = () -> {
                         new WhitespaceTransformation(0, -1);
                     };
@@ -116,7 +117,7 @@ public class WhitespaceTransformationTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null path", () -> {
+                dynamicTest("null path", () -> {
                     final Transformation classUnderTest = new WhitespaceTransformation(0, 0);
                     final Executable testMethod = () -> classUnderTest.perform(null, null, null);
                     final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
@@ -134,7 +135,7 @@ public class WhitespaceTransformationTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null pad(1, 2)", () -> {
+                dynamicTest("null pad(1, 2)", () -> {
 
                     final WhitespaceTransformation classUnderTest = new WhitespaceTransformation(0, 0);
 
@@ -145,7 +146,7 @@ public class WhitespaceTransformationTest {
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest("\"\" pad(1, 2)", () -> {
+                dynamicTest("\"\" pad(1, 2)", () -> {
 
                     final WhitespaceTransformation classUnderTest = new WhitespaceTransformation(0, 0);
 
@@ -156,7 +157,7 @@ public class WhitespaceTransformationTest {
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest("\" \" pad(1, 2)", () -> {
+                dynamicTest("\" \" pad(1, 2)", () -> {
 
                     final WhitespaceTransformation classUnderTest = new WhitespaceTransformation(0, 0);
 
@@ -167,7 +168,7 @@ public class WhitespaceTransformationTest {
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest("\"a\" pad(1, 2)", () -> {
+                dynamicTest("\"a\" pad(1, 2)", () -> {
 
                     final WhitespaceTransformation classUnderTest = new WhitespaceTransformation(0, 0);
 
@@ -178,7 +179,7 @@ public class WhitespaceTransformationTest {
                     assertThat(actual, is(equalTo(expected)));
                 }),
 
-                DynamicTest.dynamicTest("\" a \" pad(1, 2)", () -> {
+                dynamicTest("\" a \" pad(1, 2)", () -> {
 
                     final WhitespaceTransformation classUnderTest = new WhitespaceTransformation(0, 0);
 

@@ -21,6 +21,7 @@ import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class TransformActionTaskTest {
 
@@ -99,7 +100,7 @@ public class TransformActionTaskTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("TransformActionTask.Builder()", () -> {
+                dynamicTest("TransformActionTask.Builder()", () -> {
                     final TransformActionTask classUnderTest = new TransformActionTask.Builder()
                             .withType("aType")
                             .withValue("aValue")
@@ -107,7 +108,7 @@ public class TransformActionTaskTest {
                     assertThat("should match", classUnderTest, is(toStringGenerated("TransformActionTask{type=aType, value=aValue}")));
                 }),
 
-                DynamicTest.dynamicTest("TransformActionTask.Builder(null)", () -> {
+                dynamicTest("TransformActionTask.Builder(null)", () -> {
                     final Executable testMethod = () -> new TransformActionTask.Builder(null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
@@ -116,7 +117,7 @@ public class TransformActionTaskTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("TransformActionTask.Builder(existing)", () -> {
+                dynamicTest("TransformActionTask.Builder(existing)", () -> {
                     final TransformActionTask existing = new TransformActionTask.Builder()
                             .withType("aType")
                             .withValue("aValue")

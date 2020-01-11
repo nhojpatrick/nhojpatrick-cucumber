@@ -17,6 +17,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import static org.mockito.Mockito.mock;
 
 public class ConvertJsonMapUtilTest {
@@ -27,7 +28,7 @@ public class ConvertJsonMapUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Null ConvertMapToJson", () -> {
+                dynamicTest("Null ConvertMapToJson", () -> {
                     final Executable testMethod = () -> new ConvertJsonMapUtil(null, null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
@@ -36,7 +37,7 @@ public class ConvertJsonMapUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Null ConvertObjectToMap", () -> {
+                dynamicTest("Null ConvertObjectToMap", () -> {
                     final Executable testMethod = () -> new ConvertJsonMapUtil(mock(ConvertMapToJson.class), null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
@@ -45,17 +46,17 @@ public class ConvertJsonMapUtilTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("Success args constructor", () -> {
+                dynamicTest("Success args constructor", () -> {
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil(mock(ConvertMapToJson.class), mock(ConvertObjectToMap.class));
                     assertThat(classUnderTest, is(notNullValue()));
                 }),
 
-                DynamicTest.dynamicTest("Success args formatJson constructor", () -> {
+                dynamicTest("Success args formatJson constructor", () -> {
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil(false);
                     assertThat(classUnderTest, is(notNullValue()));
                 }),
 
-                DynamicTest.dynamicTest("Success no-args constructor", () -> {
+                dynamicTest("Success no-args constructor", () -> {
                     final ConvertJsonMapUtil classUnderTest = new ConvertJsonMapUtil();
                     assertThat(classUnderTest, is(notNullValue()));
                 })

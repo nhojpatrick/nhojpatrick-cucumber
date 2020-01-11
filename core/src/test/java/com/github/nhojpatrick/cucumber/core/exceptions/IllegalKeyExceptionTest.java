@@ -13,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class IllegalKeyExceptionTest {
 
@@ -30,7 +31,7 @@ public class IllegalKeyExceptionTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("message", () -> {
+                dynamicTest("message", () -> {
                     final Executable testMethod = () -> {
                         throw new TestingIllegalKeyException("message");
                     };

@@ -13,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class InvalidPathExceptionTest {
 
@@ -21,7 +22,7 @@ public class InvalidPathExceptionTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("message", () -> {
+                dynamicTest("message", () -> {
                     final Executable testMethod = () -> {
                         throw new InvalidPathException("message");
                     };
@@ -32,7 +33,7 @@ public class InvalidPathExceptionTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("format", () -> {
+                dynamicTest("format", () -> {
                     final Executable testMethod = () -> {
                         throw new InvalidPathException("%s", "message");
                     };

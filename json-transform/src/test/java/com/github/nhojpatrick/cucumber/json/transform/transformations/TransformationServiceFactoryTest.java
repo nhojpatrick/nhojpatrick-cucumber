@@ -15,6 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class TransformationServiceFactoryTest {
 
@@ -36,20 +37,20 @@ public class TransformationServiceFactoryTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Resolve Null", () -> {
+                dynamicTest("Resolve Null", () -> {
                     final TransformationServiceFactory transformationServiceFactory = TransformationServiceFactory.getFactory();
                     final Optional<TransformationService> actual = transformationServiceFactory.resolve(null);
                     assertThat("TransformationService", actual, optionalIsEmpty());
                 }),
 
-                DynamicTest.dynamicTest("Resolve Remove", () -> {
+                dynamicTest("Resolve Remove", () -> {
                     final TransformationServiceFactory transformationServiceFactory = TransformationServiceFactory.getFactory();
                     final Optional<TransformationService> actual = transformationServiceFactory.resolve("Remove");
                     assertThat("TransformationService", actual, optionalIsPresent());
                     assertThat("TransformationService", actual.get().getAction(), is(equalTo("Remove")));
                 }),
 
-                DynamicTest.dynamicTest("Resolve Remove WeridCase", () -> {
+                dynamicTest("Resolve Remove WeridCase", () -> {
                     final TransformationServiceFactory transformationServiceFactory = TransformationServiceFactory.getFactory();
                     final Optional<TransformationService> actual = transformationServiceFactory.resolve("ReMoVe");
                     assertThat("TransformationService", actual, optionalIsPresent());

@@ -14,6 +14,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class CastToExceptionTest {
 
@@ -35,7 +36,7 @@ public class CastToExceptionTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("message", () -> {
+                dynamicTest("message", () -> {
                     final Executable testMethod = () -> {
                         throw new TestingCastToException("message");
                     };
@@ -46,7 +47,7 @@ public class CastToExceptionTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("message & cause", () -> {
+                dynamicTest("message & cause", () -> {
                     final Executable testMethod = () -> {
                         throw new TestingCastToException("message", new RuntimeException());
                     };

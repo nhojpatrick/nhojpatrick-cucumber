@@ -13,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class InvalidTransformActionExceptionTest {
 
@@ -21,7 +22,7 @@ public class InvalidTransformActionExceptionTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("action", () -> {
+                dynamicTest("action", () -> {
                     final Executable testMethod = () -> {
                         throw new InvalidTransformActionException("Action");
                     };

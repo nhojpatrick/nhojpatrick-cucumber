@@ -31,6 +31,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class ReverseTransformationServiceTest {
 
@@ -126,7 +127,7 @@ public class ReverseTransformationServiceTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null TransformActionTask", () -> {
+                dynamicTest("null TransformActionTask", () -> {
 
                     final Executable testMethod = () -> this.classUnderTest.resolve(null);
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
@@ -136,7 +137,7 @@ public class ReverseTransformationServiceTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("empty TransformActionTask", () -> {
+                dynamicTest("empty TransformActionTask", () -> {
 
                     final TransformActionTask transformActionTask = new TransformActionTask.Builder()
                             .build();

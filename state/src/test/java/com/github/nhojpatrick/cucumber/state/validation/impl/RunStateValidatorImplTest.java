@@ -17,6 +17,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -27,7 +28,7 @@ public class RunStateValidatorImplTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("null withNull", () -> {
+                dynamicTest("null withNull", () -> {
                     final RunStateValidator runStateValidator = new RunStateValidatorImpl();
 
                     final Executable testMethod = () -> runStateValidator.withNull(null);
@@ -38,7 +39,7 @@ public class RunStateValidatorImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("null withValue", () -> {
+                dynamicTest("null withValue", () -> {
                     final RunStateValidator runStateValidator = new RunStateValidatorImpl();
 
                     final Executable testMethod = () -> runStateValidator.withValue(null);
@@ -49,7 +50,7 @@ public class RunStateValidatorImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("null run state", () -> {
+                dynamicTest("null run state", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isSet("withNullKey"))
                             .thenReturn(true);
@@ -65,7 +66,7 @@ public class RunStateValidatorImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("invalid withNull", () -> {
+                dynamicTest("invalid withNull", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isSet("withNullKey"))
                             .thenReturn(true);
@@ -81,7 +82,7 @@ public class RunStateValidatorImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("invalid withValue", () -> {
+                dynamicTest("invalid withValue", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isUnset("withValueKey"))
                             .thenReturn(true);
@@ -97,7 +98,7 @@ public class RunStateValidatorImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("invalid withNull and withValue", () -> {
+                dynamicTest("invalid withNull and withValue", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isSet("withNullKey"))
                             .thenReturn(true);
@@ -124,7 +125,7 @@ public class RunStateValidatorImplTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("IllegalKeyException withNull", () -> {
+                dynamicTest("IllegalKeyException withNull", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isSet("withNullKey"))
                             .thenThrow(new NullKeyException());
@@ -135,7 +136,7 @@ public class RunStateValidatorImplTest {
                     runStateValidator.verify(runState);
                 }),
 
-                DynamicTest.dynamicTest("IllegalKeyException withValue", () -> {
+                dynamicTest("IllegalKeyException withValue", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isUnset("withValueKey"))
                             .thenThrow(new NullKeyException());
@@ -146,7 +147,7 @@ public class RunStateValidatorImplTest {
                     runStateValidator.verify(runState);
                 }),
 
-                DynamicTest.dynamicTest("valid withNull", () -> {
+                dynamicTest("valid withNull", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isUnset("withNullKey"))
                             .thenReturn(true);
@@ -157,7 +158,7 @@ public class RunStateValidatorImplTest {
                     runStateValidator.verify(runState);
                 }),
 
-                DynamicTest.dynamicTest("valid withValue", () -> {
+                dynamicTest("valid withValue", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isSet("withNullKey"))
                             .thenReturn(true);
@@ -168,7 +169,7 @@ public class RunStateValidatorImplTest {
                     runStateValidator.verify(runState);
                 }),
 
-                DynamicTest.dynamicTest("valid withNull and withValue", () -> {
+                dynamicTest("valid withNull and withValue", () -> {
                     final RunState runState = mock(RunState.class);
                     when(runState.isUnset("withNullKey"))
                             .thenReturn(true);

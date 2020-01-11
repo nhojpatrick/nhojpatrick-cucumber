@@ -17,6 +17,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class PathArrayElementImplTest {
 
@@ -79,23 +80,23 @@ public class PathArrayElementImplTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("getElement", () -> {
+                dynamicTest("getElement", () -> {
                     assertThat("should match", classUnderTest.getElement(), is(equalTo("abc")));
                 }),
 
-                DynamicTest.dynamicTest("getElementRaw", () -> {
+                dynamicTest("getElementRaw", () -> {
                     assertThat("should match", classUnderTest.getElementRaw(), is(equalTo("abc[2]")));
                 }),
 
-                DynamicTest.dynamicTest("getElementRaw", () -> {
+                dynamicTest("getElementRaw", () -> {
                     assertThat("should match", classUnderTest.getArrayIndex(), is(equalTo(2)));
                 }),
 
-                DynamicTest.dynamicTest("isArray", () -> {
+                dynamicTest("isArray", () -> {
                     assertThat("should match", classUnderTest.isArray(), is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("isAttribute", () -> {
+                dynamicTest("isAttribute", () -> {
                     assertThat("should match", classUnderTest.isAttribute(), is(equalTo(false)));
                 })
 

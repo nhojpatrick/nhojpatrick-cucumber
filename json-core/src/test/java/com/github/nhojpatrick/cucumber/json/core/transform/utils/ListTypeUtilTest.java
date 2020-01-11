@@ -19,6 +19,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class ListTypeUtilTest {
 
@@ -39,13 +40,13 @@ public class ListTypeUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("List -> <null>", () -> {
+                dynamicTest("List -> <null>", () -> {
                     final Executable testMethod = () -> isTypedList(new ArrayList(), null);
                     final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
                 }),
 
-                DynamicTest.dynamicTest("Object -> <null>", () -> {
+                dynamicTest("Object -> <null>", () -> {
                     final Executable testMethod = () -> isTypedList(new Object(), null);
                     final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
@@ -59,49 +60,49 @@ public class ListTypeUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("Null Integer -> <Object>", () -> {
+                dynamicTest("Null Integer -> <Object>", () -> {
                     final Integer obj = null;
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Null Object -> <Object>", () -> {
+                dynamicTest("Null Object -> <Object>", () -> {
                     final Object obj = null;
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Null String -> <Object>", () -> {
+                dynamicTest("Null String -> <Object>", () -> {
                     final String obj = null;
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Default Integer -> <Object>", () -> {
+                dynamicTest("Default Integer -> <Object>", () -> {
                     final Integer obj = 1234;
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Default Object -> <Object>", () -> {
+                dynamicTest("Default Object -> <Object>", () -> {
                     final Object obj = new Object();
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("Default String -> <Object>", () -> {
+                dynamicTest("Default String -> <Object>", () -> {
                     final String obj = "qwertyuiop";
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("List ArrayList<> -> <Object>", () -> {
+                dynamicTest("List ArrayList<> -> <Object>", () -> {
                     final Object obj = new ArrayList<>();
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("List Stack<> -> <Object>", () -> {
+                dynamicTest("List Stack<> -> <Object>", () -> {
                     final Object obj = new Stack<>();
                     final boolean actual = isTypedList(obj, Object.class);
                     assertThat(actual, is(equalTo(true)));
@@ -115,7 +116,7 @@ public class ListTypeUtilTest {
 
         return Arrays.asList(
 
-                DynamicTest.dynamicTest("List Null -> <Object>", () -> {
+                dynamicTest("List Null -> <Object>", () -> {
 
                     final List list = null;
 
@@ -124,7 +125,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("List Empty -> <Object>", () -> {
+                dynamicTest("List Empty -> <Object>", () -> {
 
                     final List list = new ArrayList<>();
 
@@ -133,7 +134,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("List Integers -> <Integer>", () -> {
+                dynamicTest("List Integers -> <Integer>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
@@ -144,7 +145,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("List Integers -> <Object>", () -> {
+                dynamicTest("List Integers -> <Object>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
@@ -155,7 +156,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("List Integers -> <String>", () -> {
+                dynamicTest("List Integers -> <String>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
@@ -166,7 +167,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("List Mixed -> <Integer>", () -> {
+                dynamicTest("List Mixed -> <Integer>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
@@ -177,7 +178,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("List Mixed -> <Object>", () -> {
+                dynamicTest("List Mixed -> <Object>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
@@ -188,7 +189,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("List Mixed -> <String>", () -> {
+                dynamicTest("List Mixed -> <String>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
@@ -199,7 +200,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("List Strings -> <Integer>", () -> {
+                dynamicTest("List Strings -> <Integer>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add("value1");
@@ -210,7 +211,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("List Strings -> <Object>", () -> {
+                dynamicTest("List Strings -> <Object>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add("value1");
@@ -221,7 +222,7 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
-                DynamicTest.dynamicTest("List Strings -> <String>", () -> {
+                dynamicTest("List Strings -> <String>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add("value1");
