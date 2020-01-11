@@ -9,7 +9,10 @@
         <Logger name="com.github.nhojpatrick.cucumber.json.transformations.core" level="debug">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Root level="warn">
+        <Logger name="com.github.nhojpatrick" level="info">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="error">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
