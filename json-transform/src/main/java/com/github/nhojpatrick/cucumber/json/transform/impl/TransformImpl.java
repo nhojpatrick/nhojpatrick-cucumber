@@ -82,7 +82,7 @@ public class TransformImpl
             Object innerRaw = output.get(pathElement.getElement());
 
             if (isNull(innerRaw)) {
-                if (pathElement.isArrayElement()) {
+                if (pathElement.isArray()) {
                     innerRaw = new ArrayList<LinkedHashMap<String, Object>>();
 
                 } else {
@@ -95,7 +95,7 @@ public class TransformImpl
             final boolean isTypedListObject = isTypedList(innerRaw, Object.class);
 
             if (isTypedMap
-                    && pathElement.isArrayElement()) {
+                    && pathElement.isArray()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert object to array, at path '%s'.",
                         getPath(previousPath, pathElement)
@@ -103,7 +103,7 @@ public class TransformImpl
             }
 
             if (isTypedListObject
-                    && pathElement.isNotArrayElement()) {
+                    && pathElement.isAttribute()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert array to object, at path '%s'.",
                         getPath(previousPath, pathElement)

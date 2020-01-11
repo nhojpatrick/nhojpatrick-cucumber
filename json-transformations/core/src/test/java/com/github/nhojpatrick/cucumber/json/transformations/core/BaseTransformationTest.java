@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.core;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
@@ -96,7 +96,7 @@ public class BaseTransformationTest {
                 }),
 
                 DynamicTest.dynamicTest("null CurrentPath, Valid PathElement", () -> {
-                    final String path = classUnderTest.getPath(null, new PathElementImpl("aPath"));
+                    final String path = classUnderTest.getPath(null, new PathAttributeElementImpl("aPath"));
 
                     assertThat("Unexpected Path", path, is(equalTo("aPath")));
                 }),
@@ -112,7 +112,7 @@ public class BaseTransformationTest {
                 }),
 
                 DynamicTest.dynamicTest("empty CurrentPath, Valid PathElement", () -> {
-                    final String path = classUnderTest.getPath("", new PathElementImpl("aPath"));
+                    final String path = classUnderTest.getPath("", new PathAttributeElementImpl("aPath"));
 
                     assertThat("Unexpected Path", path, is(equalTo("aPath")));
                 }),
@@ -128,7 +128,7 @@ public class BaseTransformationTest {
                 }),
 
                 DynamicTest.dynamicTest("Valid CurrentPath, Valid PathElement", () -> {
-                    final String path = classUnderTest.getPath("parentPath", new PathElementImpl("aPath"));
+                    final String path = classUnderTest.getPath("parentPath", new PathAttributeElementImpl("aPath"));
 
                     assertThat("Unexpected Path", path, is(equalTo("parentPath.aPath")));
                 })

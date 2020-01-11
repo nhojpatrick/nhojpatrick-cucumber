@@ -34,7 +34,7 @@ public class PathValidatorImplTest {
                 expected.add(pathElement);
 
             } else {
-                final PathElement pathElement = new PathElementImpl(elementRaw);
+                final PathElement pathElement = new PathAttributeElementImpl(elementRaw);
                 expected.add(pathElement);
             }
         }

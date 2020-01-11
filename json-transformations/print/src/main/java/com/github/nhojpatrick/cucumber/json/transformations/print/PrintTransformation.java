@@ -62,7 +62,7 @@ public class PrintTransformation
             ));
         }
 
-        if (pathElement.isNotArrayElement()) {
+        if (pathElement.isAttribute()) {
 
             LOGGER.error("Printing Path '{}' Value '{}'",
                     getPath(currentPath, pathElement),

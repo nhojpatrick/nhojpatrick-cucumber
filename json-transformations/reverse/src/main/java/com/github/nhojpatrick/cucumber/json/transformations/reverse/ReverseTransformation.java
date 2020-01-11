@@ -56,7 +56,7 @@ public class ReverseTransformation
                 ? inputRaw
                 : new HashMap<>();
 
-        if (pathElement.isNotArrayElement()) {
+        if (pathElement.isAttribute()) {
 
             // FIXME should this error or be silent?
             if (!output.containsKey(pathElement.getElement())

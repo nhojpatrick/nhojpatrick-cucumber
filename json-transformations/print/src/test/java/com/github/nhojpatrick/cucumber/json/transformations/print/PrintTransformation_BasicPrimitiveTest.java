@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.print;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -38,7 +38,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final String key = "objects_array";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -87,7 +87,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final String key = "primitive";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -136,7 +136,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final String key = "primitives_array";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -185,7 +185,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final String key = "unknown";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
@@ -228,7 +228,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -253,7 +253,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -278,7 +278,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -303,7 +303,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -328,7 +328,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -353,7 +353,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -376,7 +376,7 @@ public class PrintTransformation_BasicPrimitiveTest {
                     final String key = "unknown";
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(

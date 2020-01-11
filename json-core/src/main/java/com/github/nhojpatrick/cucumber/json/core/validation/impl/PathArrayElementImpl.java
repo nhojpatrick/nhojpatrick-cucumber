@@ -11,7 +11,9 @@ public class PathArrayElementImpl
         extends AbstractPathElement
         implements PathArrayElement {
 
-    public PathArrayElementImpl(final String elementRaw, final String element, final int arrayIndex) {
+    public PathArrayElementImpl(final String elementRaw,
+                                final String element,
+                                final int arrayIndex) {
         super(elementRaw, element, arrayIndex);
     }
 

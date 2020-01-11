@@ -56,7 +56,7 @@ public class RemoveTransformation
             return output;
         }
 
-        if (pathElement.isNotArrayElement()) {
+        if (pathElement.isAttribute()) {
             output.remove(pathElement.getElement());
 
         } else {

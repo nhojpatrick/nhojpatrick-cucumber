@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.reverse;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -37,7 +37,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -86,7 +86,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -135,7 +135,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -184,7 +184,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -226,7 +226,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     expected.put(key, "eurt");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -242,7 +242,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     expected.put(key, "43.21");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -258,7 +258,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     expected.put(key, "4321");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -273,7 +273,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -286,7 +286,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final String key = "a_object";
 
                     final Executable testMethod = () -> new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -305,7 +305,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     expected.put(key, "eulaVa");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -320,7 +320,7 @@ public class ReverseTransformation_BasicPrimitiveTest {
                     final Map<String, Object> expected = getMapBasicPrimitives();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

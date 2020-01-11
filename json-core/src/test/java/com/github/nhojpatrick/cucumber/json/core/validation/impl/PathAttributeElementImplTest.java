@@ -21,19 +21,19 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PathElementImplTest {
+public class PathAttributeElementImplTest {
 
     @Nested
     @DisplayName("Basic")
     class basic {
 
-        private PathElementImpl classUnderTest;
-        private PathElementImpl differentInstance;
+        private PathAttributeElementImpl classUnderTest;
+        private PathAttributeElementImpl differentInstance;
 
         @BeforeEach
         public void beforeEach() {
-            this.classUnderTest = new PathElementImpl("key");
-            this.differentInstance = new PathElementImpl("another");
+            this.classUnderTest = new PathAttributeElementImpl("key");
+            this.differentInstance = new PathAttributeElementImpl("another");
         }
 
         @Test
@@ -64,7 +64,7 @@ public class PathElementImplTest {
         public void toStringTest() {
 
             assertAll("toString",
-                    () -> assertThat("should match", this.classUnderTest, is(toStringGenerated("PathElementImpl[key]"))),
+                    () -> assertThat("should match", this.classUnderTest, is(toStringGenerated("PathAttributeElementImpl[key]"))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated(this.differentInstance.toString())))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated("")))),
                     () -> assertThat("should not match", this.classUnderTest, is(not(toStringGenerated(new Object().toString())))),
@@ -75,10 +75,10 @@ public class PathElementImplTest {
     }
 
     @TestFactory
-    @DisplayName("PathElementImpl tests")
+    @DisplayName("PathAttributeElement tests")
     public Collection<DynamicTest> tests() {
 
-        final PathElementImpl classUnderTest = new PathElementImpl("abc");
+        final PathAttributeElementImpl classUnderTest = new PathAttributeElementImpl("abc");
 
         return Arrays.asList(
 
@@ -101,12 +101,12 @@ public class PathElementImplTest {
                     );
                 }),
 
-                DynamicTest.dynamicTest("isArrayElement", () -> {
-                    assertThat("should match", classUnderTest.isArrayElement(), is(equalTo(false)));
+                DynamicTest.dynamicTest("isArray", () -> {
+                    assertThat("should match", classUnderTest.isArray(), is(equalTo(false)));
                 }),
 
-                DynamicTest.dynamicTest("isNotArrayElement", () -> {
-                    assertThat("should match", classUnderTest.isNotArrayElement(), is(equalTo(true)));
+                DynamicTest.dynamicTest("isAttribute", () -> {
+                    assertThat("should match", classUnderTest.isAttribute(), is(equalTo(true)));
                 })
 
         );

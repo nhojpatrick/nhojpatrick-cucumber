@@ -8,8 +8,8 @@ public interface PathElement {
 
     String getElementRaw();
 
-    boolean isArrayElement();
+    boolean isArray();
 
-    boolean isNotArrayElement();
+    boolean isAttribute();
 
 }

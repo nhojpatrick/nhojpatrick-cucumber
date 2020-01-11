@@ -1,8 +1,9 @@
 package com.github.nhojpatrick.cucumber.json.transform.impl;
 
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -58,13 +59,15 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a1Path with " + INPUT_TYPE, () -> {
                     final String key = "a1Path";
 
+                    final PathAttributeElementImpl pathElement = new PathAttributeElementImpl("a1Path");
+
                     final Map<String, Object> expected = new LinkedHashMap<>();
                     expected.put("transform", "output");
 
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(new PathElementImpl("a1Path")), anyMap(), eq("")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -73,7 +76,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(new PathElementImpl("a1Path")), anyMap(), eq(""))
+                                    .perform(eq(pathElement), anyMap(), eq(""))
                     );
                 }),
 
@@ -81,7 +84,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a1Array[1] with " + INPUT_TYPE, () -> {
                     final String key = "a1Array[1]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a1Array", 1), "a1Array", 1);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a1Array", 1), "a1Array", 1);
 
                     final Map<String, Object> expected = new LinkedHashMap<>();
                     expected.put("transform", "output");
@@ -89,7 +92,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -98,7 +101,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq(""))
+                                    .perform(eq(pathElement), anyMap(), eq(""))
                     );
                 })
 
@@ -138,7 +141,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a2Path.a2Path_b2Path with " + INPUT_TYPE, () -> {
                     final String key = "a2Path.a2Path_b2Path";
 
-                    final PathElementImpl pathElement = new PathElementImpl("a2Path_b2Path");
+                    final PathElement pathElement = new PathAttributeElementImpl("a2Path_b2Path");
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -166,7 +169,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a2Path.a2Path_b2Array[2] with " + INPUT_TYPE, () -> {
                     final String key = "a2Path.a2Path_b2Array[2]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a2Path_b2Array", 2), "a2Path_b2Array", 2);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a2Path_b2Array", 2), "a2Path_b2Array", 2);
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -177,7 +180,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("a2Path")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("a2Path")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -186,7 +189,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq("a2Path"))
+                                    .perform(eq(pathElement), anyMap(), eq("a2Path"))
                     );
                 }),
 
@@ -194,7 +197,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a2Array[1].a2Array1_b2Path with " + INPUT_TYPE, () -> {
                     final String key = "a2Array[1].a2Array1_b2Path";
 
-                    final PathElementImpl pathElement = new PathElementImpl("a2Array1_b2Path");
+                    final PathElement pathElement = new PathAttributeElementImpl("a2Array1_b2Path");
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -225,7 +228,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a2Array[1].a2Array1_b2Array[2] with " + INPUT_TYPE, () -> {
                     final String key = "a2Array[1].a2Array1_b2Array[2]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a2Array1_b2Array", 2), "a2Array1_b2Array", 2);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a2Array1_b2Array", 2), "a2Array1_b2Array", 2);
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -239,7 +242,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("a2Array[1]")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("a2Array[1]")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -248,7 +251,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq("a2Array[1]"))
+                                    .perform(eq(pathElement), anyMap(), eq("a2Array[1]"))
                     );
                 })
 
@@ -309,7 +312,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Path.a3Path_b3Path.a3Path_b3Path_c3Path with " + INPUT_TYPE, () -> {
                     final String key = "a3Path.a3Path_b3Path.a3Path_b3Path_c3Path";
 
-                    final PathElementImpl pathElement = new PathElementImpl("a3Path_b3Path_c3Path");
+                    final PathElement pathElement = new PathAttributeElementImpl("a3Path_b3Path_c3Path");
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -338,7 +341,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Path.a3Path_b3Path.a3Path_b3Path_c3Array[3] with " + INPUT_TYPE, () -> {
                     final String key = "a3Path.a3Path_b3Path.a3Path_b3Path_c3Array[3]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Path_b3Path_c3Array", 3), "a3Path_b3Path_c3Array", 3);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Path_b3Path_c3Array", 3), "a3Path_b3Path_c3Array", 3);
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -350,7 +353,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("a3Path.a3Path_b3Path")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("a3Path.a3Path_b3Path")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -359,7 +362,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq("a3Path.a3Path_b3Path"))
+                                    .perform(eq(pathElement), anyMap(), eq("a3Path.a3Path_b3Path"))
                     );
                 }),
 
@@ -367,7 +370,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Path.a3Path_b3Array[2].a3Path_b3Array2_c3Path with " + INPUT_TYPE, () -> {
                     final String key = "a3Path.a3Path_b3Array[2].a3Path_b3Array2_c3Path";
 
-                    final PathElementImpl pathElement = new PathElementImpl("a3Path_b3Array2_c3Path");
+                    final PathElement pathElement = new PathAttributeElementImpl("a3Path_b3Array2_c3Path");
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -400,7 +403,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Path.a3Path_b3Array[2].a3Path_b3Array2_c3Array[3] with " + INPUT_TYPE, () -> {
                     final String key = "a3Path.a3Path_b3Array[2].a3Path_b3Array2_c3Array[3]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Path_b3Array2_c3Array", 3), "a3Path_b3Array2_c3Array", 3);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Path_b3Array2_c3Array", 3), "a3Path_b3Array2_c3Array", 3);
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -416,7 +419,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("a3Path.a3Path_b3Array[2]")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("a3Path.a3Path_b3Array[2]")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -425,7 +428,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq("a3Path.a3Path_b3Array[2]"))
+                                    .perform(eq(pathElement), anyMap(), eq("a3Path.a3Path_b3Array[2]"))
                     );
                 }),
 
@@ -433,7 +436,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Array[1].a3Array1_b3Path.a3Array1_b3Path_c3Path with " + INPUT_TYPE, () -> {
                     final String key = "a3Array[1].a3Array1_b3Path.a3Array1_b3Path_c3Path";
 
-                    final PathElementImpl pathElement = new PathElementImpl("a3Array1_b3Path_c3Path");
+                    final PathElement pathElement = new PathAttributeElementImpl("a3Array1_b3Path_c3Path");
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -463,7 +466,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Array[1].a3Array1_b3Path.a3Array1_b3Path_c3Array[3] with " + INPUT_TYPE, () -> {
                     final String key = "a3Array[1].a3Array1_b3Path.a3Array1_b3Path_c3Array[3]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Array1_b3Path_c3Array", 3), "a3Array1_b3Path_c3Array", 3);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Array1_b3Path_c3Array", 3), "a3Array1_b3Path_c3Array", 3);
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -476,7 +479,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("a3Array[1].a3Array1_b3Path")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("a3Array[1].a3Array1_b3Path")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -485,7 +488,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq("a3Array[1].a3Array1_b3Path"))
+                                    .perform(eq(pathElement), anyMap(), eq("a3Array[1].a3Array1_b3Path"))
                     );
                 }),
 
@@ -493,7 +496,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Array[1].a3Array1_b3Array[2].a3Array1_b3Array2_c3Path with " + INPUT_TYPE, () -> {
                     final String key = "a3Array[1].a3Array1_b3Array[2].a3Array1_b3Array2_c3Path";
 
-                    final PathElementImpl pathElement = new PathElementImpl("a3Array1_b3Array2_c3Path");
+                    final PathElement pathElement = new PathAttributeElementImpl("a3Array1_b3Array2_c3Path");
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -527,7 +530,7 @@ public class TransformImpl_MatchedInputTest {
                 dynamicTest("a3Array[1].a3Array1_b3Array[2].a3Array1_b3Array2_c3Array[3] with " + INPUT_TYPE, () -> {
                     final String key = "a3Array[1].a3Array1_b3Array[2].a3Array1_b3Array2_c3Array[3]";
 
-                    final PathArrayElementImpl pathArrayElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Array1_b3Array2_c3Array", 3), "a3Array1_b3Array2_c3Array", 3);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", "a3Array1_b3Array2_c3Array", 3), "a3Array1_b3Array2_c3Array", 3);
 
                     final Map<String, Object> output = new LinkedHashMap<>();
                     output.put("transform", "output");
@@ -544,7 +547,7 @@ public class TransformImpl_MatchedInputTest {
                     final Transformation transform = mock(Transformation.class);
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
-                    when(transform.perform(eq(pathArrayElement), anyMap(), eq("a3Array[1].a3Array1_b3Array[2]")))
+                    when(transform.perform(eq(pathElement), anyMap(), eq("a3Array[1].a3Array1_b3Array[2]")))
                             .thenReturn(transformOutput);
 
                     final Map<String, Object> actual = classUnderTest.transform(key, inputSource.get(), transform);
@@ -553,7 +556,7 @@ public class TransformImpl_MatchedInputTest {
                     assertAll("Checking maps",
                             () -> assertThat(actual, is(equalTo(expected))),
                             () -> verify(transform, times(1))
-                                    .perform(eq(pathArrayElement), anyMap(), eq("a3Array[1].a3Array1_b3Array[2]"))
+                                    .perform(eq(pathElement), anyMap(), eq("a3Array[1].a3Array1_b3Array[2]"))
                     );
                 })
 

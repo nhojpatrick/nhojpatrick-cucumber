@@ -62,7 +62,7 @@ public class SetTransformation
                 ? inputRaw
                 : new HashMap<>();
 
-        if (pathElement.isNotArrayElement()) {
+        if (pathElement.isAttribute()) {
             output.put(pathElement.getElement(), this.value);
 
         } else {

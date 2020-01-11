@@ -2,7 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.whitespace;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathElementImpl;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
@@ -39,7 +39,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -101,7 +101,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -153,7 +153,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -205,7 +205,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -248,7 +248,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, " true  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -264,7 +264,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, " 12.34  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -280,7 +280,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, " 1234  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -296,7 +296,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -312,7 +312,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "newStringValue");
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -328,7 +328,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, " aValue  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -344,7 +344,7 @@ public class WhitespaceTransformation_BasicPrimitiveTest {
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathElementImpl(key), getMapBasicPrimitives(), null);
+                            .perform(new PathAttributeElementImpl(key), getMapBasicPrimitives(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
