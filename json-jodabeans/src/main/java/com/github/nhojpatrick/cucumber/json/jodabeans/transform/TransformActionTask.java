@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.json.jodabeans.transform;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.joda.beans.Bean;
 import org.joda.beans.BeanBuilder;
@@ -20,6 +21,8 @@ import java.util.Map;
 import static java.util.Objects.requireNonNull;
 
 @BeanDefinition
+@SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressWarnings("PMD.UselessParentheses")
 public class TransformActionTask
         implements Bean,
         Comparable<TransformActionTask>,
