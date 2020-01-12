@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -20,11 +21,18 @@ import java.util.List;
 import java.util.Map;
 
 @BeanDefinition
+@JsonAutoDetect(
+        creatorVisibility = JsonAutoDetect.Visibility.NONE,
+//        fieldVisibility = JsonAutoDetect.Visibility.DEFAULT,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+        setterVisibility = JsonAutoDetect.Visibility.NONE
+)
 @JsonPropertyOrder({
-        "name",
-        "labels",
-        "bottom",
-        "nests"
+        MyNestedObj.BOTTOM,
+        MyNestedObj.LABELS,
+        MyNestedObj.NAME,
+        MyNestedObj.NESTS
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
@@ -32,19 +40,24 @@ public class MyNestedObj
         implements Bean,
         Cloneable {
 
-    @JsonProperty
+    public static final String BOTTOM = "bottom";
+    public static final String LABELS = "labels";
+    public static final String NAME = "name";
+    public static final String NESTS = "nests";
+
+    @JsonProperty(NAME)
     @PropertyDefinition(set = "")
     private final String name;
 
-    @JsonProperty
+    @JsonProperty(LABELS)
     @PropertyDefinition(set = "")
     private List<String> labels;
 
-    @JsonProperty
+    @JsonProperty(BOTTOM)
     @PropertyDefinition(set = "")
     private final MyBottomObj bottom;
 
-    @JsonProperty
+    @JsonProperty(NESTS)
     @PropertyDefinition(set = "")
     private final List<MyListNestedObj> nests;
 

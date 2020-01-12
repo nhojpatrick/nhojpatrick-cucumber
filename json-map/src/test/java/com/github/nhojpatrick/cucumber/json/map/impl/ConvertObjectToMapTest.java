@@ -46,7 +46,7 @@ public class ConvertObjectToMapTest {
 
         final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
 
-        final String expectedMessage = "Cannot construct instance of `java.util.HashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('')\n at [Source: UNKNOWN; line: -1, column: -1]";
+        final String expectedMessage = "Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): no String-argument constructor/factory method to deserialize from String value ('')\n at [Source: UNKNOWN; line: -1, column: -1]";
         assertThat(thrown.getMessage(), is(equalTo(expectedMessage)));
     }
 

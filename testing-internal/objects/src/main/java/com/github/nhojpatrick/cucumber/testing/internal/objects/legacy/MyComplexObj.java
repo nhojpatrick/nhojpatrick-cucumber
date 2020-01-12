@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -20,13 +21,20 @@ import java.util.List;
 import java.util.Map;
 
 @BeanDefinition
+@JsonAutoDetect(
+        creatorVisibility = JsonAutoDetect.Visibility.NONE,
+//        fieldVisibility = JsonAutoDetect.Visibility.DEFAULT,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+        setterVisibility = JsonAutoDetect.Visibility.NONE
+)
 @JsonPropertyOrder({
-        "title",
-        "active",
-        "count",
-        "tags",
-        "nested",
-        "objs"
+        MyComplexObj.ACTIVE,
+        MyComplexObj.COUNT,
+        MyComplexObj.NESTED,
+        MyComplexObj.OBJS,
+        MyComplexObj.TAGS,
+        MyComplexObj.TITLE
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
@@ -34,27 +42,34 @@ public class MyComplexObj
         implements Bean,
         Cloneable {
 
-    @JsonProperty
+    public static final String ACTIVE = "active";
+    public static final String COUNT = "count";
+    public static final String NESTED = "nested";
+    public static final String OBJS = "objs";
+    public static final String TAGS = "tags";
+    public static final String TITLE = "title";
+
+    @JsonProperty(TITLE)
     @PropertyDefinition(set = "")
     private final String title;
 
-    @JsonProperty
+    @JsonProperty(ACTIVE)
     @PropertyDefinition(set = "")
     private final boolean active;
 
-    @JsonProperty
+    @JsonProperty(COUNT)
     @PropertyDefinition(set = "")
     private final int count;
 
-    @JsonProperty
+    @JsonProperty(TAGS)
     @PropertyDefinition(set = "")
     private List<String> tags;
 
-    @JsonProperty
+    @JsonProperty(NESTED)
     @PropertyDefinition(set = "")
     private final MyNestedObj nested;
 
-    @JsonProperty
+    @JsonProperty(OBJS)
     @PropertyDefinition(set = "")
     private final List<MyListComplexObj> objs;
 
