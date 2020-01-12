@@ -1,5 +1,6 @@
 package com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -19,10 +20,17 @@ import org.joda.beans.impl.direct.DirectMetaPropertyMap;
 import java.util.Map;
 
 @BeanDefinition
+@JsonAutoDetect(
+        creatorVisibility = JsonAutoDetect.Visibility.NONE,
+//        fieldVisibility = JsonAutoDetect.Visibility.DEFAULT,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+        setterVisibility = JsonAutoDetect.Visibility.NONE
+)
 @JsonPropertyOrder({
-        "lcName",
-        "lcId",
-        "lcBottom"
+        MyListComplexObj.LC_BOTTOM,
+        MyListComplexObj.LC_ID,
+        MyListComplexObj.LC_NAME
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
@@ -30,15 +38,19 @@ public class MyListComplexObj
         implements Bean,
         Cloneable {
 
-    @JsonProperty
+    public static final String LC_BOTTOM = "lcBottom";
+    public static final String LC_ID = "lcId";
+    public static final String LC_NAME = "lcName";
+
+    @JsonProperty(LC_NAME)
     @PropertyDefinition(set = "")
     private final String lcName;
 
-    @JsonProperty
+    @JsonProperty(LC_ID)
     @PropertyDefinition(set = "")
     private final int lcId;
 
-    @JsonProperty
+    @JsonProperty(LC_BOTTOM)
     @PropertyDefinition(set = "")
     private final MyListComplexBottomObj lcBottom;
 

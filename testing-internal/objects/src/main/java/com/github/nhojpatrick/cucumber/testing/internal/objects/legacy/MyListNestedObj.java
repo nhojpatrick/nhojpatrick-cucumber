@@ -20,9 +20,9 @@ import java.util.Map;
 
 @BeanDefinition
 @JsonPropertyOrder({
-        "lnName",
-        "lnId",
-        "lnBottom"
+        MyListNestedObj.LN_BOTTOM,
+        MyListNestedObj.LN_ID,
+        MyListNestedObj.LN_NAME
 })
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
@@ -30,15 +30,19 @@ public class MyListNestedObj
         implements Bean,
         Cloneable {
 
-    @JsonProperty
+    public static final String LN_BOTTOM = "lnBottom";
+    public static final String LN_ID = "lnId";
+    public static final String LN_NAME = "lnName";
+
+    @JsonProperty(LN_NAME)
     @PropertyDefinition(set = "")
     private final String lnName;
 
-    @JsonProperty
+    @JsonProperty(LN_ID)
     @PropertyDefinition(set = "")
     private final int lnId;
 
-    @JsonProperty
+    @JsonProperty(LN_BOTTOM)
     @PropertyDefinition(set = "")
     private final MyListNestedBottomObj lnBottom;
 

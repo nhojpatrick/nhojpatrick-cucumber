@@ -2,9 +2,10 @@ package com.github.nhojpatrick.cucumber.json.map.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -19,12 +20,13 @@ public class ConvertObjectToMap
             throw new RuntimeException(new NullObjectException());
         }
 
-        final ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
-//        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        final ObjectMapper objectMapper = new ObjectMapper()
+                .configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
 
-        final TypeReference<HashMap<String, Object>> typeRef = new TypeReference<HashMap<String, Object>>() {
-        };
+        final TypeReference<LinkedHashMap<String, Object>> typeRef =
+                new TypeReference<LinkedHashMap<String, Object>>() {
+                };
+
         final Map<String, Object> jsonMap = objectMapper.convertValue(obj, typeRef);
         return jsonMap;
     }

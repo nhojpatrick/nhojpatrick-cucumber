@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.joda.beans.Bean;
 import org.joda.beans.BeanBuilder;
@@ -18,13 +19,18 @@ import org.joda.beans.impl.direct.DirectMetaPropertyMap;
 import java.util.Map;
 
 @BeanDefinition
+@JsonPropertyOrder({
+        MyBottomObj.ALPHA
+})
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
 public class MyBottomObj
         implements Bean,
         Cloneable {
 
-    @JsonProperty
+    public static final String ALPHA = "alpha";
+
+    @JsonProperty(ALPHA)
     @PropertyDefinition(set = "")
     private final String alpha;
 
