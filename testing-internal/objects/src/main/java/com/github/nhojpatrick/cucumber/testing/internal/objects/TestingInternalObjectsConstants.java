@@ -15,38 +15,41 @@ public class TestingInternalObjectsConstants {
 
     public static final Map<String, Object> MAP_EMPTY = Collections.unmodifiableMap(new HashMap<>());
 
+    public static final BasicArraysOuterObj OBJECT_BASIC_ARRAYS;
+
+    public static final BasicAttributesOuterObj OBJECT_BASIC_ATTRIBUTES;
+
     public static Map<String, Object> getMapBasicArrays() {
 
-        final Map<String, Object> basicArrays = new LinkedHashMap<>();
+        final List<Map<String, Object>> objectsArray = new ArrayList<>();
 
-        basicArrays.put("primitive", "aPrimitive");
+        final Map<String, Object> aObjectArray = new HashMap<>();
+        aObjectArray.put(BasicArraysInnerObj.OBJECT_ARRAY_ID, "aObjectArrayId");
+        objectsArray.add(aObjectArray);
+
+        final Map<String, Object> bObjectArray = new HashMap<>();
+        bObjectArray.put(BasicArraysInnerObj.OBJECT_ARRAY_ID, "bObjectArrayId");
+        objectsArray.add(bObjectArray);
+
+        final Map<String, Object> cObjectArray = new HashMap<>();
+        cObjectArray.put(BasicArraysInnerObj.OBJECT_ARRAY_ID, "cObjectArrayId");
+        objectsArray.add(cObjectArray);
+
+        final Map<String, Object> dObjectArray = new HashMap<>();
+        dObjectArray.put(BasicArraysInnerObj.OBJECT_ARRAY_ID, "dObjectArrayId");
+        objectsArray.add(dObjectArray);
 
         final List<String> primitivesArray = new ArrayList<>();
         primitivesArray.add("aPrimitiveArray");
         primitivesArray.add("bPrimitiveArray");
         primitivesArray.add("cPrimitiveArray");
         primitivesArray.add("dPrimitiveArray");
-        basicArrays.put("primitives_array", primitivesArray);
 
-        final List<Map<String, Object>> objectsArray = new ArrayList<>();
+        final Map<String, Object> basicArrays = new LinkedHashMap<>();
 
-        final Map<String, Object> aObjectArray = new HashMap<>();
-        aObjectArray.put("object_array_id", "aObjectArrayId");
-        objectsArray.add(aObjectArray);
-
-        final Map<String, Object> bObjectArray = new HashMap<>();
-        bObjectArray.put("object_array_id", "bObjectArrayId");
-        objectsArray.add(bObjectArray);
-
-        final Map<String, Object> cObjectArray = new HashMap<>();
-        cObjectArray.put("object_array_id", "cObjectArrayId");
-        objectsArray.add(cObjectArray);
-
-        final Map<String, Object> dObjectArray = new HashMap<>();
-        dObjectArray.put("object_array_id", "dObjectArrayId");
-        objectsArray.add(dObjectArray);
-
-        basicArrays.put("objects_array", objectsArray);
+        basicArrays.put(BasicArraysOuterObj.OBJECTS_ARRAY, objectsArray);
+        basicArrays.put(BasicArraysOuterObj.PRIMITIVE, "aPrimitive");
+        basicArrays.put(BasicArraysOuterObj.PRIMITIVES_ARRAY, primitivesArray);
 
         return basicArrays;
     }
@@ -59,18 +62,48 @@ public class TestingInternalObjectsConstants {
 
         final Map<String, Object> basicAttributes = new LinkedHashMap<>();
 
-        basicAttributes.put("a_boolean", true);
-        basicAttributes.put("a_float", 12.34f);
-        basicAttributes.put("a_integer", 1234);
-        basicAttributes.put("a_null", null);
-        basicAttributes.put("a_object", new HashMap<>());
-        basicAttributes.put("a_string", "aValue");
+        basicAttributes.put(BasicAttributesOuterObj.A_BOOLEAN, true);
+        basicAttributes.put(BasicAttributesOuterObj.A_FLOAT, 12.34f);
+        basicAttributes.put(BasicAttributesOuterObj.A_INTEGER, 1234);
+        basicAttributes.put(BasicAttributesOuterObj.A_NULL, null);
+        basicAttributes.put(BasicAttributesOuterObj.A_OBJECT, new HashMap<>());
+        basicAttributes.put(BasicAttributesOuterObj.A_STRING, "aValue");
 
         return basicAttributes;
     }
 
     static {
         MAP_BASIC_ATTRIBUTES = Collections.unmodifiableMap(new LinkedHashMap(getMapBasicAttributes()));
+    }
+
+    public static BasicArraysOuterObj getObjectBasicArrays() {
+
+        final List<BasicArraysInnerObj> objectsArray = new ArrayList<>();
+        objectsArray.add(new BasicArraysInnerObj("aObjectArrayId"));
+        objectsArray.add(new BasicArraysInnerObj("bObjectArrayId"));
+        objectsArray.add(new BasicArraysInnerObj("cObjectArrayId"));
+        objectsArray.add(new BasicArraysInnerObj("dObjectArrayId"));
+
+        final List<String> primitivesArray = new ArrayList<>();
+        primitivesArray.add("aPrimitiveArray");
+        primitivesArray.add("bPrimitiveArray");
+        primitivesArray.add("cPrimitiveArray");
+        primitivesArray.add("dPrimitiveArray");
+
+        return new BasicArraysOuterObj(objectsArray, "aPrimitive", primitivesArray);
+    }
+
+    static {
+        OBJECT_BASIC_ARRAYS = getObjectBasicArrays();
+    }
+
+    public static BasicAttributesOuterObj getObjectBasicAttributes() {
+
+        return new BasicAttributesOuterObj(true, 12.34f, 1234, "aValue");
+    }
+
+    static {
+        OBJECT_BASIC_ATTRIBUTES = getObjectBasicAttributes();
     }
 
 }
