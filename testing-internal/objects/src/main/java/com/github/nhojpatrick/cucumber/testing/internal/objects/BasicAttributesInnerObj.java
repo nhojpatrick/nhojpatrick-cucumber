@@ -1,7 +1,5 @@
 package com.github.nhojpatrick.cucumber.testing.internal.objects;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.joda.beans.Bean;
 import org.joda.beans.BeanBuilder;
@@ -16,14 +14,7 @@ import org.joda.beans.impl.direct.DirectMetaPropertyMap;
 import java.util.Map;
 
 @BeanDefinition
-@JsonPropertyOrder(alphabetic = true)
-@JsonAutoDetect(
-        creatorVisibility = JsonAutoDetect.Visibility.NONE,
-//        fieldVisibility = JsonAutoDetect.Visibility.DEFAULT,
-        getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
-        setterVisibility = JsonAutoDetect.Visibility.NONE
-)
+@JsonCustomDefaults
 @SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
 public class BasicAttributesInnerObj
