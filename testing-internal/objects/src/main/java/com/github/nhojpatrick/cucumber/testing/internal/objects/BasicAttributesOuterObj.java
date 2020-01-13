@@ -20,14 +20,7 @@ import org.joda.beans.impl.direct.DirectMetaPropertyMap;
 import java.util.Map;
 
 @BeanDefinition
-@JsonPropertyOrder({
-        BasicAttributesOuterObj.A_BOOLEAN,
-        BasicAttributesOuterObj.A_FLOAT,
-        BasicAttributesOuterObj.A_INTEGER,
-        BasicAttributesOuterObj.A_NULL,
-        BasicAttributesOuterObj.A_OBJECT,
-        BasicAttributesOuterObj.A_STRING
-})
+@JsonPropertyOrder(alphabetic = true)
 @JsonAutoDetect(
         creatorVisibility = JsonAutoDetect.Visibility.NONE,
 //        fieldVisibility = JsonAutoDetect.Visibility.DEFAULT,

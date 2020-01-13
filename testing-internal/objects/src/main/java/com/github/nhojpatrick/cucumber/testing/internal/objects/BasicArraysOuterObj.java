@@ -21,11 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @BeanDefinition
-@JsonPropertyOrder({
-        BasicArraysOuterObj.OBJECTS_ARRAY,
-        BasicArraysOuterObj.PRIMITIVE,
-        BasicArraysOuterObj.PRIMITIVES_ARRAY
-})
+@JsonPropertyOrder(alphabetic = true)
 @JsonAutoDetect(
         creatorVisibility = JsonAutoDetect.Visibility.NONE,
 //        fieldVisibility = JsonAutoDetect.Visibility.DEFAULT,
