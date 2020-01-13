@@ -27,18 +27,18 @@ Feature: Convert Object To Map - Checking with Default keys
 
 
   @Success
-  Scenario: Simple input
+  Scenario: Simple input BasicArrays
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | runState.json.obj | SimpleObject |
+      | runState.json.obj | Object_BasicArrays |
     When I convert object to json map using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.map | {simpleName=ASimpleName} |
+      | runState.json.map | {objects_array=[{object_array_id=aObjectArrayId}, {object_array_id=bObjectArrayId}, {object_array_id=cObjectArrayId}, {object_array_id=dObjectArrayId}], primitive=aPrimitive, primitives_array=[aPrimitiveArray, bPrimitiveArray, cPrimitiveArray, dPrimitiveArray]} |
 
 
   @Success
-  Scenario: Complex input
+  Scenario: Simple input BasicAttributes
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | runState.json.obj | ComplexObject |
+      | runState.json.obj | Object_BasicAttributes |
     When I convert object to json map using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.map | {active=true, count=3234, nested={bottom={alpha=Alpha}, labels=[labelOne, labelTwo, labelThree], name=Nested, nests=[{lnBottom={charlie=nests1Charlie}, lnId=1223, lnName=nests1}, {lnBottom={charlie=nests2Charlie}, lnId=2234, lnName=nests2}, {lnBottom={charlie=nests3Charlie}, lnId=3245, lnName=nests3}]}, objs=[{lcBottom={bravo=objs1Bravo}, lcId=1123, lcName=objs1}, {lcBottom={bravo=objs2Bravo}, lcId=2134, lcName=objs2}, {lcBottom={bravo=objs3Bravo}, lcId=3145, lcName=objs3}], tags=[tagOne, tagTwo, tagThree], title=Complex} |
+      | runState.json.map | {a_boolean=true, a_float=12.34, a_integer=1234, a_null=null, a_object={}, a_string=aValue} |
