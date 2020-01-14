@@ -66,8 +66,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -85,8 +86,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -122,8 +124,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -141,8 +144,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -178,8 +182,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -197,8 +202,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -234,8 +240,9 @@ public class PrintTransformation_BasicAttributesTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );

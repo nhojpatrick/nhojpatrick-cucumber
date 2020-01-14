@@ -2,6 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.core;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
+import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -129,6 +130,12 @@ public class BaseTransformationTest {
                 }),
 
                 dynamicTest("Valid CurrentPath, Valid PathElement", () -> {
+                    final String path = classUnderTest.getPath("parentPath", new PathArrayElementImpl("aPath[1]", "", 1));
+
+                    assertThat("Unexpected Path", path, is(equalTo("parentPath.aPath[1]")));
+                }),
+
+                dynamicTest("Valid CurrentPath, Valid PathAttributeElement", () -> {
                     final String path = classUnderTest.getPath("parentPath", new PathAttributeElementImpl("aPath"));
 
                     assertThat("Unexpected Path", path, is(equalTo("parentPath.aPath")));

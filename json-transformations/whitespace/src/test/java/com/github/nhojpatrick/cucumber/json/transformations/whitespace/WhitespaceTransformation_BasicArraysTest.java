@@ -136,8 +136,9 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to whitespace path '%s', as is not Array.",
-                                    key
+                                    "Unable to whitespace path '%s[%s]', as is not Array.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -155,8 +156,9 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to whitespace path '%s', as is not Array.",
-                                    key
+                                    "Unable to whitespace path '%s[%s]', as is not Array.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
