@@ -55,15 +55,19 @@ public abstract class BaseTransformation
 
         requireNonNullPath(pathElement);
 
+        final String element = pathElement.isAttribute()
+                ? pathElement.getElement()
+                : pathElement.getElementRaw();
+
         String path;
         if (isNull(currentPath)) {
-            path = pathElement.getElement();
+            path = element;
 
         } else if ("".equals(currentPath)) {
-            path = pathElement.getElement();
+            path = element;
 
         } else {
-            path = currentPath + "." + pathElement.getElement();
+            path = currentPath + "." + element;
         }
 
         return path;

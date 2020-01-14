@@ -154,8 +154,9 @@ public class RemoveTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to remove path '%s', as is not Array.",
-                                    key
+                                    "Unable to remove path '%s[%s]', as is not Array.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -173,8 +174,9 @@ public class RemoveTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to remove path '%s', as is not Array.",
-                                    key
+                                    "Unable to remove path '%s[%s]', as is not Array.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );

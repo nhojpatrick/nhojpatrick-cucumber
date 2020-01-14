@@ -103,8 +103,9 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', beyond index of '%s'.",
+                                    "Unable to print path '%s[%s]', beyond index of '%s'.",
                                     key,
+                                    arrayIndex,
                                     3
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
@@ -150,8 +151,9 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', as is not Array.",
-                                    key
+                                    "Unable to print path '%s[%s]', as is not Array.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -169,8 +171,9 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', as is not Array.",
-                                    key
+                                    "Unable to print path '%s[%s]', as is not Array.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -243,8 +246,9 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', beyond index of '%s'.",
+                                    "Unable to print path '%s[%s]', beyond index of '%s'.",
                                     key,
+                                    arrayIndex,
                                     3
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
@@ -281,8 +285,9 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
+                                    "Unable to print path '%s[%s]', does not exist.",
+                                    key,
+                                    arrayIndex
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
