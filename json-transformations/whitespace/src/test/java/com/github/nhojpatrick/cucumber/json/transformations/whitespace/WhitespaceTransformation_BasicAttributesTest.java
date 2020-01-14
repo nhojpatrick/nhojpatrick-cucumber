@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.transformations.whitespace;
 
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
+import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
 import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -36,11 +37,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("objects_array", () -> {
                     final String key = "objects_array";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -53,13 +56,14 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "objects_array";
                     final int arrayIndex = 1;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             null,
                             "   "
                     )));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -74,6 +78,8 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "objects_array";
                     final int arrayIndex = 5;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             null,
@@ -84,7 +90,6 @@ public class WhitespaceTransformation_BasicAttributesTest {
                             "   "
                     )));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -98,11 +103,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("primitive", () -> {
                     final String key = "primitive";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -115,10 +122,11 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "primitive";
                     final int arrayIndex = 1;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -133,10 +141,11 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "primitive";
                     final int arrayIndex = 5;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(null, null, null, null, null, "   ")));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -150,11 +159,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("primitives_array", () -> {
                     final String key = "primitives_array";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -167,10 +178,11 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "primitives_array";
                     final int arrayIndex = 1;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -185,10 +197,11 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "primitives_array";
                     final int arrayIndex = 5;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(null, null, null, null, null, "   ")));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -202,11 +215,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("unknown", () -> {
                     final String key = "unknown";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -219,10 +234,11 @@ public class WhitespaceTransformation_BasicAttributesTest {
                     final String key = "unknown";
                     final int arrayIndex = 1;
 
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
 
-                    final PathArrayElementImpl pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
                             .perform(pathElement, getMapBasicAttributes(), null);
 
@@ -245,11 +261,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("a_boolean", () -> {
                     final String key = "a_boolean";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, " true  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -261,11 +279,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("a_float", () -> {
                     final String key = "a_float";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, " 12.34  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -277,11 +297,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("a_integer", () -> {
                     final String key = "a_integer";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, " 1234  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -293,11 +315,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("a_null", () -> {
                     final String key = "a_null";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -309,11 +333,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("a_object", () -> {
                     final String key = "a_object";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "newStringValue");
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -325,11 +351,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("a_string", () -> {
                     final String key = "a_string";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, " aValue  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -341,11 +369,13 @@ public class WhitespaceTransformation_BasicAttributesTest {
                 dynamicTest("unknown", () -> {
                     final String key = "unknown";
 
+                    final PathElement pathElement = new PathAttributeElementImpl(key);
+
                     final Map<String, Object> expected = getMapBasicAttributes();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(new PathAttributeElementImpl(key), getMapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

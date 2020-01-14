@@ -303,7 +303,6 @@ public class TransformImpl_MatchedInputTest {
             return parent;
         };
 
-
         final TransformImpl classUnderTest = new TransformImpl();
 
         return Arrays.asList(
