@@ -45,6 +45,11 @@ public class ReverseTransformation
     }
 
     @Override
+    public boolean isParentPathAutoCreated() {
+        return false;
+    }
+
+    @Override
     public Map<String, Object> perform(final PathElement pathElement,
                                        final Map<String, Object> inputRaw,
                                        final String currentPath)
@@ -61,10 +66,18 @@ public class ReverseTransformation
 
         if (pathElement.isAttribute()) {
 
-            // FIXME should this error or be silent?
-            if (!output.containsKey(pathElement.getElement())
-                    && isNull(output.get(pathElement.getElement()))) {
-                return output;
+            if (!output.containsKey(pathElement.getElement())) {
+                throw new IllegalPathOperationException(String.format(
+                        "Path does not exist at '%s'.",
+                        pathElement.getPath(currentPath)
+                ));
+            }
+
+            if (isNull(output.get(pathElement.getElement()))) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to reverse 'null' value, at path '%s'.",
+                        pathElement.getPath(currentPath)
+                ));
             }
 
             final Object obj = output.get(pathElement.getElement());
@@ -83,18 +96,24 @@ public class ReverseTransformation
                 output.put(pathElement.getElement(), listObj);
 
             } else {
-                if (output.containsKey(pathElement.getElement())) {
-                    final String reversed = reverse(currentPath, obj);
-                    output.put(pathElement.getElement(), reversed);
-                }
+                final String reversed = reverse(currentPath, obj);
+                output.put(pathElement.getElement(), reversed);
             }
 
         } else {
 
-            // FIXME should this error or be silent?
-            if (!output.containsKey(pathElement.getElement())
-                    && isNull(output.get(pathElement.getElement()))) {
-                return output;
+            if (!output.containsKey(pathElement.getElement())) {
+                throw new IllegalPathOperationException(String.format(
+                        "Path does not exist at '%s'.",
+                        pathElement.getPath(currentPath, false)
+                ));
+            }
+
+            if (isNull(output.get(pathElement.getElement()))) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to reverse 'null' value, at path '%s'.",
+                        pathElement.getPath(currentPath, false)
+                ));
             }
 
             final Object objRaw = output.get(pathElement.getElement());
@@ -111,17 +130,30 @@ public class ReverseTransformation
             if (pathElement.getArrayIndex() < listObj.size()) {
 
                 final Object obj = listObj.get(pathElement.getArrayIndex());
+
+                if (isTypedMap(obj, String.class, Object.class)) {
+                    throw new IllegalPathOperationException(String.format(
+                            "Unable to reverse JsonObject, at path '%s'.",
+                            pathElement.getPath(currentPath)
+                    ));
+                }
+
                 final String reversed = reverse(currentPath, obj);
 
                 listObj.set(pathElement.getArrayIndex(), reversed);
 
-            } else {
-                final int size = listObj.size();
-                final int arrayIndex = pathElement.getArrayIndex();
+            } else if (listObj.isEmpty()) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to reverse path '%s', as array is empty.",
+                        pathElement.getPath(currentPath, false)
+                ));
 
-                for (int i = size; i <= arrayIndex; i++) {
-                    listObj.add(null);
-                }
+            } else {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to reverse path '%s', beyond index of '%s'.",
+                        pathElement.getPath(currentPath),
+                        listObj.size() - 1
+                ));
             }
 
             output.put(pathElement.getElement(), listObj);
