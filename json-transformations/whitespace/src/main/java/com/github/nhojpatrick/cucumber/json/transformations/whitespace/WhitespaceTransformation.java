@@ -14,12 +14,12 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
+import static com.github.nhojpatrick.cucumber.json.core.transform.utils.MapTypeUtil.isTypedMap;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
@@ -70,6 +70,11 @@ public class WhitespaceTransformation
     }
 
     @Override
+    public boolean isParentPathAutoCreated() {
+        return false;
+    }
+
+    @Override
     public Map<String, Object> perform(final PathElement pathElement,
                                        final Map<String, Object> inputRaw,
                                        final String currentPath)
@@ -86,18 +91,55 @@ public class WhitespaceTransformation
 
         if (pathElement.isAttribute()) {
 
+            if (!output.containsKey(pathElement.getElement())) {
+                throw new IllegalPathOperationException(String.format(
+                        "Path does not exist at '%s'.",
+                        pathElement.getPath(currentPath)
+                ));
+            }
+
+            if (isNull(output.get(pathElement.getElement()))) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to whitespace 'null' value, at path '%s'.",
+                        pathElement.getPath(currentPath)
+                ));
+            }
+
             final Object obj = output.get(pathElement.getElement());
 
-            final String padded = pad(obj, this.prefix, this.suffix);
+            if (isTypedMap(obj, String.class, Object.class)) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to whitespace JsonObject, at path '%s'.",
+                        pathElement.getPath(currentPath)
+                ));
+            }
+
+            final String padded = pad(
+                    obj,
+                    this.prefix,
+                    this.suffix,
+                    pathElement.getPath(currentPath)
+            );
+
             output.put(pathElement.getElement(), padded);
 
         } else {
 
-            Object objRaw = output.get(pathElement.getElement());
+            if (!output.containsKey(pathElement.getElement())) {
+                throw new IllegalPathOperationException(String.format(
+                        "Path does not exist at '%s'.",
+                        pathElement.getPath(currentPath, false)
+                ));
+            }
 
-            objRaw = nonNull(objRaw)
-                    ? objRaw
-                    : new ArrayList<>();
+            if (isNull(output.get(pathElement.getElement()))) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to whitespace 'null' value, at path '%s'.",
+                        pathElement.getPath(currentPath, false)
+                ));
+            }
+
+            final Object objRaw = output.get(pathElement.getElement());
 
             if (!isTypedList(objRaw, Object.class)) {
                 throw new IllegalPathOperationException(String.format(
@@ -111,21 +153,35 @@ public class WhitespaceTransformation
             if (pathElement.getArrayIndex() < listObj.size()) {
 
                 final Object obj = listObj.get(pathElement.getArrayIndex());
-                final String padded = pad(obj, this.prefix, this.suffix);
+
+                if (isTypedMap(obj, String.class, Object.class)) {
+                    throw new IllegalPathOperationException(String.format(
+                            "Unable to whitespace JsonObject, at path '%s'.",
+                            pathElement.getPath(currentPath)
+                    ));
+                }
+
+                final String padded = pad(
+                        obj,
+                        this.prefix,
+                        this.suffix,
+                        pathElement.getPath(currentPath)
+                );
 
                 listObj.set(pathElement.getArrayIndex(), padded);
 
+            } else if (listObj.isEmpty()) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to whitespace path '%s', as array is empty.",
+                        pathElement.getPath(currentPath, false)
+                ));
+
             } else {
-                final int size = listObj.size();
-                final int arrayIndex = pathElement.getArrayIndex();
-
-                for (int i = size; i < arrayIndex; i++) {
-                    listObj.add(null);
-                }
-
-                final String padded = pad(null, this.prefix, this.suffix);
-
-                listObj.add(pathElement.getArrayIndex(), padded);
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to whitespace path '%s', beyond index of '%s'.",
+                        pathElement.getPath(currentPath),
+                        listObj.size() - 1
+                ));
             }
 
             output.put(pathElement.getElement(), listObj);
@@ -137,22 +193,30 @@ public class WhitespaceTransformation
     @VisibleForTesting
     String pad(final Object input,
                final int prefix,
-               final int suffix)
+               final int suffix,
+               final String currentPath)
             throws IllegalPathOperationException {
 
         if (input instanceof Map) {
-            throw new IllegalPathOperationException("Unable to whitespace JsonObject.");
+            throw new IllegalPathOperationException(String.format(
+                    "Unable to whitespace JsonObject, at path '%s'.",
+                    currentPath
+            ));
         }
 
         if (input instanceof List) {
-            throw new IllegalPathOperationException("Unable to whitespace JsonArray<>.");
+            throw new IllegalPathOperationException(String.format(
+                    "Unable to whitespace JsonArray<>, at path '%s'.",
+                    currentPath
+            ));
+        }
+
+        if (isNull(input)) {
+            return null;
         }
 
         String str;
-        if (isNull(input)) {
-            str = "";
-
-        } else if (input instanceof String) {
+        if (input instanceof String) {
             str = (String) input;
 
         } else {

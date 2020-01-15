@@ -22,6 +22,17 @@ public class WhitespaceTransformation_TestingInternalSteps
         super(runState);
     }
 
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} produces the IllegalPathOperationException {string}")
+    public void whitespaceIllegalPathOperationException(final String path,
+                                                        final String expectedExceptionMessageRaw)
+            throws IllegalKeyException,
+            IllegalTypeClassException,
+            TypeMismatchException,
+            WhitespaceTransformationArgumentException {
+
+        whitespaceIllegalPathOperationException(path, 4, 4, expectedExceptionMessageRaw);
+    }
+
     @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalPathOperationException {string}")
     public void whitespaceIllegalPathOperationException(final String path,
                                                         final int prefix,
@@ -33,6 +44,18 @@ public class WhitespaceTransformation_TestingInternalSteps
             WhitespaceTransformationArgumentException {
 
         whitespaceIllegalPathOperationException(DEFAULT_MAP_KEY, path, prefix, suffix, expectedExceptionMessageRaw);
+    }
+
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} produces the IllegalPathOperationException {string}")
+    public void whitespaceIllegalPathOperationException(final String runStateJsonMapKey,
+                                                        final String path,
+                                                        final String expectedExceptionMessageRaw)
+            throws IllegalKeyException,
+            IllegalTypeClassException,
+            TypeMismatchException,
+            WhitespaceTransformationArgumentException {
+
+        whitespaceIllegalPathOperationException(runStateJsonMapKey, path, 4, 4, expectedExceptionMessageRaw);
     }
 
     @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalPathOperationException {string}")
@@ -54,6 +77,17 @@ public class WhitespaceTransformation_TestingInternalSteps
                 expectedExceptionMessageRaw);
     }
 
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} produces the UnsupportedDataTypeException {string}")
+    public void whitespaceUnsupportedDataTypeException(final String path,
+                                                       final String expectedExceptionMessageRaw)
+            throws IllegalKeyException,
+            IllegalTypeClassException,
+            TypeMismatchException,
+            WhitespaceTransformationArgumentException {
+
+        whitespaceUnsupportedDataTypeException(path, 4, 4, expectedExceptionMessageRaw);
+    }
+
     @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the UnsupportedDataTypeException {string}")
     public void whitespaceUnsupportedDataTypeException(final String path,
                                                        final int prefix,
@@ -65,6 +99,18 @@ public class WhitespaceTransformation_TestingInternalSteps
             WhitespaceTransformationArgumentException {
 
         whitespaceUnsupportedDataTypeException(DEFAULT_MAP_KEY, path, prefix, suffix, expectedExceptionMessageRaw);
+    }
+
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} produces the UnsupportedDataTypeException {string}")
+    public void whitespaceUnsupportedDataTypeException(final String runStateJsonMapKey,
+                                                       final String path,
+                                                       final String expectedExceptionMessageRaw)
+            throws IllegalKeyException,
+            IllegalTypeClassException,
+            TypeMismatchException,
+            WhitespaceTransformationArgumentException {
+
+        whitespaceUnsupportedDataTypeException(runStateJsonMapKey, path, 4, 4, expectedExceptionMessageRaw);
     }
 
     @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the UnsupportedDataTypeException {string}")
