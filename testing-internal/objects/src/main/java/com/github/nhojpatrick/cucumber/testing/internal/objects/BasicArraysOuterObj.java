@@ -26,9 +26,14 @@ public class BasicArraysOuterObj
         implements Bean,
         Cloneable {
 
+    public static final String NULL_ARRAY = "null_array";
     public static final String OBJECTS_ARRAY = "objects_array";
     public static final String PRIMITIVE = "primitive";
     public static final String PRIMITIVES_ARRAY = "primitives_array";
+
+    @JsonProperty(NULL_ARRAY)
+    @PropertyDefinition(set = "")
+    private final Object nullArray;
 
     @JsonProperty(OBJECTS_ARRAY)
     @PropertyDefinition(set = "")
@@ -43,6 +48,7 @@ public class BasicArraysOuterObj
     private final List<String> primitivesArray;
 
     BasicArraysOuterObj() {
+        this.nullArray = null;
         this.objectsArray = null;
         this.primitive = null;
         this.primitivesArray = null;
@@ -51,6 +57,7 @@ public class BasicArraysOuterObj
     public BasicArraysOuterObj(final List<BasicArraysInnerObj> objectsArray,
                                final String primitive,
                                final List<String> primitivesArray) {
+        this.nullArray = null;
         this.objectsArray = objectsArray;
         this.primitive = primitive;
         this.primitivesArray = primitivesArray;
@@ -72,6 +79,23 @@ public class BasicArraysOuterObj
     @Override
     public BasicArraysOuterObj.Meta metaBean() {
         return BasicArraysOuterObj.Meta.INSTANCE;
+    }
+
+    //-----------------------------------------------------------------------
+    /**
+     * Gets the nullArray.
+     * @return the value of the property
+     */
+    public Object getNullArray() {
+        return nullArray;
+    }
+
+    /**
+     * Gets the the {@code nullArray} property.
+     * @return the property, not null
+     */
+    public final Property<Object> nullArray() {
+        return metaBean().nullArray().createProperty(this);
     }
 
     //-----------------------------------------------------------------------
@@ -138,7 +162,8 @@ public class BasicArraysOuterObj
         }
         if (obj != null && obj.getClass() == this.getClass()) {
             BasicArraysOuterObj other = (BasicArraysOuterObj) obj;
-            return JodaBeanUtils.equal(getObjectsArray(), other.getObjectsArray()) &&
+            return JodaBeanUtils.equal(getNullArray(), other.getNullArray()) &&
+                    JodaBeanUtils.equal(getObjectsArray(), other.getObjectsArray()) &&
                     JodaBeanUtils.equal(getPrimitive(), other.getPrimitive()) &&
                     JodaBeanUtils.equal(getPrimitivesArray(), other.getPrimitivesArray());
         }
@@ -148,6 +173,7 @@ public class BasicArraysOuterObj
     @Override
     public int hashCode() {
         int hash = getClass().hashCode();
+        hash = hash * 31 + JodaBeanUtils.hashCode(getNullArray());
         hash = hash * 31 + JodaBeanUtils.hashCode(getObjectsArray());
         hash = hash * 31 + JodaBeanUtils.hashCode(getPrimitive());
         hash = hash * 31 + JodaBeanUtils.hashCode(getPrimitivesArray());
@@ -156,7 +182,7 @@ public class BasicArraysOuterObj
 
     @Override
     public String toString() {
-        StringBuilder buf = new StringBuilder(128);
+        StringBuilder buf = new StringBuilder(160);
         buf.append("BasicArraysOuterObj{");
         int len = buf.length();
         toString(buf);
@@ -168,6 +194,8 @@ public class BasicArraysOuterObj
     }
 
     protected void toString(StringBuilder buf) {
+        buf.append("nullArray").append('=').append(JodaBeanUtils.toString(getNullArray()))
+                .append(',').append(' ');
         buf.append("objectsArray").append('=').append(JodaBeanUtils.toString(getObjectsArray()))
                 .append(',').append(' ');
         buf.append("primitive").append('=').append(JodaBeanUtils.toString(getPrimitive()))
@@ -186,6 +214,11 @@ public class BasicArraysOuterObj
          */
         static final Meta INSTANCE = new Meta();
 
+        /**
+         * The meta-property for the {@code nullArray} property.
+         */
+        private final MetaProperty<Object> nullArray = DirectMetaProperty.ofReadOnly(
+                this, "nullArray", BasicArraysOuterObj.class, Object.class);
         /**
          * The meta-property for the {@code objectsArray} property.
          */
@@ -208,6 +241,7 @@ public class BasicArraysOuterObj
          */
         private final Map<String, MetaProperty<?>> metaPropertyMap$ = new DirectMetaPropertyMap(
                 this, null,
+                "nullArray",
                 "objectsArray",
                 "primitive",
                 "primitivesArray");
@@ -221,6 +255,8 @@ public class BasicArraysOuterObj
         @Override
         protected MetaProperty<?> metaPropertyGet(String propertyName) {
             switch (propertyName.hashCode()) {
+                case 1015486738:  // nullArray
+                    return nullArray;
                 case -412497499:  // objectsArray
                     return objectsArray;
                 case -1834808089:  // primitive
@@ -247,6 +283,14 @@ public class BasicArraysOuterObj
         }
 
         //-----------------------------------------------------------------------
+        /**
+         * The meta-property for the {@code nullArray} property.
+         * @return the meta-property, not null
+         */
+        public final MetaProperty<Object> nullArray() {
+            return nullArray;
+        }
+
         /**
          * The meta-property for the {@code objectsArray} property.
          * @return the meta-property, not null
@@ -275,6 +319,8 @@ public class BasicArraysOuterObj
         @Override
         protected Object propertyGet(Bean bean, String propertyName, boolean quiet) {
             switch (propertyName.hashCode()) {
+                case 1015486738:  // nullArray
+                    return ((BasicArraysOuterObj) bean).getNullArray();
                 case -412497499:  // objectsArray
                     return ((BasicArraysOuterObj) bean).getObjectsArray();
                 case -1834808089:  // primitive
@@ -288,6 +334,11 @@ public class BasicArraysOuterObj
         @Override
         protected void propertySet(Bean bean, String propertyName, Object newValue, boolean quiet) {
             switch (propertyName.hashCode()) {
+                case 1015486738:  // nullArray
+                    if (quiet) {
+                        return;
+                    }
+                    throw new UnsupportedOperationException("Property cannot be written: nullArray");
                 case -412497499:  // objectsArray
                     if (quiet) {
                         return;

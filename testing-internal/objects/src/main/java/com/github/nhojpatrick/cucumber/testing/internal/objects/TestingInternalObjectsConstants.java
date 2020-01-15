@@ -47,6 +47,7 @@ public class TestingInternalObjectsConstants {
 
         final Map<String, Object> basicArrays = new LinkedHashMap<>();
 
+        basicArrays.put(BasicArraysOuterObj.NULL_ARRAY, null);
         basicArrays.put(BasicArraysOuterObj.OBJECTS_ARRAY, objectsArray);
         basicArrays.put(BasicArraysOuterObj.PRIMITIVE, "aPrimitive");
         basicArrays.put(BasicArraysOuterObj.PRIMITIVES_ARRAY, primitivesArray);

@@ -32,7 +32,7 @@ Feature: Convert Object To Map - Checking with Specified keys
       | object.key | Object_BasicArrays |
     When I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key"
     Then I have run state key->value string pairs of:
-      | jsonMap.key | {objects_array=[{object_array_id=aObjectArrayId}, {object_array_id=bObjectArrayId}, {object_array_id=cObjectArrayId}, {object_array_id=dObjectArrayId}], primitive=aPrimitive, primitives_array=[aPrimitiveArray, bPrimitiveArray, cPrimitiveArray, dPrimitiveArray]} |
+      | jsonMap.key | {null_array=null, objects_array=[{object_array_id=aObjectArrayId}, {object_array_id=bObjectArrayId}, {object_array_id=cObjectArrayId}, {object_array_id=dObjectArrayId}], primitive=aPrimitive, primitives_array=[aPrimitiveArray, bPrimitiveArray, cPrimitiveArray, dPrimitiveArray]} |
 
 
   @Success

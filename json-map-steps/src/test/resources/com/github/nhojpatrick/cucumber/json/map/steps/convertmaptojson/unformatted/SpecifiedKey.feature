@@ -35,7 +35,7 @@ Feature: Convert Map To Json (Unformatted Formatting) - Checking with Specified 
       | jsonMap.key | Map_BasicArrays |
     When I convert json map using RunStateKey "jsonMap.key", to unformatted json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
-      | jsonString.key | {"objects_array":[{"object_array_id":"aObjectArrayId"},{"object_array_id":"bObjectArrayId"},{"object_array_id":"cObjectArrayId"},{"object_array_id":"dObjectArrayId"}],"primitive":"aPrimitive","primitives_array":["aPrimitiveArray","bPrimitiveArray","cPrimitiveArray","dPrimitiveArray"]} |
+      | jsonString.key | {"null_array":null,"objects_array":[{"object_array_id":"aObjectArrayId"},{"object_array_id":"bObjectArrayId"},{"object_array_id":"cObjectArrayId"},{"object_array_id":"dObjectArrayId"}],"primitive":"aPrimitive","primitives_array":["aPrimitiveArray","bPrimitiveArray","cPrimitiveArray","dPrimitiveArray"]} |
 
 
   @Success

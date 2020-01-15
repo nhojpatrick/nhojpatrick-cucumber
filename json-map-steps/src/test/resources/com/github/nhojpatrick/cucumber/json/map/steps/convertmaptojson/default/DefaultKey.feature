@@ -32,7 +32,7 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Default keys
       | runState.json.map | Map_BasicArrays |
     When I convert json map to json string using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.string | {\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "primitive" : "aPrimitive",\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ]\n} |
+      | runState.json.string | {\n  "null_array" : null,\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "primitive" : "aPrimitive",\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ]\n} |
 
 
   @Success

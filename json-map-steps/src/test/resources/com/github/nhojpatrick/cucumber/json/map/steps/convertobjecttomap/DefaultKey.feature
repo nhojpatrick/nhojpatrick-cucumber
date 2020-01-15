@@ -32,7 +32,7 @@ Feature: Convert Object To Map - Checking with Default keys
       | runState.json.obj | Object_BasicArrays |
     When I convert object to json map using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.map | {objects_array=[{object_array_id=aObjectArrayId}, {object_array_id=bObjectArrayId}, {object_array_id=cObjectArrayId}, {object_array_id=dObjectArrayId}], primitive=aPrimitive, primitives_array=[aPrimitiveArray, bPrimitiveArray, cPrimitiveArray, dPrimitiveArray]} |
+      | runState.json.map | {null_array=null, objects_array=[{object_array_id=aObjectArrayId}, {object_array_id=bObjectArrayId}, {object_array_id=cObjectArrayId}, {object_array_id=dObjectArrayId}], primitive=aPrimitive, primitives_array=[aPrimitiveArray, bPrimitiveArray, cPrimitiveArray, dPrimitiveArray]} |
 
 
   @Success
