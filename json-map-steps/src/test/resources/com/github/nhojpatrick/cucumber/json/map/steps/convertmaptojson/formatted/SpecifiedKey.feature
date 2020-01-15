@@ -32,7 +32,7 @@ Feature: Convert Map To Json (Formatted Formatting) - Checking with Specified ke
       | jsonMap.key | Map_BasicArrays |
     When I convert json map using RunStateKey "jsonMap.key", to formatted json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
-      | jsonString.key | {\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "primitive" : "aPrimitive",\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ]\n} |
+      | jsonString.key | {\n  "null_array" : null,\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "primitive" : "aPrimitive",\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ]\n} |
 
 
   @Success

@@ -25,7 +25,7 @@ public class TestingInternalObjectsConstantsTest {
         final String objectBasicArraysAsStr = new ObjectMapper()
                 .writeValueAsString(OBJECT_BASIC_ARRAYS);
 
-        final String expectation = "{\"objects_array\":[{\"object_array_id\":\"aObjectArrayId\"},{\"object_array_id\":\"bObjectArrayId\"},{\"object_array_id\":\"cObjectArrayId\"},{\"object_array_id\":\"dObjectArrayId\"}],\"primitive\":\"aPrimitive\",\"primitives_array\":[\"aPrimitiveArray\",\"bPrimitiveArray\",\"cPrimitiveArray\",\"dPrimitiveArray\"]}";
+        final String expectation = "{\"null_array\":null,\"objects_array\":[{\"object_array_id\":\"aObjectArrayId\"},{\"object_array_id\":\"bObjectArrayId\"},{\"object_array_id\":\"cObjectArrayId\"},{\"object_array_id\":\"dObjectArrayId\"}],\"primitive\":\"aPrimitive\",\"primitives_array\":[\"aPrimitiveArray\",\"bPrimitiveArray\",\"cPrimitiveArray\",\"dPrimitiveArray\"]}";
 
         assertAll("Check Both Ways",
                 () -> assertThat("Maps against Object", mapBasicArraysAsStr, is(equalTo(objectBasicArraysAsStr))),

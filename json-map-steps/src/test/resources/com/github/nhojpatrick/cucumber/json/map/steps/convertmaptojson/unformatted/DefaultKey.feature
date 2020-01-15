@@ -32,7 +32,7 @@ Feature: Convert Map To Json (Unformatted Formatting) - Checking with Default ke
       | runState.json.map | Map_BasicArrays |
     When I convert json map to unformatted json string using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.string | {"objects_array":[{"object_array_id":"aObjectArrayId"},{"object_array_id":"bObjectArrayId"},{"object_array_id":"cObjectArrayId"},{"object_array_id":"dObjectArrayId"}],"primitive":"aPrimitive","primitives_array":["aPrimitiveArray","bPrimitiveArray","cPrimitiveArray","dPrimitiveArray"]} |
+      | runState.json.string | {"null_array":null,"objects_array":[{"object_array_id":"aObjectArrayId"},{"object_array_id":"bObjectArrayId"},{"object_array_id":"cObjectArrayId"},{"object_array_id":"dObjectArrayId"}],"primitive":"aPrimitive","primitives_array":["aPrimitiveArray","bPrimitiveArray","cPrimitiveArray","dPrimitiveArray"]} |
 
 
   @Success
