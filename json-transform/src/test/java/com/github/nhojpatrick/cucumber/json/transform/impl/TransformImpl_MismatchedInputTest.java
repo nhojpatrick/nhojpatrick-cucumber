@@ -174,7 +174,7 @@ public class TransformImpl_MismatchedInputTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to convert primative to object, at path '%s'.",
+                                    "Unable to convert primative to array, at path '%s'.",
                                     "a2Primitive[1]"
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))

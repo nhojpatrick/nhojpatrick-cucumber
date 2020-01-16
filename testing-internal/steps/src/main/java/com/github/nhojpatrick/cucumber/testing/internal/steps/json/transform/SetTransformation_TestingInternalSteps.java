@@ -19,18 +19,13 @@ import org.junit.jupiter.api.function.Executable;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.json.transform.TransformConstants.DEFAULT_MAP_KEY;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SetTransformation_TestingInternalSteps {
-
-    private RunState runState;
+public class SetTransformation_TestingInternalSteps
+        extends BaseTransformation_TestingInternalSteps {
 
     @Inject
     public SetTransformation_TestingInternalSteps(final RunState runState) {
-        this.runState = runState;
+        super(runState);
     }
 
     @Given("TestingInternalSteps I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalPathOperationException {string}")
@@ -114,11 +109,7 @@ public class SetTransformation_TestingInternalSteps {
             testMethod = () -> transform.transform(path, input, setTransformation);
         }
 
-        final T thrown = assertThrows(t, testMethod);
-        final String expectedExceptionMessage = expectedExceptionMessageRaw
-                .replace("\\t", "\t")
-                .replace("\\n", "\n");
-        assertThat(thrown.getMessage(), is(equalTo(expectedExceptionMessage)));
+        transformationCheck(t, expectedExceptionMessageRaw, testMethod);
     }
 
 }
