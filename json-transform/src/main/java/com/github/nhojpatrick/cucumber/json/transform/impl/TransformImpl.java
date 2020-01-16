@@ -68,10 +68,9 @@ public class TransformImpl
 
         final PathElement pathElement = pathElements.get(0);
 
-        if (isNull(input)) {
-            if (!transformation.isParentPathAutoCreated()) {
-                throw new IllegalPathOperationException("FIXME 0");
-            }
+        if (isNull(input)
+                && !transformation.isParentPathAutoCreated()) {
+            throw new IllegalPathOperationException("FIXME 0");
         }
 
         Map<String, Object> output = isNull(input)
@@ -84,6 +83,14 @@ public class TransformImpl
             LOGGER.debug("Execute After depth={} path='{}' output={}", depth, pathElements, output);
 
         } else if (pathElements.size() > 1) {
+
+            if (output.containsKey(pathElement.getElement())
+                    && isNull(output.get(pathElement.getElement()))) {
+                throw new IllegalPathOperationException(String.format(
+                        "AutoConvert 'null' value to object disabled, at path '%s'.",
+                        getPath(previousPath, pathElement)
+                ));
+            }
 
             Object innerRaw = output.get(pathElement.getElement());
 
@@ -126,14 +133,13 @@ public class TransformImpl
             if (isTypedListMap) {
                 final List<Map> listMap = (List<Map>) innerRaw;
 
-                if (pathElement.getArrayIndex() >= listMap.size()) {
-                    if (!transformation.isParentPathAutoCreated()) {
-                        throw new IllegalPathOperationException(String.format(
-                                "Path '%s', beyond index of '%s', automatic creation disabled by transformation.",
-                                getPath(previousPath, pathElement),
-                                listMap.size() - 1
-                        ));
-                    }
+                if (pathElement.getArrayIndex() >= listMap.size()
+                        && !transformation.isParentPathAutoCreated()) {
+                    throw new IllegalPathOperationException(String.format(
+                            "Path '%s', beyond index of '%s', automatic creation disabled by transformation.",
+                            getPath(previousPath, pathElement),
+                            listMap.size() - 1
+                    ));
                 }
 
                 for (int i = listMap.size(); i <= pathElement.getArrayIndex(); i++) {
@@ -164,10 +170,18 @@ public class TransformImpl
             } else {
 
                 if (!isTypedMap) {
-                    throw new IllegalPathOperationException(String.format(
-                            "Unable to convert primative to object, at path '%s'.",
-                            getPath(previousPath, pathElement)
-                    ));
+                    if (pathElement.isAttribute()) {
+                        throw new IllegalPathOperationException(String.format(
+                                "Unable to convert primative to object, at path '%s'.",
+                                getPath(previousPath, pathElement)
+                        ));
+
+                    } else {
+                        throw new IllegalPathOperationException(String.format(
+                                "Unable to convert primative to array, at path '%s'.",
+                                getPath(previousPath, pathElement)
+                        ));
+                    }
                 }
 
                 final Map<String, Object> innerInput = (Map<String, Object>) innerRaw;
