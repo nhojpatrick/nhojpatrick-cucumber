@@ -81,6 +81,13 @@ public class ReverseTransformationTest {
 
     }
 
+    @Test
+    public void isParentPathAutoCreatedTest() {
+
+        final Transformation classUnderTest = new ReverseTransformation();
+        assertThat("Unexpected Parent Path Auto Creation", classUnderTest.isParentPathAutoCreated(), is(equalTo(true)));
+    }
+
     @TestFactory
     public Collection<DynamicTest> exceptions() {
 

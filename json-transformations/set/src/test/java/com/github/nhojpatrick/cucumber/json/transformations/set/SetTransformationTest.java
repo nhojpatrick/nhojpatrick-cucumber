@@ -77,6 +77,13 @@ public class SetTransformationTest {
 
     }
 
+    @Test
+    public void isParentPathAutoCreatedTest() {
+
+        final Transformation classUnderTest = new SetTransformation("newValue");
+        assertThat("Unexpected Parent Path Auto Creation", classUnderTest.isParentPathAutoCreated(), is(equalTo(true)));
+    }
+
     @TestFactory
     public Collection<DynamicTest> perform() {
 

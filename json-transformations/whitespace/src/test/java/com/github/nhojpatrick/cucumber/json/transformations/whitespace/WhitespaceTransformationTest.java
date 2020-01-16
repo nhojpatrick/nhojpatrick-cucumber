@@ -112,6 +112,14 @@ public class WhitespaceTransformationTest {
         );
     }
 
+    @Test
+    public void isParentPathAutoCreatedTest()
+            throws WhitespaceTransformationArgumentException {
+
+        final Transformation classUnderTest = new WhitespaceTransformation(0, 0);
+        assertThat("Unexpected Parent Path Auto Creation", classUnderTest.isParentPathAutoCreated(), is(equalTo(true)));
+    }
+
     @TestFactory
     public Collection<DynamicTest> perform() {
 

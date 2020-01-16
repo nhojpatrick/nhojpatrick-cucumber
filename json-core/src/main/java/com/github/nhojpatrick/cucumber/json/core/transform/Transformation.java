@@ -6,8 +6,9 @@ import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 
 import java.util.Map;
 
-@FunctionalInterface
 public interface Transformation {
+
+    boolean isParentPathAutoCreated();
 
     Map<String, Object> perform(PathElement pathElement,
                                 Map<String, Object> input,

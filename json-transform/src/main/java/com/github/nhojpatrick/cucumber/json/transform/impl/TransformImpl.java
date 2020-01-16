@@ -68,6 +68,12 @@ public class TransformImpl
 
         final PathElement pathElement = pathElements.get(0);
 
+        if (isNull(input)) {
+            if (!transformation.isParentPathAutoCreated()) {
+                throw new IllegalPathOperationException("FIXME 0");
+            }
+        }
+
         Map<String, Object> output = isNull(input)
                 ? new LinkedHashMap<>()
                 : input;
@@ -82,6 +88,13 @@ public class TransformImpl
             Object innerRaw = output.get(pathElement.getElement());
 
             if (isNull(innerRaw)) {
+                if (!transformation.isParentPathAutoCreated()) {
+                    throw new IllegalPathOperationException(String.format(
+                            "Path '%s' does not existing and automatic creation disabled by transformation.",
+                            getPath(previousPath, pathElement)
+                    ));
+                }
+
                 if (pathElement.isArray()) {
                     innerRaw = new ArrayList<LinkedHashMap<String, Object>>();
 
@@ -112,6 +125,16 @@ public class TransformImpl
 
             if (isTypedListMap) {
                 final List<Map> listMap = (List<Map>) innerRaw;
+
+                if (pathElement.getArrayIndex() >= listMap.size()) {
+                    if (!transformation.isParentPathAutoCreated()) {
+                        throw new IllegalPathOperationException(String.format(
+                                "Path '%s', beyond index of '%s', automatic creation disabled by transformation.",
+                                getPath(previousPath, pathElement),
+                                listMap.size() - 1
+                        ));
+                    }
+                }
 
                 for (int i = listMap.size(); i <= pathElement.getArrayIndex(); i++) {
                     listMap.add(new LinkedHashMap<String, Object>());
