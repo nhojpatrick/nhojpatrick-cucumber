@@ -39,6 +39,11 @@ public abstract class BaseTransformation
         return toString;
     }
 
+    @Override
+    public boolean isParentPathAutoCreated() {
+        return true;
+    }
+
     @VisibleForTesting
     protected void requireNonNullPath(final PathElement pathElement)
             throws NullPathElementException {
