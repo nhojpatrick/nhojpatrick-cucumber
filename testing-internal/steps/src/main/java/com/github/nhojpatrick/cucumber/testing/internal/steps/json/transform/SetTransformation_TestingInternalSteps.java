@@ -33,7 +33,7 @@ public class SetTransformation_TestingInternalSteps {
         this.runState = runState;
     }
 
-    @Given("TestingInternalSteps I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and set the following path {string} to {string} of type {string} produces the IllegalPathOperationException {string}")
     public void setIllegalOperationException(final String path,
                                              final String value,
                                              final String type,
@@ -46,7 +46,7 @@ public class SetTransformation_TestingInternalSteps {
         setIllegalOperationException(DEFAULT_MAP_KEY, path, value, type, expectedExceptionMessageRaw);
     }
 
-    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and set the following path {string} to {string} of type {string} produces the IllegalPathOperationException {string}")
     public void setIllegalOperationException(final String runStateJsonMapKey,
                                              final String path,
                                              final String value,

@@ -31,7 +31,7 @@ public class WhitespaceTransformation_TestingInternalSteps {
         this.runState = runState;
     }
 
-    @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using default RunStateKey and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalPathOperationException {string}")
     public void whitespaceIllegalOperationException(final String path,
                                                     final int prefix,
                                                     final int suffix,
@@ -44,7 +44,7 @@ public class WhitespaceTransformation_TestingInternalSteps {
         whitespaceIllegalOperationException(DEFAULT_MAP_KEY, path, prefix, suffix, expectedExceptionMessageRaw);
     }
 
-    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalOperationException {string}")
+    @Given("TestingInternalSteps I transform json map using RunStateKey {string} and whitespace the following path {string} with prefix {int} and suffix {int} produces the IllegalPathOperationException {string}")
     public void whitespaceIllegalOperationException(final String runStateJsonMapKey,
                                                     final String path,
                                                     final int prefix,

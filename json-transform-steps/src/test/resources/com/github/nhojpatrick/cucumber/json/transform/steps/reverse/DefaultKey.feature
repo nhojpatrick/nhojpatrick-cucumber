@@ -41,7 +41,7 @@ Feature: Transformation - Reverse - Checking with Default keys
     Given TestingInternalSteps I have setup the run state for keys and type:
       | runState.json.obj | ComplexObject |
     And I convert object to json map using default RunStateKeys
-    When TestingInternalSteps I transform json map using default RunStateKey and reverse the following path "<path>" produces the IllegalOperationException "<error>"
+    When TestingInternalSteps I transform json map using default RunStateKey and reverse the following path "<path>" produces the IllegalPathOperationException "<error>"
     # check run state has not changed
     And I have run state key->value string pairs of:
       | runState.json.map | <expected> |
@@ -85,7 +85,7 @@ Feature: Transformation - Reverse - Checking with Default keys
     Given TestingInternalSteps I have setup the run state for keys and type:
       | runState.json.obj | ComplexObject |
     And I convert object to json map using default RunStateKeys
-    When TestingInternalSteps I transform json map using default RunStateKey and reverse the following path "<path>" produces the IllegalOperationException "<error>"
+    When TestingInternalSteps I transform json map using default RunStateKey and reverse the following path "<path>" produces the IllegalPathOperationException "<error>"
     # check run state has not changed
     And I have run state key->value string pairs of:
       | runState.json.map | <expected> |
@@ -135,7 +135,7 @@ Feature: Transformation - Reverse - Checking with Default keys
     Given TestingInternalSteps I have setup the run state for keys and type:
       | runState.json.obj | ComplexObject |
     And I convert object to json map using default RunStateKeys
-    When TestingInternalSteps I transform json map using default RunStateKey and reverse the following path "<path>" produces the IllegalOperationException "<error>"
+    When TestingInternalSteps I transform json map using default RunStateKey and reverse the following path "<path>" produces the IllegalPathOperationException "<error>"
     # check run state has not changed
     And I have run state key->value string pairs of:
       | runState.json.map | <expected> |
