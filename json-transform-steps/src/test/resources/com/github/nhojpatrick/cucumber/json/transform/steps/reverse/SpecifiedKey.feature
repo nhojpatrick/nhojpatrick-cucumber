@@ -41,7 +41,7 @@ Feature: Transformation - Reverse - Checking with Specified keys
     Given TestingInternalSteps I have setup the run state for keys and type:
       | object.key | ComplexObject |
     And I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key"
-    When TestingInternalSteps I transform json map using RunStateKey "jsonMap.key" and reverse the following path "<path>" produces the IllegalOperationException "<error>"
+    When TestingInternalSteps I transform json map using RunStateKey "jsonMap.key" and reverse the following path "<path>" produces the IllegalPathOperationException "<error>"
     # check run state has not changed
     And I have run state key->value string pairs of:
       | jsonMap.key | <expected> |
@@ -85,7 +85,7 @@ Feature: Transformation - Reverse - Checking with Specified keys
     Given TestingInternalSteps I have setup the run state for keys and type:
       | object.key | ComplexObject |
     And I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key"
-    When TestingInternalSteps I transform json map using RunStateKey "jsonMap.key" and reverse the following path "<path>" produces the IllegalOperationException "<error>"
+    When TestingInternalSteps I transform json map using RunStateKey "jsonMap.key" and reverse the following path "<path>" produces the IllegalPathOperationException "<error>"
     # check run state has not changed
     And I have run state key->value string pairs of:
       | jsonMap.key | <expected> |
@@ -135,7 +135,7 @@ Feature: Transformation - Reverse - Checking with Specified keys
     Given TestingInternalSteps I have setup the run state for keys and type:
       | object.key | ComplexObject |
     And I convert object using RunStateKey "object.key", to json map using RunStateKey "jsonMap.key"
-    When TestingInternalSteps I transform json map using RunStateKey "jsonMap.key" and reverse the following path "<path>" produces the IllegalOperationException "<error>"
+    When TestingInternalSteps I transform json map using RunStateKey "jsonMap.key" and reverse the following path "<path>" produces the IllegalPathOperationException "<error>"
     # check run state has not changed
     And I have run state key->value string pairs of:
       | jsonMap.key | <expected> |
