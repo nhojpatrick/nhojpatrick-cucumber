@@ -36,10 +36,28 @@ public class CastToUtilTest {
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type 'Unknown'.")));
                 }),
 
-                dynamicTest("Boolean invalid", () -> {
+                dynamicTest("Boolean invalid (string)", () -> {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Boolean");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Boolean' from value 'string'.")));
+                }),
+
+                dynamicTest("Boolean invalid (tRus)", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo("tRue", "java.lang.Boolean");
+                    final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Boolean' from value 'tRue'.")));
+                }),
+
+                dynamicTest("Boolean invalid (null)", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo(null, "java.lang.Boolean");
+                    final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Boolean' from value 'null'.")));
+                }),
+
+                dynamicTest("Boolean invalid (empty)", () -> {
+                    final Executable testMethod = () -> classUnderTest.castTo("", "java.lang.Boolean");
+                    final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
+                    assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Boolean' from value ''.")));
                 }),
 
                 dynamicTest("Double invalid", () -> {
@@ -64,19 +82,7 @@ public class CastToUtilTest {
                     final Executable testMethod = () -> classUnderTest.castTo("string", "java.lang.Long");
                     final UnsupportedDataTypeConversionException thrown = assertThrows(UnsupportedDataTypeConversionException.class, testMethod);
                     assertThat(thrown.getMessage(), is(equalTo("Unsupported data type conversion for type 'java.lang.Long' from value 'string'.")));
-                })//,
-//
-//                dynamicTest("List -> <null>", () -> {
-//                    final Executable testMethod = () -> isTypedList(new ArrayList(), null);
-//                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
-//                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
-//                }),
-//
-//                dynamicTest("Object -> <null>", () -> {
-//                    final Executable testMethod = () -> isTypedList(new Object(), null);
-//                    final NullGenericsValueException thrown = assertThrows(NullGenericsValueException.class, testMethod);
-//                    assertThat(thrown.getMessage(), is(equalTo("Null Generics Value Type.")));
-//                })
+                })
 
         );
     }
@@ -88,7 +94,15 @@ public class CastToUtilTest {
 
         return Arrays.asList(
 
-                dynamicTest("Boolean", () -> {
+                dynamicTest("Boolean (false)", () -> {
+                    final Object actual = classUnderTest.castTo("false", "java.lang.Boolean");
+                    assertAll(
+                            () -> assertThat("Unexpected type", actual, is(instanceOf(Boolean.class))),
+                            () -> assertThat("Unexpected value", actual, is(equalTo(Boolean.FALSE)))
+                    );
+                }),
+
+                dynamicTest("Boolean (true)", () -> {
                     final Object actual = classUnderTest.castTo("true", "java.lang.Boolean");
                     assertAll(
                             () -> assertThat("Unexpected type", actual, is(instanceOf(Boolean.class))),
@@ -206,48 +220,6 @@ public class CastToUtilTest {
                             () -> assertThat("Unexpected value", actual, is(toStringGenerated("[]")))
                     );
                 })
-
-//                dynamicTest("Null Object -> <Object>", () -> {
-//                    final Object obj = null;
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(false)));
-//                }),
-//
-//                dynamicTest("Null String -> <Object>", () -> {
-//                    final String obj = null;
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(false)));
-//                }),
-//
-//                dynamicTest("Default Integer -> <Object>", () -> {
-//                    final Integer obj = 1234;
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(false)));
-//                }),
-//
-//                dynamicTest("Default Object -> <Object>", () -> {
-//                    final Object obj = new Object();
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(false)));
-//                }),
-//
-//                dynamicTest("Default String -> <Object>", () -> {
-//                    final String obj = "qwertyuiop";
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(false)));
-//                }),
-//
-//                dynamicTest("List ArrayList<> -> <Object>", () -> {
-//                    final Object obj = new ArrayList<>();
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(true)));
-//                }),
-//
-//                dynamicTest("List Stack<> -> <Object>", () -> {
-//                    final Object obj = new Stack<>();
-//                    final boolean actual = isTypedList(obj, Object.class);
-//                    assertThat(actual, is(equalTo(true)));
-//                })
 
         );
     }
