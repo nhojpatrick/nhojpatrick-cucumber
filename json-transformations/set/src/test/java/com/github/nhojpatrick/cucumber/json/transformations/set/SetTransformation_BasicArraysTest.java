@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -35,31 +35,11 @@ public class SetTransformation_BasicArraysTest {
 
         return Arrays.asList(
 
-                dynamicTest("objects_array", () -> {
-                    final String key = "objects_array";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.put(key, "newStringValue");
-
-                    final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
-                    );
-                }),
-
                 dynamicTest("objects_array[1]", () -> {
                     final String key = "objects_array";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> aObjectArray = new HashMap<>();
                     aObjectArray.put("object_array_id", "aObjectArrayId");
@@ -70,15 +50,16 @@ public class SetTransformation_BasicArraysTest {
                     final Map<String, Object> dObjectArray = new HashMap<>();
                     dObjectArray.put("object_array_id", "dObjectArrayId");
 
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             aObjectArray,
-                            "newStringValue", // FIXME should this really be valid
+                            "newStringValue",
                             cObjectArray,
                             dObjectArray
                     )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -93,8 +74,6 @@ public class SetTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-
                     final Map<String, Object> aObjectArray = new HashMap<>();
                     aObjectArray.put("object_array_id", "aObjectArrayId");
 
@@ -107,17 +86,18 @@ public class SetTransformation_BasicArraysTest {
                     final Map<String, Object> dObjectArray = new HashMap<>();
                     dObjectArray.put("object_array_id", "dObjectArrayId");
 
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             aObjectArray,
                             bObjectArray,
                             cObjectArray,
                             dObjectArray,
                             null,
-                            "newStringValue" // FIXME should this really be valid
+                            "newStringValue"
                     )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -126,72 +106,42 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("primitive", () -> {
-                    final String key = "primitive";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.put(key, "newStringValue");
-
-                    final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
-                    );
-                }),
-
-                dynamicTest("primitive[1]", () -> {
-                    final String key = "primitive";
+                dynamicTest("objects_empty[1]", () -> {
+                    final String key = "objects_empty";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Executable testMethod = () -> new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.put(key, new ArrayList<>(Arrays.asList(
+                            null,
+                            "newStringValue"
+                    )));
 
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to set path '%s', as is not Array.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    final Map<String, Object> actual = new SetTransformation("newStringValue")
+                            .perform(pathElement, getMapBasicArrays(), null);
+
+                    assertThat(actual, is(notNullValue()));
+                    assertAll("Checking maps",
+                            () -> assertThat(actual, is(equalTo(expected))),
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
                     );
                 }),
 
-                dynamicTest("primitive[5]", () -> {
-                    final String key = "primitive";
-                    final int arrayIndex = 5;
+                dynamicTest("objects_null[1]", () -> {
+                    final String key = "objects_null";
+                    final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Executable testMethod = () -> new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to set path '%s', as is not Array.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("primitives_array", () -> {
-                    final String key = "primitives_array";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.put(key, "newStringValue");
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.put(key, new ArrayList<>(Arrays.asList(
+                            null,
+                            "newStringValue"
+                    )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -206,7 +156,7 @@ public class SetTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             "aPrimitiveArray",
                             "newStringValue",
@@ -215,7 +165,7 @@ public class SetTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), "");
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -230,7 +180,7 @@ public class SetTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             "aPrimitiveArray",
                             "bPrimitiveArray",
@@ -241,7 +191,7 @@ public class SetTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), "");
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -250,16 +200,42 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("unknown", () -> {
-                    final String key = "unknown";
+                dynamicTest("primitives_empty[1]", () -> {
+                    final String key = "primitives_empty";
+                    final int arrayIndex = 1;
 
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.put(key, "newStringValue");
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.put(key, new ArrayList<>(Arrays.asList(
+                            null,
+                            "newStringValue"
+                    )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), "");
+
+                    assertThat(actual, is(notNullValue()));
+                    assertAll("Checking maps",
+                            () -> assertThat(actual, is(equalTo(expected))),
+                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                    );
+                }),
+
+                dynamicTest("primitives_null[1]", () -> {
+                    final String key = "primitives_null";
+                    final int arrayIndex = 1;
+
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.put(key, new ArrayList<>(Arrays.asList(
+                            null,
+                            "newStringValue"
+                    )));
+
+                    final Map<String, Object> actual = new SetTransformation("newStringValue")
+                            .perform(pathElement, getMapBasicArrays(), "");
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -274,11 +250,14 @@ public class SetTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.put(key, new ArrayList<>(Arrays.asList(null, "newStringValue")));
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.put(key, new ArrayList<>(Arrays.asList(
+                            null,
+                            "newStringValue"
+                    )));
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), "");
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -296,16 +275,16 @@ public class SetTransformation_BasicArraysTest {
 
         return Arrays.asList(
 
-                dynamicTest("a_boolean", () -> {
-                    final String key = "a_boolean";
+                dynamicTest("objects_array", () -> {
+                    final String key = "objects_array";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -314,16 +293,16 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_float", () -> {
-                    final String key = "a_float";
+                dynamicTest("objects_empty", () -> {
+                    final String key = "objects_empty";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -332,16 +311,16 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_integer", () -> {
-                    final String key = "a_integer";
+                dynamicTest("objects_null", () -> {
+                    final String key = "objects_null";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -350,16 +329,17 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_null", () -> {
-                    final String key = "a_null";
+
+                dynamicTest("primitives_array", () -> {
+                    final String key = "primitives_array";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -368,16 +348,16 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_object", () -> {
-                    final String key = "a_object";
+                dynamicTest("primitives_empty", () -> {
+                    final String key = "primitives_empty";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -386,16 +366,16 @@ public class SetTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_string", () -> {
-                    final String key = "a_string";
+                dynamicTest("primitives_null", () -> {
+                    final String key = "primitives_null";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -409,11 +389,11 @@ public class SetTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.put(key, "newStringValue");
 
                     final Map<String, Object> actual = new SetTransformation("newStringValue")
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
