@@ -18,71 +18,68 @@ public class CastToUtil
 
         requireNonNull(type, "CastToUtil.castTo(type)");
 
+        try {
+            return doCastTo(value, type);
+
+        } catch (final RuntimeException re) {
+            throw new UnsupportedDataTypeConversionException(type, value, re);
+        }
+    }
+
+    private Object doCastTo(final String value, final String type)
+            throws UnsupportedDataTypeConversionException,
+            UnsupportedDataTypeException {
+
         switch (type) {
             case "null":
                 return null;
+
+            case "JsonObject":
+                return new HashMap<String, Object>();
 
             case "java.lang.String":
                 return value;
 
             case "java.lang.Boolean":
-                if (!"true".equalsIgnoreCase(value)
-                        && !"false".equalsIgnoreCase(value)) {
+                if (!"true".equals(value)
+                        && !"false".equals(value)) {
                     throw new UnsupportedDataTypeConversionException(type, value);
                 }
                 return Boolean.valueOf(value);
 
             case "java.lang.Integer":
-                try {
-                    return Integer.valueOf(value);
-                } catch (final RuntimeException re) {
-                    throw new UnsupportedDataTypeConversionException(type, value, re);
-                }
-
-            case "java.lang.Long":
-                try {
-                    return Long.valueOf(value);
-                } catch (final RuntimeException re) {
-                    throw new UnsupportedDataTypeConversionException(type, value, re);
-                }
-
-            case "java.lang.Double":
-                try {
-                    return Double.valueOf(value);
-                } catch (final RuntimeException re) {
-                    throw new UnsupportedDataTypeConversionException(type, value, re);
-                }
+                return Integer.valueOf(value);
 
             case "java.lang.Float":
-                try {
-                    return Float.valueOf(value);
-                } catch (final RuntimeException re) {
-                    throw new UnsupportedDataTypeConversionException(type, value, re);
-                }
+                return Float.valueOf(value);
+
+            case "java.lang.Long":
+                return Long.valueOf(value);
+
+            case "java.lang.Double":
+                return Double.valueOf(value);
 
             case "JsonArray<JsonObject>":
                 return new ArrayList<HashMap<String, Object>>();
 
+            case "JsonArray<java.lang.String>":
+                return new ArrayList<String>();
+
             case "JsonArray<java.lang.Boolean>":
                 return new ArrayList<Boolean>();
-
-            case "JsonArray<java.lang.Double>":
-                return new ArrayList<Double>();
-
-            case "JsonArray<java.lang.Float>":
-                return new ArrayList<Float>();
-
-            case "JsonArray<java.lang.Long>":
-                return new ArrayList<Long>();
 
             case "JsonArray<java.lang.Integer>":
                 return new ArrayList<Integer>();
 
-            case "JsonArray<java.lang.String>":
-                return new ArrayList<String>();
+            case "JsonArray<java.lang.Float>":
+                return new ArrayList<Float>();
 
-            case "JsonObject":
-                return new HashMap<String, Object>();
+
+            case "JsonArray<java.lang.Double>":
+                return new ArrayList<Double>();
+
+            case "JsonArray<java.lang.Long>":
+                return new ArrayList<Long>();
 
             default:
                 throw new UnsupportedDataTypeException(type);
