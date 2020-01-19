@@ -81,7 +81,7 @@ public class RemoveTransformationTest {
     public void isParentPathAutoCreatedTest() {
 
         final Transformation classUnderTest = new RemoveTransformation();
-        assertThat("Unexpected Parent Path Auto Creation", classUnderTest.isParentPathAutoCreated(), is(equalTo(true)));
+        assertThat("Unexpected Parent Path Auto Creation", classUnderTest.isParentPathAutoCreated(), is(equalTo(false)));
     }
 
     @TestFactory

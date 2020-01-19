@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -35,31 +35,13 @@ public class RemoveTransformation_BasicArraysTest {
 
         return Arrays.asList(
 
-                dynamicTest("objects_array", () -> {
-                    final String key = "objects_array";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.remove(key);
-
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
-                    );
-                }),
-
                 dynamicTest("objects_array[1]", () -> {
                     final String key = "objects_array";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
 
                     final Map<String, Object> aObjectArray = new HashMap<>();
                     aObjectArray.put("object_array_id", "aObjectArrayId");
@@ -77,7 +59,7 @@ public class RemoveTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -92,109 +74,56 @@ public class RemoveTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Executable testMethod = () -> new RemoveTransformation()
+                            .perform(pathElement, getMapBasicArrays(), null);
 
-                    final Map<String, Object> aObjectArray = new HashMap<>();
-                    aObjectArray.put("object_array_id", "aObjectArrayId");
-
-                    final Map<String, Object> bObjectArray = new HashMap<>();
-                    bObjectArray.put("object_array_id", "bObjectArrayId");
-
-                    final Map<String, Object> cObjectArray = new HashMap<>();
-                    cObjectArray.put("object_array_id", "cObjectArrayId");
-
-                    final Map<String, Object> dObjectArray = new HashMap<>();
-                    dObjectArray.put("object_array_id", "dObjectArrayId");
-
-                    expected.put(key, new ArrayList<>(Arrays.asList(
-                            aObjectArray,
-                            bObjectArray,
-                            cObjectArray,
-                            dObjectArray,
-                            null
-                    )));
-
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to remove path '%s[%s]', beyond index of '%s'.",
+                                    key,
+                                    arrayIndex,
+                                    3
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                dynamicTest("primitive", () -> {
-                    final String key = "primitive";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.remove(key);
-
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
-                    );
-                }),
-
-                dynamicTest("primitive[1]", () -> {
-                    final String key = "primitive";
+                dynamicTest("objects_empty[1]", () -> {
+                    final String key = "objects_empty";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to remove path '%s', as is not Array.",
+                                    "Unable to remove path '%s', as array is empty.",
                                     key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                dynamicTest("primitive[5]", () -> {
-                    final String key = "primitive";
-                    final int arrayIndex = 5;
+                dynamicTest("objects_null[1]", () -> {
+                    final String key = "objects_null";
+                    final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to remove path '%s', as is not Array.",
+                                    "Unable to remove 'null' value, at path '%s'.",
                                     key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("primitives_array", () -> {
-                    final String key = "primitives_array";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.remove(key);
-
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
                     );
                 }),
 
@@ -204,12 +133,12 @@ public class RemoveTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
                     expected.remove(key);
                     expected.put(key, new ArrayList<>(Arrays.asList("aPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray")));
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -224,39 +153,56 @@ public class RemoveTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
-                    expected.put(key, new ArrayList<>(Arrays.asList(
-                            "aPrimitiveArray",
-                            "bPrimitiveArray",
-                            "cPrimitiveArray",
-                            "dPrimitiveArray",
-                            null
-                    )));
+                    final Executable testMethod = () -> new RemoveTransformation()
+                            .perform(pathElement, getMapBasicArrays(), null);
 
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to remove path '%s[%s]', beyond index of '%s'.",
+                                    key,
+                                    arrayIndex,
+                                    3
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                dynamicTest("unknown", () -> {
-                    final String key = "unknown";
+                dynamicTest("primitives_empty[1]", () -> {
+                    final String key = "primitives_empty";
+                    final int arrayIndex = 1;
 
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Executable testMethod = () -> new RemoveTransformation()
+                            .perform(pathElement, getMapBasicArrays(), null);
 
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to remove path '%s', as array is empty.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    );
+                }),
 
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                dynamicTest("primitives_null[1]", () -> {
+                    final String key = "primitives_null";
+                    final int arrayIndex = 1;
+
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
+                    final Executable testMethod = () -> new RemoveTransformation()
+                            .perform(pathElement, getMapBasicArrays(), null);
+
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to remove 'null' value, at path '%s'.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
@@ -266,15 +212,16 @@ public class RemoveTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Executable testMethod = () -> new RemoveTransformation()
+                            .perform(pathElement, getMapBasicArrays(), null);
 
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Path does not exist at '%s'.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 
@@ -286,16 +233,16 @@ public class RemoveTransformation_BasicArraysTest {
     public Collection<DynamicTest> primitivePaths() {
 
         return Arrays.asList(
-
-                dynamicTest("a_boolean", () -> {
-                    final String key = "a_boolean";
+                dynamicTest("objects_array", () -> {
+                    final String key = "objects_array";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -304,15 +251,16 @@ public class RemoveTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_float", () -> {
-                    final String key = "a_float";
+                dynamicTest("objects_empty", () -> {
+                    final String key = "objects_empty";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -321,15 +269,16 @@ public class RemoveTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_integer", () -> {
-                    final String key = "a_integer";
+                dynamicTest("objects_null", () -> {
+                    final String key = "objects_null";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -338,15 +287,16 @@ public class RemoveTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_null", () -> {
-                    final String key = "a_null";
+                dynamicTest("primitives_array", () -> {
+                    final String key = "primitives_array";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -355,15 +305,16 @@ public class RemoveTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_object", () -> {
-                    final String key = "a_object";
+                dynamicTest("primitives_empty", () -> {
+                    final String key = "primitives_empty";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -372,15 +323,16 @@ public class RemoveTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("a_string", () -> {
-                    final String key = "a_string";
+                dynamicTest("primitives_null", () -> {
+                    final String key = "primitives_null";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Map<String, Object> expected = getMapBasicArrays();
+                    expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
+                            .perform(pathElement, getMapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -389,20 +341,21 @@ public class RemoveTransformation_BasicArraysTest {
                     );
                 }),
 
-                dynamicTest("unknown", () -> {
-                    final String key = "unknown";
+                dynamicTest("z_unknown", () -> {
+                    final String key = "z_unknown";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
+                    final Executable testMethod = () -> new RemoveTransformation()
+                            .perform(pathElement, getMapBasicArrays(), null);
 
-                    final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
-
-                    assertThat(actual, is(notNullValue()));
-                    assertAll("Checking maps",
-                            () -> assertThat(actual, is(equalTo(expected))),
-                            () -> assertThat(actual.get(key), is(equalTo(expected.get(key))))
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Path does not exist at '%s'.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 })
 
