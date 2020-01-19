@@ -8,7 +8,6 @@ import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformat
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +41,11 @@ public class RemoveTransformation
     }
 
     @Override
+    public boolean isParentPathAutoCreated() {
+        return false;
+    }
+
+    @Override
     public Map<String, Object> perform(final PathElement pathElement,
                                        final Map<String, Object> inputRaw,
                                        final String currentPath)
@@ -56,20 +60,34 @@ public class RemoveTransformation
                 ? inputRaw
                 : new HashMap<>();
 
-        if (!output.containsKey(pathElement.getElement())) {
-            return output;
-        }
-
         if (pathElement.isAttribute()) {
+
+            if (!output.containsKey(pathElement.getElement())) {
+                throw new IllegalPathOperationException(String.format(
+                        "Path does not exist at '%s'.",
+                        pathElement.getPath(currentPath)
+                ));
+            }
+
             output.remove(pathElement.getElement());
 
         } else {
 
-            Object objRaw = output.get(pathElement.getElement());
+            if (!output.containsKey(pathElement.getElement())) {
+                throw new IllegalPathOperationException(String.format(
+                        "Path does not exist at '%s'.",
+                        pathElement.getPath(currentPath, false)
+                ));
+            }
 
-            objRaw = nonNull(objRaw)
-                    ? objRaw
-                    : new ArrayList<Map<String, Object>>();
+            if (isNull(output.get(pathElement.getElement()))) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to remove 'null' value, at path '%s'.",
+                        pathElement.getPath(currentPath, false)
+                ));
+            }
+
+            final Object objRaw = output.get(pathElement.getElement());
 
             if (!isTypedList(objRaw, Object.class)) {
                 throw new IllegalPathOperationException(String.format(
@@ -83,13 +101,18 @@ public class RemoveTransformation
             if (pathElement.getArrayIndex() < listObj.size()) {
                 listObj.remove(pathElement.getArrayIndex());
 
-            } else {
-                final int size = listObj.size();
-                final int arrayIndex = pathElement.getArrayIndex();
+            } else if (listObj.isEmpty()) {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to remove path '%s', as array is empty.",
+                        pathElement.getPath(currentPath, false)
+                ));
 
-                for (int i = size; i < arrayIndex; i++) {
-                    listObj.add(null);
-                }
+            } else {
+                throw new IllegalPathOperationException(String.format(
+                        "Unable to remove path '%s', beyond index of '%s'.",
+                        pathElement.getPath(currentPath),
+                        listObj.size() - 1
+                ));
             }
 
             output.put(pathElement.getElement(), listObj);
