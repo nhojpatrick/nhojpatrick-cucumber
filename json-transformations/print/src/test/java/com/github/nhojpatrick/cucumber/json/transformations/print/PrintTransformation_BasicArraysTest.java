@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.github.nhojpatrick.cucumber.json.transformations.print.PrintTransformationTest.getInMemoryAppender;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
 import static com.github.nhojpatrick.hamcrest.optionals.IsOptional.optionalContains;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -41,10 +41,10 @@ public class PrintTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -69,10 +69,10 @@ public class PrintTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -98,7 +98,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -117,10 +117,10 @@ public class PrintTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -146,7 +146,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -166,7 +166,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -184,10 +184,10 @@ public class PrintTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -212,10 +212,10 @@ public class PrintTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -241,7 +241,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -261,7 +261,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -280,7 +280,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -308,7 +308,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -326,7 +326,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -344,7 +344,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -362,7 +362,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -380,7 +380,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -398,7 +398,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -416,7 +416,7 @@ public class PrintTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
