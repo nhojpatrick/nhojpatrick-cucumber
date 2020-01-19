@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_EMPTY;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicArrays;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicAttributes;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.SIMPLE_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.LEGACY2_MAP_EMPTY;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicAttributes;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2ObjectBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2ObjectBasicAttributes;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_OBJECT;
 
 public class State_TestingInternalSteps {
 
@@ -35,23 +35,23 @@ public class State_TestingInternalSteps {
         for (final Map.Entry<String, String> row : stringStringMap.entrySet()) {
             switch (row.getValue()) {
                 case "ComplexObject":
-                    this.runState.set(row.getKey(), COMPLEX_OBJECT_AS_OBJECT);
+                    this.runState.set(row.getKey(), LEGACY_COMPLEX_OBJECT_AS_OBJECT);
                     break;
 
                 case "List_Empty":
                     this.runState.set(row.getKey(), new ArrayList<>());
                     break;
 
-                case "Map_BasicArrays":
-                    this.runState.set(row.getKey(), getMapBasicArrays());
+                case "Legacy2_Map_BasicArrays":
+                    this.runState.set(row.getKey(), getLegacy2MapBasicArrays());
                     break;
 
-                case "Map_BasicAttributes":
-                    this.runState.set(row.getKey(), getMapBasicAttributes());
+                case "Legacy2_Map_BasicAttributes":
+                    this.runState.set(row.getKey(), getLegacy2MapBasicAttributes());
                     break;
 
-                case "Map_Empty":
-                    this.runState.set(row.getKey(), new HashMap<>(MAP_EMPTY));
+                case "Legacy2_Map_Empty":
+                    this.runState.set(row.getKey(), new HashMap<>(LEGACY2_MAP_EMPTY));
                     break;
 
                 case "Null":
@@ -63,15 +63,15 @@ public class State_TestingInternalSteps {
                     break;
 
                 case "Object_BasicArrays":
-                    this.runState.set(row.getKey(), getObjectBasicArrays());
+                    this.runState.set(row.getKey(), getLegacy2ObjectBasicArrays());
                     break;
 
                 case "Object_BasicAttributes":
-                    this.runState.set(row.getKey(), getObjectBasicAttributes());
+                    this.runState.set(row.getKey(), getLegacy2ObjectBasicAttributes());
                     break;
 
                 case "SimpleObject":
-                    this.runState.set(row.getKey(), SIMPLE_OBJECT_AS_OBJECT);
+                    this.runState.set(row.getKey(), LEGACY_SIMPLE_OBJECT_AS_OBJECT);
                     break;
 
                 default:

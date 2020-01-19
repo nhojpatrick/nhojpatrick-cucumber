@@ -20,7 +20,7 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Specified keys
   @Error
   Scenario: Empty input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Map_Empty |
+      | jsonMap.key | Legacy2_Map_Empty |
     Then I convert json map using RunStateKey "jsonMap.key", to json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
       | jsonString.key | { } |
@@ -29,7 +29,7 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Specified keys
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Map_BasicArrays |
+      | jsonMap.key | Legacy2_Map_BasicArrays |
     When I convert json map using RunStateKey "jsonMap.key", to json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
       | jsonString.key | {\n  "null_array" : null,\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "primitive" : "aPrimitive",\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ]\n} |
@@ -38,7 +38,7 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Specified keys
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Map_BasicAttributes |
+      | jsonMap.key | Legacy2_Map_BasicAttributes |
     When I convert json map using RunStateKey "jsonMap.key", to json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
       | jsonString.key | {\n  "a_boolean" : true,\n  "a_float" : 12.34,\n  "a_integer" : 1234,\n  "a_null" : null,\n  "a_object" : { },\n  "a_string" : "aValue"\n} |

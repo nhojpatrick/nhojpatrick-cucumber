@@ -8,30 +8,30 @@ import java.util.Map;
 
 public class LegacyTestingInternalObjectsConstants {
 
-    public static final MyComplexObj COMPLEX_OBJECT_AS_OBJECT;
-    public static final Map<String, Object> COMPLEX_OBJECT_AS_JSON_MAP;
+    public static final LegacyMyComplexObj LEGACY_COMPLEX_OBJECT_AS_OBJECT;
+    public static final Map<String, Object> LEGACY_COMPLEX_OBJECT_AS_JSON_MAP;
 
-    public static final MySimpleObj SIMPLE_OBJECT_AS_OBJECT;
-    public static final Map<String, Object> SIMPLE_OBJECT_AS_JSON_MAP;
+    public static final LegacyMySimpleObj LEGACY_SIMPLE_OBJECT_AS_OBJECT;
+    public static final Map<String, Object> LEGACY_SIMPLE_OBJECT_AS_JSON_MAP;
 
     static {
-        final List<MyListNestedObj> nests = Arrays.asList(
-                new MyListNestedObj("nests1", 1223, new MyListNestedBottomObj("nests1Charlie")),
-                new MyListNestedObj("nests2", 2234, new MyListNestedBottomObj("nests2Charlie")),
-                new MyListNestedObj("nests3", 3245, new MyListNestedBottomObj("nests3Charlie"))
+        final List<LegacyMyListNestedObj> nests = Arrays.asList(
+                new LegacyMyListNestedObj("nests1", 1223, new LegacyMyListNestedBottomObj("nests1Charlie")),
+                new LegacyMyListNestedObj("nests2", 2234, new LegacyMyListNestedBottomObj("nests2Charlie")),
+                new LegacyMyListNestedObj("nests3", 3245, new LegacyMyListNestedBottomObj("nests3Charlie"))
         );
 
         final List<String> labels = Arrays.asList("labelOne", "labelTwo", "labelThree");
-        final MyNestedObj nested = new MyNestedObj("Nested", labels, new MyBottomObj("Alpha"), nests);
+        final LegacyMyNestedObj nested = new LegacyMyNestedObj("Nested", labels, new LegacyMyBottomObj("Alpha"), nests);
 
-        final List<MyListComplexObj> objs = Arrays.asList(
-                new MyListComplexObj("objs1", 1123, new MyListComplexBottomObj("objs1Bravo")),
-                new MyListComplexObj("objs2", 2134, new MyListComplexBottomObj("objs2Bravo")),
-                new MyListComplexObj("objs3", 3145, new MyListComplexBottomObj("objs3Bravo"))
+        final List<LegacyMyListComplexObj> objs = Arrays.asList(
+                new LegacyMyListComplexObj("objs1", 1123, new LegacyMyListComplexBottomObj("objs1Bravo")),
+                new LegacyMyListComplexObj("objs2", 2134, new LegacyMyListComplexBottomObj("objs2Bravo")),
+                new LegacyMyListComplexObj("objs3", 3145, new LegacyMyListComplexBottomObj("objs3Bravo"))
         );
 
         final List<String> tags = Arrays.asList("tagOne", "tagTwo", "tagThree");
-        COMPLEX_OBJECT_AS_OBJECT = new MyComplexObj("Complex", true, 3234, tags, nested, objs);
+        LEGACY_COMPLEX_OBJECT_AS_OBJECT = new LegacyMyComplexObj("Complex", true, 3234, tags, nested, objs);
     }
 
     static {
@@ -110,18 +110,18 @@ public class LegacyTestingInternalObjectsConstants {
         expected.put("nested", nested);
         expected.put("objs", objs);
 
-        COMPLEX_OBJECT_AS_JSON_MAP = new LinkedHashMap<>(expected);
+        LEGACY_COMPLEX_OBJECT_AS_JSON_MAP = new LinkedHashMap<>(expected);
     }
 
     static {
-        SIMPLE_OBJECT_AS_OBJECT = new MySimpleObj("ASimpleName");
+        LEGACY_SIMPLE_OBJECT_AS_OBJECT = new LegacyMySimpleObj("ASimpleName");
 
         final Map<String, Object> expected = new LinkedHashMap<>();
         expected.put("simpleName", "ASimpleName");
-        SIMPLE_OBJECT_AS_JSON_MAP = new LinkedHashMap<>(expected);
+        LEGACY_SIMPLE_OBJECT_AS_JSON_MAP = new LinkedHashMap<>(expected);
     }
 
-    public static final Map<String, Object> getBasicJsonMap() {
+    public static final Map<String, Object> getLegacyBasicJsonMap() {
 
         final List<String> array1 = new ArrayList<>(Arrays.asList("aList"));
         final List<String> array2 = new ArrayList<>(Arrays.asList("bList"));

@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicAttributes;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -34,10 +34,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -52,10 +52,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -70,10 +70,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -87,11 +87,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -106,10 +106,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -124,10 +124,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -141,10 +141,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -159,10 +159,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -177,10 +177,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -194,10 +194,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -212,10 +212,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -238,11 +238,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -256,11 +256,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -274,11 +274,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -292,11 +292,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -310,11 +310,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -328,11 +328,11 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.remove(key);
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -346,10 +346,10 @@ public class RemoveTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new RemoveTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

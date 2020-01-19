@@ -1,9 +1,12 @@
 module com.github.nhojpatrick.cucumber.testing.internal.objects {
     exports com.github.nhojpatrick.cucumber.testing.internal.objects;
     exports com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
+    exports com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2;
     opens com.github.nhojpatrick.cucumber.testing.internal.objects
             to com.fasterxml.jackson.databind;
     opens com.github.nhojpatrick.cucumber.testing.internal.objects.legacy
+            to com.fasterxml.jackson.databind;
+    opens com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2
             to com.fasterxml.jackson.databind;
     requires com.github.spotbugs.annotations;
     requires org.joda.beans;

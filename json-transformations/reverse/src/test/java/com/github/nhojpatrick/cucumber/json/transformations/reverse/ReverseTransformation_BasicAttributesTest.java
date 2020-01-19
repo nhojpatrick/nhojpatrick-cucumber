@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicAttributes;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -38,10 +38,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -56,10 +56,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -74,10 +74,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -91,10 +91,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -109,10 +109,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -127,10 +127,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -144,10 +144,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -162,10 +162,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -180,10 +180,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -197,10 +197,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -215,10 +215,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -241,11 +241,11 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.put(key, "eurt");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -259,11 +259,11 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.put(key, "43.21");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -277,11 +277,11 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.put(key, "4321");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -295,10 +295,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -313,7 +313,7 @@ public class ReverseTransformation_BasicAttributesTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -330,11 +330,11 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
                     expected.put(key, "eulaVa");
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -348,10 +348,10 @@ public class ReverseTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicAttributes();
+                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
 
                     final Map<String, Object> actual = new ReverseTransformation()
-                            .perform(pathElement, getMapBasicAttributes(), null);
+                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",

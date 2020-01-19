@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -41,7 +41,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
@@ -58,7 +58,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -73,7 +73,7 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
 
                     final Map<String, Object> aObjectArray = new HashMap<>();
                     aObjectArray.put("object_array_id", "aObjectArrayId");
@@ -97,7 +97,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -111,11 +111,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, " aPrimitive  ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -131,7 +131,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -151,7 +151,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -170,7 +170,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -185,7 +185,7 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             "aPrimitiveArray",
                             " bPrimitiveArray  ",
@@ -194,7 +194,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -209,7 +209,7 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(
                             "aPrimitiveArray",
                             "bPrimitiveArray",
@@ -220,7 +220,7 @@ public class WhitespaceTransformation_BasicArraysTest {
                     )));
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -234,11 +234,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -253,11 +253,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, new ArrayList<>(Arrays.asList(null, "   ")));
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -280,11 +280,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -298,11 +298,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -316,11 +316,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -334,11 +334,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -352,11 +352,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -370,11 +370,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -388,11 +388,11 @@ public class WhitespaceTransformation_BasicArraysTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getMapBasicArrays();
+                    final Map<String, Object> expected = getLegacy2MapBasicArrays();
                     expected.put(key, "   ");
 
                     final Map<String, Object> actual = new WhitespaceTransformation(1, 2)
-                            .perform(pathElement, getMapBasicArrays(), null);
+                            .perform(pathElement, getLegacy2MapBasicArrays(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
