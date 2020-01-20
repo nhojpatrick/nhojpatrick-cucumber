@@ -88,7 +88,43 @@ public class PathArrayElementImplTest {
                     assertThat("should match", classUnderTest.getElementRaw(), is(equalTo("abc[2]")));
                 }),
 
-                dynamicTest("getElementRaw", () -> {
+                dynamicTest("getPath(null)", () -> {
+                    assertThat("should match", classUnderTest.getPath(null), is(equalTo("abc[2]")));
+                }),
+
+                dynamicTest("getPath(\"\")", () -> {
+                    assertThat("should match", classUnderTest.getPath(""), is(equalTo("abc[2]")));
+                }),
+
+                dynamicTest("getPath(\"qwerty\")", () -> {
+                    assertThat("should match", classUnderTest.getPath("qwerty"), is(equalTo("qwerty.abc[2]")));
+                }),
+
+                dynamicTest("getPath(null, false)", () -> {
+                    assertThat("should match", classUnderTest.getPath(null, false), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"\", false)", () -> {
+                    assertThat("should match", classUnderTest.getPath("", false), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"qwerty\", false)", () -> {
+                    assertThat("should match", classUnderTest.getPath("qwerty", false), is(equalTo("qwerty.abc")));
+                }),
+
+                dynamicTest("getPath(null, true)", () -> {
+                    assertThat("should match", classUnderTest.getPath(null, true), is(equalTo("abc[2]")));
+                }),
+
+                dynamicTest("getPath(\"\", true)", () -> {
+                    assertThat("should match", classUnderTest.getPath("", true), is(equalTo("abc[2]")));
+                }),
+
+                dynamicTest("getPath(\"qwerty\", true)", () -> {
+                    assertThat("should match", classUnderTest.getPath("qwerty", true), is(equalTo("qwerty.abc[2]")));
+                }),
+
+                dynamicTest("getArrayIndex", () -> {
                     assertThat("should match", classUnderTest.getArrayIndex(), is(equalTo(2)));
                 }),
 
