@@ -91,7 +91,43 @@ public class PathAttributeElementImplTest {
                     assertThat("should match", classUnderTest.getElementRaw(), is(equalTo("abc")));
                 }),
 
-                dynamicTest("getElementRaw", () -> {
+                dynamicTest("getPath(null)", () -> {
+                    assertThat("should match", classUnderTest.getPath(null), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"\")", () -> {
+                    assertThat("should match", classUnderTest.getPath(""), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"qwerty\")", () -> {
+                    assertThat("should match", classUnderTest.getPath("qwerty"), is(equalTo("qwerty.abc")));
+                }),
+
+                dynamicTest("getPath(null, false)", () -> {
+                    assertThat("should match", classUnderTest.getPath(null, false), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"\", false)", () -> {
+                    assertThat("should match", classUnderTest.getPath("", false), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"qwerty\", false)", () -> {
+                    assertThat("should match", classUnderTest.getPath("qwerty", false), is(equalTo("qwerty.abc")));
+                }),
+
+                dynamicTest("getPath(null, true)", () -> {
+                    assertThat("should match", classUnderTest.getPath(null, true), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"\", true)", () -> {
+                    assertThat("should match", classUnderTest.getPath("", true), is(equalTo("abc")));
+                }),
+
+                dynamicTest("getPath(\"qwerty\", true)", () -> {
+                    assertThat("should match", classUnderTest.getPath("qwerty", true), is(equalTo("qwerty.abc")));
+                }),
+
+                dynamicTest("getArrayIndex", () -> {
                     final Executable testMethod = () -> {
                         classUnderTest.getArrayIndex();
                     };
