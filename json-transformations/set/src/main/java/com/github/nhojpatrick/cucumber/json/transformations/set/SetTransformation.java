@@ -2,6 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.set;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
@@ -56,7 +58,9 @@ public class SetTransformation
             throws IllegalKeyException,
             IllegalPathOperationException {
 
-        requireNonNullPath(pathElement);
+        if (isNull(pathElement)) {
+            throw new NullPathElementException();
+        }
 
         final Map<String, Object> output = nonNull(inputRaw)
                 ? inputRaw
@@ -76,7 +80,7 @@ public class SetTransformation
             if (!isTypedList(objRaw, Object.class)) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to set path '%s', as is not Array.",
-                        getPath(currentPath, pathElement)
+                        pathElement.getPath(currentPath, false)
                 ));
             }
 
