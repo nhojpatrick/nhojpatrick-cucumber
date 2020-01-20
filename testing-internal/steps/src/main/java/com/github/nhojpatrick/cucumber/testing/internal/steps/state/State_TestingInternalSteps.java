@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_OBJECT;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.LEGACY2_MAP_EMPTY;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicAttributes;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2ObjectBasicArrays;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2ObjectBasicAttributes;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_OBJECT;
 
 public class State_TestingInternalSteps {
 
@@ -40,6 +41,10 @@ public class State_TestingInternalSteps {
 
                 case "List_Empty":
                     this.runState.set(row.getKey(), new ArrayList<>());
+                    break;
+
+                case "Map_BasicArrays":
+                    this.runState.set(row.getKey(), getMapBasicArrays());
                     break;
 
                 case "Legacy2_Map_BasicArrays":
