@@ -4,12 +4,10 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.InvalidPathException;
-import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transform;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transform.validation.PathValidatorFactory;
-import com.google.common.annotations.VisibleForTesting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -88,7 +86,7 @@ public class TransformImpl
                     && isNull(output.get(pathElement.getElement()))) {
                 throw new IllegalPathOperationException(String.format(
                         "AutoConvert 'null' value to object disabled, at path '%s'.",
-                        getPath(previousPath, pathElement)
+                        pathElement.getPath(previousPath, false)
                 ));
             }
 
@@ -98,7 +96,7 @@ public class TransformImpl
                 if (!transformation.isParentPathAutoCreated()) {
                     throw new IllegalPathOperationException(String.format(
                             "Path '%s' does not existing and automatic creation disabled by transformation.",
-                            getPath(previousPath, pathElement)
+                            pathElement.getPath(previousPath, false)
                     ));
                 }
 
@@ -118,7 +116,7 @@ public class TransformImpl
                     && pathElement.isArray()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert object to array, at path '%s'.",
-                        getPath(previousPath, pathElement)
+                        pathElement.getPath(previousPath, false)
                 ));
             }
 
@@ -126,7 +124,7 @@ public class TransformImpl
                     && pathElement.isAttribute()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert array to object, at path '%s'.",
-                        getPath(previousPath, pathElement)
+                        pathElement.getPath(previousPath)
                 ));
             }
 
@@ -137,7 +135,7 @@ public class TransformImpl
                         && !transformation.isParentPathAutoCreated()) {
                     throw new IllegalPathOperationException(String.format(
                             "Path '%s', beyond index of '%s', automatic creation disabled by transformation.",
-                            getPath(previousPath, pathElement),
+                            pathElement.getPath(previousPath, true),
                             listMap.size() - 1
                     ));
                 }
@@ -152,7 +150,7 @@ public class TransformImpl
 
                     final Map<String, Object> mapUpdated = transform(depth + 1,
                             map,
-                            getPath(previousPath, pathElement),
+                            pathElement.getPath(previousPath),
                             pathElements.subList(1, pathElements.size()),
                             transformation);
 
@@ -164,7 +162,7 @@ public class TransformImpl
             } else if (isTypedListObject) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to convert primative array to object array, at path '%s'.",
-                        getPath(previousPath, pathElement)
+                        pathElement.getPath(previousPath, false)
                 ));
 
             } else {
@@ -173,13 +171,13 @@ public class TransformImpl
                     if (pathElement.isAttribute()) {
                         throw new IllegalPathOperationException(String.format(
                                 "Unable to convert primative to object, at path '%s'.",
-                                getPath(previousPath, pathElement)
+                                pathElement.getPath(previousPath, false)
                         ));
 
                     } else {
                         throw new IllegalPathOperationException(String.format(
                                 "Unable to convert primative to array, at path '%s'.",
-                                getPath(previousPath, pathElement)
+                                pathElement.getPath(previousPath, false)
                         ));
                     }
                 }
@@ -188,7 +186,7 @@ public class TransformImpl
 
                 final Map<String, Object> innerOutput = transform(depth + 1,
                         innerInput,
-                        getPath(previousPath, pathElement),
+                        pathElement.getPath(previousPath),
                         pathElements.subList(1, pathElements.size()),
                         transformation
                 );
@@ -205,36 +203,6 @@ public class TransformImpl
         );
 
         return output;
-    }
-
-    @VisibleForTesting
-    protected String getPath(final String currentPath,
-                             final PathElement pathElement)
-            throws NullPathElementException {
-
-        requireNonNullPath(pathElement);
-
-        String path;
-        if (isNull(currentPath)) {
-            path = pathElement.getElementRaw();
-
-        } else if ("".equals(currentPath)) {
-            path = pathElement.getElementRaw();
-
-        } else {
-            path = currentPath + "." + pathElement.getElementRaw();
-        }
-
-        return path;
-    }
-
-    @VisibleForTesting
-    protected void requireNonNullPath(final PathElement pathElement)
-            throws NullPathElementException {
-
-        if (isNull(pathElement)) {
-            throw new NullPathElementException();
-        }
     }
 
 }

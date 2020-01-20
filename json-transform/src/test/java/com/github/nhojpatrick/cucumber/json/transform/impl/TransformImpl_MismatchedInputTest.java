@@ -112,7 +112,7 @@ public class TransformImpl_MismatchedInputTest {
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
                                     "Unable to convert primative array to object array, at path '%s'.",
-                                    "a2ArrayPrimitives[1]"
+                                    "a2ArrayPrimitives"
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -133,7 +133,7 @@ public class TransformImpl_MismatchedInputTest {
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
                                     "Unable to convert object to array, at path '%s'.",
-                                    "a2Path[1]"
+                                    "a2Path"
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -175,7 +175,7 @@ public class TransformImpl_MismatchedInputTest {
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
                                     "Unable to convert primative to array, at path '%s'.",
-                                    "a2Primitive[1]"
+                                    "a2Primitive"
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
