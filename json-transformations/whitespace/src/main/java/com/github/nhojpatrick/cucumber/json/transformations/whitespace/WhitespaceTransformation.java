@@ -2,6 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.whitespace;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions.WhitespacePrefixException;
@@ -75,7 +76,9 @@ public class WhitespaceTransformation
             throws IllegalKeyException,
             IllegalPathOperationException {
 
-        requireNonNullPath(pathElement);
+        if (isNull(pathElement)) {
+            throw new NullPathElementException();
+        }
 
         final Map<String, Object> output = nonNull(inputRaw)
                 ? inputRaw
@@ -99,7 +102,7 @@ public class WhitespaceTransformation
             if (!isTypedList(objRaw, Object.class)) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to whitespace path '%s', as is not Array.",
-                        getPath(currentPath, pathElement)
+                        pathElement.getPath(currentPath, false)
                 ));
             }
 

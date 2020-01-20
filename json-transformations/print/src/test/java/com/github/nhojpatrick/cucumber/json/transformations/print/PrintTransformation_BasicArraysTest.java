@@ -151,9 +151,8 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s[%s]', as is not Array.",
-                                    key,
-                                    arrayIndex
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -171,9 +170,8 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s[%s]', as is not Array.",
-                                    key,
-                                    arrayIndex
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -285,9 +283,8 @@ public class PrintTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s[%s]', does not exist.",
-                                    key,
-                                    arrayIndex
+                                    "Unable to print path '%s', does not exist.",
+                                    key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );

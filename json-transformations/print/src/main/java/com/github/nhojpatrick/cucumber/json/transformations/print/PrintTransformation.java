@@ -2,6 +2,7 @@ package com.github.nhojpatrick.cucumber.json.transformations.print;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperationException;
+import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.json.core.transform.utils.ListTypeUtil.isTypedList;
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
@@ -49,7 +51,9 @@ public class PrintTransformation
             throws IllegalKeyException,
             IllegalPathOperationException {
 
-        requireNonNullPath(pathElement);
+        if (isNull(pathElement)) {
+            throw new NullPathElementException();
+        }
 
         final Map<String, Object> output = nonNull(inputRaw)
                 ? inputRaw
@@ -58,14 +62,14 @@ public class PrintTransformation
         if (!output.containsKey(pathElement.getElement())) {
             throw new IllegalPathOperationException(String.format(
                     "Unable to print path '%s', does not exist.",
-                    getPath(currentPath, pathElement)
+                    pathElement.getPath(currentPath, false)
             ));
         }
 
         if (pathElement.isAttribute()) {
 
             LOGGER.error("Printing Path '{}' Value '{}'",
-                    getPath(currentPath, pathElement),
+                    pathElement.getPath(currentPath),
                     output.get(pathElement.getElement())
             );
 
@@ -76,7 +80,7 @@ public class PrintTransformation
             if (!isTypedList(objRaw, Object.class)) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to print path '%s', as is not Array.",
-                        getPath(currentPath, pathElement)
+                        pathElement.getPath(currentPath, false)
                 ));
             }
 
@@ -85,7 +89,7 @@ public class PrintTransformation
             if (pathElement.getArrayIndex() >= listObj.size()) {
                 throw new IllegalPathOperationException(String.format(
                         "Unable to print path '%s', beyond index of '%s'.",
-                        getPath(currentPath, pathElement),
+                        pathElement.getPath(currentPath),
                         listObj.size() - 1
                 ));
             }

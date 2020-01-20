@@ -1,19 +1,10 @@
 package com.github.nhojpatrick.cucumber.json.transformations.core;
 
-import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathArrayElementImpl;
-import com.github.nhojpatrick.cucumber.json.core.validation.impl.PathAttributeElementImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
-import org.junit.jupiter.api.function.Executable;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import static com.github.nhojpatrick.hamcrest.lang.IsHashCode.hashCodeGenerated;
 import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
@@ -21,10 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 public class BaseTransformationTest {
 
@@ -77,71 +65,6 @@ public class BaseTransformationTest {
             );
         }
 
-    }
-
-    @TestFactory
-    @DisplayName("getPath")
-    public Collection<DynamicTest> getPath() {
-
-        final BaseTransformation classUnderTest = new TestingBaseTransformation();
-
-        return Arrays.asList(
-
-                dynamicTest("null CurrentPath, null PathElement", () -> {
-                    final Executable testMethod = () -> classUnderTest.getPath(null, null);
-
-                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("null CurrentPath, Valid PathElement", () -> {
-                    final String path = classUnderTest.getPath(null, new PathAttributeElementImpl("aPath"));
-
-                    assertThat("Unexpected Path", path, is(equalTo("aPath")));
-                }),
-
-                dynamicTest("empty CurrentPath, null PathElement", () -> {
-                    final Executable testMethod = () -> classUnderTest.getPath("", null);
-
-                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("empty CurrentPath, Valid PathElement", () -> {
-                    final String path = classUnderTest.getPath("", new PathAttributeElementImpl("aPath"));
-
-                    assertThat("Unexpected Path", path, is(equalTo("aPath")));
-                }),
-
-                dynamicTest("Valid CurrentPath, null PathElement", () -> {
-                    final Executable testMethod = () -> classUnderTest.getPath("parentPath", null);
-
-                    final NullPathElementException thrown = assertThrows(NullPathElementException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo("Null Path Element."))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("Valid CurrentPath, Valid PathElement", () -> {
-                    final String path = classUnderTest.getPath("parentPath", new PathArrayElementImpl("aPath[1]", "", 1));
-
-                    assertThat("Unexpected Path", path, is(equalTo("parentPath.aPath[1]")));
-                }),
-
-                dynamicTest("Valid CurrentPath, Valid PathAttributeElement", () -> {
-                    final String path = classUnderTest.getPath("parentPath", new PathAttributeElementImpl("aPath"));
-
-                    assertThat("Unexpected Path", path, is(equalTo("parentPath.aPath")));
-                })
-
-        );
     }
 
 }

@@ -156,9 +156,8 @@ public class SetTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to set path '%s[%s]', as is not Array.",
-                                    key,
-                                    arrayIndex
+                                    "Unable to set path '%s', as is not Array.",
+                                    key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
@@ -176,9 +175,8 @@ public class SetTransformation_BasicArraysTest {
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to set path '%s[%s]', as is not Array.",
-                                    key,
-                                    arrayIndex
+                                    "Unable to set path '%s', as is not Array.",
+                                    key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
