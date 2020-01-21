@@ -11,7 +11,11 @@ public class TestingInternalObjectsConstants {
 
     public static final Map<String, Object> MAP_BASIC_ARRAYS;
 
+    public static final Map<String, Object> MAP_BASIC_ATTRIBUTES;
+
     public static final BasicArraysOuterObj OBJECT_BASIC_ARRAYS;
+
+    public static final BasicAttributesOuterObj OBJECT_BASIC_ATTRIBUTES;
 
     public static Map<String, Object> getMapBasicArrays() {
 
@@ -55,6 +59,24 @@ public class TestingInternalObjectsConstants {
         MAP_BASIC_ARRAYS = Collections.unmodifiableMap(new LinkedHashMap(getMapBasicArrays()));
     }
 
+    public static Map<String, Object> getMapBasicAttributes() {
+
+        final Map<String, Object> basicAttributes = new LinkedHashMap<>();
+
+        basicAttributes.put(BasicAttributesOuterObj.A_BOOLEAN, true);
+        basicAttributes.put(BasicAttributesOuterObj.A_FLOAT, 12.34f);
+        basicAttributes.put(BasicAttributesOuterObj.A_INTEGER, 1234);
+        basicAttributes.put(BasicAttributesOuterObj.A_NULL, null);
+        basicAttributes.put(BasicAttributesOuterObj.A_OBJECT_EMPTY, new LinkedHashMap());
+        basicAttributes.put(BasicAttributesOuterObj.A_STRING, "aValue");
+
+        return basicAttributes;
+    }
+
+    static {
+        MAP_BASIC_ATTRIBUTES = Collections.unmodifiableMap(new LinkedHashMap(getMapBasicAttributes()));
+    }
+
     public static BasicArraysOuterObj getObjectBasicArrays() {
 
         final List<BasicArraysInnerObj> objectsArray = new ArrayList<>();
@@ -74,6 +96,15 @@ public class TestingInternalObjectsConstants {
 
     static {
         OBJECT_BASIC_ARRAYS = getObjectBasicArrays();
+    }
+
+    public static BasicAttributesOuterObj getObjectBasicAttributes() {
+
+        return new BasicAttributesOuterObj(true, 12.34f, 1234, "aValue");
+    }
+
+    static {
+        OBJECT_BASIC_ATTRIBUTES = getObjectBasicAttributes();
     }
 
 }
