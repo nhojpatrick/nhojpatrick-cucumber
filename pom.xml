@@ -508,6 +508,7 @@
 		<profile>
 			<id>qa_checkstyle</id>
 			<build>
+				<defaultGoal>validate</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
