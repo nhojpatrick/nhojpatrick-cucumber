@@ -57,6 +57,10 @@ public class State_TestingInternalSteps {
                     this.runState.set(row.getKey(), new LinkedHashMap<String, Object>());
                     break;
 
+                case "Map_Null":
+                    this.runState.set(row.getKey(), (Map<String, Object>) null);
+                    break;
+
                 case "Legacy2_Map_BasicArrays":
                     this.runState.set(row.getKey(), getLegacy2MapBasicArrays());
                     break;
