@@ -42,7 +42,13 @@ public class TransformImpl
                 .get()
                 .parsePath(path);
 
-        final Map<String, Object> output = transform(0, input, "", pathElements, transformation);
+        final Map<String, Object> output = transform(
+                0,
+                isNull(input) ? new LinkedHashMap<>() : input,
+                "",
+                pathElements,
+                transformation
+        );
 
         LOGGER.debug("After path='{}' transformation={} output={}", path, transformation, output);
 
@@ -71,9 +77,7 @@ public class TransformImpl
             throw new IllegalPathOperationException("FIXME 0");
         }
 
-        Map<String, Object> output = isNull(input)
-                ? new LinkedHashMap<>()
-                : input;
+        Map<String, Object> output = input;
 
         if (pathElements.size() == 1) {
             LOGGER.debug("Execute Before depth={} path='{}' input={}", depth, pathElements, output);
