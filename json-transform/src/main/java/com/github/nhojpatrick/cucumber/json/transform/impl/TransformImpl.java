@@ -84,10 +84,19 @@ public class TransformImpl
 
             if (output.containsKey(pathElement.getElement())
                     && isNull(output.get(pathElement.getElement()))) {
-                throw new IllegalPathOperationException(String.format(
-                        "AutoConvert 'null' value to object disabled, at path '%s'.",
-                        pathElement.getPath(previousPath, false)
-                ));
+
+                if (pathElement.isArray()) {
+                    throw new IllegalPathOperationException(String.format(
+                            "AutoConvert 'null' value to array disabled, at path '%s'.",
+                            pathElement.getPath(previousPath, false)
+                    ));
+
+                } else {
+                    throw new IllegalPathOperationException(String.format(
+                            "AutoConvert 'null' value to object disabled, at path '%s'.",
+                            pathElement.getPath(previousPath)
+                    ));
+                }
             }
 
             Object innerRaw = output.get(pathElement.getElement());
@@ -131,7 +140,14 @@ public class TransformImpl
             if (isTypedListMap) {
                 final List<Map> listMap = (List<Map>) innerRaw;
 
-                if (pathElement.getArrayIndex() >= listMap.size()
+                if (listMap.isEmpty()
+                        && !transformation.isParentPathAutoCreated()) {
+                    throw new IllegalPathOperationException(String.format(
+                            "Path '%s', as array is empty, automatic creation disabled by transformation.",
+                            pathElement.getPath(previousPath, false)
+                    ));
+
+                } else if (pathElement.getArrayIndex() >= listMap.size()
                         && !transformation.isParentPathAutoCreated()) {
                     throw new IllegalPathOperationException(String.format(
                             "Path '%s', beyond index of '%s', automatic creation disabled by transformation.",
