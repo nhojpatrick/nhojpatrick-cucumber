@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_BASIC_ARRAYS;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.MAP_BASIC_ATTRIBUTES;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.OBJECT_BASIC_ARRAYS;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.OBJECT_BASIC_ATTRIBUTES;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -56,6 +58,42 @@ public class TestingInternalObjectsConstantsTest {
                 () -> assertThat("Maps against Expectation", mapBasicArraysAsStr, is(equalTo(expectation))),
                 () -> assertThat("Object against Map", objectBasicArraysAsStr, is(equalTo(mapBasicArraysAsStr))),
                 () -> assertThat("Object against Expectation", objectBasicArraysAsStr, is(equalTo(expectation)))
+        );
+    }
+
+    @Test
+    public void basicAttributes()
+            throws JsonProcessingException {
+
+        final String mapBasicAttributesAsStr = new ObjectMapper()
+                .writeValueAsString(MAP_BASIC_ATTRIBUTES);
+
+        final String objectBasicAttributesAsStr = new ObjectMapper()
+                .writeValueAsString(OBJECT_BASIC_ATTRIBUTES);
+
+        final String expectation = new StringBuilder()
+                .append("{")
+                .append("\"")
+                .append(BasicAttributesOuterObj.A_BOOLEAN)
+                .append("\":true,\"")
+                .append(BasicAttributesOuterObj.A_FLOAT)
+                .append("\":12.34,\"")
+                .append(BasicAttributesOuterObj.A_INTEGER)
+                .append("\":1234,\"")
+                .append(BasicAttributesOuterObj.A_NULL)
+                .append("\":null,\"")
+                .append(BasicAttributesOuterObj.A_OBJECT_EMPTY)
+                .append("\":{},\"")
+                .append(BasicAttributesOuterObj.A_STRING)
+                .append("\":\"aValue\"")
+                .append("}")
+                .toString();
+
+        assertAll("Check Both Ways",
+                () -> assertThat("Maps against Object", mapBasicAttributesAsStr, is(equalTo(objectBasicAttributesAsStr))),
+                () -> assertThat("Maps against Expectation", mapBasicAttributesAsStr, is(equalTo(expectation))),
+                () -> assertThat("Object against Map", objectBasicAttributesAsStr, is(equalTo(mapBasicAttributesAsStr))),
+                () -> assertThat("Object against Expectation", objectBasicAttributesAsStr, is(equalTo(expectation)))
         );
     }
 
