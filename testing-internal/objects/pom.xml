@@ -83,6 +83,7 @@
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.testing.internal.objects</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<checkstyle.skip>true</checkstyle.skip>
 		<jacoco.skip>true</jacoco.skip>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<pmd.skip>true</pmd.skip>
