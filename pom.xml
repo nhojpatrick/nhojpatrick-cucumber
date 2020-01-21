@@ -571,6 +571,7 @@
 		<profile>
 			<id>qa_pmd</id>
 			<build>
+				<defaultGoal>validate</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
