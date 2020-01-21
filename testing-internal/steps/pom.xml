@@ -91,6 +91,7 @@
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.testing.internal.steps</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<checkstyle.skip>true</checkstyle.skip>
+		<cpd.skip>true</cpd.skip>
 		<jacoco.skip>true</jacoco.skip>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<pmd.skip>true</pmd.skip>
