@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
@@ -50,6 +51,10 @@ public class State_TestingInternalSteps {
 
                 case "Map_BasicAttributes":
                     this.runState.set(row.getKey(), getMapBasicAttributes());
+                    break;
+
+                case "Map_Empty":
+                    this.runState.set(row.getKey(), new LinkedHashMap<String, Object>());
                     break;
 
                 case "Legacy2_Map_BasicArrays":
