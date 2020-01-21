@@ -85,6 +85,7 @@
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<jacoco.skip>true</jacoco.skip>
 		<maven.deploy.skip>true</maven.deploy.skip>
+		<pmd.skip>true</pmd.skip>
 		<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 	</properties>
 </project>
