@@ -87,7 +87,8 @@ public class TransformImpl
         } else if (pathElements.size() > 1) {
 
             if (output.containsKey(pathElement.getElement())
-                    && isNull(output.get(pathElement.getElement()))) {
+                    && isNull(output.get(pathElement.getElement()))
+                    && !transformation.isParentPathAutoCreated()) {
 
                 if (pathElement.isArray()) {
                     throw new IllegalPathOperationException(String.format(
