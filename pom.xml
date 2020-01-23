@@ -770,6 +770,8 @@
 		<module>state</module>
 		<module>state-steps</module>
 		<module>testing-internal/objects</module>
+		<module>testing-internal/objects-legacy</module>
+		<module>testing-internal/objects-legacy2</module>
 		<module>testing-internal/steps</module>
 	</modules>
 	<!--repositories / -->
@@ -848,6 +850,16 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-testing-internal-objects-legacy</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-testing-internal-objects-legacy2</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
