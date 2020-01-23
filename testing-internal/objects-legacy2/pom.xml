@@ -5,14 +5,15 @@
 	<!--parent / -->
 	<parent>
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
-		<artifactId>nhojpatrick-cucumber-json-transformations-parent</artifactId>
+		<artifactId>nhojpatrick-cucumber</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-json-transformations-remove</artifactId>
+	<artifactId>nhojpatrick-cucumber-testing-internal-objects-legacy2</artifactId>
 	<!--packaging / -->
+	<packaging>jar</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->
@@ -28,6 +29,14 @@
 	<!--scm / -->
 	<!--organization / -->
 	<!--build /-->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.joda</groupId>
+				<artifactId>joda-beans-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 	<!--profiles / -->
 	<!--modules / -->
 	<!--repositories / -->
@@ -35,36 +44,16 @@
 	<!--dependencies / -->
 	<dependencies>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transformations-core</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-testing-internal-objects-legacy2</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-collections</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.hamcrest</groupId>
-			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs-annotations</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -75,6 +64,10 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.joda</groupId>
+			<artifactId>joda-beans</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -92,7 +85,13 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transformations.remove</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2</project.Automatic-Module-Name>
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<checkstyle.skip>true</checkstyle.skip>
+		<cpd.skip>true</cpd.skip>
+		<jacoco.skip>true</jacoco.skip>
+		<maven.deploy.skip>true</maven.deploy.skip>
+		<pmd.skip>true</pmd.skip>
+		<skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
 	</properties>
 </project>

@@ -60,6 +60,14 @@
 			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-objects-legacy</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-objects-legacy2</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<scope>test</scope>
