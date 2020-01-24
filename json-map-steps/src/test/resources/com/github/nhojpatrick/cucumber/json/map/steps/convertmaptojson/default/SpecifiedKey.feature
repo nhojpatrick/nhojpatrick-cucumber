@@ -29,10 +29,10 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Specified keys
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Legacy2_Map_BasicArrays |
+      | jsonMap.key | Map_BasicArrays |
     When I convert json map using RunStateKey "jsonMap.key", to json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
-      | jsonString.key | {\n  "null_array" : null,\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "primitive" : "aPrimitive",\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ]\n} |
+      | jsonString.key | {\n  "objects_array" : [ {\n    "object_array_id" : "aObjectArrayId"\n  }, {\n    "object_array_id" : "bObjectArrayId"\n  }, {\n    "object_array_id" : "cObjectArrayId"\n  }, {\n    "object_array_id" : "dObjectArrayId"\n  } ],\n  "objects_empty" : [ ],\n  "objects_null" : null,\n  "primitives_array" : [ "aPrimitiveArray", "bPrimitiveArray", "cPrimitiveArray", "dPrimitiveArray" ],\n  "primitives_empty" : [ ],\n  "primitives_null" : null\n} |
 
 
   @Success
