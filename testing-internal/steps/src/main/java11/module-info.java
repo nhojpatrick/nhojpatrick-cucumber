@@ -11,5 +11,4 @@ module com.github.nhojpatrick.cucumber.testing.internal.steps {
     requires transitive com.github.nhojpatrick.cucumber.state;
     requires transitive com.github.nhojpatrick.cucumber.testing.internal.objects;
     requires transitive com.github.nhojpatrick.cucumber.testing.internal.objects.legacy;
-    requires transitive com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2;
 }
