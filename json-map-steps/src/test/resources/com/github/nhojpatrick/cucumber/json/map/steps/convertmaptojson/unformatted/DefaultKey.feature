@@ -29,10 +29,10 @@ Feature: Convert Map To Json (Unformatted Formatting) - Checking with Default ke
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | runState.json.map | Legacy2_Map_BasicArrays |
+      | runState.json.map | Map_BasicArrays |
     When I convert json map to unformatted json string using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.string | {"null_array":null,"objects_array":[{"object_array_id":"aObjectArrayId"},{"object_array_id":"bObjectArrayId"},{"object_array_id":"cObjectArrayId"},{"object_array_id":"dObjectArrayId"}],"primitive":"aPrimitive","primitives_array":["aPrimitiveArray","bPrimitiveArray","cPrimitiveArray","dPrimitiveArray"]} |
+      | runState.json.string | {"objects_array":[{"object_array_id":"aObjectArrayId"},{"object_array_id":"bObjectArrayId"},{"object_array_id":"cObjectArrayId"},{"object_array_id":"dObjectArrayId"}],"objects_empty":[],"objects_null":null,"primitives_array":["aPrimitiveArray","bPrimitiveArray","cPrimitiveArray","dPrimitiveArray"],"primitives_empty":[],"primitives_null":null} |
 
 
   @Success
