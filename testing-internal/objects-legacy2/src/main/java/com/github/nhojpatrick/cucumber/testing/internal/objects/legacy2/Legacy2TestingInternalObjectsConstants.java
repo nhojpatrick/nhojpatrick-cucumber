@@ -13,8 +13,6 @@ public class Legacy2TestingInternalObjectsConstants {
 
     public static final Map<String, Object> LEGACY2_MAP_BASIC_ATTRIBUTES;
 
-    public static final Map<String, Object> LEGACY2_MAP_EMPTY = Collections.unmodifiableMap(new HashMap<>());
-
     public static final Legacy2BasicArraysOuterObj LEGACY2_OBJECT_BASIC_ARRAYS;
 
     public static final Legacy2BasicAttributesOuterObj LEGACY2_OBJECT_BASIC_ATTRIBUTES;

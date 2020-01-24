@@ -7,7 +7,6 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingIn
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_OBJECT;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.LEGACY2_MAP_EMPTY;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicArrays;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicAttributes;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2ObjectBasicArrays;
@@ -67,10 +65,6 @@ public class State_TestingInternalSteps {
 
                 case "Legacy2_Map_BasicAttributes":
                     this.runState.set(row.getKey(), getLegacy2MapBasicAttributes());
-                    break;
-
-                case "Legacy2_Map_Empty":
-                    this.runState.set(row.getKey(), new HashMap<>(LEGACY2_MAP_EMPTY));
                     break;
 
                 case "Null":

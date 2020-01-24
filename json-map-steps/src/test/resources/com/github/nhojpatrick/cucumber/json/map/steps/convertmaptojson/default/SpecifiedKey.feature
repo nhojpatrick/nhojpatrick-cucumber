@@ -20,7 +20,7 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Specified keys
   @Error
   Scenario: Empty input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Legacy2_Map_Empty |
+      | jsonMap.key | Map_Empty |
     Then I convert json map using RunStateKey "jsonMap.key", to json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
       | jsonString.key | { } |
