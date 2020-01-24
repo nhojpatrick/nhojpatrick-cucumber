@@ -38,7 +38,7 @@ Feature: Convert Map To Json (Default Formatting) - Checking with Default keys
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | runState.json.map | Legacy2_Map_BasicAttributes |
+      | runState.json.map | Map_BasicAttributes |
     When I convert json map to json string using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.string | {\n  "a_boolean" : true,\n  "a_float" : 12.34,\n  "a_integer" : 1234,\n  "a_null" : null,\n  "a_object" : { },\n  "a_string" : "aValue"\n} |
+      | runState.json.string | {\n  "a_boolean" : true,\n  "a_float" : 12.34,\n  "a_integer" : 1234,\n  "a_null" : null,\n  "a_object_empty" : { },\n  "a_string" : "aValue"\n} |

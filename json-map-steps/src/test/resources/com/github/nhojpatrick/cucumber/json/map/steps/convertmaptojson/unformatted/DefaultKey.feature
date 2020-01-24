@@ -38,7 +38,7 @@ Feature: Convert Map To Json (Unformatted Formatting) - Checking with Default ke
   @Success
   Scenario: Simple input
     Given TestingInternalSteps I have setup the run state for keys and type:
-      | runState.json.map | Legacy2_Map_BasicAttributes |
+      | runState.json.map | Map_BasicAttributes |
     When I convert json map to unformatted json string using default RunStateKeys
     Then I have run state key->value string pairs of:
-      | runState.json.string | {"a_boolean":true,"a_float":12.34,"a_integer":1234,"a_null":null,"a_object":{},"a_string":"aValue"} |
+      | runState.json.string | {"a_boolean":true,"a_float":12.34,"a_integer":1234,"a_null":null,"a_object_empty":{},"a_string":"aValue"} |

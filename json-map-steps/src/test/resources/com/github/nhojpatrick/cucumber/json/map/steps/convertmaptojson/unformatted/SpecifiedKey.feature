@@ -44,7 +44,7 @@ Feature: Convert Map To Json (Unformatted Formatting) - Checking with Specified 
       | jsonMap.key    |
       | jsonString.key |
     And TestingInternalSteps I have setup the run state for keys and type:
-      | jsonMap.key | Legacy2_Map_BasicAttributes |
+      | jsonMap.key | Map_BasicAttributes |
     When I convert json map using RunStateKey "jsonMap.key", to unformatted json string using RunStateKey "jsonString.key"
     Then I have run state key->value string pairs of:
-      | jsonString.key | {"a_boolean":true,"a_float":12.34,"a_integer":1234,"a_null":null,"a_object":{},"a_string":"aValue"} |
+      | jsonString.key | {"a_boolean":true,"a_float":12.34,"a_integer":1234,"a_null":null,"a_object_empty":{},"a_string":"aValue"} |
