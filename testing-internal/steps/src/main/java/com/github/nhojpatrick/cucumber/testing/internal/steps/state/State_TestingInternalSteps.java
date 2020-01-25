@@ -14,8 +14,6 @@ import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingIn
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicArrays;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicAttributes;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_OBJECT;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_OBJECT;
 
 public class State_TestingInternalSteps {
 
@@ -33,9 +31,6 @@ public class State_TestingInternalSteps {
         final Map<String, String> stringStringMap = data.asMap(String.class, String.class);
         for (final Map.Entry<String, String> row : stringStringMap.entrySet()) {
             switch (row.getValue()) {
-                case "ComplexObject":
-                    this.runState.set(row.getKey(), LEGACY_COMPLEX_OBJECT_AS_OBJECT);
-                    break;
 
                 case "List_Empty":
                     this.runState.set(row.getKey(), new ArrayList<>());
@@ -75,10 +70,6 @@ public class State_TestingInternalSteps {
 
                 case "Object_Null":
                     this.runState.set(row.getKey(), (Object) null);
-                    break;
-
-                case "SimpleObject":
-                    this.runState.set(row.getKey(), LEGACY_SIMPLE_OBJECT_AS_OBJECT);
                     break;
 
                 default:
