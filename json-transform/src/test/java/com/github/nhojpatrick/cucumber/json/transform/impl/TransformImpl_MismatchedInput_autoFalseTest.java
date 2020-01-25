@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl_MismatchedInputTest.INPUT_TYPE;
+import static com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl_MismatchedInput_autoTrueTest.INPUT_TYPE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -28,11 +28,14 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-@DisplayName("Transform Impl " + INPUT_TYPE + "Tests")
-public class TransformImpl_MismatchedInputTest {
+@DisplayName("Transform Impl " + INPUT_TYPE + " autoFalse Tests")
+public class TransformImpl_MismatchedInput_autoFalseTest {
 
     public static final String INPUT_TYPE = "Mismatched Input";
+
+    private static final boolean IS_PARENT_PATH_AUTO_CREATED = false;
 
     @TestFactory
     @DisplayName(INPUT_TYPE + " 2 Level Paths")
@@ -64,6 +67,9 @@ public class TransformImpl_MismatchedInputTest {
 
                     final Transformation transform = mock(Transformation.class);
 
+                    when(transform.isParentPathAutoCreated())
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Executable testMethod = () -> classUnderTest.transform(key, inputSource.get(), transform);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
@@ -84,6 +90,9 @@ public class TransformImpl_MismatchedInputTest {
                     final String key = "a2ArrayPrimitives.anything";
 
                     final Transformation transform = mock(Transformation.class);
+
+                    when(transform.isParentPathAutoCreated())
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
 
                     final Executable testMethod = () -> classUnderTest.transform(key, inputSource.get(), transform);
 
@@ -106,6 +115,9 @@ public class TransformImpl_MismatchedInputTest {
 
                     final Transformation transform = mock(Transformation.class);
 
+                    when(transform.isParentPathAutoCreated())
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Executable testMethod = () -> classUnderTest.transform(key, inputSource.get(), transform);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
@@ -126,6 +138,9 @@ public class TransformImpl_MismatchedInputTest {
                     final String key = "a2Path[1].anything";
 
                     final Transformation transform = mock(Transformation.class);
+
+                    when(transform.isParentPathAutoCreated())
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
 
                     final Executable testMethod = () -> classUnderTest.transform(key, inputSource.get(), transform);
 
@@ -148,6 +163,9 @@ public class TransformImpl_MismatchedInputTest {
 
                     final Transformation transform = mock(Transformation.class);
 
+                    when(transform.isParentPathAutoCreated())
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Executable testMethod = () -> classUnderTest.transform(key, inputSource.get(), transform);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
@@ -168,6 +186,9 @@ public class TransformImpl_MismatchedInputTest {
                     final String key = "a2Primitive[1].anything";
 
                     final Transformation transform = mock(Transformation.class);
+
+                    when(transform.isParentPathAutoCreated())
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
 
                     final Executable testMethod = () -> classUnderTest.transform(key, inputSource.get(), transform);
 

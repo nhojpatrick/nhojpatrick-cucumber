@@ -15,7 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl_EmptyInputTest.INPUT_TYPE;
+import static com.github.nhojpatrick.cucumber.json.transform.impl.TransformImpl_NullInput_autoFalseTest.INPUT_TYPE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -29,12 +29,14 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@DisplayName("Transform Impl " + INPUT_TYPE + "Tests")
-public class TransformImpl_EmptyInputTest {
+@DisplayName("Transform Impl " + INPUT_TYPE + " autoTrue Tests")
+public class TransformImpl_NullInput_autoTrueTest {
 
-    public static final String INPUT_TYPE = "Empty Input";
+    public static final String INPUT_TYPE = "Null Input";
 
-    private static final Supplier<Map> INPUT_SOURCE = () -> new LinkedHashMap<>();
+    private static final Supplier<Map> INPUT_SOURCE = () -> null;
+
+    private static final boolean IS_PARENT_PATH_AUTO_CREATED = true;
 
     @TestFactory
     @DisplayName(INPUT_TYPE + " 1 Level Path")
@@ -54,8 +56,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("transform", "output");
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("")))
@@ -81,8 +85,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("transform", "output");
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("")))
@@ -122,8 +128,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("a2Path", a2Path);
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a2Path")))
@@ -152,8 +160,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("a2Path", a2Path);
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a2Path")))
@@ -173,7 +183,7 @@ public class TransformImpl_EmptyInputTest {
                 dynamicTest("a2Array[1].b2Path with " + INPUT_TYPE, () -> {
                     final String key = "a2Array[1].b2Path";
 
-                    final PathElement pathElement = new PathAttributeElementImpl("b2Path");
+                    final PathAttributeElementImpl pathElement = new PathAttributeElementImpl("b2Path");
 
                     final Map<String, Object> a2Path = new LinkedHashMap<>();
                     a2Path.put("transform", "output");
@@ -185,8 +195,10 @@ public class TransformImpl_EmptyInputTest {
                     )));
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a2Array[1]")))
@@ -218,8 +230,10 @@ public class TransformImpl_EmptyInputTest {
                     )));
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a2Array[1]")))
@@ -262,8 +276,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("a3Path", a3Path);
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Path.b3Path")))
@@ -295,8 +311,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("a3Path", a3Path);
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Path.b3Path")))
@@ -332,8 +350,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("a3Path", a3Path);
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Path.b3Array[2]")))
@@ -369,8 +389,10 @@ public class TransformImpl_EmptyInputTest {
                     expected.put("a3Path", a3Path);
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Path.b3Array[2]")))
@@ -405,8 +427,10 @@ public class TransformImpl_EmptyInputTest {
                     )));
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Array[1].b3Path")))
@@ -441,8 +465,10 @@ public class TransformImpl_EmptyInputTest {
                     )));
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Array[1].b3Path")))
@@ -481,8 +507,10 @@ public class TransformImpl_EmptyInputTest {
                     )));
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Array[1].b3Array[2]")))
@@ -521,8 +549,10 @@ public class TransformImpl_EmptyInputTest {
                     )));
 
                     final Transformation transform = mock(Transformation.class);
+
                     when(transform.isParentPathAutoCreated())
-                            .thenReturn(true);
+                            .thenReturn(IS_PARENT_PATH_AUTO_CREATED);
+
                     final Map<String, Object> transformOutput = new LinkedHashMap<>();
                     transformOutput.put("transform", "output");
                     when(transform.perform(eq(pathElement), anyMap(), eq("a3Array[1].b3Array[2]")))
