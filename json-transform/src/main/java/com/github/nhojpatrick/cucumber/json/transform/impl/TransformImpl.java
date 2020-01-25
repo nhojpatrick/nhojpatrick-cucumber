@@ -166,19 +166,35 @@ public class TransformImpl
                 }
 
                 final Map mapRaw = listMap.get(pathElement.getArrayIndex());
-                if (isTypedMap(mapRaw, String.class, Object.class)) {
-                    final Map<String, Object> map = (Map<String, Object>) mapRaw;
 
-                    final Map<String, Object> mapUpdated = transform(depth + 1,
-                            map,
-                            pathElement.getPath(previousPath),
-                            pathElements.subList(1, pathElements.size()),
-                            transformation);
-
-                    listMap.set(pathElement.getArrayIndex(), mapUpdated);
-
-                    output.put(pathElement.getElement(), listMap);
+                if (isNull(mapRaw)
+                        && !transformation.isParentPathAutoCreated()) {
+                    throw new IllegalPathOperationException(String.format(
+                            "AutoConvert 'null' value to object disabled, at path '%s'.",
+                            pathElement.getPath(previousPath)
+                    ));
                 }
+
+                final Map<String, Object> map;
+                if (isNull(mapRaw)) {
+                    map = new LinkedHashMap<>();
+
+                } else if (isTypedMap(mapRaw, String.class, Object.class)) {
+                    map = (Map<String, Object>) mapRaw;
+
+                } else {
+                    throw new RuntimeException("FIXME 1");
+                }
+
+                final Map<String, Object> mapUpdated = transform(depth + 1,
+                        map,
+                        pathElement.getPath(previousPath),
+                        pathElements.subList(1, pathElements.size()),
+                        transformation);
+
+                listMap.set(pathElement.getArrayIndex(), mapUpdated);
+
+                output.put(pathElement.getElement(), listMap);
 
             } else if (isTypedListObject) {
                 throw new IllegalPathOperationException(String.format(
