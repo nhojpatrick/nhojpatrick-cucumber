@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.github.nhojpatrick.cucumber.json.transformations.print.PrintTransformationTest.getInMemoryAppender;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.legacy2.Legacy2TestingInternalObjectsConstants.getLegacy2MapBasicAttributes;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
 import static com.github.nhojpatrick.hamcrest.optionals.IsOptional.optionalContains;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -36,200 +36,128 @@ public class PrintTransformation_BasicAttributesTest {
 
         return Arrays.asList(
 
-                dynamicTest("objects_array", () -> {
-                    final String key = "objects_array";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("objects_array[1]", () -> {
-                    final String key = "objects_array";
+                dynamicTest("a_boolean[1]", () -> {
+                    final String key = "a_boolean";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
+                                    "Unable to print path '%s', as is not Array.",
                                     key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                dynamicTest("objects_array[5]", () -> {
-                    final String key = "objects_array";
-                    final int arrayIndex = 5;
-
-                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("primitive", () -> {
-                    final String key = "primitive";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("primitive[1]", () -> {
-                    final String key = "primitive";
+                dynamicTest("a_float[1]", () -> {
+                    final String key = "a_float";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
+                                    "Unable to print path '%s', as is not Array.",
                                     key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                dynamicTest("primitive[5]", () -> {
-                    final String key = "primitive";
-                    final int arrayIndex = 5;
-
-                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("primitives_array", () -> {
-                    final String key = "primitives_array";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("primitives_array[1]", () -> {
-                    final String key = "primitives_array";
+                dynamicTest("a_integer[1]", () -> {
+                    final String key = "a_integer";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
                             () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
+                                    "Unable to print path '%s', as is not Array.",
                                     key
                             )))),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
 
-                dynamicTest("primitives_array[5]", () -> {
-                    final String key = "primitives_array";
-                    final int arrayIndex = 5;
-
-                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("unknown", () -> {
-                    final String key = "unknown";
-
-                    final PathElement pathElement = new PathAttributeElementImpl(key);
-
-                    final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
-
-                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
-                    assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
-                                    "Unable to print path '%s', does not exist.",
-                                    key
-                            )))),
-                            () -> assertThat(thrown.getCause(), is(nullValue()))
-                    );
-                }),
-
-                dynamicTest("unknown[1]", () -> {
-                    final String key = "unknown";
+                dynamicTest("a_null[1]", () -> {
+                    final String key = "a_null";
                     final int arrayIndex = 1;
 
                     final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
+
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    );
+                }),
+
+                dynamicTest("a_object_empty[1]", () -> {
+                    final String key = "a_object_empty";
+                    final int arrayIndex = 1;
+
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
+                    final Executable testMethod = () -> new PrintTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
+
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    );
+                }),
+
+                dynamicTest("a_string[1]", () -> {
+                    final String key = "a_string";
+                    final int arrayIndex = 1;
+
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
+                    final Executable testMethod = () -> new PrintTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
+
+                    final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
+                    assertAll("Checking Exception",
+                            () -> assertThat(thrown.getMessage(), is(equalTo(String.format(
+                                    "Unable to print path '%s', as is not Array.",
+                                    key
+                            )))),
+                            () -> assertThat(thrown.getCause(), is(nullValue()))
+                    );
+                }),
+
+                dynamicTest("z_unknown[1]", () -> {
+                    final String key = "z_unknown";
+                    final int arrayIndex = 1;
+
+                    final PathElement pathElement = new PathArrayElementImpl(String.format("%s[%s]", key, arrayIndex), key, arrayIndex);
+
+                    final Executable testMethod = () -> new PrintTransformation()
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
@@ -255,10 +183,10 @@ public class PrintTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -282,10 +210,10 @@ public class PrintTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -309,10 +237,10 @@ public class PrintTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -336,10 +264,10 @@ public class PrintTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -358,15 +286,15 @@ public class PrintTransformation_BasicAttributesTest {
                     );
                 }),
 
-                dynamicTest("a_object", () -> {
-                    final String key = "a_object";
+                dynamicTest("a_object_empty", () -> {
+                    final String key = "a_object_empty";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -390,10 +318,10 @@ public class PrintTransformation_BasicAttributesTest {
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
-                    final Map<String, Object> expected = getLegacy2MapBasicAttributes();
+                    final Map<String, Object> expected = getMapBasicAttributes();
 
                     final Map<String, Object> actual = new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     assertThat(actual, is(notNullValue()));
                     assertAll("Checking maps",
@@ -412,13 +340,13 @@ public class PrintTransformation_BasicAttributesTest {
                     );
                 }),
 
-                dynamicTest("unknown", () -> {
-                    final String key = "unknown";
+                dynamicTest("z_unknown", () -> {
+                    final String key = "z_unknown";
 
                     final PathElement pathElement = new PathAttributeElementImpl(key);
 
                     final Executable testMethod = () -> new PrintTransformation()
-                            .perform(pathElement, getLegacy2MapBasicAttributes(), null);
+                            .perform(pathElement, getMapBasicAttributes(), null);
 
                     final IllegalPathOperationException thrown = assertThrows(IllegalPathOperationException.class, testMethod);
                     assertAll("Checking Exception",
