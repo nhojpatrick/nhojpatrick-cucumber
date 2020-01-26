@@ -147,11 +147,34 @@ public class MapTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
+                dynamicTest("Map Null, -> <String, Integer>", () -> {
+
+                    final Map map = new HashMap<>();
+                    map.put("key1", null);
+
+                    final boolean actual = isTypedMap(map, String.class, Integer.class);
+
+                    assertThat(actual, is(equalTo(true)));
+                }),
+
+                dynamicTest("Map Null, -> <String, Integer>", () -> {
+
+                    final Map map = new HashMap<>();
+                    map.put("key1", null);
+                    map.put("key2", null);
+                    map.put("key3", null);
+
+                    final boolean actual = isTypedMap(map, String.class, Integer.class);
+
+                    assertThat(actual, is(equalTo(true)));
+                }),
+
                 dynamicTest("Map Integers, -> <String, Integer>", () -> {
 
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
                     map.put("key2", 2);
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, Integer.class);
 
@@ -163,6 +186,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
                     map.put("key2", 2);
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, Object.class);
 
@@ -174,6 +198,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
                     map.put("key2", 2);
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, String.class);
 
@@ -185,6 +210,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
                     map.put("key2", "value2");
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, Integer.class);
 
@@ -196,6 +222,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
                     map.put("key2", "value2");
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, Object.class);
 
@@ -207,6 +234,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", 1);
                     map.put("key2", "value2");
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, String.class);
 
@@ -218,6 +246,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", "value1");
                     map.put("key2", "value2");
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, Integer.class);
 
@@ -229,6 +258,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", "value1");
                     map.put("key2", "value2");
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, Object.class);
 
@@ -240,6 +270,7 @@ public class MapTypeUtilTest {
                     final Map map = new HashMap<>();
                     map.put("key1", "value1");
                     map.put("key2", "value2");
+                    map.put("key3", null);
 
                     final boolean actual = isTypedMap(map, String.class, String.class);
 
