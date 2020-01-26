@@ -112,7 +112,7 @@ public class ListTypeUtilTest {
     }
 
     @TestFactory
-    public Collection<DynamicTest> isTypedList_Map() {
+    public Collection<DynamicTest> isTypedList_List() {
 
         return Arrays.asList(
 
@@ -134,11 +134,34 @@ public class ListTypeUtilTest {
                     assertThat(actual, is(equalTo(true)));
                 }),
 
+                dynamicTest("List Null -> <Object>", () -> {
+
+                    final List list = new ArrayList<>();
+                    list.add(null);
+
+                    final boolean actual = isTypedList(list, Object.class);
+
+                    assertThat(actual, is(equalTo(true)));
+                }),
+
+                dynamicTest("List Nulls -> <Object>", () -> {
+
+                    final List list = new ArrayList<>();
+                    list.add(null);
+                    list.add(null);
+                    list.add(null);
+
+                    final boolean actual = isTypedList(list, Object.class);
+
+                    assertThat(actual, is(equalTo(true)));
+                }),
+
                 dynamicTest("List Integers -> <Integer>", () -> {
 
                     final List list = new ArrayList<>();
                     list.add(1);
                     list.add(2);
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, Integer.class);
 
@@ -150,6 +173,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add(1);
                     list.add(2);
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, Object.class);
 
@@ -161,6 +185,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add(1);
                     list.add(2);
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, String.class);
 
@@ -172,6 +197,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add(1);
                     list.add("value2");
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, Integer.class);
 
@@ -183,6 +209,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add(1);
                     list.add("value2");
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, Object.class);
 
@@ -194,6 +221,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add(1);
                     list.add("value2");
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, String.class);
 
@@ -205,6 +233,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add("value1");
                     list.add("value2");
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, Integer.class);
 
@@ -216,6 +245,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add("value1");
                     list.add("value2");
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, Object.class);
 
@@ -227,6 +257,7 @@ public class ListTypeUtilTest {
                     final List list = new ArrayList<>();
                     list.add("value1");
                     list.add("value2");
+                    list.add(null);
 
                     final boolean actual = isTypedList(list, String.class);
 
