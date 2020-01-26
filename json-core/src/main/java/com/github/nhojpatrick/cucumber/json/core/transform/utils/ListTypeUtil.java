@@ -3,6 +3,7 @@ package com.github.nhojpatrick.cucumber.json.core.transform.utils;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsValueException;
 
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Objects.isNull;
 
@@ -40,6 +41,7 @@ public class ListTypeUtil {
         }
 
         final boolean isTypeMismatch = list.stream()
+                .filter(Objects::nonNull)
                 .anyMatch(p -> !valueType.isAssignableFrom(p.getClass()));
         final boolean isTypeMatch = !isTypeMismatch;
 
