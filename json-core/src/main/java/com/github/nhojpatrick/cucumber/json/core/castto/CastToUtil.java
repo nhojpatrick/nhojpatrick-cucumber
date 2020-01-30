@@ -74,7 +74,6 @@ public class CastToUtil
             case "JsonArray<java.lang.Float>":
                 return new ArrayList<Float>();
 
-
             case "JsonArray<java.lang.Double>":
                 return new ArrayList<Double>();
 
