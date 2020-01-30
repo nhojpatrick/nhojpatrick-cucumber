@@ -296,7 +296,6 @@ public class ReverseTransformation_BasicArraysTest {
                     );
                 }),
 
-
                 dynamicTest("primitives_array", () -> {
                     final String key = "primitives_array";
 
