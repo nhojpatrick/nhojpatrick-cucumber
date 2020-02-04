@@ -1,7 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.transform.transformations;
 
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
-import org.apache.commons.lang3.text.WordUtils;
+import org.apache.commons.text.WordUtils;
 
 import java.util.Iterator;
 import java.util.Map;
