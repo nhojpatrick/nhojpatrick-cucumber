@@ -78,4 +78,32 @@ public class ConvertObjectToMap_TestingInternalSteps {
         assertThat(thrown.getMessage(), is(equalTo(expectedExceptionMessage)));
     }
 
+    @Given("TestingInternalSteps I convert object to json map using default RunStateKeys produces the RuntimeException {string}")
+    public void convertObjectToMap_RuntimeException(final String expectedExceptionMessageRaw) {
+
+        convertObjectToMap_RuntimeException(
+                DEFAULT_JSON_OBJECT_KEY,
+                DEFAULT_JSON_MAP_KEY,
+                expectedExceptionMessageRaw
+        );
+    }
+
+    @Given("TestingInternalSteps I convert object using RunStateKey {string}, to json map using RunStateKey {string} produces the RuntimeException {string}")
+    public void convertObjectToMap_RuntimeException(final String runStateObjectKey,
+                                                            final String runStateJsonMapKey,
+                                                            final String expectedExceptionMessageRaw) {
+
+        final ConvertJsonMapUtil convertJsonMapUtil = new ConvertJsonMapUtil();
+        final Executable testMethod = () -> convertJsonMapUtil.convertObjectToMap(
+                this.runState,
+                runStateObjectKey,
+                runStateJsonMapKey
+        );
+        final RuntimeException thrown = assertThrows(RuntimeException.class, testMethod);
+        final String expectedExceptionMessage = expectedExceptionMessageRaw
+                .replace("\\t", "\t")
+                .replace("\\n", "\n");
+        assertThat(thrown.getMessage(), is(equalTo(expectedExceptionMessage)));
+    }
+
 }
