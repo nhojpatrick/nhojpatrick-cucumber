@@ -1,15 +1,14 @@
 package com.github.nhojpatrick.cucumber.json.map.impl;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
-import com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyTestingInternalObjectsConstants;
-import com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyMyComplexObj;
-import com.github.nhojpatrick.cucumber.testing.internal.objects.legacy.LegacyMySimpleObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.BasicArraysOuterObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.BasicAttributesOuterObj;
+import com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import java.util.List;
 import java.util.Map;
 
 import static com.github.nhojpatrick.hamcrest.lang.IsThrowable.throwable;
@@ -51,40 +50,23 @@ public class ConvertObjectToMapTest {
     }
 
     @Test
-    public void check_MyComplexObj() {
+    public void check_BasicArraysObj() {
 
-        final LegacyMyComplexObj toBeTested = LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_OBJECT;
+        final BasicArraysOuterObj toBeTested = TestingInternalObjectsConstants.OBJECT_BASIC_ARRAYS;
 
-        final Map<String, Object> expected = LegacyTestingInternalObjectsConstants.LEGACY_COMPLEX_OBJECT_AS_JSON_MAP;
+        final Map<String, Object> expected = TestingInternalObjectsConstants.MAP_BASIC_ARRAYS;
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 
-        assertAll(
-                () -> assertThat("whole object", actual, is(equalTo(expected))),
-                () -> assertAll("nested",
-                        () -> {
-                            final Map<String, Object> actualNested = (Map<String, Object>) actual.get("nested");
-                            final Map<String, Object> expectedNested = (Map<String, Object>) expected.get("nested");
-                            assertThat("whole nested", actualNested, is(equalTo(expectedNested)));
-                            assertAll("nests",
-                                    () -> {
-                                        final List<Map<String, Object>> actualNests = (List<Map<String, Object>>) actualNested.get("nests");
-                                        final List<Map<String, Object>> expectedNests = (List<Map<String, Object>>) expectedNested.get("nests");
-                                        assertThat("whole nests", actualNests, is(equalTo(expectedNests)));
-                                    }
-                            );
-                        }
-                ),
-                () -> assertThat("objs", actual.get("objs"), is(equalTo(expected.get("objs"))))
-        );
+        assertThat(actual, is(equalTo(expected)));
     }
 
     @Test
-    public void check_MySimpleObj() {
+    public void check_BasicAttributesObj() {
 
-        final LegacyMySimpleObj toBeTested = LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_OBJECT;
+        final BasicAttributesOuterObj toBeTested = TestingInternalObjectsConstants.OBJECT_BASIC_ATTRIBUTES;
 
-        final Map<String, Object> expected = LegacyTestingInternalObjectsConstants.LEGACY_SIMPLE_OBJECT_AS_JSON_MAP;
+        final Map<String, Object> expected = TestingInternalObjectsConstants.MAP_BASIC_ATTRIBUTES;
 
         final Map<String, Object> actual = this.classUnderTest.apply(toBeTested);
 
