@@ -13,8 +13,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
+import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
 @ScenarioScoped
@@ -28,7 +28,7 @@ public class RunState {
     private void internalCheckKey(final String key)
             throws IllegalKeyException {
 
-        if (Objects.isNull(key)) {
+        if (isNull(key)) {
             throw new NullKeyException();
 
         } else if ("".equals(key)) {
@@ -42,7 +42,7 @@ public class RunState {
     private <T> void internalCheckTypeClass(final Class<T> tClass)
             throws NullTypeClassException {
 
-        if (Objects.isNull(tClass)) {
+        if (isNull(tClass)) {
             throw new NullTypeClassException();
         }
     }
@@ -88,9 +88,9 @@ public class RunState {
      * <p>Get the value defined by key from the run state.</p>
      *
      * @param key    the key to use.
-     * @param tClass
-     * @param <T>
-     * @return
+     * @param tClass the value Class.
+     * @param <T>    the Type of the value.
+     * @return the value for the key supplied as Class typed.
      * @throws IllegalKeyException       thrown if key is invalid.
      * @throws IllegalTypeClassException thrown if type class is invalid.
      * @throws TypeMismatchException     thrown if run state contains key but the value is not of type {@code tClass}.
@@ -123,9 +123,10 @@ public class RunState {
 
     /**
      * @param key    the key to use.
-     * @param tClass
-     * @param <T>
-     * @return {@code true} if run state contains key, the value is not null and also it is of type {@code tClass}, otherwise {@code false}.
+     * @param tClass the value Class.
+     * @param <T>    the Type of the value.
+     * @return {@code true} if run state contains key, the value is not null and also it is of type {@code tClass},
+     * otherwise {@code false}.
      * @throws IllegalKeyException       thrown if key is invalid.
      * @throws IllegalTypeClassException thrown if type class is invalid.
      * @throws TypeMismatchException     thrown if run state contains key but the value is not of type {@code tClass}.
@@ -144,7 +145,8 @@ public class RunState {
 
     /**
      * @param key the key to use.
-     * @return
+     * @return {@code false} if run state contains key, the value is not null and also it is of type {@code tClass},
+     * otherwise {@code true}.
      * @throws IllegalKeyException thrown if key is invalid.
      */
     public boolean isUnset(final String key)

@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
 		<artifactId>nhojpatrick-cucumber</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
@@ -35,22 +35,22 @@
 	<!--pluginRepositories / -->
 	<!--dependencies / -->
 	<dependencies>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-core</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json</artifactId>
+			<artifactId>nhojpatrick-cucumber-json-map</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-transform</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-state</artifactId>
 		</dependency>
-
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->
@@ -59,6 +59,8 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.all</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>
