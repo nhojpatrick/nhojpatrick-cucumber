@@ -1019,7 +1019,7 @@
 		<version.io.cucumber.datatable>3.1.0</version.io.cucumber.datatable>
 		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
 		<version.org.apache.commons.text>[1.8,1.99)</version.org.apache.commons.text>
-		<version.org.apache.logging.log4j>[2.12.1,2.12.99)</version.org.apache.logging.log4j>
+		<version.org.apache.logging.log4j>[2.13.0,2.99.99)</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
 		<version.org.joda.beans>[2.4.0,2.99.99)</version.org.joda.beans>
 		<version.org.junit.jupiter>[5.6.0,5.6.99)</version.org.junit.jupiter>
