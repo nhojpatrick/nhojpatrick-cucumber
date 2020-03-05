@@ -21,7 +21,10 @@ import java.util.Map;
 import static java.util.Objects.requireNonNull;
 
 @BeanDefinition
-@SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
+        "CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",
+        "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
+        justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
 public class TransformActionTask
         implements Bean,

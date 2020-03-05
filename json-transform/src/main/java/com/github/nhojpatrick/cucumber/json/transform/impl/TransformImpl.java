@@ -143,29 +143,29 @@ public class TransformImpl
             }
 
             if (isTypedListMap) {
-                final List<Map> listMap = (List<Map>) innerRaw;
+                final List<Map> innerActual = (List<Map>) innerRaw;
 
-                if (listMap.isEmpty()
+                if (innerActual.isEmpty()
                         && !transformation.isParentPathAutoCreated()) {
                     throw new IllegalPathOperationException(String.format(
                             "Path '%s', as array is empty, automatic creation disabled by transformation.",
                             pathElement.getPath(previousPath, false)
                     ));
 
-                } else if (pathElement.getArrayIndex() >= listMap.size()
+                } else if (pathElement.getArrayIndex() >= innerActual.size()
                         && !transformation.isParentPathAutoCreated()) {
                     throw new IllegalPathOperationException(String.format(
                             "Path '%s', beyond index of '%s', automatic creation disabled by transformation.",
                             pathElement.getPath(previousPath, true),
-                            listMap.size() - 1
+                            innerActual.size() - 1
                     ));
                 }
 
-                for (int i = listMap.size(); i <= pathElement.getArrayIndex(); i++) {
-                    listMap.add(new LinkedHashMap<String, Object>());
+                for (int i = innerActual.size(); i <= pathElement.getArrayIndex(); i++) {
+                    innerActual.add(new LinkedHashMap<String, Object>());
                 }
 
-                final Map mapRaw = listMap.get(pathElement.getArrayIndex());
+                final Map mapRaw = innerActual.get(pathElement.getArrayIndex());
 
                 if (isNull(mapRaw)
                         && !transformation.isParentPathAutoCreated()) {
@@ -192,9 +192,9 @@ public class TransformImpl
                         pathElements.subList(1, pathElements.size()),
                         transformation);
 
-                listMap.set(pathElement.getArrayIndex(), mapUpdated);
+                innerActual.set(pathElement.getArrayIndex(), mapUpdated);
 
-                output.put(pathElement.getElement(), listMap);
+                output.put(pathElement.getElement(), innerActual);
 
             } else if (isTypedListObject) {
                 throw new IllegalPathOperationException(String.format(

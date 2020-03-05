@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.core.transform.utils;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsValueException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,7 @@ public class ListTypeUtil {
         return isTypedList(list, valueType);
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public static <V> boolean isTypedList(final List<Object> list, final Class<V> valueType)
             throws NullGenericsValueException {
 

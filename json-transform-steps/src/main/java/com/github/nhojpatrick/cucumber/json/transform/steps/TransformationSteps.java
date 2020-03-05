@@ -12,6 +12,7 @@ import com.github.nhojpatrick.cucumber.json.transform.transformations.Transforma
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidatorFactory;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 
@@ -57,6 +58,8 @@ public class TransformationSteps {
         this.runState.set(runStateJsonMapKey, runStateJsonMapValue);
     }
 
+    @SuppressFBWarnings(value = "PCAIL_POSSIBLE_CONSTANT_ALLOCATION_IN_LOOP",
+            justification = "Accepted usage of new TransformActionTask.Builder()")
     private Map<String, Object> transform(Map<String, Object> runStateJsonMapValue,
                                           final List<Map<String, String>> dataTable)
             throws CheckedIllegalArgumentException,

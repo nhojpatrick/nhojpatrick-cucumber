@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -24,6 +25,9 @@ public class ConvertMapToJson
         this.format = format;
     }
 
+    @SuppressFBWarnings(value = {"EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS",
+            "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
+            justification = "Want no args method, Useful for debugging")
     public String apply(final Map<String, Object> jsonMap) {
 
         if (isNull(jsonMap)) {

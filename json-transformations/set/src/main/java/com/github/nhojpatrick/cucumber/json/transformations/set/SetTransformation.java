@@ -5,6 +5,7 @@ import com.github.nhojpatrick.cucumber.json.core.exceptions.IllegalPathOperation
 import com.github.nhojpatrick.cucumber.json.core.exceptions.NullPathElementException;
 import com.github.nhojpatrick.cucumber.json.core.validation.PathElement;
 import com.github.nhojpatrick.cucumber.json.transformations.core.BaseTransformation;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -31,6 +32,7 @@ public class SetTransformation
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public boolean equals(final Object obj) {
 
         if (!(obj instanceof SetTransformation)) {
@@ -39,16 +41,19 @@ public class SetTransformation
 
         final SetTransformation that = (SetTransformation) obj;
 
-        return new EqualsBuilder()
+        final boolean equal = new EqualsBuilder()
                 .append(this.value, that.value)
                 .isEquals();
+        return equal;
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        final int hashCode = new HashCodeBuilder(17, 37)
                 .append(this.value)
                 .toHashCode();
+        return hashCode;
     }
 
     @Override
@@ -107,6 +112,7 @@ public class SetTransformation
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public String toString() {
         final String toString = new ToStringBuilder(this, SHORT_PREFIX_STYLE)
                 .append(this.value)

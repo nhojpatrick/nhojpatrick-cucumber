@@ -63,7 +63,7 @@ public class TestingInternalObjectsConstants {
 
         final Map<String, Object> basicAttributes = new LinkedHashMap<>();
 
-        basicAttributes.put(BasicAttributesOuterObj.A_BOOLEAN, true);
+        basicAttributes.put(BasicAttributesOuterObj.A_BOOLEAN, Boolean.TRUE);
         basicAttributes.put(BasicAttributesOuterObj.A_FLOAT, 12.34f);
         basicAttributes.put(BasicAttributesOuterObj.A_INTEGER, 1234);
         basicAttributes.put(BasicAttributesOuterObj.A_NULL, null);
@@ -100,7 +100,7 @@ public class TestingInternalObjectsConstants {
 
     public static BasicAttributesOuterObj getObjectBasicAttributes() {
 
-        return new BasicAttributesOuterObj(true, 12.34f, 1234, "aValue");
+        return new BasicAttributesOuterObj(Boolean.TRUE, 12.34f, 1234, "aValue");
     }
 
     static {

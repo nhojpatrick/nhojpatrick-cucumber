@@ -3,6 +3,7 @@ package com.github.nhojpatrick.cucumber.json.core.castto;
 import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.CastToException;
 import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeConversionException;
 import com.github.nhojpatrick.cucumber.json.core.castto.exceptions.UnsupportedDataTypeException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,8 @@ public class CastToUtil
         }
     }
 
+    @SuppressFBWarnings(value = {"CC_CYCLOMATIC_COMPLEXITY",
+            "URV_CHANGE_RETURN_TYPE"}, justification = "As designed")
     private Object doCastTo(final String value, final String type)
             throws UnsupportedDataTypeConversionException,
             UnsupportedDataTypeException {

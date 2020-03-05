@@ -3,6 +3,7 @@ module com.github.nhojpatrick.cucumber.state {
     exports com.github.nhojpatrick.cucumber.state.validation;
     exports com.github.nhojpatrick.cucumber.state;
     requires com.github.nhojpatrick.hamcrest.collections;
+    requires com.github.spotbugs.annotations;
     requires com.google.guice;
     requires io.cucumber.datatable;
     requires io.cucumber.guice;

@@ -8,6 +8,7 @@ import com.github.nhojpatrick.cucumber.core.exceptions.NullTypeClassException;
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.core.exceptions.WhitespaceKeyException;
 import cucumber.runtime.java.guice.ScenarioScoped;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Collections;
@@ -47,6 +48,7 @@ public class RunState {
         }
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     private <T> T internalGet(final String key, final Class<T> tClass)
             throws TypeMismatchException {
 
@@ -79,6 +81,7 @@ public class RunState {
      *
      * @return unmodifiable clone of the current run state.
      */
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public Map<String, Object> get() {
         final Map<String, Object> clone = Collections.unmodifiableMap(new HashMap<>(this.state));
         return clone;
@@ -95,6 +98,7 @@ public class RunState {
      * @throws IllegalTypeClassException thrown if type class is invalid.
      * @throws TypeMismatchException     thrown if run state contains key but the value is not of type {@code tClass}.
      */
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public <T> T get(final String key, final Class<T> tClass)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -112,6 +116,7 @@ public class RunState {
      * @return {@code true} if run state contains key, otherwise {@code false}.
      * @throws IllegalKeyException thrown if key is invalid.
      */
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public boolean isSet(final String key)
             throws IllegalKeyException {
 
@@ -131,6 +136,7 @@ public class RunState {
      * @throws IllegalTypeClassException thrown if type class is invalid.
      * @throws TypeMismatchException     thrown if run state contains key but the value is not of type {@code tClass}.
      */
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public <T> boolean isSet(final String key, final Class<T> tClass)
             throws IllegalKeyException,
             IllegalTypeClassException,
@@ -149,6 +155,7 @@ public class RunState {
      * otherwise {@code true}.
      * @throws IllegalKeyException thrown if key is invalid.
      */
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public boolean isUnset(final String key)
             throws IllegalKeyException {
 
@@ -174,6 +181,7 @@ public class RunState {
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public String toString() {
         final String toString = new ToStringBuilder(this, SHORT_PREFIX_STYLE)
                 .append(this.state)
