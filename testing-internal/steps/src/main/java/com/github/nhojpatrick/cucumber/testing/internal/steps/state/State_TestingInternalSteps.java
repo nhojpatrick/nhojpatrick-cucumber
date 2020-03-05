@@ -3,6 +3,7 @@ package com.github.nhojpatrick.cucumber.testing.internal.steps.state;
 import com.github.nhojpatrick.cucumber.core.exceptions.IllegalKeyException;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 
@@ -11,9 +12,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicArrays;
+import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicArrays;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicAttributes;
-import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getMapBasicAttributes;
 
 public class State_TestingInternalSteps {
 
@@ -25,11 +26,12 @@ public class State_TestingInternalSteps {
     }
 
     @Given("^TestingInternalSteps I have setup the run state for keys and type:$")
+    @SuppressFBWarnings(value = "CC_CYCLOMATIC_COMPLEXITY", justification = "Complex because of framework used")
     public void setupRunStateForKeysAndValue(final DataTable data)
             throws IllegalKeyException {
 
-        final Map<String, String> stringStringMap = data.asMap(String.class, String.class);
-        for (final Map.Entry<String, String> row : stringStringMap.entrySet()) {
+        final Map<String, String> dataMap = data.asMap(String.class, String.class);
+        for (final Map.Entry<String, String> row : dataMap.entrySet()) {
             switch (row.getValue()) {
 
                 case "List_Empty":

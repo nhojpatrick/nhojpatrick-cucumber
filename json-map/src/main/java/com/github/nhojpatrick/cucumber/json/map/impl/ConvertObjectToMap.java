@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullObjectException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -14,6 +15,7 @@ import static java.util.Objects.isNull;
 public class ConvertObjectToMap
         implements Function<Object, Map<String, Object>> {
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public Map<String, Object> apply(final Object obj) {
 
         if (isNull(obj)) {

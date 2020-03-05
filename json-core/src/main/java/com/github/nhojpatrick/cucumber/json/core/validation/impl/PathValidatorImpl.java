@@ -59,7 +59,7 @@ public class PathValidatorImpl
         }
 
         final String[] splits = path.split("\\.");
-        final List<PathElement> pathElements = new ArrayList<>();
+        final List<PathElement> pathElements = new ArrayList<>(splits.length);
         for (final String split : splits) {
             final PathElement pathElement = checkSplit(path, split);
             pathElements.add(pathElement);

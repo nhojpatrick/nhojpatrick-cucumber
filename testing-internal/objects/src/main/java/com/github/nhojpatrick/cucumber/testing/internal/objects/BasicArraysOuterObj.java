@@ -21,7 +21,9 @@ import java.util.Map;
 
 @BeanDefinition
 @JsonCustomDefaults
-@SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
+        "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
+        justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
 public class BasicArraysOuterObj
         implements Bean,
@@ -246,18 +248,12 @@ public class BasicArraysOuterObj
     }
 
     protected void toString(StringBuilder buf) {
-        buf.append("objects").append('=').append(JodaBeanUtils.toString(getObjects()))
-                .append(',').append(' ');
-        buf.append("objectsEmpty").append('=').append(JodaBeanUtils.toString(getObjectsEmpty()))
-                .append(',').append(' ');
-        buf.append("objectsNull").append('=').append(JodaBeanUtils.toString(getObjectsNull()))
-                .append(',').append(' ');
-        buf.append("primitives").append('=').append(JodaBeanUtils.toString(getPrimitives()))
-                .append(',').append(' ');
-        buf.append("primitivesEmpty").append('=').append(JodaBeanUtils.toString(getPrimitivesEmpty()))
-                .append(',').append(' ');
-        buf.append("primitivesNull").append('=').append(JodaBeanUtils.toString(getPrimitivesNull()))
-                .append(',').append(' ');
+        buf.append("objects").append('=').append(JodaBeanUtils.toString(getObjects())).append(',').append(' ');
+        buf.append("objectsEmpty").append('=').append(JodaBeanUtils.toString(getObjectsEmpty())).append(',').append(' ');
+        buf.append("objectsNull").append('=').append(JodaBeanUtils.toString(getObjectsNull())).append(',').append(' ');
+        buf.append("primitives").append('=').append(JodaBeanUtils.toString(getPrimitives())).append(',').append(' ');
+        buf.append("primitivesEmpty").append('=').append(JodaBeanUtils.toString(getPrimitivesEmpty())).append(',').append(' ');
+        buf.append("primitivesNull").append('=').append(JodaBeanUtils.toString(getPrimitivesNull())).append(',').append(' ');
     }
 
     //-----------------------------------------------------------------------

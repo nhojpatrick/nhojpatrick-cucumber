@@ -2,6 +2,7 @@ package com.github.nhojpatrick.cucumber.json.core.transform.utils;
 
 import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullGenericsValueException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.Map;
 
@@ -33,6 +34,7 @@ public class MapTypeUtil {
         return isTypedMap(map, keyType, valueType);
     }
 
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public static <K, V> boolean isTypedMap(final Map<Object, Object> map,
                                             final Class<K> keyType,
                                             final Class<V> valueType)
