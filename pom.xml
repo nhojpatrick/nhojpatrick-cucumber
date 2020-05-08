@@ -1004,7 +1004,7 @@
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- -->
 		<version.com.github.nhojpatrick.hamcrest>[1.0.3,1.0.99)</version.com.github.nhojpatrick.hamcrest>
-		<version.com.puppycrawl.tools.checkstyle>8.29</version.com.puppycrawl.tools.checkstyle>
+		<version.com.puppycrawl.tools.checkstyle>8.32</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber>4.8.1</version.io.cucumber>
 		<version.io.cucumber.datatable>3.1.0</version.io.cucumber.datatable>
 		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
