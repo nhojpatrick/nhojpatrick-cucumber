@@ -888,7 +888,7 @@
 			<dependency>
 				<groupId>com.google.inject</groupId>
 				<artifactId>guice</artifactId>
-				<version>4.2.2</version>
+				<version>${version.com.google.inject.guice}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.puppycrawl.tools</groupId>
@@ -1021,6 +1021,7 @@
 		<!-- dependency versions -->
 		<version.com.github.nhojpatrick.hamcrest>[1.0.3,1.0.99)</version.com.github.nhojpatrick.hamcrest>
 		<version.com.github.spotbugs>[4.0.2,4.0.99)</version.com.github.spotbugs>
+		<version.com.google.inject.guice>[4.2.3,4.2.99)</version.com.google.inject.guice>
 		<version.com.puppycrawl.tools.checkstyle>8.32</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber.datatable>3.1.0</version.io.cucumber.datatable>
 		<version.io.cucumber>4.8.1</version.io.cucumber>
