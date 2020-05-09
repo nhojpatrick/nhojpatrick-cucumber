@@ -1029,7 +1029,7 @@
 		<version.org.apache.commons.text>[1.8,1.99)</version.org.apache.commons.text>
 		<version.org.apache.logging.log4j>[2.13.0,2.99.99)</version.org.apache.logging.log4j>
 		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
-		<version.org.joda.beans>[2.4.0,2.99.99)</version.org.joda.beans>
+		<version.org.joda.beans>[2.8.0,2.8.99)</version.org.joda.beans>
 		<version.org.junit.jupiter>[5.6.2,5.6.99)</version.org.junit.jupiter>
 		<version.org.junit.vintage>[5.6.2,5.6.99)</version.org.junit.vintage>
 		<version.org.mockito>[3.3.3,3.3.99)</version.org.mockito>
