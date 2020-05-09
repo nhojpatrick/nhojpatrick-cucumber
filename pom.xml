@@ -969,7 +969,7 @@
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>3.2.0</version>
+				<version>${version.org.mockito}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -1032,6 +1032,7 @@
 		<version.org.joda.beans>[2.4.0,2.99.99)</version.org.joda.beans>
 		<version.org.junit.jupiter>[5.6.2,5.6.99)</version.org.junit.jupiter>
 		<version.org.junit.vintage>[5.6.2,5.6.99)</version.org.junit.vintage>
+		<version.org.mockito>[3.3.3,3.3.99)</version.org.mockito>
 		<version.org.slf4j>[1.7.30,1.7.99)</version.org.slf4j>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
