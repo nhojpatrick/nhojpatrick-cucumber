@@ -187,7 +187,7 @@ jobs:
   jdk11:
     docker:
       - image: circleci/openjdk:11-jdk-stretch
-    resource_class: small
+    resource_class: medium
     steps:
       - setup_openjdk_11_toolchain
       - std_mvnw_jdk11
