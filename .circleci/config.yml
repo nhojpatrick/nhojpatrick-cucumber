@@ -178,7 +178,7 @@ jobs:
   jdk8:
     docker:
       - image: circleci/openjdk:8-jdk-stretch
-    resource_class: small
+    resource_class: medium
     steps:
       - install_openjdk_11
       - setup_std_toolchain
