@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.map.steps;
+package com.github.nhojpatrick.cucumber.json.map.steps.tests;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
