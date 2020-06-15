@@ -168,7 +168,7 @@ public class ReverseTransformation
     }
 
     @VisibleForTesting
-    String reverse(final String currentPath,
+    public String reverse(final String currentPath,
                    final Object input)
             throws IllegalPathOperationException {
 

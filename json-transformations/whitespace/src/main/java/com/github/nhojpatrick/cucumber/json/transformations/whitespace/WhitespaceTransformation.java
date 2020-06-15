@@ -233,7 +233,7 @@ public class WhitespaceTransformation
 
     @VisibleForTesting
     @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
-    String pad(final String input, final int prefix, final int suffix) {
+    public String pad(final String input, final int prefix, final int suffix) {
 
         String str = isNull(input) ? "" : input;
 

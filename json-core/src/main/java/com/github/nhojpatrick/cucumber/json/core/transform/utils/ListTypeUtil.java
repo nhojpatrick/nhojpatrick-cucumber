@@ -50,7 +50,7 @@ public class ListTypeUtil {
         return isTypeMatch;
     }
 
-    ListTypeUtil() {
+    public ListTypeUtil() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
 
