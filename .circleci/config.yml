@@ -251,6 +251,7 @@ workflows:
               qa_step_profile: [
                 "checkstyle",
                 "javadoc",
+                "owasp-dependency-check",
                 "pmd",
                 "spotbugs"
               ]
