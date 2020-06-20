@@ -130,6 +130,7 @@ commands:
             - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
             - m2-dependencies-{{ checksum "pom.xml" }}
             - m2-dependencies-
+      - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of lastUpdated"
           command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx rm -rfv xxx
@@ -153,6 +154,8 @@ commands:
         type: string
     description: "Save Cache Step << parameters.cacheSaveName >>"
     steps:
+      - run: mkdir -p ~/.m2/repository
+      - run: mkdir -p ~/.m2/wrapper
       - run:
           name: "Tidy Local Maven Repo of project before save cache"
           command: rm -rf ~/.m2/repository/com/github/nhojpatrick
