@@ -126,6 +126,10 @@ commands:
     steps:
       - restore_cache:
           keys:
+            - m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+            - m2-wrapper-
+      - restore_cache:
+          keys:
             - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
             - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
             - m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}
@@ -148,6 +152,11 @@ commands:
     description: "Save Cache Step << parameters.cacheSaveName >>"
     steps:
       - run: mkdir -p ~/.m2/wrapper
+      - save_cache:
+          key: m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+          paths:
+            - ~/.m2/wrapper
+          when: always
       - run: mkdir -p ~/.m2/repository
       - run:
           name: "Tidy Local Maven Repo of project before save cache"
@@ -161,13 +170,11 @@ commands:
           key: m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
           paths:
             - ~/.m2/repository
-            - ~/.m2/wrapper
           when: always
       - save_cache:
           key: m2-dependencies-{{ .Branch }}-{{ .Environment.CIRCLE_BUILD_NUM }}-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
           paths:
             - ~/.m2/repository
-            - ~/.m2/wrapper
           when: always
 
 jobs:
@@ -242,10 +249,24 @@ jobs:
       - cache_restore:
           cacheAlphaName: owasp-dependency-check
           cacheBravoName: jdk8
-      - run: date +%F_%T > date
+      - run: date +"%F" | tee .DAY_TODAY
+      - run: date --date="1 days ago" +"%F" | tee .DAY_MINUS_1
+      - run: date --date="2 days ago" +"%F" | tee .DAY_MINUS_2
+      - run: date --date="3 days ago" +"%F" | tee .DAY_MINUS_3
+      - run: date --date="4 days ago" +"%F" | tee .DAY_MINUS_4
+      - run: date --date="5 days ago" +"%F" | tee .DAY_MINUS_5
+      - run: date --date="6 days ago" +"%F" | tee .DAY_MINUS_6
+      - run: date --date="7 days ago" +"%F" | tee .DAY_MINUS_7
       - restore_cache:
           keys:
-            - m2-owasp-dependency-check-{{ checksum "date" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_TODAY" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_1" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_2" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_3" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_4" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_5" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_6" }}
+            - m2-owasp-dependency-check-{{ checksum ".DAY_MINUS_7" }}
             - m2-owasp-dependency-check-
       - run: mkdir -p ~/.m2/owasp-dependency-check-data
       - run:
@@ -254,7 +275,7 @@ jobs:
       - cache_save:
           cacheSaveName: owasp-dependency-check
       - save_cache:
-          key: m2-owasp-dependency-check-{{ checksum "date" }}
+          key: m2-owasp-dependency-check-{{ checksum ".DAY_TODAY" }}
           paths:
             - ~/.m2/owasp-dependency-check-data
           when: always
