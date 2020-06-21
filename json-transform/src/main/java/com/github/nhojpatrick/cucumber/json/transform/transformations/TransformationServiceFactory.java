@@ -1,6 +1,7 @@
 package com.github.nhojpatrick.cucumber.json.transform.transformations;
 
 import com.github.nhojpatrick.cucumber.json.core.transform.TransformationService;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.text.WordUtils;
 
 import java.util.Iterator;
@@ -23,6 +24,8 @@ public class TransformationServiceFactory {
 
     private final Map<String, TransformationService> transformations;
 
+    @SuppressFBWarnings(value = {"FII_USE_FUNCTION_IDENTITY"},
+            justification = "Method being refactored when Java 1.8 dropped")
     TransformationServiceFactory() {
 
         final ServiceLoader<TransformationService> transformationServices =
