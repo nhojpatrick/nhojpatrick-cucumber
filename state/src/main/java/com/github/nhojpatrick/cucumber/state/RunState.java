@@ -7,7 +7,7 @@ import com.github.nhojpatrick.cucumber.core.exceptions.NullKeyException;
 import com.github.nhojpatrick.cucumber.core.exceptions.NullTypeClassException;
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.core.exceptions.WhitespaceKeyException;
-import cucumber.runtime.java.guice.ScenarioScoped;
+import io.cucumber.guice.ScenarioScoped;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
