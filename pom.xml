@@ -131,14 +131,22 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.1</version>
-					<!--					<configuration>-->
-					<!--						<compilerArgs>-->
-					<!--							<arg>-parameters</arg>-->
-					<!--<arg>-verbose</arg>-->
-					<!--							<arg>-Xlint:unchecked</arg>-->
-					<!--						</compilerArgs>-->
-					<!--					</configuration>-->
+					<configuration>
+						<compilerArgs>
+							<arg>-parameters</arg>
+							<!--<arg>-verbose</arg>-->
+							<!--<arg>-Xlint:unchecked</arg>-->
+						</compilerArgs>
+					</configuration>
 					<executions>
+						<execution>
+							<id>default-compile</id>
+							<configuration>
+								<jdkToolchain>
+									<version>1.8</version>
+								</jdkToolchain>
+							</configuration>
+						</execution>
 						<execution>
 							<id>java11-main</id>
 							<phase>compile</phase>
@@ -151,10 +159,15 @@
 									<version>11</version>
 								</jdkToolchain>
 								<compileSourceRoots>
-									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
 									<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
 								</compileSourceRoots>
 								<multiReleaseOutput>true</multiReleaseOutput>
+								<!--
+								<compilerArgs>
+									<arg> - - patch-module</arg>
+									<arg>${project.Automatic-Module-Name}=${project.build.outputDirectory}</arg>
+								</compilerArgs>
+								-->
 							</configuration>
 						</execution>
 					</executions>
@@ -484,6 +497,7 @@
 			<activation>
 				<jdk>[11,)</jdk>
 			</activation>
+			<!--
 			<build>
 				<plugins>
 					<plugin>
@@ -506,10 +520,13 @@
 					</plugin>
 				</plugins>
 			</build>
+			-->
 			<properties>
 				<base.java.version>11</base.java.version>
+				<!--
 				<maven.compiler.release>11</maven.compiler.release>
 				<project.custom.java.version>11</project.custom.java.version>
+				-->
 				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
 				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
