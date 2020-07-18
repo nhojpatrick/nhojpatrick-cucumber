@@ -107,6 +107,8 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.state</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation.tests=org.junit.platform.commons</project.surefire.argLine.jpms.module>
+		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.exceptions.tests=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation.impl.tests=org.junit.platform.commons
+			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation.tests=org.junit.platform.commons</project.surefire.argLine.jpms.module>
 	</properties>
 </project>
