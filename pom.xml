@@ -1068,7 +1068,7 @@
 		<version.io.cucumber.datatable>3.3.1</version.io.cucumber.datatable>
 		<version.io.cucumber>5.7.0</version.io.cucumber>
 		<version.org.apache.commons.lang3>3.11</version.org.apache.commons.lang3>
-		<version.org.apache.commons.text>1.8</version.org.apache.commons.text>
+		<version.org.apache.commons.text>1.9</version.org.apache.commons.text>
 		<version.org.apache.logging.log4j>2.13.3</version.org.apache.logging.log4j>
 		<version.org.hamcrest>2.2</version.org.hamcrest>
 		<version.org.joda.beans>2.8.0</version.org.joda.beans>
