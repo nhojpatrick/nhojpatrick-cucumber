@@ -1074,7 +1074,7 @@
 		<version.org.joda.beans>2.8.0</version.org.joda.beans>
 		<version.org.junit.jupiter>5.6.2</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.6.2</version.org.junit.vintage>
-		<version.org.mockito>3.4.4</version.org.mockito>
+		<version.org.mockito>3.4.6</version.org.mockito>
 		<version.org.slf4j>1.7.30</version.org.slf4j>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
