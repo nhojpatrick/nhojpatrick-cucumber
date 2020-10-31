@@ -1064,7 +1064,7 @@
 		<version.com.github.nhojpatrick.hamcrest>[1.0.3,1.0.99)</version.com.github.nhojpatrick.hamcrest>
 		<version.com.github.spotbugs>4.1.4</version.com.github.spotbugs>
 		<version.com.google.inject.guice>4.2.3</version.com.google.inject.guice>
-		<version.com.puppycrawl.tools.checkstyle>8.36.2</version.com.puppycrawl.tools.checkstyle>
+		<version.com.puppycrawl.tools.checkstyle>8.37</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber.datatable>3.4.0</version.io.cucumber.datatable>
 		<version.io.cucumber>5.7.0</version.io.cucumber>
 		<version.org.apache.commons.lang3>3.11</version.org.apache.commons.lang3>
