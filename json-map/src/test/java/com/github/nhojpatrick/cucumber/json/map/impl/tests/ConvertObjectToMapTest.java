@@ -46,7 +46,7 @@ public class ConvertObjectToMapTest {
 
         final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
 
-        final String expectedMessage = "Cannot construct instance of `java.util.LinkedHashMap` (although at least one Creator exists): Cannot deserialize value of type `java.util.LinkedHashMap<java.lang.String,java.lang.Object>` from empty String (\"\") (no String-argument constructor/factory method; coercion not enabled)\n at [Source: UNKNOWN; line: -1, column: -1]";
+        final String expectedMessage = "Cannot coerce empty String (\"\") to element of `java.util.LinkedHashMap<java.lang.String,java.lang.Object>` (but could if coercion was enabled using `CoercionConfig`)\n at [Source: UNKNOWN; line: -1, column: -1]";
         assertThat(thrown.getMessage(), is(equalTo(expectedMessage)));
     }
 
