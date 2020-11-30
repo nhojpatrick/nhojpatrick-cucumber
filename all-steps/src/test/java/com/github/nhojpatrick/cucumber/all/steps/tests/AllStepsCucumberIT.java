@@ -1,4 +1,4 @@
-package com.github.nhojpatrick.cucumber.json.transform.steps;
+package com.github.nhojpatrick.cucumber.all.steps.tests;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -9,11 +9,9 @@ import org.junit.runner.RunWith;
         strict = true,
         plugin = {"pretty"},
         glue = {
-                "com.github.nhojpatrick.cucumber.json.map.steps",
-                "com.github.nhojpatrick.cucumber.json.transform.steps",
-                "com.github.nhojpatrick.cucumber.state.steps",
+                "com.github.nhojpatrick.cucumber.all.steps",
                 "com.github.nhojpatrick.cucumber.testing.internal.steps"
         }
 )
-public class JsonTransformStepsCucumberIT {
+public class AllStepsCucumberIT {
 }
