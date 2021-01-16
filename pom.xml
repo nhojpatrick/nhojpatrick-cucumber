@@ -1063,7 +1063,7 @@
 		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 		<!-- plugin versions -->
 		<plugins.com.github.spotbugs.spotbugs-maven-plugin>4.2.0</plugins.com.github.spotbugs.spotbugs-maven-plugin>
-		<plugins.github.ekryd.sortpom-maven-plugin>2.12.0</plugins.github.ekryd.sortpom-maven-plugin>
+		<plugins.github.ekryd.sortpom-maven-plugin>2.13.1</plugins.github.ekryd.sortpom-maven-plugin>
 		<plugins.takari.maven>0.7.7</plugins.takari.maven>
 		<!-- dependency versions -->
 		<version.com.github.nhojpatrick.hamcrest>[1.0.3,1.0.99)</version.com.github.nhojpatrick.hamcrest>
