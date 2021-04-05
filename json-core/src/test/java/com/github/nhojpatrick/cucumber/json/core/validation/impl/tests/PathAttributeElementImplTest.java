@@ -15,6 +15,7 @@ import java.util.Collection;
 import static com.github.nhojpatrick.hamcrest.lang.IsHashCode.hashCodeGenerated;
 import static com.github.nhojpatrick.hamcrest.lang.IsToString.toStringGenerated;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNot.not;
@@ -134,7 +135,10 @@ public class PathAttributeElementImplTest {
                     };
                     final NullPointerException thrown = assertThrows(NullPointerException.class, testMethod);
                     assertAll("Checking Exception",
-                            () -> assertThat(thrown.getMessage(), is(nullValue())),
+                            () -> assertThat(thrown.getMessage(), anyOf( // FIXME Java 16 'JEP 358: Helpful NullPointerExceptions'
+                                    is(nullValue()),
+                                    is(equalTo("Cannot invoke \"java.lang.Integer.intValue()\" because \"this.arrayIndex\" is null"))
+                            )),
                             () -> assertThat(thrown.getCause(), is(nullValue()))
                     );
                 }),
