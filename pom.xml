@@ -1053,7 +1053,8 @@
 			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=org.junit.platform.commons
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED
 			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-			--add-opens java.base/java.lang=com.google.guice</project.failsafe.argLine.jpms.global>
+			--add-opens java.base/java.lang=com.google.guice
+			--add-opens java.base/java.lang=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
 		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
 		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
 		<project.surefire.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.tests=ALL-UNNAMED
