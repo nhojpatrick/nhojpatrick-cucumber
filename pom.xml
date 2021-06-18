@@ -1081,7 +1081,7 @@
 		<version.org.junit.jupiter>5.8.0-M1</version.org.junit.jupiter>
 		<version.org.junit.vintage>5.8.0-M1</version.org.junit.vintage>
 		<version.org.mockito>3.11.1</version.org.mockito>
-		<version.org.slf4j>1.7.30</version.org.slf4j>
+		<version.org.slf4j>1.7.31</version.org.slf4j>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
