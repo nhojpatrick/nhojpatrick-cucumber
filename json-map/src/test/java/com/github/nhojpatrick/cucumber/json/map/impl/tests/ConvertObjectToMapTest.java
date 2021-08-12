@@ -46,7 +46,7 @@ public class ConvertObjectToMapTest {
 
         final IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, testMethod);
 
-        final String expectedMessage = "Cannot coerce empty String (\"\") to element of `java.util.LinkedHashMap<java.lang.String,java.lang.Object>` (but could if coercion was enabled using `CoercionConfig`)\n at [Source: UNKNOWN; line: -1, column: -1]";
+        final String expectedMessage = "Cannot coerce empty String (\"\") to element of `java.util.LinkedHashMap<java.lang.String,java.lang.Object>` (but could if coercion was enabled using `CoercionConfig`)\n at [Source: UNKNOWN; byte offset: #UNKNOWN]";
         assertThat(thrown.getMessage(), is(equalTo(expectedMessage)));
     }
 
