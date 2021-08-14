@@ -8,6 +8,7 @@ import com.github.nhojpatrick.cucumber.json.core.transform.Transformation;
 import com.github.nhojpatrick.cucumber.json.transform.factory.TransformFactory;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.junit.jupiter.api.function.Executable;
 
 import java.util.Map;
@@ -17,6 +18,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
 public abstract class BaseTransformation_TestingInternalSteps {
 
     protected RunState runState;

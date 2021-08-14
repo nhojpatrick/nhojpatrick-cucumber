@@ -23,6 +23,7 @@ import static java.util.Objects.requireNonNull;
 @BeanDefinition
 @SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
         "CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",
+        "EI_EXPOSE_REP",
         "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
         justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")

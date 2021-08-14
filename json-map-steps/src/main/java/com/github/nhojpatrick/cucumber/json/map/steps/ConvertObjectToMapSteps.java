@@ -7,11 +7,13 @@ import com.github.nhojpatrick.cucumber.json.map.ConvertJsonMapUtil;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.cucumber.java.en.Given;
 
 import static com.github.nhojpatrick.cucumber.json.map.ConvertJsonMapConstants.DEFAULT_JSON_MAP_KEY;
 import static com.github.nhojpatrick.cucumber.json.map.ConvertJsonMapConstants.DEFAULT_JSON_OBJECT_KEY;
 
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
 public class ConvertObjectToMapSteps {
 
     private final RunState runState;

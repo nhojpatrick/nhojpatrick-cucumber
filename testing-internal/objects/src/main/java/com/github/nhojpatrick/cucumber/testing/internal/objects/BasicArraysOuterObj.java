@@ -22,6 +22,8 @@ import java.util.Map;
 @BeanDefinition
 @JsonCustomDefaults
 @SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
+        "EI_EXPOSE_REP",
+        "EI_EXPOSE_REP2",
         "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
         justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")

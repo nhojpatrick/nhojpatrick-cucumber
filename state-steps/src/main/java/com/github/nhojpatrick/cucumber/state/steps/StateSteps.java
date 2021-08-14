@@ -5,6 +5,7 @@ import com.github.nhojpatrick.cucumber.core.exceptions.IllegalTypeClassException
 import com.github.nhojpatrick.cucumber.core.exceptions.TypeMismatchException;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,6 +20,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
 public class StateSteps {
 
     private RunState runState;
