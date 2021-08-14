@@ -25,6 +25,7 @@ import static com.github.nhojpatrick.cucumber.json.transform.TransformConstants.
 import static com.github.nhojpatrick.cucumber.json.transform.TransformConstants.CUCUMBER_DATA_TABLE_COLUMN_VALUE;
 import static com.github.nhojpatrick.cucumber.json.transform.TransformConstants.DEFAULT_MAP_KEY;
 
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
 public class TransformationSteps {
 
     private final RunState runState;

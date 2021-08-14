@@ -3,6 +3,7 @@ package com.github.nhojpatrick.cucumber.testing.internal.steps.json.map;
 import com.github.nhojpatrick.cucumber.json.map.ConvertJsonMapUtil;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.cucumber.java.en.Given;
 import org.junit.jupiter.api.function.Executable;
 
@@ -13,6 +14,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
 public class ConvertMapToJson_TestingInternalSteps {
 
     private RunState runState;

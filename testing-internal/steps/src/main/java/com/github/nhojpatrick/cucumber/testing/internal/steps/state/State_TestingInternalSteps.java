@@ -16,6 +16,7 @@ import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingIn
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicArrays;
 import static com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants.getObjectBasicAttributes;
 
+@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
 public class State_TestingInternalSteps {
 
     private RunState runState;
