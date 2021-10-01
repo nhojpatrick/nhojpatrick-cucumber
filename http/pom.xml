@@ -38,6 +38,7 @@
 		<module>request</module>
 		<module>request-glue</module>
 		<module>response</module>
+		<module>response-glue</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
