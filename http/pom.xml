@@ -36,6 +36,7 @@
 		<module>constants</module>
 		<module>core</module>
 		<module>response</module>
+		<module>response-steps</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->

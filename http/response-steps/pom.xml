@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!--modelVersion / -->
 	<modelVersion>4.0.0</modelVersion>
 	<!--parent / -->
@@ -7,12 +7,13 @@
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
 		<artifactId>nhojpatrick-cucumber</artifactId>
 		<version>1.0.2-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-all-steps</artifactId>
+	<artifactId>nhojpatrick-cucumber-http-response-steps</artifactId>
 	<!--packaging / -->
+	<packaging>jar</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->
@@ -27,7 +28,7 @@
 	<!--licenses / -->
 	<!--scm / -->
 	<!--organization / -->
-	<!--build / -->
+	<!--build /-->
 	<!--profiles / -->
 	<!--modules / -->
 	<!--repositories / -->
@@ -36,28 +37,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-http-response-steps</artifactId>
+			<artifactId>nhojpatrick-cucumber-http-response</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-map-steps</artifactId>
+			<artifactId>nhojpatrick-cucumber-state</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-transform-steps</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-state-steps</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit-platform-engine</artifactId>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -68,24 +56,11 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-suite</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.vintage</groupId>
-			<artifactId>junit-vintage-engine</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -99,9 +74,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.all.steps</project.Automatic-Module-Name>
-		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<maven.test.skip>true</maven.test.skip>
-		<spotbugs.skip>true</spotbugs.skip>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.http.response.steps</project.Automatic-Module-Name>
+		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 	</properties>
 </project>
