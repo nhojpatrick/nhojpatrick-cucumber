@@ -37,6 +37,7 @@
 		<module>core</module>
 		<module>request</module>
 		<module>request-glue</module>
+		<module>response</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->

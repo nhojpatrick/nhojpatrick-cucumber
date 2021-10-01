@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!--modelVersion / -->
 	<modelVersion>4.0.0</modelVersion>
 	<!--parent / -->
@@ -11,7 +11,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-http-all</artifactId>
+	<artifactId>nhojpatrick-cucumber-http-response</artifactId>
 	<!--packaging / -->
 	<!--name / -->
 	<!--version / -->
@@ -36,19 +36,38 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-http-constants</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-http-core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-http-request</artifactId>
+			<artifactId>nhojpatrick-cucumber-state</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-http-response</artifactId>
+			<groupId>com.github.nhojpatrick.hamcrest</groupId>
+			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 	</dependencies>
 	<!--reports (Deprecated) / -->
@@ -57,8 +76,6 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.http.all</project.Automatic-Module-Name>
-		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<spotbugs.skip>true</spotbugs.skip>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.http.response</project.Automatic-Module-Name>
 	</properties>
 </project>
