@@ -5,7 +5,6 @@ import com.github.nhojpatrick.cucumber.json.map.impl.ConvertObjectToMap;
 import com.github.nhojpatrick.cucumber.testing.internal.objects.BasicArraysOuterObj;
 import com.github.nhojpatrick.cucumber.testing.internal.objects.BasicAttributesOuterObj;
 import com.github.nhojpatrick.cucumber.testing.internal.objects.TestingInternalObjectsConstants;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -35,7 +34,7 @@ public class ConvertObjectToMapTest {
 
         final RuntimeException thrown = assertThrows(RuntimeException.class, testMethod);
         assertAll("Checking Exception",
-                () -> MatcherAssert.assertThat(thrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
+                () -> assertThat(thrown.getCause(), is(throwable(NullObjectException.class, "Null object.")))
         );
     }
 
