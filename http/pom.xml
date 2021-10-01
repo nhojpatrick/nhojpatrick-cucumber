@@ -33,6 +33,7 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>constants</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
