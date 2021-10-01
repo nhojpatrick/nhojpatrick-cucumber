@@ -42,6 +42,10 @@
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-http-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-http-response</artifactId>
+		</dependency>
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->
