@@ -35,6 +35,7 @@
 		<module>all</module>
 		<module>constants</module>
 		<module>core</module>
+		<module>request</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
