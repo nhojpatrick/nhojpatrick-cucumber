@@ -36,6 +36,7 @@
 		<module>constants</module>
 		<module>core</module>
 		<module>request</module>
+		<module>request-glue</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
