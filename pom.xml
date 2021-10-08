@@ -647,6 +647,7 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>bom</module>
 		<module>core</module>
 		<module>json</module>
 		<module>state</module>
