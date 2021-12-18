@@ -822,6 +822,15 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<?SORTPOM IGNORE?>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${version.org.junit}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
+			</dependency>
+			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
 				<version>[2.10.1,)</version>
@@ -992,13 +1001,6 @@
 				<groupId>org.joda</groupId>
 				<artifactId>joda-beans</artifactId>
 				<version>${version.org.joda.beans}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.junit</groupId>
-				<artifactId>junit-bom</artifactId>
-				<version>${version.org.junit}</version>
-				<type>pom</type>
-				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
