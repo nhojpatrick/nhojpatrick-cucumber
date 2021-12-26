@@ -49,7 +49,7 @@
 		<url>https://github.com/nhojpatrick/nhojpatrick-cucumber/tree/master</url>
 	</scm>
 	<!--organization / -->
-	<!--build /-->
+	<!--build / -->
 	<build>
 		<pluginManagement>
 			<plugins>
