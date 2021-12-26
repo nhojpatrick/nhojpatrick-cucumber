@@ -28,7 +28,7 @@
 	<!--licenses / -->
 	<!--scm / -->
 	<!--organization / -->
-	<!--build /-->
+	<!--build / -->
 	<build>
 		<plugins>
 			<plugin>
