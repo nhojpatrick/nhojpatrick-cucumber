@@ -14,6 +14,7 @@ module com.github.nhojpatrick.cucumber.json.core {
             com.github.nhojpatrick.cucumber.json.transformations.reverse,
             com.github.nhojpatrick.cucumber.json.transformations.set,
             com.github.nhojpatrick.cucumber.json.transformations.whitespace;
+    requires com.github.spotbugs.annotations;
     requires org.apache.commons.lang3;
     requires org.slf4j;
     requires transitive com.github.nhojpatrick.cucumber.core;
