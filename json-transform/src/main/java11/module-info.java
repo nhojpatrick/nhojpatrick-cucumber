@@ -9,6 +9,7 @@ module com.github.nhojpatrick.cucumber.json.transform {
     requires org.hamcrest;
     requires org.junit.jupiter.api;
     requires org.slf4j;
+    requires transitive com.github.nhojpatrick.cucumber.core;
     requires transitive com.github.nhojpatrick.cucumber.json.core;
     requires transitive com.github.nhojpatrick.cucumber.json.map;
 }
