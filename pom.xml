@@ -302,6 +302,9 @@
 						</excludes>
 						<forkCount>1</forkCount>
 						<reuseForks>true</reuseForks>
+						<properties>
+							<configurationParameters>cucumber.junit-platform.naming-strategy=long</configurationParameters>
+						</properties>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -994,7 +997,7 @@
 			</dependency>
 			<dependency>
 				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-junit</artifactId>
+				<artifactId>cucumber-junit-platform-engine</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
 			<dependency>
