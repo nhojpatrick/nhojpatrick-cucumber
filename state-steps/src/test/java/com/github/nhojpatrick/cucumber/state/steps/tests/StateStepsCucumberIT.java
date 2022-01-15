@@ -1,17 +1,15 @@
 package com.github.nhojpatrick.cucumber.state.steps.tests;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.runner.RunWith;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        strict = true,
-        plugin = {"pretty"},
-        glue = {
-                "com.github.nhojpatrick.cucumber.state.steps",
-                "com.github.nhojpatrick.cucumber.testing.internal.steps"
-        }
-)
+import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
+
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("com/github/nhojpatrick/cucumber/state/steps/tests")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.github.nhojpatrick.cucumber.state.steps,com.github.nhojpatrick.cucumber.testing.internal.steps")
 public class StateStepsCucumberIT {
 }
