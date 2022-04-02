@@ -526,6 +526,8 @@
 		<profile>
 			<id>cicd</id>
 			<properties>
+				<downloadJavadocs>false</downloadJavadocs>
+				<downloadSources>false</downloadSources>
 				<joda.beans.skip>true</joda.beans.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
@@ -1085,6 +1087,8 @@
 		<project.custom.encoding>UTF-8</project.custom.encoding>
 		<project.custom.java.version>1.8</project.custom.java.version>
 		<!-- maven user properties -->
+		<downloadJavadocs>true</downloadJavadocs>
+		<downloadSources>true</downloadSources>
 		<generateBackupPoms>false</generateBackupPoms>
 		<joda.beans.skip>false</joda.beans.skip>
 		<maven.compiler.source>${project.custom.java.version}</maven.compiler.source>
