@@ -589,6 +589,7 @@
 			</build>
 			<properties>
 				<joda.beans.skip>true</joda.beans.skip>
+				<maven.test.skip>true</maven.test.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
