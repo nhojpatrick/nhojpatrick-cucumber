@@ -92,5 +92,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.map</project.Automatic-Module-Name>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 </project>

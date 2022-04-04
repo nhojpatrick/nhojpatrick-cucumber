@@ -99,5 +99,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.state.steps</project.Automatic-Module-Name>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 </project>
