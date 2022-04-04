@@ -894,6 +894,15 @@
 				<?SORTPOM RESUME?>
 			</dependency>
 			<dependency>
+				<?SORTPOM IGNORE?>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-bom</artifactId>
+				<version>${version.io.cucumber}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
+			</dependency>
+			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
 				<version>[2.10.1,)</version>
@@ -1005,28 +1014,8 @@
 			</dependency>
 			<dependency>
 				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-core</artifactId>
-				<version>${version.io.cucumber}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-guice</artifactId>
 				<version>${version.io.cucumber}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-java</artifactId>
-				<version>${version.io.cucumber}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-junit-platform-engine</artifactId>
-				<version>${version.io.cucumber}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>datatable</artifactId>
-				<version>${version.io.cucumber.datatable}</version>
 			</dependency>
 			<!-- only defined for exclusions -->
 			<dependency>
@@ -1160,7 +1149,6 @@
 		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.11.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
 		<version.com.mebigfatguy.sb-contrib.sb-contrib>7.4.7</version.com.mebigfatguy.sb-contrib.sb-contrib>
 		<version.com.puppycrawl.tools.checkstyle>10.1</version.com.puppycrawl.tools.checkstyle>
-		<version.io.cucumber.datatable>7.2.3</version.io.cucumber.datatable>
 		<version.io.cucumber>7.2.3</version.io.cucumber>
 		<version.jp.skypencil.findbugs.slf4j.bug-pattern>1.5.0</version.jp.skypencil.findbugs.slf4j.bug-pattern>
 		<version.junit>4.13.2</version.junit>
