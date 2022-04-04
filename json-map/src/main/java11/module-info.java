@@ -1,5 +1,7 @@
 module com.github.nhojpatrick.cucumber.json.map {
     exports com.github.nhojpatrick.cucumber.json.map;
+    exports com.github.nhojpatrick.cucumber.json.map.impl
+            to com.github.nhojpatrick.cucumber.json.map.test;
     requires com.fasterxml.jackson.annotation;
     requires com.github.spotbugs.annotations;
     requires org.hamcrest;
