@@ -983,18 +983,10 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+				<artifactId>nhojpatrick-hamcrest-bom</artifactId>
 				<version>${version.com.github.nhojpatrick.hamcrest}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-				<version>${version.com.github.nhojpatrick.hamcrest}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
-				<version>${version.com.github.nhojpatrick.hamcrest}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
@@ -1148,7 +1140,7 @@
 		<plugins.sonatype.nexus-staging-maven-plugin>1.6.12</plugins.sonatype.nexus-staging-maven-plugin>
 		<!-- dependency versions -->
 		<version.com.fasterxml.jackson>2.13.2.1</version.com.fasterxml.jackson>
-		<version.com.github.nhojpatrick.hamcrest>[1.0.3,1.0.99)</version.com.github.nhojpatrick.hamcrest>
+		<version.com.github.nhojpatrick.hamcrest>1.0.3</version.com.github.nhojpatrick.hamcrest>
 		<version.com.github.spotbugs>4.6.0</version.com.github.spotbugs>
 		<version.com.google.inject.guice>5.1.0</version.com.google.inject.guice>
 		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.11.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
