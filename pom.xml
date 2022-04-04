@@ -903,9 +903,13 @@
 				<?SORTPOM RESUME?>
 			</dependency>
 			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>[2.10.1,)</version>
+				<?SORTPOM IGNORE?>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>${version.com.fasterxml.jackson}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
@@ -1143,6 +1147,7 @@
 		<plugins.org.owasp.dependency-check-maven>7.0.4</plugins.org.owasp.dependency-check-maven>
 		<plugins.sonatype.nexus-staging-maven-plugin>1.6.12</plugins.sonatype.nexus-staging-maven-plugin>
 		<!-- dependency versions -->
+		<version.com.fasterxml.jackson>2.13.2.1</version.com.fasterxml.jackson>
 		<version.com.github.nhojpatrick.hamcrest>[1.0.3,1.0.99)</version.com.github.nhojpatrick.hamcrest>
 		<version.com.github.spotbugs>4.6.0</version.com.github.spotbugs>
 		<version.com.google.inject.guice>5.1.0</version.com.google.inject.guice>
