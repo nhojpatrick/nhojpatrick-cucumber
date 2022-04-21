@@ -1155,7 +1155,7 @@
 		<version.org.apache.commons.text>1.9</version.org.apache.commons.text>
 		<version.org.apache.logging.log4j>2.17.2</version.org.apache.logging.log4j>
 		<version.org.hamcrest>2.2</version.org.hamcrest>
-		<version.org.joda.beans>2.8.1</version.org.joda.beans>
+		<version.org.joda.beans>2.8.2</version.org.joda.beans>
 		<version.org.junit>5.8.2</version.org.junit>
 		<version.org.mockito>4.5.1</version.org.mockito>
 		<version.org.slf4j>1.7.36</version.org.slf4j>
