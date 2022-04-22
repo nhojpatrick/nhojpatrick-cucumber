@@ -914,6 +914,7 @@
 		<module>all-glue</module>
 		<module>bom</module>
 		<module>core</module>
+		<module>http</module>
 		<module>json</module>
 		<module>json-map-glue</module>
 		<module>json-transform-glue</module>
