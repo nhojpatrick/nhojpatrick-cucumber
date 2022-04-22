@@ -879,6 +879,7 @@
 		<module>all-steps</module>
 		<module>bom</module>
 		<module>core</module>
+		<module>http</module>
 		<module>json</module>
 		<module>json-map-steps</module>
 		<module>json-transform-steps</module>
