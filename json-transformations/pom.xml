@@ -51,32 +51,32 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-core</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-print</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-remove</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-reverse</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-set</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-whitespace</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
