@@ -157,26 +157,6 @@
 							<arg>-Xpkginfo:always</arg>
 						</compilerArgs>
 					</configuration>
-					<executions>
-						<execution>
-							<id>java11-main</id>
-							<phase>compile</phase>
-							<goals>
-								<goal>compile</goal>
-							</goals>
-							<configuration>
-								<release>11</release>
-								<jdkToolchain>
-									<version>11</version>
-								</jdkToolchain>
-								<compileSourceRoots>
-									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
-									<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
-								</compileSourceRoots>
-								<multiReleaseOutput>true</multiReleaseOutput>
-							</configuration>
-						</execution>
-					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -577,6 +557,37 @@
 				<maven.compiler.release>11</maven.compiler.release>
 				<project.custom.java.version>11</project.custom.java.version>
 			</properties>
+		</profile>
+		<profile>
+			<id>multiReleaseOutput</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>multiReleaseOutput</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<release>11</release>
+									<jdkToolchain>
+										<version>11</version>
+									</jdkToolchain>
+									<compileSourceRoots>
+										<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
+										<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
+									</compileSourceRoots>
+									<multiReleaseOutput>true</multiReleaseOutput>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>qa_checkstyle</id>
