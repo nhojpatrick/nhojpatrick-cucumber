@@ -36,6 +36,7 @@
 		<module>core</module>
 		<module>jodabeans</module>
 		<module>map</module>
+		<module>transform</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
