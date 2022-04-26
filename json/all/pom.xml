@@ -42,6 +42,10 @@
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-json-jodabeans</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-map</artifactId>
+		</dependency>
 	</dependencies>
 	<!--reports (Deprecated) / -->
 	<!--reporting / -->

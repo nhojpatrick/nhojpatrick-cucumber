@@ -45,10 +45,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-json-map</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-json-transform</artifactId>
 		</dependency>
 		<dependency>
