@@ -879,6 +879,7 @@
 		<module>all-steps</module>
 		<module>bom</module>
 		<module>core</module>
+		<module>json</module>
 		<module>json-core</module>
 		<module>json-jodabeans</module>
 		<module>json-map</module>
