@@ -33,6 +33,7 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
+		<module>core</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
