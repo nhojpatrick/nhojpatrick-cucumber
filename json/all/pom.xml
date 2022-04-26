@@ -5,15 +5,14 @@
 	<!--parent / -->
 	<parent>
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
-		<artifactId>nhojpatrick-cucumber</artifactId>
+		<artifactId>nhojpatrick-cucumber-json-parent</artifactId>
 		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-json-parent</artifactId>
+	<artifactId>nhojpatrick-cucumber-json-all</artifactId>
 	<!--packaging / -->
-	<packaging>pom</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->
@@ -31,9 +30,6 @@
 	<!--build / -->
 	<!--profiles / -->
 	<!--modules / -->
-	<modules>
-		<module>all</module>
-	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
 	<!--dependencies / -->
@@ -43,6 +39,8 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.parent</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.all</project.Automatic-Module-Name>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+		<spotbugs.skip>true</spotbugs.skip>
 	</properties>
 </project>
