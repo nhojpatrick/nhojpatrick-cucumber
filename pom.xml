@@ -880,7 +880,6 @@
 		<module>bom</module>
 		<module>core</module>
 		<module>json</module>
-		<module>json-jodabeans</module>
 		<module>json-map</module>
 		<module>json-map-steps</module>
 		<module>json-transform</module>

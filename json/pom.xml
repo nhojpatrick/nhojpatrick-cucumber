@@ -34,6 +34,7 @@
 	<modules>
 		<module>all</module>
 		<module>core</module>
+		<module>jodabeans</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
