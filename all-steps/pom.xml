@@ -13,7 +13,6 @@
 	<!--artifactId / -->
 	<artifactId>nhojpatrick-cucumber-all-steps</artifactId>
 	<!--packaging / -->
-	<packaging>jar</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->

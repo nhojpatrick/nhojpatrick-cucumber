@@ -13,7 +13,6 @@
 	<!--artifactId / -->
 	<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
 	<!--packaging / -->
-	<packaging>jar</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->
