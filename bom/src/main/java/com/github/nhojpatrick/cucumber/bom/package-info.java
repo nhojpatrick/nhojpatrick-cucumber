@@ -17,7 +17,7 @@
 /**
  * nhojpatrick Cucumber.
  * <p>
- * nhojpatrick-cucumber-all is provide so a single dependency can be used,
- * instead of having to add each dependency separately.
+ * nhojpatrick-cucumber-bom is provide so usage uses the same version of all dependencies
+ * instead of having to add each dependency version separately.
  */
 package com.github.nhojpatrick.cucumber.bom;
