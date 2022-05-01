@@ -43,47 +43,47 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-all</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-all-steps</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-core</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-map</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-map-steps</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transform</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transform-steps</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-state</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-state-steps</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
