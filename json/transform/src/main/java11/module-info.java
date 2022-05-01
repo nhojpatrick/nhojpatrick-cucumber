@@ -15,4 +15,5 @@ module com.github.nhojpatrick.cucumber.json.transform {
     requires transitive com.github.nhojpatrick.cucumber.core;
     requires transitive com.github.nhojpatrick.cucumber.json.core;
     requires transitive com.github.nhojpatrick.cucumber.json.map;
+    requires transitive com.github.nhojpatrick.cucumber.json.transformations.all;
 }
