@@ -17,7 +17,7 @@
 /**
  * nhojpatrick Cucumber.
  * <p>
- * nhojpatrick-cucumber-all-steps is provide so a single dependency can be used,
+ * nhojpatrick-cucumber-all-glue is provide so a single dependency can be used,
  * instead of having to add each dependency separately.
  */
 package com.github.nhojpatrick.cucumber.all.steps;

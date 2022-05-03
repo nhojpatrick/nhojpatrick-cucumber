@@ -1,4 +1,4 @@
-module com.github.nhojpatrick.cucumber.state.steps {
+module com.github.nhojpatrick.cucumber.state.glue {
     exports com.github.nhojpatrick.cucumber.state.steps;
     requires com.github.nhojpatrick.hamcrest.collections;
     requires com.github.spotbugs.annotations;

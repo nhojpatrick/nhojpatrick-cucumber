@@ -1,5 +1,5 @@
-open module com.github.nhojpatrick.cucumber.json.map.steps.test {
-    requires com.github.nhojpatrick.cucumber.json.map.steps;
+open module com.github.nhojpatrick.cucumber.json.map.glue.test {
+    requires com.github.nhojpatrick.cucumber.json.map.glue;
     requires org.apache.logging.log4j;
     requires org.hamcrest;
     requires transitive io.cucumber.junit.platform.engine;

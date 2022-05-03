@@ -102,7 +102,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transform.steps</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transform.glue</project.Automatic-Module-Name>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
 </project>

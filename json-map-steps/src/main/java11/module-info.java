@@ -1,4 +1,4 @@
-module com.github.nhojpatrick.cucumber.json.map.steps {
+module com.github.nhojpatrick.cucumber.json.map.glue {
     exports com.github.nhojpatrick.cucumber.json.map.steps;
     requires com.github.spotbugs.annotations;
     requires com.google.guice;

@@ -1,8 +1,8 @@
-module com.github.nhojpatrick.cucumber.all.steps {
+module com.github.nhojpatrick.cucumber.all.glue {
     requires org.hamcrest;
     requires org.junit.jupiter.api;
     requires org.slf4j;
-    requires transitive com.github.nhojpatrick.cucumber.json.map.steps;
-    requires transitive com.github.nhojpatrick.cucumber.json.transform.steps;
-    requires transitive com.github.nhojpatrick.cucumber.state.steps;
+    requires transitive com.github.nhojpatrick.cucumber.json.map.glue;
+    requires transitive com.github.nhojpatrick.cucumber.json.transform.glue;
+    requires transitive com.github.nhojpatrick.cucumber.state.glue;
 }
