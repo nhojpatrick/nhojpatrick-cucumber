@@ -11,7 +11,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
+	<artifactId>nhojpatrick-cucumber-testing-internal-glue</artifactId>
 	<!--packaging / -->
 	<!--name / -->
 	<!--version / -->
