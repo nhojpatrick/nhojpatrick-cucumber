@@ -939,7 +939,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-all-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-all-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -969,7 +969,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-map-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-json-map-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -979,7 +979,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-transform-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-json-transform-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -994,17 +994,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-state-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-state-glue</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-testing-internal-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

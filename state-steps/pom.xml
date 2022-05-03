@@ -11,7 +11,7 @@
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
-	<artifactId>nhojpatrick-cucumber-state-steps</artifactId>
+	<artifactId>nhojpatrick-cucumber-state-glue</artifactId>
 	<!--packaging / -->
 	<!--name / -->
 	<!--version / -->
@@ -40,12 +40,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-glue</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
-			<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
+			<artifactId>nhojpatrick-cucumber-testing-internal-objects</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
