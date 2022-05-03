@@ -885,8 +885,8 @@
 		<module>json-transformations</module>
 		<module>state</module>
 		<module>state-glue</module>
+		<module>testing-internal/glue</module>
 		<module>testing-internal/objects</module>
-		<module>testing-internal/steps</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
