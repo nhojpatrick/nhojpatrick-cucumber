@@ -87,7 +87,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.testing.internal.steps</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.testing.internal.glue</project.Automatic-Module-Name>
 		<checkstyle.skip>true</checkstyle.skip>
 		<cpd.skip>true</cpd.skip>
 		<jacoco.skip>true</jacoco.skip>

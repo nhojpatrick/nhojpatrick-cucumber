@@ -1,5 +1,5 @@
-open module com.github.nhojpatrick.cucumber.state.steps.test {
-    requires com.github.nhojpatrick.cucumber.state.steps;
+open module com.github.nhojpatrick.cucumber.state.glue.test {
+    requires com.github.nhojpatrick.cucumber.state.glue;
     requires com.github.nhojpatrick.hamcrest.lang;
     requires org.apache.logging.log4j;
     requires org.hamcrest;

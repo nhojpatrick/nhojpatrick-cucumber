@@ -1,4 +1,4 @@
-module com.github.nhojpatrick.cucumber.testing.internal.steps {
+module com.github.nhojpatrick.cucumber.testing.internal.glue {
     exports com.github.nhojpatrick.cucumber.testing.internal.steps.json.transform;
     exports com.github.nhojpatrick.cucumber.testing.internal.steps.json.map;
     exports com.github.nhojpatrick.cucumber.testing.internal.steps.state;

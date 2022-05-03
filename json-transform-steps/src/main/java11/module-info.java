@@ -1,4 +1,4 @@
-module com.github.nhojpatrick.cucumber.json.transform.steps {
+module com.github.nhojpatrick.cucumber.json.transform.glue {
     exports com.github.nhojpatrick.cucumber.json.transform.steps;
     requires com.github.spotbugs.annotations;
     requires com.google.guice;

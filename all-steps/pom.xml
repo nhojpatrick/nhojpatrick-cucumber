@@ -95,7 +95,7 @@
 	<!--distributionManagement / -->
 	<!--properties / -->
 	<properties>
-		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.all.steps</project.Automatic-Module-Name>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.all.glue</project.Automatic-Module-Name>
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 		<maven.test.skip>true</maven.test.skip>
 		<spotbugs.skip>true</spotbugs.skip>
