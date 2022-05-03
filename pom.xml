@@ -880,7 +880,7 @@
 		<module>bom</module>
 		<module>core</module>
 		<module>json</module>
-		<module>json-map-steps</module>
+		<module>json-map-glue</module>
 		<module>json-transform-steps</module>
 		<module>json-transformations</module>
 		<module>state</module>
