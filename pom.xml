@@ -881,7 +881,7 @@
 		<module>core</module>
 		<module>json</module>
 		<module>json-map-glue</module>
-		<module>json-transform-steps</module>
+		<module>json-transform-glue</module>
 		<module>json-transformations</module>
 		<module>state</module>
 		<module>state-steps</module>
