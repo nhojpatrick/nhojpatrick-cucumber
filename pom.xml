@@ -876,7 +876,7 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
-		<module>all-steps</module>
+		<module>all-glue</module>
 		<module>bom</module>
 		<module>core</module>
 		<module>json</module>
