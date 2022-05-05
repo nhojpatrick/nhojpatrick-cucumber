@@ -14,7 +14,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Accepted will look at changing")
+@SuppressFBWarnings(value = {"EI_EXPOSE_REP2", "THROWS_METHOD_THROWS_CLAUSE_THROWABLE"}, justification = "Accepted will look at changing")
 public class ConvertMapToJson_TestingInternalSteps {
 
     private RunState runState;
