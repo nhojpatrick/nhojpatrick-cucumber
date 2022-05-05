@@ -13,6 +13,7 @@ import com.github.nhojpatrick.cucumber.json.transform.factory.TransformFactory;
 import com.github.nhojpatrick.cucumber.json.transformations.set.SetTransformation;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.google.inject.Inject;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.cucumber.java.en.Given;
 import org.junit.jupiter.api.function.Executable;
 
@@ -20,6 +21,7 @@ import java.util.Map;
 
 import static com.github.nhojpatrick.cucumber.json.transform.TransformConstants.DEFAULT_MAP_KEY;
 
+@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_THROWABLE", justification = "JUnit assertAll API")
 public class SetTransformation_TestingInternalSteps
         extends BaseTransformation_TestingInternalSteps {
 
