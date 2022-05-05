@@ -12,6 +12,7 @@ import java.util.function.Function;
 
 import static java.util.Objects.isNull;
 
+@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION", justification = "Accepted will look at changing")
 public class ConvertMapToJson
         implements Function<Map<String, Object>, String> {
 
