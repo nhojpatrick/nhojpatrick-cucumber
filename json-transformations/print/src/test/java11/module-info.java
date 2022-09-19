@@ -6,6 +6,7 @@ open module com.github.nhojpatrick.cucumber.json.transformations.print.test {
     requires com.github.nhojpatrick.hamcrest.lang;
     requires com.github.nhojpatrick.hamcrest.optionals;
     requires org.apache.logging.log4j;
+    requires org.apache.logging.log4j.core;
     requires org.hamcrest;
     requires transitive org.junit.jupiter.api;
     requires transitive org.junit.jupiter.engine;
