@@ -1158,7 +1158,7 @@
 		<plugins.org.owasp.dependency-check-maven>7.2.1</plugins.org.owasp.dependency-check-maven>
 		<plugins.sonatype.nexus-staging-maven-plugin>1.6.13</plugins.sonatype.nexus-staging-maven-plugin>
 		<!-- dependency versions -->
-		<version.com.fasterxml.jackson>2.13.4</version.com.fasterxml.jackson>
+		<version.com.fasterxml.jackson>2.13.4.20221013</version.com.fasterxml.jackson>
 		<version.com.github.nhojpatrick.hamcrest>1.0.3</version.com.github.nhojpatrick.hamcrest>
 		<version.com.github.spotbugs>4.7.3</version.com.github.spotbugs>
 		<version.com.google.inject.guice>5.1.0</version.com.google.inject.guice>
