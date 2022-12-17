@@ -1165,7 +1165,7 @@
 		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.12.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
 		<version.com.mebigfatguy.sb-contrib.sb-contrib>7.4.7</version.com.mebigfatguy.sb-contrib.sb-contrib>
 		<version.com.puppycrawl.tools.checkstyle>10.5.0</version.com.puppycrawl.tools.checkstyle>
-		<version.io.cucumber>7.10.0</version.io.cucumber>
+		<version.io.cucumber>7.10.1</version.io.cucumber>
 		<version.jp.skypencil.findbugs.slf4j.bug-pattern>1.5.0</version.jp.skypencil.findbugs.slf4j.bug-pattern>
 		<version.junit>4.13.2</version.junit>
 		<version.org.apache.commons.lang3>3.12.0</version.org.apache.commons.lang3>
