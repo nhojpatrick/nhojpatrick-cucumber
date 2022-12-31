@@ -1164,7 +1164,7 @@
 		<version.com.google.inject.guice>5.1.0</version.com.google.inject.guice>
 		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.12.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
 		<version.com.mebigfatguy.sb-contrib.sb-contrib>7.4.7</version.com.mebigfatguy.sb-contrib.sb-contrib>
-		<version.com.puppycrawl.tools.checkstyle>10.5.0</version.com.puppycrawl.tools.checkstyle>
+		<version.com.puppycrawl.tools.checkstyle>10.6.0</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber>7.10.1</version.io.cucumber>
 		<version.jp.skypencil.findbugs.slf4j.bug-pattern>1.5.0</version.jp.skypencil.findbugs.slf4j.bug-pattern>
 		<version.junit>4.13.2</version.junit>
