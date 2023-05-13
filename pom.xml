@@ -1136,7 +1136,7 @@
 		<plugins.sonatype.nexus-staging-maven-plugin>1.6.13</plugins.sonatype.nexus-staging-maven-plugin>
 		<plugins.spotbugs-maven-plugin>4.7.3.4</plugins.spotbugs-maven-plugin>
 		<!-- dependency versions -->
-		<version.com.fasterxml.jackson>2.14.2</version.com.fasterxml.jackson>
+		<version.com.fasterxml.jackson>2.14.3</version.com.fasterxml.jackson>
 		<version.com.github.nhojpatrick.hamcrest>1.0.3</version.com.github.nhojpatrick.hamcrest>
 		<version.com.github.spotbugs>4.7.3</version.com.github.spotbugs>
 		<version.com.google.inject.guice>7.0.0</version.com.google.inject.guice>
