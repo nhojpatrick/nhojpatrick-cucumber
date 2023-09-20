@@ -1197,7 +1197,7 @@
 		<version.org.apache.commons.text>1.10.0</version.org.apache.commons.text>
 		<version.org.apache.logging.log4j>2.20.0</version.org.apache.logging.log4j>
 		<version.org.hamcrest>2.2</version.org.hamcrest>
-		<version.org.joda.beans>2.9.2</version.org.joda.beans>
+		<version.org.joda.beans>2.10.0</version.org.joda.beans>
 		<version.org.junit>5.10.0</version.org.junit>
 		<version.org.mockito>5.5.0</version.org.mockito>
 		<version.org.slf4j>2.0.9</version.org.slf4j>
