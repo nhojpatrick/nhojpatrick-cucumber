@@ -6,6 +6,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public interface PathElement {
 
+    @SuppressFBWarnings(value = "PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES", justification = "Accepted")
     default String getPath(final String currentPath) {
         return getPath(currentPath, true);
     }
