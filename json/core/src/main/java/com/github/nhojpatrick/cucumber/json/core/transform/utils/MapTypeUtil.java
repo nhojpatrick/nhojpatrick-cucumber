@@ -71,6 +71,7 @@ public class MapTypeUtil {
         return isTypeMatch;
     }
 
+    @SuppressFBWarnings(value = "CT_CONSTRUCTOR_THROW", justification = "Accepted")
     public MapTypeUtil() {
         throw new AssertionError("Static utility class - cannot be instantiated.");
     }
