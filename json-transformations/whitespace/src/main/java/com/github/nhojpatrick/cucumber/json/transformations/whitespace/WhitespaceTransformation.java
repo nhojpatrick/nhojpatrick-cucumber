@@ -31,6 +31,7 @@ public class WhitespaceTransformation
     private final int prefix;
     private final int suffix;
 
+    @SuppressFBWarnings(value = "CT_CONSTRUCTOR_THROW", justification = "Accepted")
     public WhitespaceTransformation(final int prefix, final int suffix)
             throws WhitespaceTransformationArgumentException {
 
