@@ -50,6 +50,8 @@ public class TransformActionTask
                 .toComparison();
     }
 
+    @SuppressFBWarnings(value = "PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES",
+            justification = "Accepted for Builder")
     public static class Builder<B extends Builder, E extends TransformActionTask> {
 
         protected E entity;
