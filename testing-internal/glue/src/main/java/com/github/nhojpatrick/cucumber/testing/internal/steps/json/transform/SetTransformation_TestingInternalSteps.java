@@ -84,6 +84,7 @@ public class SetTransformation_TestingInternalSteps
         set(runStateJsonMapKey, path, value, type, UnsupportedDataTypeException.class, expectedExceptionMessageRaw);
     }
 
+    @SuppressFBWarnings(value = "BAS_BLOATED_ASSIGNMENT_SCOPE", justification = "Looks like false positive")
     public <T extends Exception> void set(final String runStateJsonMapKey,
                                           final String path,
                                           final String valueAsStr,
