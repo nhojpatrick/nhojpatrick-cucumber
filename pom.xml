@@ -914,6 +914,7 @@
 		<module>all-glue</module>
 		<module>bom</module>
 		<module>core</module>
+		<module>http</module>
 		<module>json</module>
 		<module>json-map-glue</module>
 		<module>json-transform-glue</module>
@@ -980,6 +981,41 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-all</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-constants</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-request</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-request-glue</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-response</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-http-response-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
