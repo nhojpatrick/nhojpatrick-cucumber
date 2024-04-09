@@ -10,11 +10,11 @@ public class PathValidatorFactory
 
     private static final PathValidatorFactory FACTORY = new PathValidatorFactory();
 
-    public static PathValidatorFactory getFactory() {
+    public static synchronized PathValidatorFactory getFactory() {
         return FACTORY;
     }
 
-    PathValidatorFactory() {
+    private PathValidatorFactory() {
     }
 
     @Override

@@ -10,11 +10,11 @@ public class TransformFactory
 
     private static final TransformFactory FACTORY = new TransformFactory();
 
-    public static TransformFactory getFactory() {
+    public static synchronized TransformFactory getFactory() {
         return FACTORY;
     }
 
-    TransformFactory() {
+    private TransformFactory() {
     }
 
     @Override

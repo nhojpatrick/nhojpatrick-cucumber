@@ -18,7 +18,7 @@ public class TransformationServiceFactory {
 
     private static final TransformationServiceFactory FACTORY = new TransformationServiceFactory();
 
-    public static TransformationServiceFactory getFactory() {
+    public static synchronized TransformationServiceFactory getFactory() {
         return FACTORY;
     }
 
@@ -26,7 +26,7 @@ public class TransformationServiceFactory {
 
     @SuppressFBWarnings(value = {"FII_USE_FUNCTION_IDENTITY"},
             justification = "Method being refactored when Java 1.8 dropped")
-    TransformationServiceFactory() {
+    private TransformationServiceFactory() {
 
         final ServiceLoader<TransformationService> transformationServices =
                 ServiceLoader.load(TransformationService.class);
