@@ -178,7 +178,7 @@
 								<version>[1.8,9),[11,12),[17,18),[19,)</version>
 							</requireJavaVersion>
 							<requireMavenVersion>
-								<version>[3.8.7,)</version>
+								<version>[3.9.7,)</version>
 							</requireMavenVersion>
 						</rules>
 					</configuration>
@@ -1189,7 +1189,7 @@
 		<version.com.google.inject.guice>7.0.0</version.com.google.inject.guice>
 		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.13.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
 		<version.com.mebigfatguy.sb-contrib.sb-contrib>7.6.4</version.com.mebigfatguy.sb-contrib.sb-contrib>
-		<version.com.puppycrawl.tools.checkstyle>10.16.0</version.com.puppycrawl.tools.checkstyle>
+		<version.com.puppycrawl.tools.checkstyle>10.17.0</version.com.puppycrawl.tools.checkstyle>
 		<version.io.cucumber>7.18.0</version.io.cucumber>
 		<version.jp.skypencil.findbugs.slf4j.bug-pattern>1.5.0</version.jp.skypencil.findbugs.slf4j.bug-pattern>
 		<version.junit>4.13.2</version.junit>
