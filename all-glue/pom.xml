@@ -36,6 +36,14 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-http-request-glue</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-http-response-glue</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
 			<artifactId>nhojpatrick-cucumber-json-map-glue</artifactId>
 		</dependency>
 		<dependency>
