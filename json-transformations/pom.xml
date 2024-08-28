@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!--modelVersion / -->
 	<modelVersion>4.0.0</modelVersion>
 	<!--parent / -->
 	<parent>
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
 		<artifactId>nhojpatrick-cucumber</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
@@ -28,7 +28,7 @@
 	<!--licenses / -->
 	<!--scm / -->
 	<!--organization / -->
-	<!--build /-->
+	<!--build / -->
 	<!--profiles / -->
 	<!--modules / -->
 	<modules>
@@ -51,32 +51,32 @@
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-core</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-print</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-remove</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-reverse</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-set</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-json-transformations-whitespace</artifactId>
-				<version>[${project.version},${project.custom.next.version})</version>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -84,6 +84,5 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.transformations.parent</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
 	</properties>
 </project>

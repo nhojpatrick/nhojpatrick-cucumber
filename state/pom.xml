@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!--modelVersion / -->
 	<modelVersion>4.0.0</modelVersion>
 	<!--parent / -->
 	<parent>
 		<groupId>com.github.nhojpatrick.cucumber</groupId>
 		<artifactId>nhojpatrick-cucumber</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<!--groupId / -->
 	<!--artifactId / -->
 	<artifactId>nhojpatrick-cucumber-state</artifactId>
 	<!--packaging / -->
-	<packaging>jar</packaging>
 	<!--name / -->
 	<!--version / -->
 	<!--description / -->
@@ -28,7 +27,7 @@
 	<!--licenses / -->
 	<!--scm / -->
 	<!--organization / -->
-	<!--build /-->
+	<!--build / -->
 	<!--profiles / -->
 	<!--modules / -->
 	<!--repositories / -->
@@ -47,6 +46,10 @@
 			<groupId>com.github.nhojpatrick.hamcrest</groupId>
 			<artifactId>nhojpatrick-hamcrest-lang</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs-annotations</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -70,7 +73,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -103,6 +106,6 @@
 	<!--properties / -->
 	<properties>
 		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.state</project.Automatic-Module-Name>
-		<project.surefire.argLine.jpms.module>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}.validation.impl=org.junit.platform.commons</project.surefire.argLine.jpms.module>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 </project>

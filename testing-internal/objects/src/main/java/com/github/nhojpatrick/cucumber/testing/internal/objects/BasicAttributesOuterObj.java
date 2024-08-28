@@ -19,7 +19,10 @@ import java.util.Map;
 
 @BeanDefinition
 @JsonCustomDefaults
-@SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
+        "EI_EXPOSE_REP",
+        "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
+        justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
 public class BasicAttributesOuterObj
         implements Bean,
@@ -246,18 +249,12 @@ public class BasicAttributesOuterObj
     }
 
     protected void toString(StringBuilder buf) {
-        buf.append("aBoolean").append('=').append(JodaBeanUtils.toString(getABoolean()))
-                .append(',').append(' ');
-        buf.append("aFloat").append('=').append(JodaBeanUtils.toString(getAFloat()))
-                .append(',').append(' ');
-        buf.append("aInteger").append('=').append(JodaBeanUtils.toString(getAInteger()))
-                .append(',').append(' ');
-        buf.append("aNull").append('=').append(JodaBeanUtils.toString(getANull()))
-                .append(',').append(' ');
-        buf.append("aObjectEmpty").append('=').append(JodaBeanUtils.toString(getAObjectEmpty()))
-                .append(',').append(' ');
-        buf.append("aString").append('=').append(JodaBeanUtils.toString(getAString()))
-                .append(',').append(' ');
+        buf.append("aBoolean").append('=').append(JodaBeanUtils.toString(getABoolean())).append(',').append(' ');
+        buf.append("aFloat").append('=').append(JodaBeanUtils.toString(getAFloat())).append(',').append(' ');
+        buf.append("aInteger").append('=').append(JodaBeanUtils.toString(getAInteger())).append(',').append(' ');
+        buf.append("aNull").append('=').append(JodaBeanUtils.toString(getANull())).append(',').append(' ');
+        buf.append("aObjectEmpty").append('=').append(JodaBeanUtils.toString(getAObjectEmpty())).append(',').append(' ');
+        buf.append("aString").append('=').append(JodaBeanUtils.toString(getAString())).append(',').append(' ');
     }
 
     //-----------------------------------------------------------------------
@@ -294,8 +291,7 @@ public class BasicAttributesOuterObj
          * The meta-property for the {@code aObjectEmpty} property.
          */
         private final MetaProperty<BasicAttributesInnerObj> aObjectEmpty = DirectMetaProperty.ofReadOnly(
-                this, "aObjectEmpty", BasicAttributesOuterObj.class,
-                BasicAttributesInnerObj.class);
+                this, "aObjectEmpty", BasicAttributesOuterObj.class, BasicAttributesInnerObj.class);
         /**
          * The meta-property for the {@code aString} property.
          */

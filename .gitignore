@@ -1,23 +1,4 @@
 # ignore file
-testing-internal/objects2
-testing-internal/objects3
-
-#eclipse
-.classpath
-.project
-.settings/
-
-# intellij
-*.iml
-.idea/
 
 # maven
 target/
-
-# MacOS
-._*
-.DS_Store
-
-# Windows
-[Dd]esktop.ini
-Thumbs.db

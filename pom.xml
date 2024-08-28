@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!--modelVersion / -->
 	<modelVersion>4.0.0</modelVersion>
 	<!--parent / -->
@@ -12,7 +12,7 @@
 	<!--name / -->
 	<name>Cucumber extensions</name>
 	<!--version / -->
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<!--description / -->
 	<description>Cucumber extensions project</description>
 	<!--url / -->
@@ -21,7 +21,7 @@
 	<!--issueManagement / -->
 	<issueManagement>
 		<system>GITHUB</system>
-		<url>http://github.com/nhojpatrick/nhojpatrick-cucumber/issues</url>
+		<url>https://github.com/nhojpatrick/nhojpatrick-cucumber/issues</url>
 	</issueManagement>
 	<!--ciManagement / -->
 	<!--inceptionYear / -->
@@ -39,55 +39,76 @@
 	<licenses>
 		<license>
 			<name>The Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
 	<!--scm / -->
 	<scm>
 		<connection>scm:git:git://github.com/nhojpatrick/nhojpatrick-cucumber.git</connection>
 		<developerConnection>scm:git:ssh://github.com:nhojpatrick/nhojpatrick-cucumber.git</developerConnection>
-		<url>http://github.com/nhojpatrick/nhojpatrick-cucumber/tree/master</url>
+		<url>https://github.com/nhojpatrick/nhojpatrick-cucumber/tree/main</url>
 	</scm>
 	<!--organization / -->
-	<!--build /-->
+	<!--build / -->
 	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>com.amashchenko.maven.plugin</groupId>
+					<artifactId>gitflow-maven-plugin</artifactId>
+					<version>${plugins.gitflow-maven-plugin}</version>
+					<configuration>
+						<argLine>-Pcicd,deployableArtifacts</argLine>
+						<postReleaseGoals>deploy</postReleaseGoals>
+						<gitFlowConfig>
+							<developmentBranch>develop</developmentBranch>
+							<productionBranch>main</productionBranch>
+							<versionTagPrefix>v</versionTagPrefix>
+						</gitFlowConfig>
+						<gpgSignCommit>true</gpgSignCommit>
+						<gpgSignTag>true</gpgSignTag>
+						<commitMessagePrefix xml:space="preserve">[gitflow] </commitMessagePrefix>
+						<commitMessages>
+							<releaseFinishMessage>Development v@{version}</releaseFinishMessage>
+							<releaseStartMessage>Release v@{version}</releaseStartMessage>
+						</commitMessages>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>com.github.ekryd.sortpom</groupId>
 					<artifactId>sortpom-maven-plugin</artifactId>
-					<version>2.10.0</version>
+					<version>${plugins.ekryd-sortpom-maven-plugin}</version>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.sortpom</groupId>
+							<groupId>com.github.nhojpatrick.qa</groupId>
 							<artifactId>nhojpatrick-sortpom-sortorderfile</artifactId>
-							<version>[1.1,1.999)</version>
+							<version>[1.1.0,1.1.999)</version>
 						</dependency>
 					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>com.github.spotbugs</groupId>
 					<artifactId>spotbugs-maven-plugin</artifactId>
-					<version>3.1.12.2</version>
-					<!--					<configuration>-->
-					<!--						<plugins>-->
-					<!--							<plugin>-->
-					<!--								<groupId>com.h3xstream.findsecbugs</groupId>-->
-					<!--								<artifactId>findsecbugs-plugin</artifactId>-->
-					<!--								<version>1.9.0</version>-->
-					<!--							</plugin>-->
-					<!--							<plugin>-->
-					<!--								<groupId>com.mebigfatguy.fb-contrib</groupId>-->
-					<!--								<artifactId>fb-contrib</artifactId>-->
-					<!--								<version>7.4.6</version>-->
-					<!--							</plugin>-->
-					<!--							<plugin>-->
-					<!--								<groupId>jp.skypencil.findbugs.slf4j</groupId>-->
-					<!--								<artifactId>bug-pattern</artifactId>-->
-					<!--								<version>1.5.0</version>-->
-					<!--							</plugin>-->
-					<!--						</plugins>-->
-					<!--					</configuration>-->
+					<version>${plugins.spotbugs-maven-plugin}</version>
+					<configuration>
+						<plugins>
+							<plugin>
+								<groupId>com.h3xstream.findsecbugs</groupId>
+								<artifactId>findsecbugs-plugin</artifactId>
+								<version>${version.com.h3xstream.findsecbugs.findsecbugs-plugin}</version>
+							</plugin>
+							<plugin>
+								<groupId>com.mebigfatguy.sb-contrib</groupId>
+								<artifactId>sb-contrib</artifactId>
+								<version>${version.com.mebigfatguy.sb-contrib.sb-contrib}</version>
+							</plugin>
+							<plugin>
+								<groupId>jp.skypencil.findbugs.slf4j</groupId>
+								<artifactId>bug-pattern</artifactId>
+								<version>${version.jp.skypencil.findbugs.slf4j.bug-pattern}</version>
+							</plugin>
+						</plugins>
+					</configuration>
 					<dependencies>
 						<dependency>
 							<groupId>com.github.spotbugs</groupId>
@@ -99,26 +120,19 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${plugins.maven-checkstyle-plugin}</version>
 					<configuration>
 						<consoleOutput>true</consoleOutput>
-						<failsOnError>true</failsOnError>
-						<checkstyleRules>
-							<module name="Checker">
-								<!-- Checks for Size Violations.                             -->
-								<!-- See https://checkstyle.sourceforge.io/config_sizes.html -->
-								<module name="LineLength">
-									<property name="fileExtensions" value="java"></property>
-									<property name="max" value="120"></property>
-									<property name="ignorePattern" value="^package.*|^import.*|.*LOGGER.*|^.*\@Given\(.*"></property>
-								</module>
-								<!-- Checks for whitespace                               -->
-								<!-- See http://checkstyle.sf.net/config_whitespace.html -->
-								<module name="FileTabCharacter"></module>
-							</module>
-						</checkstyleRules>
+						<failOnViolation>true</failOnViolation>
+						<failsOnError>false</failsOnError>
+						<logViolationsToConsole>true</logViolationsToConsole>
 					</configuration>
 					<dependencies>
+						<dependency>
+							<groupId>com.github.nhojpatrick.qa</groupId>
+							<artifactId>nhojpatrick-qa-ruleset-checkstyle</artifactId>
+							<version>[1.1.0,1.1.999)</version>
+						</dependency>
 						<dependency>
 							<groupId>com.puppycrawl.tools</groupId>
 							<artifactId>checkstyle</artifactId>
@@ -129,75 +143,74 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${plugins.maven-clean-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.1</version>
-					<!--					<configuration>-->
-					<!--						<compilerArgs>-->
-					<!--							<arg>-parameters</arg>-->
-					<!--<arg>-verbose</arg>-->
-					<!--							<arg>-Xlint:unchecked</arg>-->
-					<!--						</compilerArgs>-->
-					<!--					</configuration>-->
-					<executions>
-						<execution>
-							<id>java11</id>
-							<phase>compile</phase>
-							<goals>
-								<goal>compile</goal>
-							</goals>
-							<configuration>
-								<release>11</release>
-								<jdkToolchain>
-									<version>11</version>
-								</jdkToolchain>
-								<compileSourceRoots>
-									<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
-									<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
-								</compileSourceRoots>
-								<multiReleaseOutput>true</multiReleaseOutput>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>3.0.0-M2</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.22.2</version>
+					<version>${plugins.maven-compiler-plugin}</version>
 					<configuration>
-						<argLine>${project.failsafe.argLine.jpms}</argLine>
-						<includes>
-							<include>**/*IT.java</include>
-						</includes>
+						<compilerArgs>
+							<arg>-parameters</arg>
+							<!--							<arg>-verbose</arg>-->
+							<!--							<arg>-Xlint:unchecked</arg>-->
+							<arg>-Xpkginfo:always</arg>
+						</compilerArgs>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${plugins.maven-dependency-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${plugins.maven-deploy-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${plugins.maven-enforcer-plugin}</version>
+					<configuration>
+						<rules>
+							<requireJavaVersion>
+								<version>[1.8,9),[11,12),[17,18),[19,)</version>
+							</requireJavaVersion>
+							<requireMavenVersion>
+								<version>[3.9.8,)</version>
+							</requireMavenVersion>
+						</rules>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${plugins.maven-failsafe-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<version>${plugins.maven-gpg-plugin}</version>
+					<configuration>
+						<keyname>${gpg.keyname}</keyname>
+						<passphraseServerId>${gpg.keyname}</passphraseServerId>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-help-plugin</artifactId>
+					<version>${plugins.maven-help-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.2</version>
+					<version>${plugins.maven-install-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>${plugins.maven-jar-plugin}</version>
 					<configuration>
 						<archive>
 							<manifestEntries>
@@ -213,7 +226,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.1.1</version>
+					<version>${plugins.maven-javadoc-plugin}</version>
 					<configuration>
 						<source>1.8</source>
 						<!--						<excludes>-->
@@ -231,50 +244,81 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.12.0</version>
+					<version>${plugins.maven-pmd-plugin}</version>
 					<configuration>
 						<rulesets>
-							<ruleset>com/github/nhojpatrick/pmd/ruleset/rules.xml</ruleset>
+							<ruleset>com/github/nhojpatrick/qa/ruleset/pmd/rules.xml</ruleset>
 						</rulesets>
 					</configuration>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.pmd</groupId>
-							<artifactId>nhojpatrick-pmd-ruleset</artifactId>
-							<version>[1.0,1.999)</version>
+							<groupId>com.github.nhojpatrick.qa</groupId>
+							<artifactId>nhojpatrick-qa-ruleset-pmd</artifactId>
+							<version>[2.0.0,2.0.999)</version>
 						</dependency>
 					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-remote-resources-plugin</artifactId>
+					<version>${plugins.maven-remote-resources-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-repository-plugin</artifactId>
+					<version>${plugins.maven-repository-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.1.0</version>
+					<version>${plugins.maven-resources-plugin}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${plugins.maven-scm-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.8.2</version>
+					<version>${plugins.maven-site-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>${plugins.maven-source-plugin}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.2</version>
+					<version>${plugins.maven-surefire-plugin}</version>
 					<configuration>
-						<argLine>${project.surefire.argLine.jpms}</argLine>
 						<excludes>
 							<exclude>**/*IT.java</exclude>
 						</excludes>
+						<forkCount>1</forkCount>
+						<reuseForks>true</reuseForks>
+						<properties>
+							<configurationParameters>cucumber.junit-platform.naming-strategy=long</configurationParameters>
+						</properties>
+						<reportFormat>plain</reportFormat>
+						<consoleOutputReporter>
+							<disable>true</disable>
+						</consoleOutputReporter>
+						<statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter"></statelessTestsetInfoReporter>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>me.fabriciorby</groupId>
+							<artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+							<version>${plugins.maven-surefire-junit5-tree-reporter}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-toolchains-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${plugins.maven-toolchains-plugin}</version>
 					<configuration>
 						<toolchains>
 							<jdk>
@@ -292,9 +336,14 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-wrapper-plugin</artifactId>
+					<version>${plugins.maven-wrapper-plugin}</version>
+				</plugin>
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.0.0</version>
+					<version>${plugins.build-helper-maven-plugin}</version>
 					<executions>
 						<execution>
 							<id>remove-project-artifact-default</id>
@@ -320,19 +369,42 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>versions-maven-plugin</artifactId>
-					<version>2.7</version>
+					<version>${plugins.versions-maven-plugin}</version>
 					<dependencies>
 						<dependency>
-							<groupId>com.github.nhojpatrick.versions</groupId>
+							<groupId>com.github.nhojpatrick.qa</groupId>
 							<artifactId>nhojpatrick-versions-ruleset</artifactId>
-							<version>1.1</version>
+							<version>[1.1.0,1.1.999)</version>
 						</dependency>
 					</dependencies>
 				</plugin>
 				<plugin>
+					<groupId>org.cyclonedx</groupId>
+					<artifactId>cyclonedx-maven-plugin</artifactId>
+					<version>${plugins.cyclonedx-maven-plugin}</version>
+					<configuration>
+						<projectType>library</projectType>
+						<schemaVersion>1.4</schemaVersion>
+						<includeBomSerialNumber>true</includeBomSerialNumber>
+						<includeCompileScope>true</includeCompileScope>
+						<includeProvidedScope>true</includeProvidedScope>
+						<includeRuntimeScope>true</includeRuntimeScope>
+						<includeSystemScope>true</includeSystemScope>
+						<includeTestScope>false</includeTestScope>
+						<includeLicenseText>false</includeLicenseText>
+						<outputReactorProjects>true</outputReactorProjects>
+						<outputFormat>json</outputFormat>
+						<outputName>bom</outputName>
+						<outputDirectory>${project.basedir}</outputDirectory>
+						<!-- usually target, if not redefined in pom.xml -->
+						<verbose>false</verbose>
+						<!-- = ${cyclonedx.verbose} -->
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.eluder.coveralls</groupId>
 					<artifactId>coveralls-maven-plugin</artifactId>
-					<version>4.3.0</version>
+					<version>${plugins.coveralls-maven-plugin}</version>
 					<configuration>
 						<repoToken>${COVERALLS_REPO_TOKEN}</repoToken>
 					</configuration>
@@ -340,7 +412,7 @@
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.8.5</version>
+					<version>${plugins.jacoco-maven-plugin}</version>
 					<configuration>
 						<excludes>
 							<exclude>META-INF/versions/**</exclude>
@@ -407,7 +479,7 @@
 				<plugin>
 					<groupId>org.joda</groupId>
 					<artifactId>joda-beans-maven-plugin</artifactId>
-					<version>1.3.1</version>
+					<version>${plugins.joda-beans-maven-plugin}</version>
 					<executions>
 						<execution>
 							<id>joda-beans-generate</id>
@@ -418,32 +490,31 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<groupId>org.owasp</groupId>
+					<artifactId>dependency-check-maven</artifactId>
+					<version>${plugins.owasp-dependency-check-maven}</version>
+				</plugin>
+				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.8</version>
+					<version>${plugins.nexus-staging-maven-plugin}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>enforce-maven</id>
+						<id>enforce</id>
 						<goals>
 							<goal>enforce</goal>
 						</goals>
-						<configuration>
-							<rules>
-								<requireJavaVersion>
-									<version>[1.8,9),[11,)</version>
-								</requireJavaVersion>
-								<requireMavenVersion>
-									<version>3.6.3</version>
-								</requireMavenVersion>
-							</rules>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -466,6 +537,8 @@
 		<profile>
 			<id>cicd</id>
 			<properties>
+				<downloadJavadocs>false</downloadJavadocs>
+				<downloadSources>false</downloadSources>
 				<joda.beans.skip>true</joda.beans.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
@@ -482,7 +555,7 @@
 						<artifactId>build-helper-maven-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>add-source-java11</id>
+								<id>add-source-java11-main</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>add-source</goal>
@@ -490,6 +563,18 @@
 								<configuration>
 									<sources>
 										<source>${project.basedir}/src/main/java11</source>
+									</sources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>add-source-java11-test</id>
+								<phase>generate-test-sources</phase>
+								<goals>
+									<goal>add-test-source</goal>
+								</goals>
+								<configuration>
+									<sources>
+										<source>${project.basedir}/src/test/java11</source>
 									</sources>
 								</configuration>
 							</execution>
@@ -501,14 +586,43 @@
 				<base.java.version>11</base.java.version>
 				<maven.compiler.release>11</maven.compiler.release>
 				<project.custom.java.version>11</project.custom.java.version>
-				<project.failsafe.argLine.jpms>${project.failsafe.argLine.jpms.global} ${project.failsafe.argLine.jpms.module}</project.failsafe.argLine.jpms>
-				<project.surefire.argLine.jpms>${project.surefire.argLine.jpms.global} ${project.surefire.argLine.jpms.module}</project.surefire.argLine.jpms>
 			</properties>
+		</profile>
+		<profile>
+			<id>multiReleaseOutput</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>multiReleaseOutput</id>
+								<phase>compile</phase>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<release>11</release>
+									<jdkToolchain>
+										<version>11</version>
+									</jdkToolchain>
+									<compileSourceRoots>
+										<compileSourceRoot>${project.basedir}/src/main/java</compileSourceRoot>
+										<compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
+									</compileSourceRoots>
+									<multiReleaseOutput>true</multiReleaseOutput>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>qa_checkstyle</id>
 			<build>
-				<defaultGoal>validate</defaultGoal>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -527,6 +641,7 @@
 			</build>
 			<properties>
 				<joda.beans.skip>true</joda.beans.skip>
+				<maven.test.skip>true</maven.test.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
@@ -548,6 +663,7 @@
 		<profile>
 			<id>qa_javadoc</id>
 			<build>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -566,13 +682,39 @@
 			</build>
 			<properties>
 				<joda.beans.skip>true</joda.beans.skip>
+				<maven.test.skip>true</maven.test.skip>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa_owasp-dependency-check</id>
+			<build>
+				<defaultGoal>validate</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<executions>
+							<execution>
+								<id>owasp-dependency-check</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
 		<profile>
 			<id>qa_pmd</id>
 			<build>
-				<defaultGoal>validate</defaultGoal>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -592,6 +734,7 @@
 			</build>
 			<properties>
 				<joda.beans.skip>true</joda.beans.skip>
+				<maven.test.skip>true</maven.test.skip>
 				<pmd.verbose>true</pmd.verbose>
 				<sort.skip>true</sort.skip>
 			</properties>
@@ -599,6 +742,7 @@
 		<profile>
 			<id>qa_spotbugs</id>
 			<build>
+				<defaultGoal>verify</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>com.github.spotbugs</groupId>
@@ -606,7 +750,7 @@
 						<executions>
 							<execution>
 								<id>spotbugs-check</id>
-								<phase>validate</phase>
+								<phase>verify</phase>
 								<goals>
 									<goal>check</goal>
 								</goals>
@@ -617,11 +761,12 @@
 			</build>
 			<properties>
 				<joda.beans.skip>true</joda.beans.skip>
+				<maven.test.skip>true</maven.test.skip>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
 		<profile>
-			<id>release</id>
+			<id>deployableArtifacts</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -661,6 +806,14 @@
 							</execution>
 						</executions>
 					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>release</id>
+			<build>
+				<defaultGoal>gitflow:release</defaultGoal>
+				<plugins>
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -675,6 +828,28 @@
 			</build>
 			<properties>
 				<joda.beans.skip>true</joda.beans.skip>
+				<sort.skip>true</sort.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>sbom</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.cyclonedx</groupId>
+						<artifactId>cyclonedx-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>makeAggregateBom</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
 				<sort.skip>true</sort.skip>
 			</properties>
 		</profile>
@@ -701,6 +876,9 @@
 					</plugin>
 				</plugins>
 			</build>
+			<properties>
+				<enforcer.fail>false</enforcer.fail>
+			</properties>
 		</profile>
 		<profile>
 			<id>versions</id>
@@ -715,35 +893,10 @@
 								<id>versions-check</id>
 								<phase>validate</phase>
 								<goals>
-									<goal>display-dependency-updates</goal>
 									<goal>display-parent-updates</goal>
 									<goal>display-plugin-updates</goal>
+									<goal>display-dependency-updates</goal>
 									<goal>display-property-updates</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-			<properties>
-				<sort.skip>true</sort.skip>
-			</properties>
-		</profile>
-		<profile>
-			<id>wrapper</id>
-			<build>
-				<defaultGoal>validate</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>io.takari</groupId>
-						<artifactId>maven</artifactId>
-						<version>0.7.7</version>
-						<executions>
-							<execution>
-								<id>wrapper-latest</id>
-								<phase>validate</phase>
-								<goals>
-									<goal>wrapper</goal>
 								</goals>
 							</execution>
 						</executions>
@@ -758,19 +911,17 @@
 	<!--modules / -->
 	<modules>
 		<module>all</module>
-		<module>all-steps</module>
+		<module>all-glue</module>
+		<module>bom</module>
 		<module>core</module>
-		<module>json-core</module>
-		<module>json-jodabeans</module>
-		<module>json-map</module>
-		<module>json-map-steps</module>
-		<module>json-transform</module>
-		<module>json-transform-steps</module>
+		<module>json</module>
+		<module>json-map-glue</module>
+		<module>json-transform-glue</module>
 		<module>json-transformations</module>
 		<module>state</module>
-		<module>state-steps</module>
+		<module>state-glue</module>
+		<module>testing-internal/glue</module>
 		<module>testing-internal/objects</module>
-		<module>testing-internal/steps</module>
 	</modules>
 	<!--repositories / -->
 	<!--pluginRepositories / -->
@@ -781,9 +932,40 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>[2.10.1,)</version>
+				<?SORTPOM IGNORE?>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-bom</artifactId>
+				<version>${version.org.apache.logging.log4j}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
+			</dependency>
+			<dependency>
+				<?SORTPOM IGNORE?>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${version.org.junit}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
+			</dependency>
+			<dependency>
+				<?SORTPOM IGNORE?>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-bom</artifactId>
+				<version>${version.io.cucumber}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
+			</dependency>
+			<dependency>
+				<?SORTPOM IGNORE?>
+				<groupId>com.fasterxml.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>${version.com.fasterxml.jackson}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<?SORTPOM RESUME?>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
@@ -792,12 +974,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-all-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-all-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
 				<artifactId>nhojpatrick-cucumber-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-json-all</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -817,7 +1004,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-map-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-json-map-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -827,7 +1014,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-json-transform-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-json-transform-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -842,7 +1029,12 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-state-steps</artifactId>
+				<artifactId>nhojpatrick-cucumber-state-glue</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.nhojpatrick.cucumber</groupId>
+				<artifactId>nhojpatrick-cucumber-testing-internal-glue</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -851,24 +1043,11 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.nhojpatrick.cucumber</groupId>
-				<artifactId>nhojpatrick-cucumber-testing-internal-steps</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-collections</artifactId>
+				<artifactId>nhojpatrick-hamcrest-bom</artifactId>
 				<version>${version.com.github.nhojpatrick.hamcrest}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-lang</artifactId>
-				<version>${version.com.github.nhojpatrick.hamcrest}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.nhojpatrick.hamcrest</groupId>
-				<artifactId>nhojpatrick-hamcrest-optionals</artifactId>
-				<version>${version.com.github.nhojpatrick.hamcrest}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.github.spotbugs</groupId>
@@ -883,7 +1062,7 @@
 			<dependency>
 				<groupId>com.google.inject</groupId>
 				<artifactId>guice</artifactId>
-				<version>4.2.2</version>
+				<version>${version.com.google.inject.guice}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.puppycrawl.tools</groupId>
@@ -892,34 +1071,20 @@
 			</dependency>
 			<dependency>
 				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-core</artifactId>
-				<version>${version.io.cucumber}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
 				<artifactId>cucumber-guice</artifactId>
 				<version>${version.io.cucumber}</version>
 			</dependency>
+			<!-- only defined for exclusions -->
 			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-java</artifactId>
-				<version>${version.io.cucumber}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>cucumber-junit</artifactId>
-				<version>${version.io.cucumber}</version>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.hamcrest</groupId>
 						<artifactId>hamcrest-core</artifactId>
 					</exclusion>
 				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId>
-				<artifactId>datatable</artifactId>
-				<version>${version.io.cucumber.datatable}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -932,11 +1097,6 @@
 				<version>${version.org.apache.commons.text}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-slf4j-impl</artifactId>
-				<version>${version.org.apache.logging.log4j}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest</artifactId>
 				<version>${version.org.hamcrest}</version>
@@ -947,24 +1107,9 @@
 				<version>${version.org.joda.beans}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-api</artifactId>
-				<version>${version.org.junit.jupiter}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-engine</artifactId>
-				<version>${version.org.junit.jupiter}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.junit.vintage</groupId>
-				<artifactId>junit-vintage-engine</artifactId>
-				<version>${version.org.junit.vintage}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>3.2.0</version>
+				<version>${version.org.mockito}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -975,77 +1120,109 @@
 	</dependencyManagement>
 	<!--distributionManagement / -->
 	<distributionManagement>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
 	</distributionManagement>
 	<!--properties / -->
 	<properties>
-		<!-- next minor version -->
-		<project.custom.next.version>1.0.99</project.custom.next.version>
 		<!-- custom properties -->
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.n/a</project.Automatic-Module-Name>
 		<project.custom.encoding>UTF-8</project.custom.encoding>
 		<project.custom.java.version>1.8</project.custom.java.version>
+		<!-- maven user properties -->
+		<downloadJavadocs>true</downloadJavadocs>
+		<downloadSources>true</downloadSources>
+		<generateBackupPoms>false</generateBackupPoms>
 		<joda.beans.skip>false</joda.beans.skip>
-		<!-- override maven properties -->
-		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<maven.compiler.source>${project.custom.java.version}</maven.compiler.source>
 		<maven.compiler.target>${project.custom.java.version}</maven.compiler.target>
-		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
+		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<project.build.outputEncoding>${project.custom.encoding}</project.build.outputEncoding>
+		<project.build.sourceEncoding>${project.custom.encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.custom.encoding}</project.reporting.outputEncoding>
-		<!-- maven user properties -->
-		<downloadSources>true</downloadSources>
-		<downloadJavadocs>true</downloadJavadocs>
-		<!-- Surefire/Failsafe jpms override(s) -->
-		<project.failsafe.argLine.jpms></project.failsafe.argLine.jpms>
-		<project.failsafe.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED</project.failsafe.argLine.jpms.global>
-		<project.failsafe.argLine.jpms.module></project.failsafe.argLine.jpms.module>
-		<project.surefire.argLine.jpms></project.surefire.argLine.jpms>
-		<project.surefire.argLine.jpms.global>--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=ALL-UNNAMED
-			--add-opens ${project.Automatic-Module-Name}/${project.Automatic-Module-Name}=org.junit.platform.commons
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED
-			--add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED</project.surefire.argLine.jpms.global>
-		<project.surefire.argLine.jpms.module></project.surefire.argLine.jpms.module>
-		<!-- -->
-		<version.com.github.nhojpatrick.hamcrest>[1.0.1,1.0.99)</version.com.github.nhojpatrick.hamcrest>
-		<version.com.puppycrawl.tools.checkstyle>8.28</version.com.puppycrawl.tools.checkstyle>
-		<version.io.cucumber>4.8.1</version.io.cucumber>
-		<version.io.cucumber.datatable>3.1.0</version.io.cucumber.datatable>
-		<version.org.apache.commons.lang3>[3.8,3.99)</version.org.apache.commons.lang3>
-		<version.org.apache.commons.text>[1.8,1.99)</version.org.apache.commons.text>
-		<version.org.apache.logging.log4j>[2.12.1,2.12.99)</version.org.apache.logging.log4j>
-		<version.org.hamcrest>[2.2,2.99)</version.org.hamcrest>
-		<version.org.joda.beans>[2.4.0,2.99.99)</version.org.joda.beans>
-		<version.org.junit.jupiter>[5.6.0,5.6.99)</version.org.junit.jupiter>
-		<version.org.junit.vintage>[5.6.0,5.6.99)</version.org.junit.vintage>
-		<version.org.slf4j>[1.7.0,1.7.99)</version.org.slf4j>
-		<version.com.github.spotbugs>[3.1.12,3.1.99)</version.com.github.spotbugs>
+		<surefire.runOrder>random</surefire.runOrder>
+		<!-- plugin versions -->
+		<plugins.build-helper-maven-plugin>3.6.0</plugins.build-helper-maven-plugin>
+		<plugins.coveralls-maven-plugin>4.3.0</plugins.coveralls-maven-plugin>
+		<plugins.cyclonedx-maven-plugin>2.8.1</plugins.cyclonedx-maven-plugin>
+		<plugins.ekryd-sortpom-maven-plugin>3.0.1</plugins.ekryd-sortpom-maven-plugin>
+		<plugins.gitflow-maven-plugin>1.21.0</plugins.gitflow-maven-plugin>
+		<plugins.jacoco-maven-plugin>0.8.12</plugins.jacoco-maven-plugin>
+		<plugins.joda-beans-maven-plugin>1.3.2</plugins.joda-beans-maven-plugin>
+		<plugins.maven-checkstyle-plugin>3.5.0</plugins.maven-checkstyle-plugin>
+		<plugins.maven-clean-plugin>3.4.0</plugins.maven-clean-plugin>
+		<plugins.maven-compiler-plugin>3.13.0</plugins.maven-compiler-plugin>
+		<plugins.maven-dependency-plugin>3.8.0</plugins.maven-dependency-plugin>
+		<plugins.maven-deploy-plugin>3.1.3</plugins.maven-deploy-plugin>
+		<plugins.maven-enforcer-plugin>3.5.0</plugins.maven-enforcer-plugin>
+		<plugins.maven-failsafe-plugin>3.5.0</plugins.maven-failsafe-plugin>
+		<plugins.maven-gpg-plugin>3.2.5</plugins.maven-gpg-plugin>
+		<plugins.maven-help-plugin>3.5.0</plugins.maven-help-plugin>
+		<plugins.maven-install-plugin>3.1.3</plugins.maven-install-plugin>
+		<plugins.maven-jar-plugin>3.4.2</plugins.maven-jar-plugin>
+		<plugins.maven-javadoc-plugin>3.10.0</plugins.maven-javadoc-plugin>
+		<plugins.maven-pmd-plugin>3.25.0</plugins.maven-pmd-plugin>
+		<plugins.maven-remote-resources-plugin>3.2.0</plugins.maven-remote-resources-plugin>
+		<plugins.maven-repository-plugin>2.4</plugins.maven-repository-plugin>
+		<plugins.maven-resources-plugin>3.3.1</plugins.maven-resources-plugin>
+		<plugins.maven-scm-plugin>2.1.0</plugins.maven-scm-plugin>
+		<plugins.maven-site-plugin>3.20.0</plugins.maven-site-plugin>
+		<plugins.maven-source-plugin>3.3.1</plugins.maven-source-plugin>
+		<plugins.maven-surefire-junit5-tree-reporter>1.3.0</plugins.maven-surefire-junit5-tree-reporter>
+		<plugins.maven-surefire-plugin>3.5.0</plugins.maven-surefire-plugin>
+		<plugins.maven-toolchains-plugin>3.2.0</plugins.maven-toolchains-plugin>
+		<plugins.maven-wrapper-plugin>3.3.2</plugins.maven-wrapper-plugin>
+		<plugins.nexus-staging-maven-plugin>1.7.0</plugins.nexus-staging-maven-plugin>
+		<plugins.owasp-dependency-check-maven>10.0.3</plugins.owasp-dependency-check-maven>
+		<plugins.spotbugs-maven-plugin>4.8.6.2</plugins.spotbugs-maven-plugin>
+		<plugins.versions-maven-plugin>2.17.1</plugins.versions-maven-plugin>
+		<!-- dependency versions -->
+		<version.com.fasterxml.jackson>2.17.2</version.com.fasterxml.jackson>
+		<version.com.github.nhojpatrick.hamcrest>1.0.3</version.com.github.nhojpatrick.hamcrest>
+		<version.com.github.spotbugs>4.8.6</version.com.github.spotbugs>
+		<version.com.google.inject.guice>7.0.0</version.com.google.inject.guice>
+		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.13.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
+		<version.com.mebigfatguy.sb-contrib.sb-contrib>7.6.4</version.com.mebigfatguy.sb-contrib.sb-contrib>
+		<version.com.puppycrawl.tools.checkstyle>10.18.0</version.com.puppycrawl.tools.checkstyle>
+		<version.io.cucumber>7.18.1</version.io.cucumber>
+		<version.jp.skypencil.findbugs.slf4j.bug-pattern>1.5.0</version.jp.skypencil.findbugs.slf4j.bug-pattern>
+		<version.junit>4.13.2</version.junit>
+		<version.org.apache.commons.lang3>3.16.0</version.org.apache.commons.lang3>
+		<version.org.apache.commons.text>1.12.0</version.org.apache.commons.text>
+		<version.org.apache.logging.log4j>2.23.1</version.org.apache.logging.log4j>
+		<version.org.hamcrest>3.0</version.org.hamcrest>
+		<version.org.joda.beans>2.11.1</version.org.joda.beans>
+		<version.org.junit>5.11.0</version.org.junit>
+		<version.org.mockito>5.13.0</version.org.mockito>
+		<version.org.slf4j>2.0.16</version.org.slf4j>
 		<!-- qa user properties -->
 		<checkstyle.maxAllowedViolations>0</checkstyle.maxAllowedViolations>
 		<jacoco.bundle.class.missedcount>0</jacoco.bundle.class.missedcount>
 		<jacoco.bundle.line.coveredratio>100%</jacoco.bundle.line.coveredratio>
 		<pmd.maxAllowedViolations>0</pmd.maxAllowedViolations>
 		<spotbugs.maxAllowedViolations>0</spotbugs.maxAllowedViolations>
-		<!-- sortpom -->
+		<!-- checkstyle -->
+		<checkstyle.config.location>com/github/nhojpatrick/qa/ruleset/checkstyle/rules.xml</checkstyle.config.location>
+		<!-- sortpom-maven-plugin -->
 		<sort.createBackupFile>false</sort.createBackupFile>
+		<sort.encoding>${project.custom.encoding}</sort.encoding>
+		<sort.keepBlankLines>false</sort.keepBlankLines>
 		<sort.nrOfIndentSpace>-1</sort.nrOfIndentSpace>
 		<sort.pomFile>pom.xml</sort.pomFile>
 		<sort.sortDependencies>groupId,artifactId,version,scope</sort.sortDependencies>
 		<sort.sortModules>true</sort.sortModules>
-		<sort.sortOrderFile>com/github/nhojpatrick/sortpom/sortorderfile/nhojpatrick.xml</sort.sortOrderFile>
+		<sort.sortOrderFile>com/github/nhojpatrick/qa/sortpom/sortorderfile/sortorderfile.xml</sort.sortOrderFile>
 		<sort.sortPlugins>groupId,artifactId,version,scope</sort.sortPlugins>
 		<sort.sortProperties>false</sort.sortProperties>
 		<!-- versions-maven-plugin -->
-		<generateBackupPoms>false</generateBackupPoms>
-		<maven.version.rules>classpath:///com/github/nhojpatrick/versions/ruleset/rules.xml</maven.version.rules>
+		<maven.version.rules>classpath:///com/github/nhojpatrick/qa/versions/ruleset/rules.xml</maven.version.rules>
 		<!-- JPMS -->
-		<project.Automatic-Module-Name></project.Automatic-Module-Name>
 		<toolchain.vendor>openjdk</toolchain.vendor>
 		<base.java.version>1.8</base.java.version>
 	</properties>

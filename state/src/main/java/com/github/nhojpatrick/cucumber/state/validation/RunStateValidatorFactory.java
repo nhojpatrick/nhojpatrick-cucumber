@@ -13,7 +13,7 @@ public class RunStateValidatorFactory
         return FACTORY.get();
     }
 
-    RunStateValidatorFactory() {
+    public RunStateValidatorFactory() {
     }
 
     @Override

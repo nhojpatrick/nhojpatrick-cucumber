@@ -9,6 +9,7 @@ import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exception
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions.WhitespaceSuffixException;
 import com.github.nhojpatrick.cucumber.json.transformations.whitespace.exceptions.WhitespaceTransformationArgumentException;
 import com.google.common.annotations.VisibleForTesting;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -30,6 +31,7 @@ public class WhitespaceTransformation
     private final int prefix;
     private final int suffix;
 
+    @SuppressFBWarnings(value = "CT_CONSTRUCTOR_THROW", justification = "Accepted")
     public WhitespaceTransformation(final int prefix, final int suffix)
             throws WhitespaceTransformationArgumentException {
 
@@ -47,6 +49,7 @@ public class WhitespaceTransformation
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public boolean equals(final Object obj) {
 
         if (!(obj instanceof WhitespaceTransformation)) {
@@ -55,18 +58,21 @@ public class WhitespaceTransformation
 
         final WhitespaceTransformation that = (WhitespaceTransformation) obj;
 
-        return new EqualsBuilder()
+        final boolean equal = new EqualsBuilder()
                 .append(this.prefix, that.prefix)
                 .append(this.suffix, that.suffix)
                 .isEquals();
+        return equal;
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        final int hashCode = new HashCodeBuilder(17, 37)
                 .append(this.prefix)
                 .append(this.suffix)
                 .toHashCode();
+        return hashCode;
     }
 
     @Override
@@ -227,7 +233,8 @@ public class WhitespaceTransformation
     }
 
     @VisibleForTesting
-    String pad(final String input, final int prefix, final int suffix) {
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
+    public String pad(final String input, final int prefix, final int suffix) {
 
         String str = isNull(input) ? "" : input;
 
@@ -238,6 +245,7 @@ public class WhitespaceTransformation
     }
 
     @Override
+    @SuppressFBWarnings(value = "USBR_UNNECESSARY_STORE_BEFORE_RETURN", justification = "Useful for debugging")
     public String toString() {
         final String toString = new ToStringBuilder(this, SHORT_PREFIX_STYLE)
                 .append(this.prefix)

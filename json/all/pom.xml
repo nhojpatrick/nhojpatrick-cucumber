@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--modelVersion / -->
+	<modelVersion>4.0.0</modelVersion>
+	<!--parent / -->
+	<parent>
+		<groupId>com.github.nhojpatrick.cucumber</groupId>
+		<artifactId>nhojpatrick-cucumber-json-parent</artifactId>
+		<version>1.0.2</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<!--groupId / -->
+	<!--artifactId / -->
+	<artifactId>nhojpatrick-cucumber-json-all</artifactId>
+	<!--packaging / -->
+	<!--name / -->
+	<!--version / -->
+	<!--description / -->
+	<!--url / -->
+	<!--prerequisites / -->
+	<!--issueManagement / -->
+	<!--ciManagement / -->
+	<!--inceptionYear / -->
+	<!--mailingLists / -->
+	<!--developers / -->
+	<!--contributors / -->
+	<!--licenses / -->
+	<!--scm / -->
+	<!--organization / -->
+	<!--build / -->
+	<!--profiles / -->
+	<!--modules / -->
+	<!--repositories / -->
+	<!--pluginRepositories / -->
+	<!--dependencies / -->
+	<dependencies>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-jodabeans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-map</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.nhojpatrick.cucumber</groupId>
+			<artifactId>nhojpatrick-cucumber-json-transform</artifactId>
+		</dependency>
+	</dependencies>
+	<!--reports (Deprecated) / -->
+	<!--reporting / -->
+	<!--dependencyManagement / -->
+	<!--distributionManagement / -->
+	<!--properties / -->
+	<properties>
+		<project.Automatic-Module-Name>com.github.nhojpatrick.cucumber.json.all</project.Automatic-Module-Name>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+		<spotbugs.skip>true</spotbugs.skip>
+	</properties>
+</project>

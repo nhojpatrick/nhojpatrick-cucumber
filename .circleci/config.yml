@@ -18,8 +18,8 @@ commands:
       - run: tar xvf ~/openjdk-11.tar.gz -C ~/
       - run: sudo mv ~/jdk-11.0.2 /usr/local/openjdk-11
 
-  setup_for_openjdk_8_11:
-    description: "Setup for OpenJdk 8 and 11"
+  setup_std_toolchain:
+    description: "Setup ToolChain for multiple OpenJdk versions"
     steps:
       - run: mkdir ~/.m2
       - run: |
@@ -34,7 +34,7 @@ commands:
                 <id>openjdk-1.8</id>
               </provides>
               <configuration>
-                <jdkHome>/usr/local/openjdk-8</jdkHome>
+                <jdkHome>${JAVA_HOME}</jdkHome>
               </configuration>
             </toolchain>
             <toolchain>
@@ -51,8 +51,8 @@ commands:
           </toolchains>
           EOF
 
-  setup_for_openjdk_11:
-    description: "Setup for OpenJdk 11"
+  setup_openjdk_11_toolchain:
+    description: "Setup ToolChain for OpenJdk 11"
     steps:
       - run: mkdir ~/.m2
       - run: |
@@ -67,7 +67,7 @@ commands:
                 <id>openjdk-1.8</id>
               </provides>
               <configuration>
-                <jdkHome>/usr/local/openjdk-11</jdkHome>
+                <jdkHome>${JAVA_HOME}</jdkHome>
               </configuration>
             </toolchain>
             <toolchain>
@@ -78,7 +78,40 @@ commands:
                 <id>openjdk-11</id>
               </provides>
               <configuration>
-                <jdkHome>/usr/local/openjdk-11</jdkHome>
+                <jdkHome>/usr/local/jdk-11.0.22</jdkHome>
+              </configuration>
+            </toolchain>
+          </toolchains>
+          EOF
+
+  setup_openjdk_17_toolchain:
+    description: "Setup ToolChain for OpenJdk 17"
+    steps:
+      - run: mkdir ~/.m2
+      - run: |
+          cat > ~/.m2/toolchains.xml \<< EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <toolchains xmlns="http://maven.apache.org/TOOLCHAINS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/TOOLCHAINS/1.1.0 http://maven.apache.org/xsd/toolchains-1.1.0.xsd">
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>1.8</version>
+                <vendor>openjdk</vendor>
+                <id>openjdk-1.8</id>
+              </provides>
+              <configuration>
+                <jdkHome>${JAVA_HOME}</jdkHome>
+              </configuration>
+            </toolchain>
+            <toolchain>
+              <type>jdk</type>
+              <provides>
+                <version>11</version>
+                <vendor>openjdk</vendor>
+                <id>openjdk-11</id>
+              </provides>
+              <configuration>
+                <jdkHome>/usr/local/jdk-17.0.11</jdkHome>
               </configuration>
             </toolchain>
           </toolchains>
@@ -87,262 +120,303 @@ commands:
   std_mvnw_jdk8:
     description: "Standard JDK8 mvnw steps"
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
       - run:
           name: "Maven Jdk8 Clean Install"
-          command: ./mvnw -Pcicd clean install
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd clean verify -DskipTests
+      - run:
+          name: "Maven Jdk8 Tests"
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd verify
       - run:
           name: "Coveralls"
-          command: ./mvnw -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd,qa_jacoco -DCOVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} verify jacoco:report coveralls:report
           when: on_success
+
+  mvnw_jdk8_tests_jdk11:
+    description: "JDK8 Build JDK11 Tests mvnw steps"
+    steps:
+      - run:
+          name: "Maven Jdk8 Clean Install"
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd clean verify -DskipTests
       - run:
           name: "Maven Jdk8 Build Jdk11 Tests"
-          command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw -Pcicd test
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
+          command: export JAVA_HOME=/usr/local/openjdk-11 && export PATH=${JAVA_HOME}/bin:{$PATH} && ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd verify
 
   std_mvnw_jdk11:
     description: "Standard JDK11 mvnw steps"
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
       - run:
           name: "Maven Jdk11 Clean Install SkipTests"
-          command: ./mvnw -Pcicd clean install -DskipTests
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd clean verify -DskipTests
       - run:
           name: "Maven Jdk11 Tests"
-          command: ./mvnw -Pcicd test
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd verify
 
-  qa_checkstyle:
-    description: "Standard mvnw checkstyle"
+  std_mvnw_jdk17:
+    description: "Standard Jdk17 mvnw steps"
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_checkstyle -DskipTests verify
       - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-checkstyle
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
+          name: "Maven Jdk17 Clean Install SkipTests"
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd clean verify -DskipTests
+      - run:
+          name: "Maven Jdk17 Tests"
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd verify
 
-  qa_javadoc:
-    description: "Standard mvnw javadoc"
+  qa_step:
+    parameters:
+      stepName:
+        type: string
+    description: "Standard QA Step << parameters.stepName >>"
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-javadoc
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_javadoc -DskipTests verify
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-javadoc
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
+      - run: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd,qa_<< parameters.stepName >> -DskipTests verify
 
-  qa_pmd:
-    description: "Standard mvnw pmd"
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-pmd
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_pmd -DskipTests verify
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-pmd
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
+  #cache_restore:
+  #  parameters:
+  #    cacheAlphaName:
+  #      type: string
+  #    cacheBravoName:
+  #      type: string
+  #  description: "Save Cache Step << parameters.cacheAlphaName >> << parameters.cacheBravoName >>"
+  #  steps:
+  #    - restore_cache:
+  #        keys:
+  #          - m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+  #    - restore_cache:
+  #        keys:
+  #          - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheAlphaName >>
+  #          - m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheBravoName >>
+  #          - m2-dependencies-{{ checksum "pom.xml" }}
+  #    - run: mkdir -p ~/.m2/repository
+  #    - run:
+  #        name: "Tidy Local Maven Repo of lastUpdated"
+  #        command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx dirname xxx | sort -u | xargs -ixxx rm -rfv xxx
+  #        when: always
 
-  qa_spotbugs:
-    description: "Standard mvnw spotbugs"
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
-            - m2-dependencies-{{ checksum "pom.xml" }}
-            - m2-dependencies-
-      - run: ./mvnw -Pcicd,qa_spotbugs -DskipTests verify
-      - run:
-          name: "Tidy Cache before save"
-          command: rm -rf ~/.m2/repository/com/github/nhojpatrick
-          when: always
-      - save_cache:
-          key: m2-dependencies-{{ checksum "pom.xml" }}-spotbugs
-          paths:
-            - ~/.m2/repository
-            - ~/.m2/wrapper
-          when: always
+  #cache_save:
+  #  parameters:
+  #    cacheSaveName:
+  #      type: string
+  #  description: "Save Cache Step << parameters.cacheSaveName >>"
+  #  steps:
+  #    - run: mkdir -p ~/.m2/wrapper
+  #    - save_cache:
+  #        key: m2-wrapper-{{ checksum ".mvn/wrapper/maven-wrapper.properties" }}
+  #        paths:
+  #          - ~/.m2/wrapper
+  #        when: always
+  #    - run: mkdir -p ~/.m2/repository
+  #    - run:
+  #        name: "Tidy Local Maven Repo of project before save cache"
+  #        command: rm -rf ~/.m2/repository/com/github/nhojpatrick/
+  #        when: always
+  #    - run:
+  #        name: "Tidy Local Maven Repo of lastUpdated"
+  #        command: find ~/.m2/repository/ -name "*.lastUpdated" | xargs -ixxx dirname xxx | sort -u | xargs -ixxx rm -rfv xxx
+  #        when: always
+  #    - save_cache:
+  #        key: m2-dependencies-{{ checksum "pom.xml" }}-<< parameters.cacheSaveName >>
+  #        paths:
+  #          - ~/.m2/repository
+  #        when: always
 
 jobs:
-  builds_passed:
-    machine:
-      image: circleci/classic:latest
+  passed_builds:
+    docker:
+      - image: alpine:latest
+    resource_class: small
     steps:
       - run: echo "Build Passed"
 
-  qa_passed:
-    machine:
-      image: circleci/classic:latest
+  passed_qa:
+    docker:
+      - image: alpine:latest
+    resource_class: small
     steps:
       - run: echo "QA Passed"
 
   jdk8:
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: cimg/openjdk:8.0
+    resource_class: medium
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
+      - setup_std_toolchain
+      - checkout
+      #- cache_restore:
+      #    cacheAlphaName: jdk8
+      #    cacheBravoName: jdk8
       - std_mvnw_jdk8
+      #- cache_save:
+      #    cacheSaveName: jdk8
+
+  jdk8_tests_jdk11:
+    docker:
+      - image: cimg/openjdk:8.0
+    resource_class: medium
+    steps:
+      - install_openjdk_11
+      - setup_std_toolchain
+      - checkout
+      #- cache_restore:
+      #    cacheAlphaName: jdk8
+      #    cacheBravoName: jdk8
+      - mvnw_jdk8_tests_jdk11
+      #- cache_save:
+      #    cacheSaveName: jdk8
 
   jdk11:
     docker:
-      - image: circleci/openjdk:11-jdk-stretch
+      - image: cimg/openjdk:11.0
+    resource_class: medium
     steps:
-      - setup_for_openjdk_11
+      - setup_openjdk_11_toolchain
+      - checkout
+      #- cache_restore:
+      #    cacheAlphaName: jdk11
+      #    cacheBravoName: jdk11
       - std_mvnw_jdk11
+      #- cache_save:
+      #    cacheSaveName: jdk11
 
-  jdk13:
+  jdk17:
     docker:
-      - image: circleci/openjdk:13-jdk-buster
+      - image: cimg/openjdk:17.0
+    resource_class: medium
     steps:
-      - std_mvnw_jdk11
+      - setup_openjdk_17_toolchain
+      - checkout
+      #- cache_restore:
+      #    cacheAlphaName: jdk17
+      #    cacheBravoName: jdk17
+      - std_mvnw_jdk17
+      #- cache_save:
+      #    cacheSaveName: jdk17
 
-  jdk14:
+  qa_matrix:
+    parameters:
+      qa_step_profile:
+        type: string
+      qa_step_jdk:
+        type: string
     docker:
-      - image: circleci/openjdk:14-jdk-buster
-    steps:
-      - std_mvnw_jdk11
-
-  checkstyle:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    steps:
-      - install_openjdk_11
-      - setup_for_openjdk_8_11
-      - qa_checkstyle
-
-  javadoc:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-    steps:
-      - install_openjdk_11
-      - setup_for_openjdk_8_11
-      - qa_javadoc
-
-  pmd:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: cimg/openjdk:<< parameters.qa_step_jdk >>
+    resource_class: small
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
-      - qa_pmd
+      - setup_std_toolchain
+      - checkout
+      #- cache_restore:
+      #    cacheAlphaName: << parameters.qa_step_profile >>
+      #    cacheBravoName: jdk8
+      - qa_step:
+          stepName: << parameters.qa_step_profile >>
+      #- cache_save:
+      #    cacheSaveName: << parameters.qa_step_profile >>
 
-  spotbugs:
+  qa_owasp_dependency_check:
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: cimg/openjdk:11.0
+    resource_class: medium
     steps:
       - install_openjdk_11
-      - setup_for_openjdk_8_11
-      - qa_spotbugs
+      - setup_std_toolchain
+      - checkout
+      #- cache_restore:
+      #    cacheAlphaName: owasp-dependency-check
+      #    cacheBravoName: jdk8
+      - run: date +"%Y_%V" | tee .YEAR_WEEK
+      - restore_cache:
+          keys:
+            - m2-owasp-dependency-check-data-{{ checksum ".YEAR_WEEK" }}
+            - m2-owasp-dependency-check-data-
+      - run: mkdir -p ~/.m2/owasp-dependency-check-data
+      - run:
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd -N org.owasp:dependency-check-maven:update-only -DdataDirectory=~/.m2/owasp-dependency-check-data
+          no_output_timeout: 30m
+      - run:
+          command: ./mvnw --batch-mode --fail-at-end --no-transfer-progress --update-snapshots -Pcicd,qa_owasp-dependency-check -DskipTests verify -DdataDirectory=~/.m2/owasp-dependency-check-data
+          no_output_timeout: 30m
+      #- cache_save:
+      #    cacheSaveName: owasp-dependency-check
+      - save_cache:
+          key: m2-owasp-dependency-check-data-{{ checksum ".YEAR_WEEK" }}
+          paths:
+            - ~/.m2/owasp-dependency-check-data
+          when: always
 
 workflows:
   version: 2
   build_all:
     jobs:
       - jdk8
-      - jdk11
-      #- jdk13
-      #- jdk14
-      - builds_passed:
+      - jdk8_tests_jdk11:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - main
+      - jdk11:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - main
+      - jdk17:
+          filters:
+            branches:
+              ignore:
+                - develop
+                - main
+
+      - passed_builds:
           requires:
             - jdk8
+            - jdk8_tests_jdk11
             - jdk11
-            #- jdk13
-            #- jdk14
-      - qa_passed:
+            - jdk17
+
+      - qa_matrix:
+          name: qa_<< matrix.qa_step_profile >>_jdk_<< matrix.qa_step_jdk >>
           requires:
-            - checkstyle
-            - javadoc
-            - pmd
-            - spotbugs
-      - checkstyle:
-          requires:
-            - builds_passed
+            - passed_builds
           filters:
             branches:
               ignore:
                 - develop
-                - master
-      - javadoc:
+                - main
+          matrix:
+            parameters:
+              qa_step_profile: [
+                "checkstyle",
+                "javadoc",
+                "pmd",
+                "sortpom",
+                "spotbugs"
+              ]
+              qa_step_jdk: [
+                "8.0",
+                "11.0"
+              ]
+            exclude:
+              - qa_step_profile: "checkstyle"
+                qa_step_jdk: "8.0"
+              - qa_step_profile: "javadoc"
+                qa_step_jdk: "11.0"
+              - qa_step_profile: "pmd"
+                qa_step_jdk: "11.0"
+              - qa_step_profile: "sortpom"
+                qa_step_jdk: "11.0"
+              - qa_step_profile: "spotbugs"
+                qa_step_jdk: "8.0"
+
+      - qa_owasp_dependency_check:
           requires:
-            - builds_passed
+            - passed_builds
           filters:
             branches:
               ignore:
                 - develop
-                - master
-      - pmd:
+                - main
+
+      - passed_qa:
           requires:
-            - builds_passed
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
-      - spotbugs:
-          requires:
-            - builds_passed
-          filters:
-            branches:
-              ignore:
-                - develop
-                - master
+            - qa_matrix

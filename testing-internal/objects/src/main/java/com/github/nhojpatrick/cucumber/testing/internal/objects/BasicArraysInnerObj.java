@@ -19,7 +19,10 @@ import java.util.Map;
 
 @BeanDefinition
 @JsonCustomDefaults
-@SuppressFBWarnings(value = "CN_IDIOM_NO_SUPER_CALL", justification = "Managed by JodaBeans")
+@SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
+        "EI_EXPOSE_REP",
+        "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
+        justification = "Managed by JodaBeans")
 @SuppressWarnings("PMD.UselessParentheses")
 public class BasicArraysInnerObj
         implements Bean,
@@ -113,8 +116,7 @@ public class BasicArraysInnerObj
     }
 
     protected void toString(StringBuilder buf) {
-        buf.append("objectArrayId").append('=').append(JodaBeanUtils.toString(getObjectArrayId()))
-                .append(',').append(' ');
+        buf.append("objectArrayId").append('=').append(JodaBeanUtils.toString(getObjectArrayId())).append(',').append(' ');
     }
 
     //-----------------------------------------------------------------------
