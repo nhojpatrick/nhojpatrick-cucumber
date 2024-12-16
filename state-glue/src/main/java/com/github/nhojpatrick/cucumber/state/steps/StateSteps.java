@@ -10,11 +10,11 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static com.github.nhojpatrick.hamcrest.collections.IsMap.mapWithSize;
-import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -73,10 +73,8 @@ public class StateSteps {
     @Given("^I have cleared the run state$")
     public void clearRunState() {
 
-        final List<String> keys = this.runState.get()
-                .keySet()
-                .stream()
-                .collect(toList());
+        final List<String> keys = new ArrayList<>(this.runState.get()
+                .keySet());
         clearRunStateForKeys(keys);
     }
 
