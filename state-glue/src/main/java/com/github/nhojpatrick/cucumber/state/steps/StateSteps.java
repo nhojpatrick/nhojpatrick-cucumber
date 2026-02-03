@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SuppressFBWarnings(value = {"EI_EXPOSE_REP2",
         "THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION",
-        "THROWS_METHOD_THROWS_CLAUSE_THROWABLE",
         "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"},
         justification = "Accepted will look at changing")
 public class StateSteps {

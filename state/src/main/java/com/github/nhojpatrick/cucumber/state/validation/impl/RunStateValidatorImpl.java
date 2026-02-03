@@ -5,7 +5,6 @@ import com.github.nhojpatrick.cucumber.core.exceptions.NullKeyException;
 import com.github.nhojpatrick.cucumber.state.RunState;
 import com.github.nhojpatrick.cucumber.state.exceptions.NullRunStateException;
 import com.github.nhojpatrick.cucumber.state.validation.RunStateValidator;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +16,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@SuppressFBWarnings(value = "THROWS_METHOD_THROWS_CLAUSE_THROWABLE", justification = "JUnit assertAll API")
 public class RunStateValidatorImpl
         implements RunStateValidator {
 
