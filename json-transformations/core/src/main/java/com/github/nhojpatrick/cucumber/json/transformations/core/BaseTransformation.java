@@ -24,8 +24,7 @@ public abstract class BaseTransformation
     }
 
     @Override
-    @SuppressFBWarnings(value = {"USBR_UNNECESSARY_STORE_BEFORE_RETURN",
-            "COM_COPIED_OVERRIDDEN_METHOD"},
+    @SuppressFBWarnings(value = {"USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
             justification = "Useful for debugging")
     public int hashCode() {
         final int hashCode = new HashCodeBuilder(17, 37)

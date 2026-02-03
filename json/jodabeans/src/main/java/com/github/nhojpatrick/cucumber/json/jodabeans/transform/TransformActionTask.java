@@ -21,8 +21,7 @@ import java.util.Map;
 import static java.util.Objects.requireNonNull;
 
 @BeanDefinition
-@SuppressFBWarnings(value = {"CN_IDIOM_NO_SUPER_CALL",
-        "CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",
+@SuppressFBWarnings(value = {"CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",
         "EI_EXPOSE_REP",
         "USBR_UNNECESSARY_STORE_BEFORE_RETURN"},
         justification = "Managed by JodaBeans")
@@ -50,8 +49,6 @@ public class TransformActionTask
                 .toComparison();
     }
 
-    @SuppressFBWarnings(value = "PI_DO_NOT_REUSE_PUBLIC_IDENTIFIERS_CLASS_NAMES",
-            justification = "Accepted for Builder")
     public static class Builder<B extends Builder, E extends TransformActionTask> {
 
         protected E entity;
