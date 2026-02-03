@@ -1186,7 +1186,7 @@
 		<!-- dependency versions -->
 		<version.com.fasterxml.jackson>2.19.1</version.com.fasterxml.jackson>
 		<version.com.github.nhojpatrick.hamcrest>1.0.3</version.com.github.nhojpatrick.hamcrest>
-		<version.com.github.spotbugs>4.9.7</version.com.github.spotbugs>
+		<version.com.github.spotbugs>4.9.8</version.com.github.spotbugs>
 		<version.com.google.inject.guice>7.0.0</version.com.google.inject.guice>
 		<version.com.h3xstream.findsecbugs.findsecbugs-plugin>1.14.0</version.com.h3xstream.findsecbugs.findsecbugs-plugin>
 		<version.com.mebigfatguy.sb-contrib.sb-contrib>7.6.11</version.com.mebigfatguy.sb-contrib.sb-contrib>
