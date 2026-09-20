@@ -1212,7 +1212,7 @@
 		<plugins.nexus-staging-maven-plugin>1.7.0</plugins.nexus-staging-maven-plugin>
 		<plugins.owasp-dependency-check-maven>12.2.2</plugins.owasp-dependency-check-maven>
 		<plugins.spotbugs-maven-plugin>4.9.8.3</plugins.spotbugs-maven-plugin>
-		<plugins.versions-maven-plugin>2.21.0</plugins.versions-maven-plugin>
+		<plugins.versions-maven-plugin>2.22.0</plugins.versions-maven-plugin>
 		<!-- dependency versions -->
 		<version.com.fasterxml.jackson>2.21.4</version.com.fasterxml.jackson>
 		<version.com.github.nhojpatrick.hamcrest>1.0.3</version.com.github.nhojpatrick.hamcrest>
